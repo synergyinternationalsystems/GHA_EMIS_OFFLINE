@@ -1,0 +1,274 @@
+<div mdl class="mdl-layout__container">
+    <div class="sis-shell mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <sis-confirm-dialog (onClose)="confirmDialogClose()" [text]="'Are you sure?'" #confirmDialog></sis-confirm-dialog>
+        <sis-notification-dialog [text]="notificationMessage" #notificationDialog></sis-notification-dialog>
+        <sis-confirm-dialog (onClose)="confirmDialogClose()" [text]="'Are you sure you want to permanently delete those Censuses?'" #confirmDiscardDialog></sis-confirm-dialog>
+
+        <header class="sis-header mdl-layout__header is-casting-shadow">
+            <div class="mdl-layout__header-row sis-shell__header sis-gha-shell__header">
+                <img src="app/resources/images/gha-offline-logo.png" class="sis-gha-shell__header-img" alt="System Logo"/>
+                <div class="sis-gha-shell__header-logo-text">
+                    <h1 class="sis-header__title mdl-layout__title">EMIS-Education Management Information System Ministry of Education</h1>
+                </div>
+                <ul class="sis-shell__header-items">
+                    <li>
+                        <button (click)="switchMode()" class="mdl-button mdl-js-button mdl-js-ripple-effect sis-switch-mode" *ngIf="!isOffline">
+                            <span class="sis-switch-mode--circle-green"></span>
+                            <span>Switch to OFFLINE1.0.5 Mode</span>
+                        </button>
+                        <button (click)="switchMode()" class="mdl-button mdl-js-button mdl-js-ripple-effect sis-switch-mode" *ngIf="isOffline">
+                            <span class="sis-switch-mode--circle-red"></span>
+                            <span>Switch to ONLINE1.0.5 Mode</span>
+                        </button>
+                    </li>
+                    <li class="sis-btn--hidden-mobile">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect sis-shell__header-dropdown"
+                                id="userLogout">
+                            <span>{{userName}}</span>
+                            <i class="material-icons sis-shell__header-dropdown-icon">arrow_drop_down</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="userLogout">
+                            <li class="mdl-menu__item" (click)="logout(confirmDialog)">Log Out</li>
+                        </ul>
+                    </li>
+                    <li class="sis-btn--hidden-mobile">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="help">
+                            <i class="material-icons">help</i>
+                            <i class="material-icons sis-shell__header-dropdown-icon">arrow_drop_down</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="help">
+                            <li class="mdl-menu__item"><a href="../../../help/onlineHelp/index.htm" target="_blank">Online Help</a></li>
+                            <li class="mdl-menu__item"><a href="../../../help/EMIS_SchoolCensus_UserManual.pdf" target="_blank">User Manual</a></li>
+                        </ul>
+                    </li>
+                    <!--collapsible button-->
+                    <li>
+                        <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">more_vert</i>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+                            <li class="mdl-menu__item"><span (click)="logout(confirmDialog)">Log Out</span></li>
+                            <li class="mdl-menu__item"><a href="../../../help/onlineHelp/index.htm" target="_blank">Online Help</a></li>
+                            <li class="mdl-menu__item"><a href="../../../help/EMIS_SchoolCensus_UserManual.pdf" target="_blank">User Manual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+
+        <main class="sis-layout__content mdl-layout__content" id="sis-layout__content">
+            <div class="mdl-grid sis-layout">
+
+                <div class="mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div class="sis-actions sis-checkout-btn__container sis-float-right">
+                            <div class="sis-actions">
+                                <button (click)="checkout()" class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect sis-button--icon sis-checkout-btn__container--items">
+                                    <i class="material-icons">file_download</i> Checkout
+                                </button>
+                                <button (click)="updateClassifiers()" class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect sis-button--icon sis-checkout-btn__container--items">
+                                    <i class="material-icons">update</i> Update Classifiers
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div *ngIf="!isOffline" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
+                    <h2 class="sis-layout__section__title sis-full-width">Draft Censuses</h2>
+
+                    <div *ngIf="isLoadedOnlineCensuses" class="sis-loader-icon__container">
+                        <img src="app/resources/images/loader.gif" class="sis-loader-icon__container-item"/>
+                    </div>
+
+                    <div *ngIf="onlineDraftCensuses" class="sis-full-width">
+                        <div class="mdl-grid mdl-grid--no-spacing">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <div class="sis-table-scroll">
+                                    <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th class="mdl-data-table__cell--non-numeric"
+                                                    *ngFor="let columnField of getTableColumnFieldsForOnline(); let i = index">
+                                                    {{columnField.title}}
+                                                    <span (click)="sortOnlineCensuses(i)">
+                                                        <span *ngIf="getSortType(i) == 0"><i
+                                                                class="fa fa-sort sis-sorting-icons"
+                                                                aria-hidden="true"></i></span>
+                                                        <span *ngIf="getSortType(i) == 1"><i
+                                                                class="fa fa-sort-asc sis-sorting-icons"
+                                                                aria-hidden="true"></i></span>
+                                                        <span *ngIf="getSortType(i) == 2"><i
+                                                                class="fa fa-sort-desc sis-sorting-icons"
+                                                                aria-hidden="true"></i></span>
+                                                    </span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let row of getOnlineCensusesForCurrentPage(); let j = index">
+                                                <td>
+                                                    <input type="checkbox" [checked]="isCheckedItem(row)"
+                                                           (change)="onCheckBoxChanged(row)"
+                                                           class="form-radio-checkbox center"/>
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 100px;">
+                                                    {{row.region.name.values[3]}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 102px;">
+                                                    {{row.district.name.values[3]}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 128px;">
+                                                    {{row.schoolType}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 195px;">
+                                                    {{row.schoolName}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 146px;">
+                                                    {{row.schoolCode}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 196px;">
+                                                    {{row.lastUpdatedBy}}
+                                                </td>
+                                                <td class="mdl-data-table__cell--non-numeric" style="min-width: 196px;">
+                                                    {{row.lastUpdatedOn | date : "dd-MMM-yyyy"}}
+                                                </td>
+                                                <!--     <td class="mdl-data-table__cell&#45;&#45;non-numeric" style="min-width: 95px;">
+                                                                    <ng-container
+                                                                            *ngIf="isGreenAlert(row.alert, row.alertDaysCount)">
+                                                                        Pending {{row.alertDaysCount}} days.
+                                                                    </ng-container>
+                                                                    <ng-container
+                                                                            *ngIf="isRedAlert(row.alert, row.alertDaysCount)">
+                                                                        Pending more than {{row.alertDaysCount}}
+                                                                        days.
+                                                                    </ng-container>
+                                                          </td>-->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <sis-paging [(page)]="currentOnlinePage"
+                                            [pageSize]="getPageLimit()"
+                                            [itemsCount]="onlineDraftCensuses.length"
+                                            [totalPageCount]="getTotalPageCountForOnline()">
+                                </sis-paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div *ngIf="getCensuses()" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
+                            <div class="mdl-grid mdl-grid--no-spacing">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <h2 class="sis-layout__section__title">School Census</h2>
+                                    <div mdl class="sis-actions sis-button-top-margin">
+                                        <button (click)="submitCensuses(notificationDialog)" [disabled]="isOffline"
+                                                class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect">Submit
+                                        </button>
+                                        <button (click)="discardCensuses(confirmDiscardDialog)"
+                                                class="mdl-button mdl-js-button sis-btn--sec mdl-button--raised  mdl-js-ripple-effect">Discard
+                                        </button>
+                                    </div>
+                                    <div class="sis-table-scroll sis-controls--top-margin">
+                                        <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="mdl-data-table__cell--non-numeric"
+                                                        *ngFor="let columnField of getTableColumnFields()">
+                                                        <sis-list-sorting-button
+                                                                [listSorting]="getCensusPortfolioComponent()"
+                                                                [sortField]="columnField.propertyName">
+                                                            {{columnField.title}}
+                                                            <sis-list-sorting-button-asc><i class="fa fa-sort-asc sis-sorting-icons" aria-hidden="true"></i></sis-list-sorting-button-asc>
+                                                            <sis-list-sorting-button-unsorted><i class="fa fa-sort sis-sorting-icons" aria-hidden="true"></i></sis-list-sorting-button-unsorted>
+                                                            <sis-list-sorting-button-desc><i class="fa fa-sort-desc sis-sorting-icons" aria-hidden="true"></i></sis-list-sorting-button-desc>
+                                                        </sis-list-sorting-button>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let row of getCensuses()">
+                                                    <td class="mdl-data-table__cell--non-numeric">
+                                                        <input type="checkbox" *ngIf="isDraft(row)"
+                                                               [checked]="isCensusToBeSubmitted(row.getId())"
+                                                               (change)="onSubmitCheckBoxChanged(row.getId())"
+                                                               class="form-radio-checkbox center"/>
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric">
+                                                        {{row.getProperty('region').value}}
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric">
+                                                        {{row.getProperty('district').value}}
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="min-width: 168px;">
+                                                        {{row.getProperty('schoolType').value}}
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="min-width: 174px;">
+                                                        <a (click)="navigateTo('census',row, row.getId())">
+                                                            {{row.getProperty('schoolName').value}}
+                                                        </a>
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="min-width: 170px;">
+                                                        {{row.getProperty('schoolCode').value}}
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="min-width: 190px;">
+                                                        {{row.getProperty("lastUpdatedBy").value}}
+                                                    </td>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="min-width: 192px;">
+                                                                            {{row.getProperty("lastUpdatedOn").value | date
+                                                                            : "dd-MMM-yyyy"}}
+                                                    </td>
+                                                   <!-- <td class="mdl-data-table__cell&#45;&#45;non-numeric">
+                                                        <ng-container
+                                                                *ngIf="isGreenAlert(row.getProperty('alert').value, row.getProperty('alertDaysCount').value)">
+                                                            Pending
+                                                            {{row.getProperty("alertDaysCount").value}}
+                                                            days.
+                                                        </ng-container>
+                                                        <ng-container
+                                                                *ngIf="isRedAlert(row.getProperty('alert').value, row.getProperty('alertDaysCount').value)">
+                                                            Pending more than
+                                                            {{row.getProperty("alertDaysCount").value}}
+                                                            days.
+                                                        </ng-container>
+                                                    </td>-->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <sis-paging [(page)]="currentPage"
+                                                [pageSize]="getPageLimit()"
+                                                [itemsCount]="getTotalCensusesCount()"
+                                                [totalPageCount]="getTotalPageCount()">
+                                    </sis-paging>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+        </main>
+
+        <div class="offline-ui offline-ui-down" *ngIf="!isNetworkConnected">
+            <div class="offline-ui-content"></div>
+        </div>
+        <div class="offline-ui offline-ui-up" *ngIf="isNetworkConnected">
+            <div class="offline-ui-content"></div>
+        </div>
+        <div>
+            <offline-message-popup *ngIf="isOfflineMessagePopupActive" [isHasModeChanged]="isHasModeChanged" (onClose)="setIsOfflineMessagePopupActive(false)"></offline-message-popup>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="getIsViewDisabled()">
+    <div class="k-loading-mask sis-loader-icon__container--bg">
+        <span class="k-loading-text">
+            Loading...
+        </span>
+        <img src="app/resources/images/loader.gif" class="sis-loader-icon__container-item"/>
+    </div>
+</div>
