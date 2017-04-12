@@ -1,0 +1,8 @@
+<div class="sis-multilang-textarea" id="{{id}}">
+    <ul class="sis-multilang-tabs">
+        <li *ngFor="let language of languages" [ngClass]="setClasses(language)" (click)="changeSelectedLanguage(language)">
+            {{language.getAcronym().getValue(currentLanguageId)}}
+        </li>
+    </ul>
+    <textarea attr.maxlength="{{maxLength}}" class="sis-textarea" [(ngModel)]="selectedLanguageText" placeholder="{{placeholder}}"></textarea>
+</div>

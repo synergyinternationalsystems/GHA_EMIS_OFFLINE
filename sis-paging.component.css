@@ -1,0 +1,78 @@
+.mdl-button, .sis-paging--first, .sis-paging--last, .sis-paging--previous:first-child, .sis-paging--next:last-child, .sis-paging--next:only-child, .sis-paging--previous:only-child {
+  min-width: 84px;
+  height: 36px;
+  line-height: 36px;
+  font-weight: 400;
+  margin-right: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer; }
+  @media (min-width: 0) and (max-width: 479px) {
+    .mdl-button, .sis-paging--first, .sis-paging--last, .sis-paging--previous:first-child, .sis-paging--next:last-child, .sis-paging--next:only-child, .sis-paging--previous:only-child {
+      min-width: 56px; } }
+  .mdl-button:only-child, .sis-paging--first:only-child, .sis-paging--last:only-child, .sis-paging--next:only-child, .sis-paging--previous:only-child {
+    margin-right: 0; }
+
+.sis-paging {
+  display: -webkit-box !important;
+  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox !important;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex !important;
+  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex !important;
+  justify-content: flex-end;
+  margin-top: 36px;
+  padding-right: 2px;
+  padding-bottom: 3px; }
+
+.sis-paging button[disabled], .sis-paging button[disabled]:hover {
+  color: rgba(0, 0, 0, 0.26);
+  background: none;
+  cursor: default; }
+
+.sis-paging .sis-button-icon-with-background {
+  margin-top: 0; }
+
+.sis-paging--previous-next {
+  display: -webkit-box !important;
+  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox !important;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex !important;
+  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex !important; }
+
+.sis-paging--items-count {
+  align-self: center;
+  margin-right: 24px; }
+
+.sis-paging--first, .sis-paging--last, .sis-paging--previous:first-child, .sis-paging--next:last-child, .sis-paging--next:only-child, .sis-paging--previous:only-child {
+  padding: 0 6px;
+  background: #fff;
+  cursor: pointer;
+  min-width: 0;
+  margin-right: 0;
+  color: rgba(0, 0, 0, 0.87); }
+  .sis-paging--first:hover, .sis-paging--last:hover, .sis-paging--previous:hover:first-child, .sis-paging--next:hover:last-child, .sis-paging--next:hover:only-child, .sis-paging--previous:hover:only-child, .sis-paging--first:active, .sis-paging--last:active, .sis-paging--previous:active:first-child, .sis-paging--next:active:last-child, .sis-paging--next:active:only-child, .sis-paging--previous:active:only-child, .sis-paging--first:focus, .sis-paging--last:focus, .sis-paging--previous:focus:first-child, .sis-paging--next:focus:last-child, .sis-paging--next:focus:only-child, .sis-paging--previous:focus:only-child {
+    background: #f2f2f2;
+    color: rgba(0, 0, 0, 0.87); }
+  .sis-paging--first .material-icons, .sis-paging--last .material-icons, .sis-paging--previous:first-child .material-icons, .sis-paging--next:last-child .material-icons, .sis-paging--next:only-child .material-icons, .sis-paging--previous:only-child .material-icons, .sis-paging--first .fa, .sis-paging--last .fa, .sis-paging--previous:first-child .fa, .sis-paging--next:last-child .fa, .sis-paging--next:only-child .fa, .sis-paging--previous:only-child .fa {
+    font-size: 20px; }
+
+.sis-paging--first {
+  margin-right: 12px !important; }
+
+.sis-paging--last {
+  margin-left: 12px; }
+
+.sis-paging--previous:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
+
+.sis-paging--next:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.sis-paging--next:only-child, .sis-paging--previous:only-child {
+  border: inherit;
+  border-radius: 3px; }

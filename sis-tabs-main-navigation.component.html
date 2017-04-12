@@ -1,0 +1,33 @@
+<div class="mdl-layout__drawer sis-drawer">
+    <nav class="mdl-navigation">
+        <a *ngFor="let tab of _tabItems"
+           (click)="selectTab(tab)"
+           [ngClass]="{'mdl-navigation__link--active': tab.selected, 'is-disable': !tab.isEnabled}"
+           class="mdl-navigation__link" href="javascript:void(0)">
+            {{tab.getTitle()}}
+        </a>
+    </nav>
+</div>
+
+
+<div class="sis-navigation-container">
+	<div class="mdl-layout__header-row  mdl-shadow--2dp">
+		<div class="sis-header--width sis-navigation">
+			<nav class="mdl-navigation">
+            <span *ngFor="let tab of _tabItems"
+                  (click)="selectTab(tab)"
+                  [ngClass]="{'mdl-navigation__link--active': tab.selected, 'is-disable': !tab.isEnabled}"
+                  class="mdl-navigation__link mdl-js-ripple-effect">
+            <span class="mdl-ripple"></span>
+            {{tab.getTitle()}}
+            </span>
+			</nav>
+		</div>
+	</div>
+</div>
+
+<ng-content></ng-content>
+
+
+
+

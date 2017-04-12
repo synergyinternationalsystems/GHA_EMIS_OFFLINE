@@ -1,0 +1,22 @@
+.sis-range {
+  display: -webkit-box !important;
+  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox !important;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex !important;
+  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.sis-layout__range-from {
+  margin-right: 18px; }
+
+.sis-layout__range-to {
+  margin-left: 18px; }
+
+@media (max-width: 445px) {
+  .sis-range_datepicker-to {
+    width: 100%;
+    margin: 10px 0; } }

@@ -10,6 +10,7 @@ const DBInit = require('./dbInit.js');
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 const logger = require('electron-logger');
+const logger1 = require('electron-logger');
 var configFilePath;
 global.sharedObject = {db: null, onlineURL: null, logger:null, userDocuments: null, fileSystem: fsp, PDFWindow: PDFWindow};
 
@@ -18,16 +19,19 @@ if(require('electron-squirrel-startup')) return;
 /*================================== Handling Squirrel Events ============================*/
 var cp = require('child_process');
 var handleSquirrelEvent = function() {
+    logger1.setOutput({file:`C:\\Users\\haykanush.torchyan\\Desktop\\gha-log1.log`});
 
     if (process.platform != 'win32') {
         return false;
     }
 
     function executeSquirrelCommand(args, done) {
+        logger1.info("Squirrel preparing to update... !!!!!!!!!!!!!!!");
         var updateDotExe = path.resolve(path.dirname(process.execPath),
             '..', 'update.exe');
         var child = cp.spawn(updateDotExe, args, { detached: true });
         child.on('close', function(code) {
+            logger1.info("Squirrel successfully updated !!!!!!!!!!!!!!!");
             done();
         });
     };
@@ -43,23 +47,29 @@ var handleSquirrelEvent = function() {
     };
 
     var squirrelEvent = process.argv[1];
+    logger1.info("Squirrel event = "+squirrelEvent+" !!!!!!!!!!!!!!!");
 
     switch (squirrelEvent) {
+        case '--squirrel-firstrun':
+            logger1.info("Squirrel in --squirrel-firstrun !!!!!!!!!!!!!!!");
+            install(app.quit);
+            return true;
         case '--squirrel-install':
+            logger1.info("Squirrel in --squirrel-install !!!!!!!!!!!!!!!");
             install(app.quit);
             return true;
         case '--squirrel-updated':
+            logger1.info("Squirrel in --squirrel-updated !!!!!!!!!!!!!!!");
             install(app.quit);
             return true;
         case '--squirrel-obsolete':
+            logger1.info("Squirrel in --squirrel-obsolete !!!!!!!!!!!!!!!");
             app.quit();
             return true;
         case '--squirrel-uninstall':
+            logger1.info("Squirrel in --squirrel-uninstall !!!!!!!!!!!!!!!");
             uninstall(app.quit);
             return true;
-        default:
-            logger1.info("Squirrel in default !!!!!!!!!!!!!!!");
-            install(function(){});
         return true;
     }
 

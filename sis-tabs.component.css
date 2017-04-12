@@ -1,0 +1,31 @@
+.mdl-navigation__link {
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0 16px;
+  margin: 0px 10px -4px 0;
+  color: rgba(0, 0, 0, 0.54);
+  position: relative;
+  overflow: hidden; }
+  .mdl-navigation__link:hover {
+    color: rgba(0, 0, 0, 0.6); }
+
+.sis-tab-navigation .mdl-layout__tab.is-active {
+  color: #2d323e;
+  font-weight: 500; }
+  .sis-tab-navigation .mdl-layout__tab.is-active:hover {
+    color: #2d323e; }
+
+.sis-tab-navigation .mdl-layout__tab.is-active:after {
+  background: #1aac21 !important; }
+
+.sis-tab-navigation .mdl-layout__tab {
+  float: none;
+  display: inline-block;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.54); }
+  .sis-tab-navigation .mdl-layout__tab:hover {
+    color: rgba(0, 0, 0, 0.6); }
+
+.sis-tab-navigation .mdl-ripple {
+  background: #d6efd7; }

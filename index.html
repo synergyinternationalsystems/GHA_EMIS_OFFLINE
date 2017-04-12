@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <!-- Set the base href! -->
+  <base href="/"><!-- TODO: Change to href="." as suggested by documentation when typing in a sub-route URL works. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Insert this line above script imports  -->
+  <!-- This is done for third party libraries proper import-->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="google.api.fonts.css">
+  <link rel="stylesheet" href="material.icons.css">
+  <link rel="stylesheet" href="material.grey-pink.min.css"/>
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="kendo.common-material.min.css"/>
+  <link rel="stylesheet" href="kendo.rtl.min.css"/>
+  <link rel="stylesheet" href="kendo.material.min.css"/>
+  <link rel="stylesheet" href="kendo.material.mobile.min.css"/>
+  <link rel="stylesheet" href="kendoOverwrites.css" />
+  <link rel="stylesheet" href="custom.css"/>
+  <link rel="shortcut icon" href="images/favicon.ico" />
+
+  <!-- Polyfill(s) for older browsers. -->
+  <script src="shim.min.js"></script>
+  <script src="zone.js"></script>
+  <script src="system.src.js"></script>
+  <script src="material.min.js"></script>
+  <script src="jquery.min.js"></script>
+  <script src="kendo.all.min.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+//      System.import("app").catch(function (err) {
+//          console.error(err);
+//      });
+      var remote = require('electron').remote;
+      window.execSql = function (callback) {
+          return callback(remote.getGlobal('sharedObject').db);
+      };
+      window.uploadFile = function (callback) {
+          return callback(remote.getGlobal('sharedObject').userDocuments, remote.getGlobal('sharedObject').fileSystem);
+      };
+      window.openFile = function (callback) {
+          return callback(remote.getGlobal('sharedObject').PDFWindow);
+      };
+      window.onlineURL = remote.getGlobal('sharedObject').onlineURL;
+      window.logger = remote.getGlobal('sharedObject').logger;
+  </script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+</head>
+  <body>
+    <sis-app>Loading...</sis-app>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<div id="{{id}}" class="sis-chips__chip sis-chips--deletable dropdown">
+    <span class="sis-chips__label"> {{label}} </span>
+    <button type="button" class="sis-chips__delete control-tag__button" title="Delete" (click)="onDeleteTag(id)"> </button>
+    <div class="chip-dropdown__content">
+        <output>{{label}}</output>
+        <div *ngFor="let detail of details">
+            <span class="details-label">{{detail.label}}:</span>
+            <span>{{detail.description}}</span>
+        </div>
+    </div>
+</div>

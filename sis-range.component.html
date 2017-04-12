@@ -1,0 +1,18 @@
+<div id="{{id}}">
+    <div *ngIf="rangeControlType === rangeControlTypes.NUMBER"  class="sis-range">
+        <input [id]="'selenium-test-minValue'" class="sis-input sis-small-width sis-layout__range-from" type="number"
+               [(ngModel)]="startValue" placeholder="{{minValue}}" (change)="onStartValueChange()"/>
+        <span>to</span>
+        <input [id]="'selenium-test-maxValue'" class="sis-input sis-small-width sis-layout__range-to" type="number"
+               [(ngModel)]="endValue"  placeholder="{{maxValue}}" (change)="onEndValueChange()"/>
+    </div>
+
+    <div *ngIf="rangeControlType === rangeControlTypes.DATE"  class="sis-range">
+        <span class="sis-layout__range-from"><sis-date-picker [id]="'selenium-test-minDate'" [(ngModel)]="startValue" (ngModelChange)="onStartValueChange()"></sis-date-picker></span>
+        <span class="sis-range_datepicker-to sis-layout__range-from">to</span>
+        <span><sis-date-picker [id]="'selenium-test-maxDate'" [(ngModel)]="endValue" (ngModelChange)="onEndValueChange()"></sis-date-picker></span>
+    </div>
+    <div *ngIf="!isValid">
+        {{validationMessage}}
+    </div>
+</div>

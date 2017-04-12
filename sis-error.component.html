@@ -1,0 +1,7 @@
+<div class="sis-validation-wrapper">
+    <div [hidden]="!isShowIcon()"  class="sis-validation-wrapper__icon">
+         <i class="material-icons">report_problem</i>
+    </div>
+<div [hidden]="!isShowMessage()"  class="sis-validation-wrapper__message" [style.width]="widthOfMessage"> {{_errorMessage}}
+</div>
+</div>

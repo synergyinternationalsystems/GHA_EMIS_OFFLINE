@@ -1,0 +1,15 @@
+<sis-error [id]="'id'"
+           [forControl]="filesSection" [isInput]="true"
+           [errorClass]="'sis-validation-wrapper--grouped'"
+           [errorMessage]="fileValidationMessage"
+           [class]="'sis-float-left'"></sis-error>
+<div>
+<div #filesSection class="k-content">
+    <input name="file" id="file" type="file"/>
+    <input name="languageId" id="languageId" value="7" type="hidden">
+    <input name="data" id="data" value="" type="hidden">
+    <span class="k-invalid-msg" data-for="files"></span>
+    <button type="button"  class="sis-button-upload mdl-js-button sis-btn--primary mdl-js-ripple-effect sis--full-width-mobile mdl-button mdl-button--raised sis-button-top-margin" (click)="uploadFile()"> {{submitLabel}} </button>
+</div>
+</div>
+<!--</form>-->

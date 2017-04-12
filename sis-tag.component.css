@@ -1,0 +1,79 @@
+.sis-chips__delete:before {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+.sis-chips {
+  margin-top: 40px; }
+  .sis-chips__chip {
+    display: inline-block;
+    background-color: #e7e7e7;
+    height: 32px;
+    vertical-align: middle;
+    line-height: 32px;
+    border-radius: 25px;
+    margin-right: 12px; }
+    .sis-chips__chip:hover .chip-dropdown__content {
+      display: block; }
+  .sis-chips__label {
+    padding: 0 12px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    float: left; }
+  .sis-chips--deletable .sis-chips__label {
+    padding: 0 6px 0 12px; }
+  .sis-chips__delete {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 100%;
+    vertical-align: middle;
+    margin: 1px 8px 4px 0;
+    padding: 0;
+    border: none;
+    cursor: pointer; }
+    .sis-chips__delete:hover {
+      background-color: rgba(0, 0, 0, 0.54); }
+    .sis-chips__delete:before {
+      content: 'close';
+      font-size: 12px;
+      color: #f4f4f4;
+      margin-top: 2px; }
+
+.mdl-grid.mdl-grid--no-spacing > .mdl-cell .sis-chips:first-child {
+  margin-top: 0; }
+
+.chip-dropdown__content {
+  display: none;
+  position: absolute;
+  max-width: 155px;
+  padding: 8px 16px;
+  white-space: normal;
+  overflow: hidden;
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }

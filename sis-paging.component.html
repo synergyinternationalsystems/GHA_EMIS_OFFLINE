@@ -1,0 +1,22 @@
+<div class="sis-paging">
+    <span class="sis-paging--items-count">{{firstItemIndex}} - {{lastItemIndex}} of {{itemsCount}}</span>
+
+    <button (click)="changePage(0)" [disabled]="page === 0"
+            class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect sis-button-icon-with-background sis-paging--first">
+        <i class="material-icons">skip_previous</i>
+    </button>
+    <div class="sis-paging--previous-next">
+        <button (click)="changePage(page - 1)" [disabled]="page === 0"
+                class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect sis-button-icon-with-background sis-paging--previous">
+            <i class="material-icons">arrow_left</i>
+        </button>
+        <button (click)="changePage(page + 1)" [disabled]="page === totalPageCount - 1 || totalPageCount === 0"
+                class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect sis-button-icon-with-background sis-paging--next">
+            <i class="material-icons">arrow_right</i>
+        </button>
+    </div>
+    <button (click)="changePage(totalPageCount - 1)" [disabled]="page === totalPageCount - 1 || totalPageCount === 0"
+            class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect sis-button-icon-with-background sis-paging--last">
+        <i class="material-icons">skip_next</i>
+    </button>
+</div>

@@ -1,0 +1,8 @@
+<div class="sis-multilang-input" id="{{id}}">
+    <ul class="sis-multilang-tabs">
+        <li *ngFor="let language of languages" [ngClass]="setClasses(language)" (click)="changeSelectedLanguage(language)">
+            {{language.getAcronym().getValue(currentLanguageId)}}
+        </li>
+    </ul>
+    <input type="text" attr.maxlength="{{maxLength}}" class="sis-input" [(ngModel)]="selectedLanguageText" placeholder="{{placeholder}}">
+</div>

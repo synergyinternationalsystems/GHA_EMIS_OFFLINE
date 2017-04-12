@@ -1,0 +1,17 @@
+<div class="sis-nav-tabs">
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect sis-button-icon sis-nav-tab-previous"
+            [disabled]="!hasPrevious() || disableNavigation" (click)="selectTab(_selectedTabIndex - 1)"
+            title="{{getTitle(_selectedTabIndex - 1)}}"><i class="material-icons" role="presentation">keyboard_arrow_left</i></button>
+
+    <span class="sis-nav-tab-active">
+        {{getTitle(_selectedTabIndex)}}
+    </span>
+
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect sis-button-icon sis-nav-tab-next"
+            [disabled]="!hasNext() || disableNavigation" (click)="selectTab(_selectedTabIndex + 1)"
+            title="{{getTitle(_selectedTabIndex + 1)}}"><i class="material-icons" role="presentation">keyboard_arrow_right</i></button>
+</div>
+
+<div class="sis-display-flex sis-full-width">
+    <ng-content></ng-content>
+</div>

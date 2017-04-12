@@ -1,0 +1,7 @@
+.sis-button-upload {
+  margin-right: 0;
+  float: right; }
+  @media (min-width: 0) and (max-width: 479px) {
+    .sis-button-upload {
+      float: none;
+      width: 100%; } }

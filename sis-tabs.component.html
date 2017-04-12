@@ -1,0 +1,13 @@
+<nav class="mdl-navigation sis-tab-navigation">
+    <span *ngFor="let tab of _tabItems"
+          (click)="selectTab(tab)"
+          [ngClass]="{'is-active': tab.selected, 'is-disable': !tab.isEnabled}"
+          class="mdl-layout__tab mdl-js-ripple-effect" href="javascript:void(0)">
+    <span class="mdl-ripple"></span>
+    {{tab.getTitle()}}
+</span>
+</nav>
+
+
+<ng-content></ng-content>
+
