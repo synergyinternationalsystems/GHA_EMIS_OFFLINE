@@ -1,0 +1,166 @@
+<div>
+    <label class="sis-label">{{label}}</label>
+    <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--3-col-tablet mdl-cell--3-col-phone">
+            <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Programme --'" [value]="selectEnrolmentProgrammeValue" (valueChange)="onEnrolmentProgrammeChanged($event)">
+                <sis-combo-box-items [data]="classifierList.get('EnrolmentProgrammeAdd')" [valueField]="" [nameField]="'name'" #enrolmentProgrammeAddTVETName></sis-combo-box-items>
+            </sis-combo-box>
+            <sis-error [id]="'programmeTVETValidation'" [errorMessage]="enrollmentProgrammeValidation()"
+                       [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAddTVETName"
+                       [isInput]="true">
+            </sis-error>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--3-col-tablet mdl-cell--3-col-phone">
+            <sis-combo-box [id]="'enrolmentSubjectId'" [placeHolder]="'-- Select Subject --'" [isEnabled]="selectEnrolmentProgrammeValue" [value]="selectEnrolmentSubjectValue" (valueChange)="onEnrolmentSubjectChanged($event)">
+                <sis-combo-box-items [data]="getEnrolmentSubjects()" [valueField]="" [nameField]="'name'" #enrolmentSubjectTVETName></sis-combo-box-items>
+            </sis-combo-box>
+            <sis-error [id]="'subjectTVETValidation'" [errorMessage]="enrollmentSubjectValidation()"
+                       [class]="'sis-float-left'" [forControl]="enrolmentSubjectTVETName"
+                       [isInput]="true">
+            </sis-error>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--12-col-phone">
+            <input type="button" value="Add"
+                   class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect"
+                   (click)="firstTableAddAction()">
+        </div>
+    </div>
+
+    <div #subjectCodeNameDuplicateTVET class="mdl-grid mdl-grid--no-spacing">
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <th>Subject Code</th>
+                <th>Subject Name</th>
+            </thead>
+            <tbody>
+                <td>
+                    <sis-error [id]="'subjectCodeTVETValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
+                               [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectCodeTVET"
+                               [isInput]="true">
+                    </sis-error>
+                    <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectCode" class="sis-input sis-small-width sis-align-right"
+                           name="enrolmentInProgrammeSubjectCodeId" #enrolmentProgrammeSubjectCodeTVET/>
+                </td>
+                <td>
+                    <sis-error [id]="'subjectNameTVETValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
+                               [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectNameTVET"
+                               [isInput]="true">
+                    </sis-error>
+                    <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectName" class="sis-input sis-small-width sis-align-right"
+                           name="enrolmentInProgrammeSubjectNameId" #enrolmentProgrammeSubjectNameTVET/>
+                </td>
+            </tbody>
+        </table>
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--12-col-phone">
+            <div class="sis-action-buttons sis-controls--top-margin">
+                <input type="button" value="Create New"
+                       class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect sis-btn-create-new"
+                       (click)="createNewAction()">
+            </div>
+        </div>
+    </div>
+    <sis-error [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
+               [class]="'sis-float-left'" [forControl]="subjectCodeNameDuplicateTVET"
+               [isInput]="true">
+    </sis-error>
+</div>
+
+<div class="sis-table-scroll">
+    <label class="sis-label">{{question}}</label>
+    <table class="mdl-data-table mdl-js-data-table"
+           id="{{tableId}}1">
+        <thead>
+            <tr>
+                <th rowspan="2" *ngIf="hasVerticalCode" class="sis-vertical-center">{{topLeftCellCodeLabel}}</th>
+                <th rowspan="2">{{topLeftCellProgrammeLabel}}</th>
+                <th *ngFor="let horizontalFirstLevellClassifier of filteredFirstTableHorizontalFirstLevelClassifierList()"
+                    colspan="2" class="mdl-data-table__cell--centered">
+                    <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                </th>
+                <th *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1">
+                    Total
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let horizontalSecondLevelClassifier of filteredFirstTableHorizontalSecondLevelByFirstLevelClassifierList()">
+                    <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                </th>
+                <ng-container *ngIf="hasVerticalTotalColumn">
+                    <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelClassifierList()">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let indicatorTrackingItem of indicatorTrackingFirstTableList">
+                <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+                <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                    <input type="number" inputMaxLength="7" [ngModel]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                           (ngModelChange)="firstTableValueChangedEvent($event, indicatorTrackingItem.subEntityValues[i])"
+                           *ngIf="hasTotalRow || hasVerticalTotalColumn"/>
+                </td>
+                <ng-container *ngIf="hasVerticalTotalColumn">
+                    <td *ngFor="let value of totalValues(indicatorTrackingItem); let i = index">
+                        {{value}}
+                    </td>
+                </ng-container>
+            </tr>
+            <tr *ngIf="hasTotalRow">
+                <td>Total:</td>
+                <td>{{firstTableTotalValue}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="sis-table-scroll">
+    <label class="sis-label">{{question}}</label>
+    <table class="mdl-data-table mdl-js-data-table"
+           id="{{tableId}}2">
+        <thead>
+            <tr>
+                <td rowspan="2" *ngIf="hasVerticalCode" >{{topLeftCellCodeLabel}}</td>
+                <td rowspan="2">{{topLeftCellProgrammeLabel}}</td>
+                <td *ngFor="let horizontalFirstLevellClassifier of filteredSecondTableHorizontalFirstLevelClassifierList()"
+                    colspan="2" class="mdl-data-table__cell--centered">
+                    <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                </td>
+                <th *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1" class="mdl-data-table__cell--centered">Total</th>
+            </tr>
+        <tr>
+            <td *ngFor="let horizontalSecondLevelClassifier of filteredSecondTableHorizontalSecondLevelByFirstLevelClassifierList()">
+                <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+            </td>
+            <ng-container *ngIf="hasVerticalTotalColumn">
+                <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelClassifierList()">
+                    <span class="ui-column-title">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </span>
+                </th>
+            </ng-container>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let indicatorTrackingItem of indicatorTrackingSecondTableList">
+                <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+                <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                    <input type="number"  inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                           (ngModelChange)="secondTableValueChangedEvent($event, indicatorTrackingItem.subEntityValues[i])"
+                            *ngIf="hasTotalRow || hasVerticalTotalColumn"/>
+                </td>
+                <ng-container *ngIf="hasVerticalTotalColumn">
+                    <td *ngFor="let value of totalValues(indicatorTrackingItem); let i = index">
+                        {{value}}
+                    </td>
+                </ng-container>
+            </tr>
+            <tr *ngIf="hasTotalRow">
+                <td>Total:</td>
+                <td>{{secondTableTotalValue}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

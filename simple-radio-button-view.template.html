@@ -1,0 +1,41 @@
+<div>
+    <label>{{label}}<span class="sis-element-required" *ngIf="label"></span>
+    </label>
+    <div *ngIf="!isVertical">
+        <span *ngFor="let classifier of getFilteredClassifiers()" >
+           <!-- <input type="radio"
+                   [checked]="isCheckedItem(classifierName, classifier.getId())"
+                   (change)="onRadioChanged(classifierName, classifier.getId())"
+                   class="sis-radio-checkbox"
+                   [name]="generateName()"/>-->
+            <span *ngIf="isCheckedItem(classifierName, classifier.getId())" >{{classifier.getName()}}</span>
+        </span>
+    </div>
+
+    <div *ngIf="isVertical">
+        <div *ngFor="let classifier of getFilteredClassifiers()">
+          <!--  <input type="radio"
+                   [checked]="isCheckedItem(classifierName, classifier.getId())"
+                   (change)="onRadioChanged(classifierName, classifier.getId())"
+                   class="sis-radio-checkbox"
+                   [name]="generateName()"/>
+            <label class="sis-radio-checkbox-label">{{classifier.getName()}}</label>-->
+            <span *ngIf="isCheckedItem(classifierName, classifier.getId())" >{{classifier.getName()}}</span>
+        </div>
+    </div>
+
+    <div *ngIf="hasOtherInput">
+        <div *ngIf="isSelectedRadioItem(classifierName)">
+            <label class="sis-label sis-element-required">{{otherText}}
+            </label>
+            <div>
+               <!-- <input type="text" value="" #text
+                       (change)="onTextChanged(subEntity, text.value)"
+                       [name]="subEntityKeyNameWithoutId + ItemsId"
+                       [ngModel]="otherValue"
+                       class="sis-input sis-large-width"/>-->
+                <span>{{otherValue}}</span>
+            </div>
+        </div>
+    </div>
+</div>

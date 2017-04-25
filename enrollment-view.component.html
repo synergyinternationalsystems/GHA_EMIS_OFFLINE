@@ -1,0 +1,228 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div id="indicatorBasicId" *ngIf="isBasicSchool()">
+            <div #enrolmentManyPrimaryName>
+                <label class="sis-label sis-element-required">8.1 How MANY pupils did you admit to Primary 1 this academic year (do not include repeaters)?</label>
+                <sis-census-indicator-tracking-2L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="'enrolmentManyTableId'"
+                                                  [topLeftCellLabel]="'Age'"
+                                                  [indicatorInstanceId]="enrolmentBasicManyPrimary"
+                                                  [horizontalClassifierName]="'Pupil'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
+                                                  [verticalClassifierName]="'Age'">
+                </sis-census-indicator-tracking-2L-view>
+            </div>
+
+            <div #enrolmentNewPrimaryName>
+                <label class="sis-label sis-element-required">8.2 Out of the NEW Pupils admitted to Primary 1, how many of them are from KG?</label>
+                <sis-census-indicator-tracking-2L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="'enrolmentNewTableId'"
+                                                  [topLeftCellLabel]="'Age'"
+                                                  [indicatorInstanceId]="enrolmentBasicNewPrimary"
+                                                  [horizontalClassifierName]="'Pupil'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
+                                                  [verticalClassifierName]="'Age'">
+                </sis-census-indicator-tracking-2L-view>
+            </div>
+
+            <div #enrolmentGradeName>
+                <label class="sis-label sis-element-required">8.3 Enrolment by Grade</label>
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                    [classifierList]="classifierList"
+                                                    [tableId]="'enrolmentByGradeTableId'"
+                                                    [indicatorInstanceId]="enrolmentBasicGrade"
+                                                    [horizontalClassifierName]="'SchoolLevel'"
+                                                    [topLeftCellLabel]="'Grade'"
+                                                    [verticalRowName]="'Number of classes held in open air'">
+                </sis-census-indicator-tracking-1L-HView>
+            </div>
+
+            <div class="sis-controls--top-margin">
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                    [classifierList]="classifierList"
+                                                    [label]="'8.4 How MANY Streams have classes in the open air?'"
+                                                    [tableId]="'enrolmentByStreamsTableId'"
+                                                    [indicatorInstanceId]="enrolmentBasicStreams"
+                                                    [horizontalClassifierName]="'SchoolLevel'"
+                                                    [topLeftCellLabel]="'Grade'"
+                                                    [verticalRowName]="'Number of classes held in open air'">
+                </sis-census-indicator-tracking-1L-HView>
+            </div>
+
+            <div #enrolmentBasicBySexAndAgeName>
+                <label class="sis-label sis-element-required">8.5 Enrolment by sex and age</label>
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="enrolmentBySexAndAgeTableId"
+                                                  [topLeftCellLabel]="'Grade'"
+                                                  [verticalClassifierName]="'Age'"
+                                                  [horizontalFirstLevelHeaderHidden]="true"
+                                                  [horizontalFirstLevelClassifierName]="'SchoolLevel'"
+                                                  [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_BASIC_ENROLMENT_BY_AGE_CLASSIFIER_ID"
+                                                  [visibilityFilter]="'EnrolmentAgeSchoolLevel'"
+                                                  [visibilityFilterPropertyName]="'isChecked'"
+                                                  [hasTotalRow]="true"
+                                                  [indicatorType]="enrolmentBasicBySexAndAge">
+                </sis-census-indicator-tracking-3L-view>
+            </div>
+        </div>
+
+        <div id="indicatorSecId" *ngIf="isSecondSchool()">
+            <div #enrolmentInProgrammeSecondaryName>
+                <label class="sis-label sis-element-required">8.1 Enrolment in Programme</label>
+                <sis-census-indicator-tracking-3L-2H-2T-view [census]="census"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="enrolmentInProgrammeTableId"
+                                                        [topLeftCellCodeLabel]="'Code'"
+                                                        [topLeftCellSubjectLabel]="'Subjects'"
+                                                        [verticalClassifierName]="'EnrolmentSubject'"
+                                                        [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                        [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                        [hasParent]="'true'"
+                                                        [hasVerticalCode]="'true'"
+                                                        [hasVerticalTotalColumn]="'false'"
+                                                        [hasHorizontalFirstLevelClassifierFilterRange]="'true'"
+                                                        [horizontalFirstLevelClassifierFilterRangeFrom]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_FROM"
+                                                        [horizontalFirstLevelClassifierFilterRangeTo]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_TO"
+                                                        [indicatorType]="enrolmentSecondaryInProgramme">
+                </sis-census-indicator-tracking-3L-2H-2T-view>
+            </div>
+
+            <div #summaryOfEnrolmentInProgrammeSecondaryName>
+                <label class="sis-label sis-element-required">8.2 Summary of Enrolment by Programme</label>
+                <sis-census-indicator-tracking-4L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="enrolmentProgrammeTableId"
+                                                  [topLeftCellLabel]="'Programme'"
+                                                  [verticalClassifierName]="'EnrolmentProgramme'"
+                                                  [horizontalFirstLevelClassifierName]="'EnrolmentSummary'"
+                                                  [horizontalSecondLevelClassifierName]="'SchoolLevelGroup'"
+                                                  [horizontalThirdLevelClassifierName]="'Pupil'"
+                                                  [hasHorizontalSecondLevelClassifierFilterRange]="'true'"
+                                                  [horizontalSecondLevelClassifierFilterRangeFrom]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_FROM"
+                                                  [horizontalSecondLevelClassifierFilterRangeTo]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_TO"
+                                                  [indicatorType]="enrolmentSecondarySummaryOfProgramme">
+                </sis-census-indicator-tracking-4L-view>
+            </div>
+
+
+            <div #enrolmentByAgeSecondaryName>
+                <label class="sis-label sis-element-required">8.3 Enrolment by Age</label>
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                    [classifierList]="classifierList"
+                                                    [tableId]="'enrolmentByGradeSecondaryTableId'"
+                                                    [indicatorInstanceId]="enrolmentSecStreamsByGrade"
+                                                    [horizontalClassifierName]="'SchoolLevelGroup'"
+                                                    [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
+                                                    [hasVerticalTotalColumn]="true"
+                                                    [topLeftCellLabel]="'Grade'"
+                                                    [verticalRowName]="'Number of Streams in each grade'">
+                </sis-census-indicator-tracking-1L-HView>
+
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="enrolmentByAgeGroupSecondaryTableId"
+                                                  [topLeftCellLabel]="'Age'"
+                                                  [verticalClassifierName]="'Age'"
+                                                  [horizontalFirstLevelHeaderHidden]="true"
+                                                  [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                  [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                                  [horizontalFirstLevelClassifierFilterPropertyValue]="constants.ENROLMENT_BY_GRADE_FILTER_PROPERTY_VALUE"
+                                                  [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_SEC_ENROLMENT_BY_AGE_CLASSIFIER_ID"
+                                                  [hasTotalRow]="true"
+                                                  [hasVerticalTotalColumn]="true"
+                                                  [indicatorType]="enrolmentByAgeSec">
+                </sis-census-indicator-tracking-3L-view>
+            </div>
+        </div>
+
+        <div id="indicatorTvetId" *ngIf="isTVET()">
+            <div #enrolmentByAgeTVETName>
+                <label class="sis-label sis-element-required">7.1 Enrolment by Age</label>
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="enrolmentByAgePart1TableId"
+                                                  [topLeftCellLabel]="'Grade / Age'"
+                                                  [verticalClassifierName]="'Age'"
+                                                  [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                  [horizontalSecondLevelClassifierName]="'Gender'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_ENROLMENT_BY_AGE_CLASSIFIER_ID"
+                                                  [horizontalFirstLevelClassifierRangeFilterTypeIsLesserThan]="true"
+                                                  [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
+                                                  [hasTotalRow]="true"
+                                                  [hasVerticalTotalColumn]="true"
+                                                  [indicatorType]="enrolmentByAgeTvet">
+                </sis-census-indicator-tracking-3L-view>
+
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="enrolmentByAgePart2TableId"
+                                                  [topLeftCellLabel]="'Grade / Age'"
+                                                  [verticalClassifierName]="'Age'"
+                                                  [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                  [horizontalSecondLevelClassifierName]="'Gender'"
+                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_ENROLMENT_BY_AGE_CLASSIFIER_ID"
+                                                  [horizontalFirstLevelClassifierRangeFilterTypeIsLesserThan]="false"
+                                                  [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
+                                                  [hasTotalRow]="true"
+                                                  [hasVerticalTotalColumn]="true"
+                                                  [indicatorType]="enrolmentByAgeTvet">
+                </sis-census-indicator-tracking-3L-view>
+            </div>
+
+            <div #enrolmentProgrammeFullTimeName>
+                <label class="sis-label sis-element-required">7.2	Enrolment by Programmes (Full-Time students)</label>
+                <sis-census-indicator-tracking-3L-2T-view [census]="census"
+                                                     [classifierList]="classifierList"
+                                                     [tableId]="enrolmentByProgrammesFullTimeTableId"
+                                                     [topLeftCellCodeLabel]="'Code'"
+                                                     [topLeftCellProgrammeLabel]="'Programmes'"
+                                                     [verticalClassifierName]="'EnrolmentSubject'"
+                                                     [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                     [horizontalSecondLevelClassifierName]="'Gender'"
+                                                     [question]="'How many Full-TIME students are enrolled in the programmes provided in your institution?'"
+                                                     [hasParent]="'true'"
+                                                     [hasVerticalCode]="'true'"
+                                                     [hasVerticalTotalColumn]="'true'"
+                                                     [horizontalFirstLevelClassifierRangeFilterType]="true"
+                                                     [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
+                                                     [hasTotalRow]="true"
+                                                     [hasVerticalTotalColumn]="true"
+                                                     [indicatorType]="enrolmentTVETFullTime">
+                </sis-census-indicator-tracking-3L-2T-view>
+            </div>
+
+            <div #enrolmentProgrammePartTimeName>
+                <label class="sis-label sis-element-required">7.3	Enrolment by Programmes (Part-Time Students)</label>
+                <sis-census-indicator-tracking-3L-2T-view [census]="census"
+                                                     [classifierList]="classifierList"
+                                                     [tableId]="enrolmentByProgrammesPartTimeTableId"
+                                                     [topLeftCellCodeLabel]="'Code'"
+                                                     [topLeftCellProgrammeLabel]="'Programmes'"
+                                                     [verticalClassifierName]="'EnrolmentSubject'"
+                                                     [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                     [horizontalSecondLevelClassifierName]="'Gender'"
+                                                     [question]="'How many PART-TIME students are enrolled in the programmes provided in your institution?'"
+                                                     [hasParent]="'true'"
+                                                     [hasVerticalCode]="'true'"
+                                                     [hasVerticalTotalColumn]="'true'"
+                                                     [horizontalFirstLevelClassifierRangeFilterType]="true"
+                                                     [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
+                                                     [hasTotalRow]="true"
+                                                     [hasVerticalTotalColumn]="true"
+                                                     [indicatorType]="enrolmentTVETPartTime">
+                </sis-census-indicator-tracking-3L-2T-view>
+            </div>
+        </div>
+    </div>
+</div>

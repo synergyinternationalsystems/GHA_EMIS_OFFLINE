@@ -1,0 +1,23 @@
+# IDE specific
+.idea
+*.iml
+
+idm-home/logs
+idm-home/elasticSearch
+
+
+
+# NPM generated
+node_modules/**/*
+typings
+/**/*.log
+
+# Transpilation results
+app/**/*.js
+app/**/*.js.map
+app/**/*.d.ts
+app/**/*.css
+
+dist
+app.js
+app.bundle.js

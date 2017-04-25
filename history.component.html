@@ -1,0 +1,29 @@
+<div *ngIf="getVersions()">
+    <div class="sis-table-scroll">
+        <table class="mdl-data-table sis-table--margin-top mdl-js-data-table mdl-data-table--selectable">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric"></th>
+                    <th class="mdl-data-table__cell--non-numeric" *ngFor="let columnField of tableColumnFields">{{columnField.title}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of getVersions()">
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <input #cb type="checkbox" value="{{row.getId()}}" (change)="selectVersions(cb)" [disabled]="isCheckboxesDisabled && !cb.checked"/>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric" *ngFor="let columnField of tableColumnFields">
+                        {{row.getProperty(columnField.propertyName).value}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <sis-paging [(page)]="currentPage" [pageSize]="pageLimit"
+                    [itemsCount]="getTotalVersionsCount()" [totalPageCount]="getTotalPageCount()">
+        </sis-paging>
+    </div>
+    <div class="sis-action-buttons">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect sis-full-width-mobile"
+                (click)="compareVersions()"> Compare </button>
+    </div>
+</div>

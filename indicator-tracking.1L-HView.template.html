@@ -1,0 +1,31 @@
+<div>
+    <label class="sis-label">{{label}} *ngIf="label"></label>
+    <!--&lt;!&ndash;-->
+    <div class="sis-table-scroll">
+        <table class="mdl-data-table mdl-js-data-table"
+               id="{{tableId}}">
+            <thead>
+            <tr>
+                <th *ngIf="!noTopLeftCellLabel" class="mdl-data-table__cell--non-numeric">{{topLeftCellLabel}}</th>
+                <th *ngFor="let horizontalClassifier of filteredHorizontalClassifierList()" class="mdl-data-table__cell--centered">
+                    <span>{{horizontalClassifier.getName()}}</span>
+                </th>
+                <th *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td  *ngIf="verticalRowName" class="mdl-data-table__cell--non-numeric" style="min-width: 214px;">{{verticalRowName}}</td>
+                <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
+                    <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                           (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"/>-->
+                    <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                </td>
+                <td *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1" class="mdl-data-table__cell--right">
+                    {{totalValue}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

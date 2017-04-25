@@ -1,0 +1,154 @@
+<div title="">
+    <div>
+        <label class="sis-label sis-margin--top0">3.1 Can a vehicle access your
+            school?</label>
+        <sis-select-one-radio-view
+                [name]="'yesNoRoad'"
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
+                [censusSubEntityName]="'censusSchoolRoadTypes'"
+                [classifierId]="'YES_NO_ID'"
+                [subEntityFields]="infrastructureSubEntityFields">
+        </sis-select-one-radio-view>
+        <div *ngIf="subEntityRoadIsYes()">
+            <label class="sis-label">3.1.1 If YES, what is the road made of?</label>
+            <sis-select-one-radio-view
+                    [census]="census"
+                    [classifierList]="classifierList"
+                    [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
+                    [censusSubEntityName]="'censusSchoolRoadTypes'"
+                    [classifierId]="'ROAD_TYPE_ID'"
+                    [subEntityFilterPropertyName]="'yesNoId'"
+                    [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                    [subEntityFields]="infrastructureSubEntityFields">
+            </sis-select-one-radio-view>
+        </div>
+    </div>
+
+    <div>
+        <label class="sis-label">3.2 Is your {{schoolOrInstitution}} wired for electricity?</label>
+        <sis-select-one-radio-view
+                [name]="'yesNoElectricity'"
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolElectricityWired'"
+                [censusSubEntityName]="'censusSchoolElectricityWireds'"
+                [classifierId]="'YES_NO_ID'"
+                [subEntityFields]="infrastructureSubEntityFields">
+        </sis-select-one-radio-view>
+
+        <div *ngIf="subEntityElectricityIsYes()">
+            <label class="sis-label ">3.2.1 If YES, is it functional?</label>
+            <sis-select-one-radio-view
+                    [census]="census"
+                    [classifierList]="classifierList"
+                    [censusSubEntityCategoryName]="'CensusSchoolElectricityWired'"
+                    [censusSubEntityName]="'censusSchoolElectricityWireds'"
+                    [classifierId]="'ELECTRICITY_FUNCTIONAL_ID'"
+                    [subEntityFilterPropertyName]="'yesNoId'"
+                    [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                    [subEntityFields]="infrastructureSubEntityFields">
+            </sis-select-one-radio-view>
+
+        </div>
+    </div>
+    <div>
+        <label class="sis-label ">3.3 Is your community on electricity?</label>
+        <sis-select-one-radio-view
+                [name]="'yesNoElectricityType'"
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolElectricityType'"
+                [censusSubEntityName]="'censusSchoolElectricityTypes'"
+                [classifierId]="'YES_NO_ID'"
+                [subEntityFields]="infrastructureSubEntityFields">
+        </sis-select-one-radio-view>
+        <div *ngIf="subEntityElectricityTypeIsYes()">
+            <label class="sis-label">3.3.1 If YES, please specify</label>
+            {{electricityTypeView}}
+        </div>
+
+    </div>
+    <div>
+        <label class="sis-label ">3.4 Which of these environmental problems are experienced in your institution?</label>
+        {{environmentalProblemView}}
+
+    </div>
+    <div>
+        <label class="sis-label ">3.5 Is your {{schoolOrInstitution}}'s land properly
+            documented?</label>
+        <sis-select-one-radio-view
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                [censusSubEntityName]="'censusSchoolQuestions'"
+                [classifierId]="'IS_DOCUMENTED_ID'"
+                [classifierNameFromInput]="'YesNoId'"
+                [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+    </div>
+    <div *ngIf="getIsBasicSchoolType()">
+        <label class="sis-label ">3.6 Are there boarding facilities at the school?</label>
+        <sis-select-one-radio-view
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                [censusSubEntityName]="'censusSchoolQuestions'"
+                [classifierNameFromInput]="'YesNoId'"
+                [classifierId]="'BOARDING_FACILITIES_YES_NO_ID'"
+                [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+        <div *ngIf="subEntityBoardingFacilityIsYes()" class="sis-controls--top-margin">
+            <label class="sis-label ">3.6.1 If YES, how many pupils are BOARDERS?</label>
+            <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                                                    [tableId]="'boardingFacilitiesCompositionId'"
+                                                    [indicatorInstanceId]="infrastructureBasicBoarding"
+                                                    [noTopLeftCellLabel]="true"
+                                                    [horizontalClassifierName]="'Pupil'">
+            </sis-census-indicator-tracking-1L-HView>
+        </div>
+    </div>
+    <div *ngIf="!getIsBasicSchoolType()">
+        <label class="sis-label ">3.6 Which of the following apply to your school?</label>
+        <sis-select-one-radio-view
+                [census]="census"
+                [classifierList]="classifierList"
+                [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                [censusSubEntityName]="'censusSchoolQuestions'"
+                [classifierId]="'SCHOOL_APPLY_TYPE_ID'"
+                [subEntityFields]="questionSubEntityFields"
+                [isVertical]="true">
+        </sis-select-one-radio-view>
+    </div>
+    <div *ngIf="getIsSecondarySchoolType()">
+        <label class="sis-label ">3.7 How MANY students are? </label>
+        <sis-census-indicator-tracking-2L-view [census]="census"
+                                               [classifierList]="classifierList"
+                                               [tableId]="'infrastructureSecondaryBoardingCompositionId'"
+                                               [indicatorInstanceId]="infrastructureSecondaryBoarding"
+                                               [horizontalClassifierName]="'Gender'"
+                                               [verticalClassifierName]="'StudentsCountType'">
+        </sis-census-indicator-tracking-2L-view>
+    </div>
+    <div *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label ">3.7 If your institution has boarding/hostel facilities, how MANY students are?</label>
+        <sis-census-indicator-tracking-2L-view [census]="census"
+                                          [classifierList]="classifierList"
+                                          [tableId]="'infrastructureTVETBoardingCompositionId'"
+                                          [indicatorInstanceId]="infrastructureTVETBoarding"
+                                          [horizontalClassifierName]="'Gender'"
+                                          [verticalClassifierName]="'Boarding'">
+        </sis-census-indicator-tracking-2L-view>
+        <label class="sis-label ">3.8 Is your institution's property walled or fenced?</label>
+        <sis-select-one-radio-view
+                [census]="census"
+                [classifierList]="classifierList"
+                [classifierNameFromInput]="'YesNoId'"
+                [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                [censusSubEntityName]="'censusSchoolQuestions'"
+                [classifierId]="'PROPERTY_WALLED_YES_NO_ID'"
+                [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+    </div>
+</div>

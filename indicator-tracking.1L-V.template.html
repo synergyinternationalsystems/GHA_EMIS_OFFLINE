@@ -1,0 +1,26 @@
+<div>
+    <label class="sis-label">{{label}}</label>
+
+    <!--&lt;!&ndash;-->
+    <div class="sis-table-scroll">
+        <table class="mdl-data-table mdl-js-data-table"
+               id="{{tableId}}">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">{{topLeftCellLabel}}</th>
+                    <th class="sis-align-right">{{topRightCellLabel}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+                    <td class="mdl-data-table__cell--non-numeric sis-vertical-center">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                    <td>
+                        <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[columnCount].value"
+                               (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[columnCount])"
+                               class="sis-input sis-small-width sis-align-right"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

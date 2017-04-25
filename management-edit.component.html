@@ -1,0 +1,891 @@
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div *ngIf="getIsBasicSchoolType()">
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'managementCommitteeBasicValidation'"
+                                   [forControl]="managementCommitteeBasicName" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.managementCommitteeValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.1 Does your school have an elected School Management Committee?</label>
+                    </div>
+                    <div #managementCommitteeBasicName>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolCommittee'"
+                                              [censusSubEntityName]="'censusSchoolCommittees'"
+                                              [classifierId]="'YES_NO_ID'"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </div>
+
+                    <div *ngIf="isSelectedYesRadio(censusSchoolCommittee, frequency, '', yesNo, noFrequencyClassifierId)">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementCommitteeYesBasicValidation'"
+                                       [forControl]="managementCommitteeYesBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.managementCommitteeYesForSaveValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label">If YES how often does the School Management Committee meet?</label>
+                        </div>
+                        <div #managementCommitteeYesBasicName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolCommittee'"
+                                                  [censusSubEntityName]="'censusSchoolCommittees'"
+                                                  [classifierId]="'FREQUENCY_ID'"
+                                                  [subEntityFilterPropertyName]="'yesNoId'"
+                                                  [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                                                  [parentClassifierKeyName]="'yesNoId'"
+                                                  [hasInputSubEntity]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+                    </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'capitationGrantBasicValidation'"
+                                       [forControl]="capitationGrantBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.capitationGrantValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.2 Did your school receive its capitation grant for the previous year?</label>
+                        </div>
+                        <div #capitationGrantBasicName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'CAPITATION_GRANT_ID'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'CSReceiveServiceBasicValidation'"
+                                   [forControl]="CSReceiveServiceBasicName"
+                                   [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped'"
+                                   [errorMessage]="managementValidationHelper.CSReceiveServiceValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.3 How often is your school visited by the Circuit Supervisor?</label>
+                    </div>
+                    <table #CSReceiveServiceBasicName>
+                        <tbody>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'CSRECEIVE_SERVICE_ID'"
+                                                  [classifierNameFromInput]="'ReceiveServiceId'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </tbody>
+                    </table>
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'insetYesNoBasicValidation'"
+                                   [forControl]="insetYesNoBasicName"
+                                   [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.insetYesNoValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.4 Have you attended INSET Training for Head Teachers?</label>
+                    </div>
+                    <table #insetYesNoBasicName>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                              [censusSubEntityName]="'censusSchoolQuestions'"
+                                              [classifierId]="'INSET_YES_NO_ID'"
+                                              [classifierNameFromInput]="'YesNoId'"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </table>
+
+                    <div>
+                        <label class="sis-label">4.5 Has any teacher from your school had any in-service training on?</label>
+                        <table>
+                            <tbody>
+                                <td *ngFor="let teacherTrainingClassifier of classifierList.get(getSubEntityKeyNameWithoutId(questionSubEntityFields.TEACHER_TRAINING_ID))">
+                                    <input type="checkbox"
+                                           [checked]="isTeacherTrainingCheckedItem(teacherTrainingClassifier.getId())"
+                                           (change)="onTeacherTrainingCheckBoxChanged(teacherTrainingClassifier.getId())"
+                                           class="sis-radio-checkbox"
+                                           name="teacherTrainingItems{{teacherTrainingClassifier.getId()}}Id"/>
+                                    <label class="sis-radio-checkbox-label">{{teacherTrainingClassifier.getName()}}</label>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'hivaidsYesNoBasicValidation'"
+                                   [forControl]="hivaidsYesNoBasicName" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.hivaidsYesNoValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.6 Does your school teach HIV/AIDS issues as integrated in the school curriculum?</label>
+                    </div>
+                    <div #hivaidsYesNoBasicName>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                              [censusSubEntityName]="'censusSchoolQuestions'"
+                                              [classifierId]="'HIV_AIDS_YES_NO_ID'"
+                                              [classifierNameFromInput]="'YesNoId'"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'schoolMealTypeBasicValidation'"
+                                   [forControl]="schoolMealTypeBasicName"
+                                   [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.schoolMealTypeValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.7 Indicate the type of School Free Meals scheme available</label>
+                    </div>
+                    <div #schoolMealTypeBasicName>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                              [censusSubEntityName]="'censusSchoolQuestions'"
+                                              [classifierId]="'SCHOOL_MEAL_TYPE_ID'"
+                                              [isVertical]="true"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'curriculumLeaderYesNoBasicValidation'"
+                                   [forControl]="curriculumLeaderYesNoBasicName" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.curriculumLeaderYesNoValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.8 Does your school have a trained Curriculum Leader?</label>
+                    </div>
+                    <div #curriculumLeaderYesNoBasicName>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                              [censusSubEntityName]="'censusSchoolQuestions'"
+                                              [classifierId]="'CURRICULUM_LEADER_YES_NO_ID'"
+                                              [classifierNameFromInput]="'YesNoId'"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.9 Indicate the NUMBER of School Based INSET (SBI) and Cluster Based INSET (CBI) your school organised on the following subjects this past academic year
+                        </label>
+                        <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [classifierList]="classifierList"
+                                                            [tableId]="'SBI_CBINumberCompositionId'"
+                                                            [indicatorInstanceId]="managementBasicSBICBINumber"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [horizontalClassifierName]="'SchoolSubject'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.10 Does your School have a set of INSET Sourcebooks (Module 3-6)?
+                        </label>
+                        <sis-select-one-radio [census]="census"
+                                              [classifierList]="classifierList"
+                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                              [censusSubEntityName]="'censusSchoolQuestions'"
+                                              [classifierId]="'INSET_SOURCE_BOOKS_YES_NO_ID'"
+                                              [classifierNameFromInput]="'YesNoId'"
+                                              [subEntityFields]="questionSubEntityFields">
+                        </sis-select-one-radio>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.11 How many pupils are Complementary Basic Education (CBE) graduates?
+                        </label>
+                        <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                            [tableId]="'basicEducationCompositionId'"
+                                                            [indicatorInstanceId]="managementBasicCBEGraduates"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [horizontalClassifierName]="'Pupil'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'managementNeedyPupilsStudentsBasicValidation'"
+                                   [forControl]="managementNeedyPupilsStudentsBasicName"
+                                   [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.12 {{needyPupilClassifier}}</label>
+                    </div>
+                    <div #managementNeedyPupilsStudentsBasicName>
+                        <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                            [tableId]="'needyPupilsSectionId'"
+                                                            [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                            [horizontalClassifierName]="'Pupil'"
+                                                            [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'managementBrightButNeedyPupilsStudentsBasicValidation'"
+                                   [forControl]="managementBrightButNeedyPupilsStudentsBasicName" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped'"
+                                   [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.13 {{brightPupilClassifier}}</label>
+                    </div>
+                    <table #managementBrightButNeedyPupilsStudentsBasicName>
+                        <tbody>
+                        <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                            [tableId]="'needyPupilsSectionId'"
+                                                            [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                            [horizontalClassifierName]="'Pupil'"
+                                                            [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                        </sis-census-indicator-tracking-1L-H>
+                        </tbody>
+                    </table>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.14 How many of the following Incentives from Government have your school received to date?
+                        </label>
+                        <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                            [tableId]="'incentivesFromGovernmentCompositionId'"
+                                                            [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [horizontalClassifierName]="'Government'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <sis-census-indicator-tracking-2L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [label]="'4.15 How many of your pupils/families are beneficiaries of the following?'"
+                                                          [tableId]="'beneficiaryTypeTableId'"
+                                                          [indicatorInstanceId]="managementBeneficiaries"
+                                                          [horizontalClassifierName]="'Pupil'"
+                                                          [verticalClassifierName]="'BeneficiaryType'">
+                        </sis-census-indicator-tracking-2L>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.16 Indicate any group(s) supporting your school in the following areas in the past year.
+                        </label>
+                        <div class="sis-table-scroll">
+                            <table class="mdl-data-table mdl-js-data-table" id="basicActiveGroupSupportAreaSectionId">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Active Group</th>
+                                        <th *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')" class="mdl-data-table__cell--centered" style="width: 115px;">
+                                            {{supportAreaClassifier.getName()}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let activeGroupClassifier of classifierList.get('ActiveGroup')">
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <span>{{activeGroupClassifier.getName()}}</span>
+                                        </td>
+                                        <td *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')" class="mdl-data-table__cell--centered sis-vertical-center">
+                                            <input type="checkbox"
+                                                   [checked]="isActiveGroupSupportAreaCheckedItem(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                   (change)="onActiveGroupSupportAreaCheckBoxChanged(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                   class="sis-radio-checkbox"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sis-controls--top-margin">
+                    <div *ngIf="getIsSecondarySchoolType()">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'selectBGYesNoSecondaryValidation'"
+                                       [forControl]="selectBGYesNoSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.selectBGYesNoValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.1 Does your school have an selected Board of Governors?</label>
+                        </div>
+                        <div #selectBGYesNoSecondaryName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'SELECT_BG_YES_NO_ID'"
+                                                  [classifierNameFromInput]="'YesNoId'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+                        <!--' nshan@ ''-i mej error e talis-->
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'sbgMeetSecondaryValidation'"
+                                       [forControl]="sbgMeetSecondaryName"
+                                       [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.SBGMeetValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.2 How often does the School's Board of Governors meet?</label>
+                        </div>
+                        <div #sbgMeetSecondaryName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'SBG_MEET_ID'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'gesInspectorsSecondaryValidation'"
+                                       [forControl]="gesInspectorsSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.GESInspectorsValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.3 How often is your school visited by the GES Inspectors?</label>
+                        </div>
+                        <table #gesInspectorsSecondaryName>
+                            <tbody>
+                                <sis-select-one-radio [census]="census"
+                                                      [classifierList]="classifierList"
+                                                      [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                      [censusSubEntityName]="'censusSchoolQuestions'"
+                                                      [classifierId]="'GES_RECEIVE_SERVICE_ID'"
+                                                      [classifierNameFromInput]="'ReceiveServiceId'"
+                                                      [isVertical]="true"
+                                                      [subEntityFields]="questionSubEntityFields">
+                                </sis-select-one-radio>
+                            </tbody>
+                        </table>
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'receiveReceiveServiceSecondaryValidation'"
+                                       [forControl]="receiveReceiveServiceSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.receiveReceiveServiceValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.4 How often did teachers in your school receive in-service training this past year?</label>
+                        </div>
+                        <div #receiveReceiveServiceSecondaryName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'RECEIVE_RECEIVE_SERVICE_ID'"
+                                                  [classifierNameFromInput]="'ReceiveServiceId'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+                        <div class="sis-controls--top-margin">
+                            <label class="sis-label">4.5 Has any teacher from your school had any in-service training on?
+                            </label>
+                            <table>
+                                <tbody>
+                                    <td *ngFor="let teacherTrainingClassifier of classifierList.get(getSubEntityKeyNameWithoutId(questionSubEntityFields.TEACHER_TRAINING_ID))">
+                                        <input type="checkbox"
+                                               [checked]="isTeacherTrainingCheckedItem(teacherTrainingClassifier.getId())"
+                                               (change)="onTeacherTrainingCheckBoxChanged(teacherTrainingClassifier.getId())"
+                                               class="form-radio-checkbox"
+                                               name="teacherTrainingItems{{teacherTrainingClassifier.getId()}}Id"/>
+                                        {{teacherTrainingClassifier.getName()}}
+                                    </td>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'hivaidsYesNoSecondaryValidation'"
+                                       [forControl]="hivaidsYesNoSecondaryName"
+                                       [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.hivaidsYesNoValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.6 Does your school teach HIV/AIDS issues as integrated in the school curriculum?</label>
+                        </div>
+                        <div #hivaidsYesNoSecondaryName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'HIV_AIDS_YES_NO_ID'"
+                                                  [classifierNameFromInput]="'YesNoId'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'sourcesLastYesNoSecondaryValidation'"
+                                       [forControl]="sourcesLastYesNoSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.sourcesLastYesNoValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.7 Was the school able to raise funds from other sources last year?</label>
+                        </div>
+                        <div #sourcesLastYesNoSecondaryName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'SOURCES_LAST_YES_NO_ID'"
+                                                  [classifierNameFromInput]="'YesNoId'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementNeedyPupilsStudentsSecondaryValidation'"
+                                       [forControl]="managementNeedyPupilsStudentsSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.8 {{needyPupilClassifier}}</label>
+                        </div>
+                        <div #managementNeedyPupilsStudentsSecondaryName>
+                            <table>
+                                <tbody>
+                                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                                        [tableId]="'needyPupilsSectionId'"
+                                                                        [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                        [horizontalClassifierName]="'Pupil'"
+                                                                        [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                        [noTopLeftCellLabel]="true"
+                                                                        [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                                    </sis-census-indicator-tracking-1L-H>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementBrightButNeedyPupilsStudentsSecondaryValidation'"
+                                       [forControl]="managementBrightButNeedyPupilsStudentsSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.9 {{brightPupilClassifier}}</label>
+                        </div>
+                        <div #managementBrightButNeedyPupilsStudentsSecondaryName>
+                            <table>
+                                <tbody>
+                                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                                        [tableId]="'needyPupilsSectionId'"
+                                                                        [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                        [horizontalClassifierName]="'Pupil'"
+                                                                        [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                        [noTopLeftCellLabel]="true"
+                                                                        [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                                    </sis-census-indicator-tracking-1L-H>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="sis-controls--top-margin">
+                            <label class="sis-label">
+                                4.10 How many of the following Incentives from Government have your school received to date?
+                            </label>
+                            <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'incentivesFromGovernmentCompositionId'"
+                                                                [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                                [noTopLeftCellLabel]="true"
+                                                                [horizontalClassifierName]="'Government'">
+                            </sis-census-indicator-tracking-1L-H>
+                        </div>
+
+                        <div class="sis-controls--top-margin">
+                            <sis-census-indicator-tracking-2L [census]="census"
+                                                              [classifierList]="classifierList"
+                                                              [label]="'4.11 How many of your students/families are beneficiaries of the following?'"
+                                                              [tableId]="'beneficiaryTypeTableId'"
+                                                              [indicatorInstanceId]="managementBeneficiaries"
+                                                              [horizontalClassifierName]="'Pupil'"
+                                                              [verticalClassifierName]="'BeneficiaryType'">
+                            </sis-census-indicator-tracking-2L>
+                        </div>
+
+                        <div class="sis-controls--top-margin">
+                            <label class="sis-label">
+                                4.12 Indicate with a tick any group(s) active in supporting your school in the following
+                            </label>
+                            <div class="sis-table-scroll">
+                                <table id="secondaryActiveGroupSupportAreaSectionId" class="mdl-data-table mdl-js-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <span>Active Group</span>
+                                            </th>
+                                            <th *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')" class="ui-state-default center">
+                                                <span class="ui-column-title">
+                                                    <span>{{supportAreaClassifier.getName()}}</span>
+                                                </span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let activeGroupClassifier of classifierList.get('ActiveGroup')">
+                                            <td>
+                                            <span class="ui-column-title">
+                                                <span>{{activeGroupClassifier.getName()}}</span>
+                                            </span>
+                                            </td>
+                                            <td *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')">
+                                                <input type="checkbox"
+                                                       [checked]="isActiveGroupSupportAreaCheckedItem(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                       (change)="onActiveGroupSupportAreaCheckBoxChanged(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                       class="form-radio-checkbox center"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--1,2,3,8-->
+                    <div *ngIf="getIsTVETSchoolType()">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'governInstitutionTVETValidation'"
+                                       [forControl]="governInstitutionTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.governInstitutionValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <sis-error [id]="'governInstitutionOtherTVETValidation'"
+                                       [forControl]="governInstitutionTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.governInstitutionOtherValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.1 How is this institution governed?</label>
+                        </div>
+                        <div #governInstitutionTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'GOVERN_INSTITUTION_ID'"
+                                                  [hasOther]="true"
+                                                  [otherId]="managementRadioButtonIds.MANAGEMENT_SECONDARY_SCHOOL_INSTITUTION_GOVERNED_OTHER_ID"
+                                                  [otherText]="'If OTHER, please specify.'"
+                                                  [subEntityOtherFieldName]="'governInstitution_ENG'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'compositionCouncilTVETValidation'"
+                                       [forControl]="compositionCouncilTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.compositionCouncilValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.2 Please indicate the composition of management council / board of governors</label>
+                        </div>
+                        <div #compositionCouncilTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'COMPOSITION_COUNCIL_ID'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'fundInstitutionTVETValidation'"
+                                       [forControl]="fundInstitutionTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.fundInstitutionValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <sis-error [id]="'fundInstitutionOtherTVETValidation'"
+                                       [forControl]="fundInstitutionTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.fundInstitutionOtherValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.3 How is your institution funded?</label>
+                        </div>
+                        <div #fundInstitutionTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'FUND_INSTITUTION_ID'"
+                                                  [hasOther]="true"
+                                                  [otherId]="managementRadioButtonIds.MANAGEMENT_SECONDARY_SCHOOL_FUNDING_INSTITUTION_OTHER_ID"
+                                                  [otherText]="'If OTHER, please specify.'"
+                                                  [subEntityOtherFieldName]="'fundInstitution_ENG'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementNeedyPupilsStudentsTVETValidation'"
+                                       [forControl]="managementNeedyPupilsStudentsTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.4 {{needyPupilClassifier}}</label>
+                        </div>
+                        <div #managementNeedyPupilsStudentsTVETName>
+                            <table>
+                                <tbody>
+                                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                                        [tableId]="'needyPupilsSectionId'"
+                                                                        [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                        [horizontalClassifierName]="'Pupil'"
+                                                                        [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                        [noTopLeftCellLabel]="true"
+                                                                        [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                                    </sis-census-indicator-tracking-1L-H>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    <div class="sis-controls--top-margin">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementBrightButNeedyPupilsStudentsTVETValidation'"
+                                       [forControl]="managementBrightButNeedyPupilsStudentsTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.5 {{brightPupilClassifier}}</label>
+                        </div>
+                        <div #managementBrightButNeedyPupilsStudentsTVETName>
+                            <table>
+                                <tbody>
+                                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                                        [tableId]="'needyPupilsSectionId'"
+                                                                        [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                        [horizontalClassifierName]="'Pupil'"
+                                                                        [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                        [noTopLeftCellLabel]="true"
+                                                                        [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                                    </sis-census-indicator-tracking-1L-H>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.6 How many of the following Incentives from Government have your school received to date?
+                        </label>
+                        <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [classifierList]="classifierList"
+                                                            [tableId]="'incentivesFromGovernmentCompositionId'"
+                                                            [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                            [noTopLeftCellLabel]="true"
+                                                            [horizontalClassifierName]="'Government'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'examiningBodyYesNoTVETValidation'"
+                                       [forControl]="examiningBodyYesNoTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.examiningBodyYesNoValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.7 Are ANY of your technical and vocational programmes accredited by an Examining Body?</label>
+                        </div>
+                        <div #examiningBodyYesNoTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolExamAccredit'"
+                                                  [censusSubEntityName]="'censusSchoolExamAccredits'"
+                                                  [classifierId]="'YES_NO_ID'"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+                    <div *ngIf="isSelectedYesRadio(censusSchoolExamAccredits, examACredit, 'examAccredit_ENG', yesNo, noExamAccreditClassifierId)">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'examAccreditTVETValidation'"
+                                       [forControl]="examAccreditTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.examAccreditYesValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <sis-error [id]="'examAccreditOtherTVETValidation'"
+                                       [forControl]="examAccreditTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.examAccreditOtherValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label">If YES, which Examining Body accredits the exams?</label>
+                        </div>
+                        <div #examAccreditTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolExamAccredit'"
+                                                  [censusSubEntityName]="'censusSchoolExamAccredits'"
+                                                  [classifierId]="'EXAM_ACCREDIT_ID'"
+                                                  [hasOther]="true"
+                                                  [otherId]="managementRadioButtonIds.MANAGEMENT_SECONDARY_SCHOOL_ACCREDITS_OTHER_ID"
+                                                  [otherText]="'If OTHER, please specify.'"
+                                                  [subEntityOtherFieldName]="'examAccredit_ENG'"
+                                                  [subEntityFilterPropertyName]="'yesNoId'"
+                                                  [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                                                  [isVertical]="true"
+                                                  [parentClassifierKeyName]="'yesNoId'"
+                                                  [hasInputSubEntity]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+                    </div>
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'tvetProgrammTVETValidation'"
+                                       [forControl]="tvetProgrammTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.tvetProgrammValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <sis-error [id]="'tvetProgrammOtherTVETValidation'"
+                                       [forControl]="tvetProgrammTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="managementValidationHelper.tvetProgrammOtherValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.8 Which, if any, authority prepares the curricula that is being followed in your TVET programmes?</label>
+                        </div>
+                        <div #tvetProgrammTVETName>
+                            <sis-select-one-radio [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                                  [censusSubEntityName]="'censusSchoolQuestions'"
+                                                  [classifierId]="'TVET_PROGRAMM_ID'"
+                                                  [hasOther]="true"
+                                                  [otherId]="managementRadioButtonIds.MANAGEMENT_SECONDARY_SCHOOL_TVET_PROGRAMMS_OTHER_ID"
+                                                  [otherText]="'If OTHER, please specify.'"
+                                                  [subEntityOtherFieldName]="'tvetProgramm_ENG'"
+                                                  [isVertical]="true"
+                                                  [subEntityFields]="questionSubEntityFields">
+                            </sis-select-one-radio>
+                        </div>
+
+
+                    <div class="sis-controls--top-margin">
+                        <sis-census-indicator-tracking-2L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [label]="'4.9 How many of your students are beneficiaries of the following?'"
+                                                          [tableId]="'beneficiaryTypeTableId'"
+                                                          [indicatorInstanceId]="managementBeneficiaries"
+                                                          [horizontalClassifierName]="'Pupil'"
+                                                          [verticalClassifierName]="'BeneficiaryType'">
+                        </sis-census-indicator-tracking-2L>
+                    </div>
+
+                    <div class="sis-controls--top-margin">
+                        <label class="sis-label">
+                            4.10 Indicate with a tick any group(s) active in supporting your school in the following.
+                        </label>
+                        <div class="sis-table-scroll">
+                            <table class="mdl-data-table mdl-js-data-table" id="tvetActiveGroupSupportAreaSectionId">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <label>Active Group</label>
+                                        </th>
+                                        <th *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')" class="ui-state-default center">
+                                        <span>
+                                            <span>{{supportAreaClassifier.getName()}}</span>
+                                        </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let activeGroupClassifier of classifierList.get('ActiveGroup')">
+                                        <td>
+                                            <span>
+                                                <span>{{activeGroupClassifier.getName()}}</span>
+                                            </span>
+                                        </td>
+                                        <td *ngFor="let supportAreaClassifier of classifierList.get('SupportArea')">
+                                            <input type="checkbox"
+                                                   [checked]="isActiveGroupSupportAreaCheckedItem(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                   (change)="onActiveGroupSupportAreaCheckBoxChanged(activeGroupClassifier.getId(), supportAreaClassifier.getId())"
+                                                   class="form-radio-checkbox center"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

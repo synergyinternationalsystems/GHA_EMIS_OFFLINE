@@ -1,0 +1,34 @@
+
+<label class="sis-label"> {{label}} </label>
+
+<div class="sis-controls--top-margin">
+    <table class="mdl-data-table mdl-js-data-table"
+           id="{{tableId}}">
+        <thead>
+        <tr>
+            <td rowspan="2" *ngIf="hasVerticalCode" >{{topLeftCellCodeLabel}}</td>
+            <td rowspan="2">{{topLeftCellSubjectLabel}}</td>
+            <td *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
+                colspan="2">
+                <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList()">
+                <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+            <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+            <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+            <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
+                <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                       (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"/>-->
+                <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

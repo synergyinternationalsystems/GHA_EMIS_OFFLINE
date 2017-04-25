@@ -1,0 +1,164 @@
+<div mdl class="mdl-layout__container">
+    <div *ngIf="getCensus()" class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
+        <header id="sis-header" class="sis-header sis-gha-header mdl-layout__header portfolio-header">
+            <div class="sis-header--width sis-header--top" id="sis-header--top">
+                <div class="sis-header--top-wrapper" id="sis-header--top-wrapper">
+                    <div class="sis-header__subheader">
+                        <div class="sis-header__subheader--left">
+                            <h1 class="sis-header__title mdl-layout__title">School Census:
+                                {{census.getProperty('censusSchoolCode').value}}</h1>
+                            <div class="sis-last-modified">Last modified by {{census.getProperty('UpdatedUserId').value.getProperty("name").value}} on {{census.getProperty('DateUpdated').value | date : "dd-MMM-yyyy HH:mm"}} </div>
+                        </div>
+                        <div class="sis-actions">
+                            <button id="censusCancelButton" class="mdl-button mdl-js-button sis-btn--sec mdl-button--raised  mdl-js-ripple-effect" (click)="onBack()"> Cancel </button>
+                            <button id="censusSaveButton" class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect" (click)="onSave()"> Save </button>
+                            <button id="censusSaveAndCloseButton" class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect" (click)="onSaveAndClose()"> Save & Close </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sis-navigation-container">
+                <div class="mdl-layout__header-row">
+                    <div class="sis-header--width sis-navigation">
+                        <div *ngIf="deLoaded" class="sis-header--width sis-navigation">
+                            <sis-menu [icon]="'menu'" (mouseover)="onSaveValidation()" (onSelect)="chooseMenuItem($event)">
+                                <sis-menu-item [value]="'0'" [name]="tabNumbersMap.get(0)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Identification-->
+                                <sis-menu-item [value]="'1'" [name]="tabNumbersMap.get(1)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Profile and Organisation-->
+                                <sis-menu-item [value]="'2'" [name]="tabNumbersMap.get(2)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Infrastructure-->
+                                <sis-menu-item [value]="'3'" [name]="tabNumbersMap.get(3)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Management-->
+                                <sis-menu-item [value]="'4'" [name]="tabNumbersMap.get(4)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Building-->
+                                <sis-menu-item [value]="'5'" [name]="tabNumbersMap.get(5)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Water and Sanitation-->
+                                <sis-menu-item [value]="'6'" [name]="tabNumbersMap.get(6)" [isEnabled]="!isDisableNavigation" *ngIf="isBasicOrSecondary()"></sis-menu-item><!--Materials and Equipment-->
+                                <sis-menu-item [value]="'7'" [name]="tabNumbersMap.get(7)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Enrolment-->
+                                <sis-menu-item [value]="'11'" [name]="tabNumbersMap.get(11)" [isEnabled]="!isDisableNavigation" *ngIf="isSecondary()"></sis-menu-item><!--Student Attendance and Movement-->
+                                <sis-menu-item [value]="'8'" [name]="tabNumbersMap.get(8)" [isEnabled]="!isDisableNavigation" *ngIf="isBasicFromCensus()"></sis-menu-item><!--Textbooks-->
+                                <sis-menu-item [value]="'13'" [name]="tabNumbersMap.get(13)" [isEnabled]="!isDisableNavigation" *ngIf="isBasic()"></sis-menu-item><!--Non Teaching Staff Information-->
+                                <sis-menu-item [value]="'12'" [name]="tabNumbersMap.get(12)" [isEnabled]="!isDisableNavigation" *ngIf="isBasic()"></sis-menu-item><!--Pupil Attendance and Movement-->
+                                <sis-menu-item [value]="'9'" [name]="tabNumbersMap.get(9)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Teachers-->
+                                <sis-menu-item [value]="'10'" [name]="tabNumbersMap.get(10)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Professional Staff Workload-->
+                                <sis-menu-item [value]="'14'" [name]="tabNumbersMap.get(14)" [isEnabled]="!isDisableNavigation" *ngIf="!isBasicFromCensus()"></sis-menu-item><!--Student and Teacher Information-->
+                                <sis-menu-item [value]="'16'" [name]="tabNumbersMap.get(16)" [isEnabled]="!isDisableNavigation" *ngIf="isBasicFromCensus()"></sis-menu-item><!--Pupil and Teacher Information-->
+                                <sis-menu-item [value]="'15'" [name]="tabNumbersMap.get(15)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Staff Movement-->
+                                <sis-menu-item [value]="'17'" [name]="tabNumbersMap.get(17)" [isEnabled]="!isDisableNavigation" *ngIf="isSecondary()"></sis-menu-item><!--Targeting-->
+                                <sis-menu-item [value]="'18'" [name]="tabNumbersMap.get(18)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Finances-->
+                                <sis-menu-item [value]="'19'" [name]="tabNumbersMap.get(19)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Notes and Attachments-->
+
+                            </sis-menu>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="sis-layout__content mdl-layout__content" id="sis-layout__content">
+            <div class="mdl-grid sis-layout">
+                <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
+                    <div *ngIf="deLoaded" class="sis-full-width">
+
+                <sis-nav-tabs (mouseup)="onSaveValidation()" [selectedTabId]="selectedTabId" (selectedTabChange)="chooseMenuItem($event)" [disableNavigation]="isDisableNavigation">
+                              <sis-tab id="0" title="1. Identification">
+                                  <sis-census-identification-edit *ngIf="getSchool()" [school]="school" [classifierList]="classifierItems" [census]="census">Loading ...
+                                  </sis-census-identification-edit>
+                              </sis-tab>
+                              <sis-tab id="1" title="2. Profile and Organisation">
+                                  <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census" [organisationValidationHelper]="organisationValidationHelper" [classifierList]="classifierItems" [schoolTypeId]="schoolTypeId">Loading ...
+                                  </sis-census-organisation-edit>
+                              </sis-tab>
+                              <sis-tab id="6" title="7. Materials and Equipment" *ngIf="isBasicOrSecondary()">
+                                  <sis-census-materialsEquipment-edit *ngIf="selectedTabId === 6" [census]="census" [materialsEquipmentValidationHelper]="materialsEquipmentValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-materialsEquipment-edit>
+                              </sis-tab>
+                              <sis-tab id="2" title="3. Infrastructure">
+                                  <sis-census-infrastructure-edit *ngIf="selectedTabId === 2" [census]="census" [infrastructureValidationHelper]="infrastructureValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...</sis-census-infrastructure-edit>
+                              </sis-tab>
+                              <sis-tab id="3" title="4. Management">
+                                  <sis-census-management-edit *ngIf="selectedTabId === 3" [census]="census" [managementValidationHelper]="managementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-management-edit>
+                              </sis-tab>
+                              <sis-tab id="4" title="5.Building">
+                                  <sis-census-building-edit *ngIf="selectedTabId === 4" [census]="census" [buildingValidationHelper]="buildingValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-building-edit>
+                              </sis-tab>
+                              <sis-tab id="5" title="6.Water and Sanitation">
+                                  <sis-census-waterAndSanitation-edit *ngIf="selectedTabId === 5" [isSelectedBadReason]="isSelectedBadReason" [isWaterCheckBoxChanged]="isWaterCheckBoxChanged" [census]="census" [waterAndSanitationValidationHelper]="waterAndSanitationValidationHelper" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-waterAndSanitation-edit>
+                              </sis-tab>
+                              <sis-tab id="7" title="{{tabNumbersMap.get(7)}}">
+                                  <sis-census-enrollment-edit *ngIf="selectedTabId === 7" [census]="census" [enrollmentValidationHelper]="enrollmentValidationHelper"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-enrollment-edit>
+                              </sis-tab>
+                              <sis-tab id="8" title="{{tabNumbersMap.get(8)}}" *ngIf="isBasicFromCensus()">
+                                  <sis-census-textbooks-edit *ngIf="selectedTabId === 8" [census]="census" [textbooksValidationHelper]="textbooksValidationHelper" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-textbooks-edit>
+                              </sis-tab>
+                              <sis-tab id="9" title="{{tabNumbersMap.get(9)}}">
+                                  <sis-census-teachers-edit *ngIf="selectedTabId === 9" [census]="census" [teachersEditValidationHelper]="teachersEditValidationHelper"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-teachers-edit>
+                              </sis-tab>
+                              <sis-tab id="10" title="{{tabNumbersMap.get(10)}}">
+                                  <sis-census-prof-staff-work-edit *ngIf="selectedTabId === 10" [census]="census" [profStaffWorkloadValidationHelper]="profStaffWorkloadValidationHelper" [censusSchoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-prof-staff-work-edit>
+                              </sis-tab>
+                              <sis-tab id="11" title="{{tabNumbersMap.get(11)}}" *ngIf="isSecondary()">
+                                  <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 11" [census]="census" [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-pupil-student-att-movement-edit>
+                              </sis-tab>
+                              <sis-tab id="12" *ngIf="isBasic()" title="{{tabNumbersMap.get(12)}}">
+                                  <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 12" [census]="census" [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-pupil-student-att-movement-edit>
+                              </sis-tab>
+                              <sis-tab id="13" title="{{tabNumbersMap.get(13)}}" *ngIf="isBasic()">
+                                  <sis-census-nonTeachingStaffInformation-edit *ngIf="selectedTabId === 13" [census]="census" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-nonTeachingStaffInformation-edit>
+                              </sis-tab>
+
+
+
+                              <sis-tab id="14" title="{{tabNumbersMap.get(14)}}" *ngIf="!isBasicFromCensus()">
+                                  <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 14" [census]="census" [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-pupil-student-teacher-information-edit>
+                              </sis-tab>
+
+                              <sis-tab id="15" title="{{tabNumbersMap.get(15)}}">
+                                  <sis-census-staffMovement-edit *ngIf="selectedTabId === 15" [census]="census" [staffMovementValidationHelper]="staffMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-staffMovement-edit>
+                              </sis-tab>
+                              <sis-tab id="16" title="{{tabNumbersMap.get(16)}}" *ngIf="isBasicFromCensus()">
+                                  <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 16" [census]="census" [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-pupil-student-teacher-information-edit>
+                              </sis-tab>
+
+                              <sis-tab id="17" title="{{tabNumbersMap.get(17)}}" *ngIf="isSecondary()">
+                              <sis-census-targeting-edit *ngIf="selectedTabId === 17" [census]="census" [classifierList]="classifierItems">Loading ...
+                              </sis-census-targeting-edit>
+                              </sis-tab>
+
+                              <sis-tab id="18" title="{{tabNumbersMap.get(18)}}">
+                                  <sis-census-finances-edit *ngIf="selectedTabId === 18" [census]="census"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-finances-edit>
+                              </sis-tab>
+                              <sis-tab id="19" title="{{tabNumbersMap.get(19)}}">
+                                  <sis-census-notes-and-attachments-edit *ngIf="selectedTabId === 19" [census]="census" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                                  </sis-census-notes-and-attachments-edit>
+                              </sis-tab>
+
+
+                        </sis-nav-tabs>
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mega-footer"> <a href="#" class="mdl-typography--font-light back-to-top mdl-button mdl-js-button mdl-js-ripple-effect" id="back-to-top"><i class="material-icons">arrow_upward</i> </a> </footer>
+
+        </main>
+    </div>
+</div>
+<div *ngIf="isViewDisabledSave || isViewDisabledLoadCensus">
+    <div class="k-loading-mask sis-loader-icon__container-census">
+        <span class="k-loading-text">
+            Loading...
+        </span>
+        <img src="app/resources/images/loader.gif" class="sis-loader-icon__container-census--item"/>
+    </div>
+</div>
+

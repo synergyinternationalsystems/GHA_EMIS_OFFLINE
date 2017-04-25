@@ -1,0 +1,35 @@
+<div>
+    <div *ngFor="let topLevelClassifier of classifierList.get(topLevelClassifierName)">
+        <div class="sis-control-validation">
+            <sis-error [id]="'requiredValidation'" *ngIf="isRequired"
+                       [forControl]="multi3LRequiredName" [isInput]="true"
+                       [errorClass]="'sis-validation-wrapper--grouped'"
+                       [errorMessage]="validateRequired(topLevelClassifier)"
+                       [class]="'sis-float-left'">
+            </sis-error>
+            <label class="sis-label">{{label}}</label>
+        </div>
+        <div class="sis-table-scroll" #multi3LRequiredName>
+            <table class="mdl-data-table sis-table--margin-top mdl-js-data-table sis-full-width" id="{{tableId}}">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">{{topLevelClassifier.getName()}}</th>
+                        <th class="mdl-data-table__cell--centered">
+                            <span>Number Of Rooms</span>
+                        </th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr *ngFor="let indicatorTrackingItem of currentIndicatorTrackingMap.get(topLevelClassifier.getId())">
+                            <td class="mdl-data-table__cell--non-numeric">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                            <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                                <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                                       (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
+                                       class="sis-input sis-small-width sis-align-right"/>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

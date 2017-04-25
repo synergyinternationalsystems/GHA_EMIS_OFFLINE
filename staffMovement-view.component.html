@@ -1,0 +1,116 @@
+<div title="">
+    <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">15.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
+    <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsBasicSchoolType()"
+                                      [classifierList]="classifierList"
+                                      [tableId]="'typeOfLeaveBasicTableId'"
+                                      [topLeftCellLabel]="'Type Of Leave'"
+                                      [verticalClassifierName]="'TypeOfLeave'"
+                                      [horizontalFirstLevelClassifierName]="'SchoolLevelGroupAdministration'"
+                                      [horizontalSecondLevelClassifierName]="'Gender'"
+                                      [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                      [horizontalFirstLevelClassifierFilterPropertyValue]="'1'"
+                                      [indicatorType]="26">
+    </sis-census-indicator-tracking-3L-view>
+
+    <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">15.1 How Many Staff have left your school for the following reasons in the past school year?</label>
+    <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsBasicSchoolType()"
+                                      [classifierList]="classifierList"
+                                      [tableId]="'reasonOfLeaveBasicTableId'"
+                                      [topLeftCellLabel]="'Reasons for leaving'"
+                                      [verticalClassifierName]="'TypeOfLeave'"
+                                      [horizontalFirstLevelClassifierName]="'SchoolLevelGroupAdministration'"
+                                      [horizontalSecondLevelClassifierName]="'Gender'"
+                                      [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                      [horizontalFirstLevelClassifierFilterPropertyValue]="'1'"
+                                      [indicatorType]="27">
+    </sis-census-indicator-tracking-3L-view>
+
+    <label  *ngIf="getIsSecondarySchoolType()" class="sis-label sis-element-required">13.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
+    <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsSecondarySchoolType()"
+                                      [classifierList]="classifierList"
+                                      [tableId]="'typeOfleaveSecTableId'"
+                                      [topLeftCellLabel]="'Type Of Leave'"
+                                      [verticalClassifierName]="'TypeOfLeave'"
+                                      [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                      [horizontalSecondLevelClassifierName]="'Gender'"
+                                      [indicatorType]="28">
+    </sis-census-indicator-tracking-3L-view>
+
+
+    <div *ngIf="getIsSecondarySchoolType()">
+        <label class="sis-label sis-element-required">13.2 How many Staff have left your institution for the following reasons in the past academic year?</label>
+        <sis-census-indicator-tracking-3L-view [census]="census"
+                                          [classifierList]="classifierList"
+                                          [tableId]="'ableI2d1'"
+                                          [topLeftCellLabel]="'Reasons for leaving'"
+                                          [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                          [verticalClassifierName]="'ReasonForLeaving'"
+                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [indicatorType]="29">
+        </sis-census-indicator-tracking-3L-view>
+    </div>
+
+    <div *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
+        <sis-census-indicator-tracking-3L [census]="census"
+                                          [classifierList]="classifierList"
+                                          [tableId]="'typeOfleaveSecTableId'"
+                                          [topLeftCellLabel]="'Type Of Leave'"
+                                          [verticalClassifierName]="'TypeOfLeave'"
+                                          [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [indicatorType]="28">
+        </sis-census-indicator-tracking-3L>
+    </div>
+
+    <div  *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label sis-element-required">11.2	How many Staff have left your institution for the following reasons in the past academic year?</label>
+        <sis-census-indicator-tracking-3L-view [census]="census"
+                                          [classifierList]="classifierList"
+                                          [tableId]="'ableI2d1'"
+                                          [topLeftCellLabel]="'Reasons for leaving'"
+                                          [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                          [verticalClassifierName]="'ReasonForLeaving'"
+                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [indicatorType]="29">
+        </sis-census-indicator-tracking-3L-view>
+    </div>
+
+    <div  *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label sis-element-required">11.3 How often did your teachers receive in-service training in the past year?</label>
+        <sis-select-one-radio-view [census]="census"
+                              [classifierList]="classifierList"
+                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                              [censusSubEntityName]="'censusSchoolQuestions'"
+                              [classifierNameFromInput]="'ReceiveServiceId'"
+                              [classifierId]="'MOVEMENTRECIEVESERVICE_ID'"
+                              [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+    </div>
+
+
+    <div *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label sis-element-required">11.4 Has your institution had any in-service training on HIV/AIDs?</label>
+        <sis-select-one-radio-view [census]="census"
+                              [classifierList]="classifierList"
+                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                              [censusSubEntityName]="'censusSchoolQuestions'"
+                              [classifierNameFromInput]="'YesNoId'"
+                              [classifierId]="'HIV_AIDS_YES_NO_ID'"
+                              [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+    </div>
+
+    <div class="sis-controls--top-margin" *ngIf="getIsTVETSchoolType()">
+        <label class="sis-label sis-element-required">11.5 Does your institution teach HIV/AIDS issues as integrated in the curriculum?</label>
+        <sis-select-one-radio-view [census]="census"
+                              [classifierList]="classifierList"
+                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                              [censusSubEntityName]="'censusSchoolQuestions'"
+                              [classifierId]="'HIV_AIDS_ISSUES_YES_NO_ID'"
+                              [classifierNameFromInput]="'YesNoId'"
+                              [subEntityFields]="questionSubEntityFields">
+        </sis-select-one-radio-view>
+    </div>
+</div>
+

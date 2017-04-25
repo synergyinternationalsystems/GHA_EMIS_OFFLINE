@@ -1,0 +1,39 @@
+<div mdl class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div #noteType>
+            <div class="sis-control-validation">
+                <sis-error [id]="'noteTypeValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="noteType" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="noteValidationHelper.noteTypeRequiredValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <label class="sis-label sis-element-required">Note Type</label>
+            </div>
+            <sis-combo-box [id]="'noteTypeId'" [placeHolder]="'-- Select Note Type --'" [isEnabled]="true" [value]="subEntity.getProperty('noteTypeId').value"
+                           (valueChange)="noteTypeComboValueChange($event)">
+                <sis-combo-box-items [data]="classifierList.get('NoteType')" [valueField]="" [nameField]="'name'"></sis-combo-box-items>
+            </sis-combo-box>
+        </div>
+
+        <div #noteDetails>
+            <div class="sis-control-validation">
+                <sis-error [id]="'noteDetailsValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="noteDetails" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="noteValidationHelper.noteDetailsRequiredValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <label class="sis-label sis-element-required">Note Details</label>
+            </div>
+            <div class="mdl-cell--12-col">
+                <textarea [(ngModel)]="subEntity.getProperty('note_ENG').value" class="sis-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="sis-actions sis-align-right sis-button-top-margin">
+            <button class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect" (click)="onDoneClicked()"> Ok </button>
+            <button class="mdl-button mdl-button--raised mdl-js-button  sis-btn--sec mdl-js-ripple-effect" (click)="onCancelClicked()"> Cancel </button>
+        </div>
+    </div>
+</div>

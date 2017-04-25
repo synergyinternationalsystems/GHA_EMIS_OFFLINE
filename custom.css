@@ -1,0 +1,16 @@
+.sis-display-inline-block {
+  display: inline-block; }
+
+.sis-validation-wrapper--grouped-inline {
+  border: #b94a48 1px solid !important;
+  display: inline-block; }
+
+.sis-btn--primary,
+.sis-btn--sec {
+  padding: 1px 16px; }
+
+.mdl-data-table--action-icon {
+  vertical-align: middle; }
+
+.k-widget.k-menu .k-item > .k-link > .k-i-arrow-s {
+  display: none !important; }

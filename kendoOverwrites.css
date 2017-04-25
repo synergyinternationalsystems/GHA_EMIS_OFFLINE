@@ -1,0 +1,127 @@
+.k-widget.k-upload, .k-widget.k-multiselect {
+  min-width: 300px;
+  max-width: 100%; }
+
+.k-widget.k-upload .k-upload-files {
+  padding-bottom: 0; }
+  .k-widget.k-upload .k-upload-files .k-file {
+    border-bottom: 0; }
+
+.k-widget.k-upload .k-file-name {
+  max-width: calc(100% - 32px); }
+
+.k-widget.k-datepicker .k-input {
+  background: #fff; }
+
+.k-widget.k-datepicker .k-picker-wrap .k-select {
+  border-color: #f0f0f0;
+  align-items: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+
+.k-widget.k-calendar .k-header {
+  background: #388e3c; }
+
+.k-widget.k-calendar td.k-state-selected, .k-widget.k-calendar .k-today {
+  background-color: #388e3c; }
+
+.k-widget.k-calendar td.k-state-selected.k-state-hover {
+  background-color: #2a692d; }
+
+.k-widget.k-calendar .k-header .k-state-hover {
+  background-color: #2a692d; }
+
+.k-widget.k-calendar .k-footer .k-nav-today {
+  color: #24a0e5; }
+
+.k-widget.k-combobox {
+  width: 100%; }
+  .k-widget.k-combobox .k-input {
+    width: calc(100% - 32px) !important;
+    padding-right: 32px; }
+  .k-widget.k-combobox .k-select {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+.k-multiselect-wrap {
+  padding-right: 32px; }
+  .k-multiselect-wrap .k-icon.k-i-close {
+    cursor: pointer; }
+
+.k-list > .k-state-selected.k-state-focused, .k-draghandle.k-state-selected:hover, .k-ghost-splitbar-horizontal, .k-ghost-splitbar-vertical, .k-list > .k-state-highlight, .k-list > .k-state-selected, .k-marquee-color, .k-panel > .k-state-selected, .k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-state-selected, .k-state-selected:link, .k-state-selected:visited {
+  color: #24a0e5; }
+
+.k-widget.k-window {
+  padding: 28px 24px !important;
+  box-shadow: 0px 20px 43px 0px rgba(0, 0, 0, 0.36); }
+  .k-widget.k-window .k-window-titlebar {
+    background: #fff;
+    border-color: #fff;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: inherit !important;
+    font-size: 16px; }
+  .k-widget.k-window .k-i-close {
+    background: none !important; }
+    .k-widget.k-window .k-i-close:after {
+      font-family: 'Material Icons';
+      line-height: 12px;
+      font-weight: bold;
+      content: 'close';
+      font-size: 20px !important;
+      color: #999999; }
+    .k-widget.k-window .k-i-close:hover:after {
+      color: #7d7d7d; }
+  .k-widget.k-window .k-window-titlebar, .k-widget.k-window .k-window-actions {
+    position: absolute;
+    top: 20px !important;
+    right: 26px !important; }
+  .k-widget.k-window .k-window-title {
+    position: static !important;
+    margin-left: -5px;
+    color: rgba(0, 0, 0, 0.87); }
+  .k-widget.k-window .k-content {
+    padding-top: 0px;
+    display: block; }
+  .k-widget.k-window .k-window-actions .k-state-hover {
+    background-color: #fff !important;
+    border-color: #fff !important; }
+  .k-widget.k-window .k-window-actions .k-link {
+    opacity: 1 !important;
+    color: rgba(0, 0, 0, 0.26); }
+    .k-widget.k-window .k-window-actions .k-link:hover, .k-widget.k-window .k-window-actions .k-link:focus, .k-widget.k-window .k-window-actions .k-link:active {
+      color: rgba(0, 0, 0, 0.54); }
+  @media (min-width: 0) and (max-width: 839px) {
+    .k-widget.k-window {
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
+      box-sizing: border-box !important;
+      overflow: auto; }
+      .k-widget.k-window .k-resize-handle {
+        display: none; } }
+
+.k-widget.k-menu {
+  font-weight: normal; }
+  .k-widget.k-menu .k-item > .k-link > .k-i-arrow-s {
+    margin-left: 8px; }
+  .k-widget.k-menu .sis-menu-icon {
+    font-size: 21px;
+    color: rgba(0, 0, 0, 0.54); }
+  .k-widget.k-menu .menu-without-arrow > .k-link > .k-icon.k-i-arrow-60-down {
+    display: none; }
+
+.mdl-button {
+  text-transform: capitalize !important;
+  padding-top: 5px; }

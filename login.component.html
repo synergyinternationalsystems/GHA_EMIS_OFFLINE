@@ -1,0 +1,60 @@
+<div class="mdl-layout__container">
+<div class="sis-login-screen-bg">
+    <div class="sis-logo-flag-wrap">
+        <span class="sis-login-screen_flag"></span>
+        <span class="sis-login-screen_logo"></span>
+    </div>
+    <div class="sis-title-text">
+        <p>Emis - Education Management Information System</p>
+        <p>Ministry of Education</p>
+    </div>
+
+    <div id="login-screen" class="sis-login_screen">
+        <div class="sis-login-form" id="login">
+            <form [formGroup]="mainForm" (ngSubmit)="login(mainForm.value, noConnectionDialog)" novalidate>
+
+                    <div [className]="loginMessage !== '' && loginMessage != 'Ok' ? '' : ''">
+                        <div *ngIf="loginMessage !== '' && loginMessage != 'Ok'" class="sis-validation-wrapper">
+                            <div class="sis-validation-wrapper__icon">
+                                <i class="material-icons sis-vertical-center">warning</i>
+                            </div>
+                            <div class="sis-validation-wrapper__message">{{loginMessage}}</div>
+                        </div>
+
+                        <div class="sis-validation-wrapper--no-margin">
+                            <span class="sis-input-user__icon"></span>
+                            <div *ngIf="!mainForm.controls['username'].valid && (mainForm.controls['username'].touched || submitAttempted)"
+                                 class="sis-validation-wrapper__message">
+                                Username is required
+                            </div>
+                            <input id="username" type="text"
+                                   [ngClass]="{'input-error': !mainForm.controls['username'].valid && (mainForm.controls['username'].touched || submitAttempted)}"
+                                   class="sis-input input_user"
+                                    placeholder="Username"
+                                   [formControl]="mainForm.controls['username']" />
+                        </div>
+
+                        <div class="sis-password-input__validation-wrapper">
+                            <span class="sis-input-password__icon"></span>
+                            <div *ngIf="!mainForm.controls['password'].valid && (mainForm.controls['password'].touched || submitAttempted)"
+                                 class="sis-validation-wrapper__message">
+                                Password is required
+                            </div>
+                            <input id="password" type="password"
+                                   [ngClass]="{'input-error': !mainForm.controls['password'].valid && (mainForm.controls['password'].touched || submitAttempted)}"
+                                   class="sis-input input_password" placeholder="Password"
+                                   [formControl]="mainForm.controls['password']" />
+                        </div>
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect sis-btn--primary sis-login-btn">Login</button>
+                    </div>
+
+            </form>
+        </div>
+        <footer class="sis-login__footer-text">
+            <p>Powered by Synergy IndicataTM</p>
+            <p>&copy; {{year}} <a href="http://www.synisys.com" target="_blank" id="synergy-link" class="sis-synergy-link-btn"> Synergy International Systems</a>, Inc. All rights reserved.</p>
+        </footer>
+        <sis-notification-dialog [text]="'No Internet Connection'" #noConnectionDialog></sis-notification-dialog>
+    </div>
+</div>
+</div>

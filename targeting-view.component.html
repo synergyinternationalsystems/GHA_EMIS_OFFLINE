@@ -1,0 +1,18 @@
+<div class="mdl-grid sis-layout">
+    <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="'targetingTableId'"
+                                                  [verticalClassifierName]="'Targeting'"
+                                                  [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                  [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                  [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                                  [horizontalFirstLevelClassifierFilterPropertyValue]="2"
+                                                  [indicatorType]="targetingSecondaryStudentStatistics">
+                </sis-census-indicator-tracking-3L-view>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+/* =table with horizontal scroll if does not fit
+    -------------------------------------------------------------- */
+.sis-table-scroll {
+    max-width: 100%;
+    overflow: auto; }
+
+/* =table with horizontal scroll if does not fit
+    -------------------------------------------------------------- */
+/* =responsive table styles
+    -------------------------------------------------------------- */
+.sis-table-nested {
+    background-color: #f8f8f8; }
+
+.sis-table--margin-top {
+    margin-top: 24px; }
+
+.mdl-data-table {
+    border: none;
+    white-space: normal; }
+.mdl-data-table td {
+    padding: 26px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    height: auto; }
+.mdl-data-table th {
+    font-size: 13px;
+    white-space: normal;
+    vertical-align: top;
+    padding: 18px; }
+.mdl-data-table tr:hover .mdl-data-table--clear {
+    color: rgba(0, 0, 0, 0.54); }
+.mdl-data-table td.mdl-data-table__cell--centered {
+    text-align: center; }
+.mdl-data-table .mdl-data-table__responsive-key, .mdl-data-table td.mdl-data-table__responsive-key:first-of-type {
+    display: none;
+    border-bottom: 0;
+    padding-left: 0; }
+.mdl-data-table .mdl-data-table__responsive-key, .mdl-data-table .mdl-data-table__responsive-key a {
+    font-weight: bold; }
+.mdl-data-table .mdl-data-table__responsive-key:before {
+    display: none; }
+.mdl-data-table .mdl-data-table__responsive-key--sec {
+    font-style: italic;
+    margin-left: 5px;
+    display: inline-block; }
+
+.mdl-data-table--clear {
+    font-size: 22px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.26);
+    padding: 20px; }
+
+.mdl-data-table .mdl-data-table--icon-cell, .mdl-data-table td.mdl-data-table--icon-cell:last-of-type, .mdl-data-table th.mdl-data-table--icon-cell:last-of-type {
+    padding: 6px; }
+
+@media (max-width: 890px) {
+    .mdl-data-table .mdl-data-table__responsive-key, .mdl-data-table td.mdl-data-table__responsive-key:first-of-type {
+        display: flex; }
+
+    /*.mdl-data-table--clear {
+        margin-right: -24px;
+    }*/
+    .mdl-data-table-responsive .mdl-data-table--icon-cell, .mdl-data-table-responsive td.mdl-data-table--icon-cell:last-of-type, .mdl-data-table-responsive th.mdl-data-table--icon-cell:last-of-type {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0;
+        margin-right: 0;
+        border-bottom: 0;
+        width: auto; }
+
+    .mdl-data-table-responsive .mdl-data-table--icon-cell:before {
+        display: none; }
+
+    .mdl-data-table-responsive tbody tr {
+        height: auto;
+        position: relative; }
+
+    /* Force table to not be like tables anymore */
+    .mdl-data-table-responsive, .mdl-data-table-responsive thead, .mdl-data-table-responsive tbody, .mdl-data-table-responsive th, .mdl-data-table-responsive td, .mdl-data-table-responsive tr {
+        display: block; }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .mdl-data-table-responsive thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; }
+
+    .mdl-data-table-responsive td {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: auto;
+        border-top: 0;
+        display: flex; }
+
+    .mdl-data-table-responsive td:not(.mdl-data-table--icon-cell) > * {
+        width: calc(50% + 26px);
+        box-sizing: border-box; }
+
+    .mdl-data-table-responsive td:first-child > * {
+        width: auto; }
+
+    .mdl-data-table-responsive.mdl-data-table--has-icon-cell td {
+        /*width: calc(100% - 38px);*/
+        width: 100%;
+        white-space: normal; }
+
+    .mdl-data-table-responsive td:before {
+        width: calc(50% - 26px);
+        padding-right: 26px;
+        white-space: normal;
+        content: attr(data-label);
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.54);
+        box-sizing: border-box; }
+
+    .mdl-data-table-responsive tr:nth-child(2) td {
+        background: #f8f8f8; }
+
+    /*.mdl-data-table-responsive tr:nth-child(2) td.mdl-data-table--icon-cell, .mdl-data-table-responsive tr:nth-child(2):hover td.mdl-data-table--icon-cell {
+        background: #fff;
+    }*/
+    .mdl-data-table-responsive tbody tr:nth-child(2):hover td {
+        background-color: #eee; }
+
+    /*.mdl-data-table-responsive tbody tr:hover td:not(.mdl-data-table--icon-cell)*/
+    .mdl-data-table-responsive tbody tr:hover td {
+        background-color: #eee; }
+
+    .mdl-data-table tbody tr:hover {
+        background: none; }
+}
+/* =responsive table styles
+    -------------------------------------------------------------- */
+
+@media (min-width: 0) and (max-width: 839px) {
+    .sis-action-buttons--fixed {
+        position: fixed;
+        bottom: 0;
+        width: calc(100% - 80px); }
+}
+
+@media (min-width: 0) and (max-width: 839px) {
+    .button--full-width-mobile {
+        width: 100%; }
+}

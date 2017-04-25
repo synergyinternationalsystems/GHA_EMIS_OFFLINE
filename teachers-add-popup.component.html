@@ -1,0 +1,11 @@
+<div class="sis-teachers-add-subform">
+    <teachers-add #teachersAdd
+                  [census]="census"
+                  [schoolTypeId]="schoolTypeId"
+                  [classifierList]="classifierList"
+                  [teachersList]="teachersList"
+                  [subEntity]="subEntity"
+                  [isErrorMessageVisible]="isErrorMessageVisible"
+                  (done)="doneAction($event)">
+    </teachers-add>
+</div>

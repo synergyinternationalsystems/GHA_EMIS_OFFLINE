@@ -1,0 +1,338 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'vehicleAccessValidation'"
+                           [errorMessage]="infrastructureValidationHelper.vehicleAccessValidation()"
+                           [class]="'sis-float-left'" [forControl]="yesNoRoad"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.1 Can a vehicle access your school?</label>
+            </div>
+            <table #yesNoRoad>
+                <tbody>
+                <td>
+                    <sis-select-one-radio
+                            [name]="'yesNoRoad'"
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
+                            [censusSubEntityName]="'censusSchoolRoadTypes'"
+                            [classifierId]="'YES_NO_ID'"
+                            [subEntityFields]="infrastructureSubEntityFields">
+                    </sis-select-one-radio>
+                </td>
+                </tbody>
+            </table>
+
+            <div *ngIf="subEntityRoadIsYes()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'roadTypeValidation'"
+                               [errorMessage]="infrastructureValidationHelper.roadTypeValidation()"
+                               [class]="'sis-float-left'" [forControl]="roadType"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">3.1.1 If YES, what is the road made of?</label>
+                </div>
+                <table #roadType>
+                    <tbody>
+                    <td>
+                        <sis-select-one-radio
+                                [census]="census"
+                                [classifierList]="classifierList"
+                                [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
+                                [censusSubEntityName]="'censusSchoolRoadTypes'"
+                                [classifierId]="'ROAD_TYPE_ID'"
+                                [subEntityFilterPropertyName]="'yesNoId'"
+                                [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                                [parentClassifierKeyName]="'yesNoId'"
+                                [hasInputSubEntity]="true"
+                                [subEntityFields]="infrastructureSubEntityFields">
+                        </sis-select-one-radio>
+                    </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'electricityWiredValidation'"
+                           [errorMessage]="infrastructureValidationHelper.electricityWiredValidation()"
+                           [class]="'sis-float-left'" [forControl]="yesNoElectricity"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.2 Is your {{schoolOrInstitution}} wired for electricity?</label>
+            </div>
+            <table #yesNoElectricity>
+                <tbody>
+                <td>
+                    <sis-select-one-radio
+                            [name]="'yesNoElectricity'"
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolElectricityWired'"
+                            [censusSubEntityName]="'censusSchoolElectricityWireds'"
+                            [classifierId]="'YES_NO_ID'"
+                            [subEntityFields]="infrastructureSubEntityFields">
+                    </sis-select-one-radio>
+                </td>
+                </tbody>
+            </table>
+
+            <div *ngIf="subEntityElectricityIsYes()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'electricityFunctionalValidation'"
+                               [errorMessage]="infrastructureValidationHelper.electricityFunctionalValidation()"
+                               [class]="'sis-float-left'" [forControl]="electricityFunctional"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">3.2.1 If YES, is it functional?</label>
+                </div>
+
+                <table #electricityFunctional>
+                    <tbody>
+                    <td>
+                        <sis-select-one-radio
+                                [census]="census"
+                                [classifierList]="classifierList"
+                                [censusSubEntityCategoryName]="'CensusSchoolElectricityWired'"
+                                [censusSubEntityName]="'censusSchoolElectricityWireds'"
+                                [classifierId]="'ELECTRICITY_FUNCTIONAL_ID'"
+                                [subEntityFilterPropertyName]="'yesNoId'"
+                                [subEntityFilterPropertyValue]="constants.YES_CLASSIFIER_ID"
+                                [parentClassifierKeyName]="'yesNoId'"
+                                [hasInputSubEntity]="'true'"
+                                [subEntityFields]="infrastructureSubEntityFields">
+                        </sis-select-one-radio>
+                    </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'electricityTypeValidation'"
+                           [errorMessage]="infrastructureValidationHelper.electricityTypeValidation()"
+                           [class]="'sis-float-left'" [forControl]="yesNoElectricityType"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.3 Is your community on electricity?</label>
+            </div>
+            <table #yesNoElectricityType>
+                <tbody>
+                <td>
+                    <sis-select-one-radio
+                            [name]="'yesNoElectricityType'"
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolElectricityType'"
+                            [censusSubEntityName]="'censusSchoolElectricityTypes'"
+                            [classifierId]="'YES_NO_ID'"
+                            [subEntityFields]="infrastructureSubEntityFields">
+                    </sis-select-one-radio>
+                </td>
+                </tbody>
+            </table>
+
+            <div *ngIf="subEntityElectricityTypeIsYes()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'electricityTypeValidation'"
+                               [errorMessage]="infrastructureValidationHelper.electricityTypeSpecifyValidation()"
+                               [class]="'sis-float-left'" [forControl]="electricityType"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label">3.3.1 If YES, please specify</label>
+                </div>
+                <table #electricityType>
+                    <tbody>
+                    <td *ngFor="let electricityTypeClassifier of electricityTypeFiltered()">
+                        <input type="checkbox"
+                               [checked]="isElectricityTypeCheckedItem(electricityTypeClassifier.getId())"
+                               (change)="onElectricityTypeCheckBoxChanged(electricityTypeClassifier.getId())"
+                               class="sis-radio-checkbox"
+                               name="electricityTypeItems{{electricityTypeClassifier.getId()}}Id"/>
+                        <label class="sis-radio-checkbox-label">{{electricityTypeClassifier.getName()}}</label>
+                    </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="sis-control-validation">
+            <sis-error [id]="'environmentalProblemValidation'"
+                       [errorMessage]="infrastructureValidationHelper.environmentalProblemValidation()"
+                       [class]="'sis-float-left'" [forControl]="environmentalProblem"
+                       [isInput]="true">
+            </sis-error>
+            <label class="sis-label sis-element-required">3.4 Which of these environmental problems are experienced in your institution?</label>
+        </div>
+        <div #environmentalProblem class="sis-display-inline-block">
+            <div *ngFor="let environmentalProblemClassifier of classifierList.get(getSubEntityKeyNameWithoutId(infrastructureSubEntityFields.ENVIRONMENTAL_PROBLEM_ID))" class="sis-display-inline-block">
+                <input type="checkbox"
+                       [checked]="isEnvironmentalProblemCheckedItem(environmentalProblemClassifier.getId())"
+                       (change)="onEnvironmentalProblemCheckBoxChanged(environmentalProblemClassifier.getId())"
+                       class="sis-radio-checkbox"
+                       name="environmentalProblemItems{{environmentalProblemClassifier.getId()}}Id"/>
+                <label class="sis-radio-checkbox-label">{{environmentalProblemClassifier.getName()}}</label>
+            </div>
+        </div>
+
+        <div class="sis-control-validation">
+            <sis-error [id]="'isDocumentedValidation'"
+                       [errorMessage]="infrastructureValidationHelper.isDocumentedValidation()"
+                       [class]="'sis-float-left'" [forControl]="isDocumented"
+                       [isInput]="true">
+            </sis-error>
+            <label class="sis-label sis-element-required">3.5 Is your {{schoolOrInstitution}}'s land properly documented?</label>
+        </div>
+        <table #isDocumented>
+            <tbody>
+            <td>
+                <sis-select-one-radio
+                        [census]="census"
+                        [classifierList]="classifierList"
+                        [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                        [censusSubEntityName]="'censusSchoolQuestions'"
+                        [classifierId]="'IS_DOCUMENTED_ID'"
+                        [classifierNameFromInput]="'YesNoId'"
+                        [subEntityFields]="questionSubEntityFields">
+                </sis-select-one-radio>
+            </td>
+            </tbody>
+        </table>
+
+        <div *ngIf="getIsBasicSchoolType()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'boardingFacilitiesValidation'"
+                           [errorMessage]="infrastructureValidationHelper.boardingFacilitiesValidation()"
+                           [class]="'sis-float-left'" [forControl]="yesNoBoardingFacilities"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.6 Are there boarding facilities at the school?</label>
+            </div>
+            <table #yesNoBoardingFacilities>
+                <tbody>
+                <td>
+                    <sis-select-one-radio
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                            [censusSubEntityName]="'censusSchoolQuestions'"
+                            [classifierNameFromInput]="'YesNoId'"
+                            [classifierId]="'BOARDING_FACILITIES_YES_NO_ID'"
+                            [subEntityFields]="questionSubEntityFields">
+                    </sis-select-one-radio>
+                </td>
+                </tbody>
+            </table>
+
+            <div *ngIf="subEntityBoardingFacilityIsYes()" class="sis-controls--top-margin">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'basicBoardingValidation'"
+                               [errorMessage]="infrastructureValidationHelper.basicBoardingValidation()"
+                               [class]="'sis-float-left'" [forControl]="basicBoarding"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">3.6.1 If YES, how many pupils are BOARDERS?</label>
+                </div>
+                <div #basicBoarding class="mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--5-col-phone">
+                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                        [tableId]="'boardingFacilitiesCompositionId'"
+                                                        [indicatorInstanceId]="infrastructureBasicBoarding"
+                                                        [noTopLeftCellLabel]="true"
+                                                        [horizontalClassifierName]="'Pupil'">
+                    </sis-census-indicator-tracking-1L-H>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!getIsBasicSchoolType()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'schoolApplyTypeValidation'"
+                           [errorMessage]="infrastructureValidationHelper.schoolApplyTypeValidation()"
+                           [class]="'sis-float-left'" [forControl]="schoolApplyType"
+                           [isInput]="true" >
+                </sis-error>
+                <label class="sis-label sis-element-required">3.6 Which of the following apply to your school?</label>
+            </div>
+            <table #schoolApplyType>
+                <tbody>
+                <td>
+                    <sis-select-one-radio
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                            [censusSubEntityName]="'censusSchoolQuestions'"
+                            [classifierId]="'SCHOOL_APPLY_TYPE_ID'"
+                            [subEntityFields]="questionSubEntityFields"
+                            [isVertical]="true">
+                    </sis-select-one-radio>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div *ngIf="getIsSecondarySchoolType()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'secondaryBoardingValidation'"
+                           [errorMessage]="infrastructureValidationHelper.secondaryBoardingValidation()"
+                           [class]="'sis-float-left'" [forControl]="secondaryBoarding"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.7 How MANY students are? </label>
+            </div>
+            <div #secondaryBoarding>
+                <sis-census-indicator-tracking-2L [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="'infrastructureSecondaryBoardingCompositionId'"
+                                                  [indicatorInstanceId]="infrastructureSecondaryBoarding"
+                                                  [horizontalClassifierName]="'Gender'"
+                                                  [verticalClassifierName]="'StudentsCountType'">
+                </sis-census-indicator-tracking-2L>
+            </div>
+        </div>
+
+        <div *ngIf="getIsTVETSchoolType()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'TVETBoardingValidation'"
+                           [errorMessage]="infrastructureValidationHelper.TVETBoardingValidation()"
+                           [class]="'sis-float-left'" [forControl]="TVETBoarding"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.7 If your institution has boarding/hostel facilities, how MANY students are?</label>
+            </div>
+            <div #TVETBoarding>
+                <sis-census-indicator-tracking-2L [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [tableId]="'infrastructureTVETBoardingCompositionId'"
+                                                  [indicatorInstanceId]="infrastructureTVETBoarding"
+                                                  [horizontalClassifierName]="'Gender'"
+                                                  [verticalClassifierName]="'Boarding'">
+                </sis-census-indicator-tracking-2L>
+            </div>
+
+            <div class="sis-control-validation">
+                <sis-error [id]="'propertyWalledValidation'"
+                           [errorMessage]="infrastructureValidationHelper.propertyWalledValidation()"
+                           [class]="'sis-float-left'" [forControl]="yesNoPropertyWalled"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">3.8 Is your institution's property walled or fenced?</label>
+            </div>
+            <div #yesNoPropertyWalled>
+                <sis-select-one-radio
+                        [census]="census"
+                        [classifierList]="classifierList"
+                        [classifierNameFromInput]="'YesNoId'"
+                        [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                        [censusSubEntityName]="'censusSchoolQuestions'"
+                        [classifierId]="'PROPERTY_WALLED_YES_NO_ID'"
+                        [subEntityFields]="questionSubEntityFields">
+                </sis-select-one-radio>
+            </div>
+        </div>
+    </div>
+</div>

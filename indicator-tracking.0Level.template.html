@@ -1,0 +1,16 @@
+<div #questionRequiredName>
+    <div class="sis-margin--top-reset">
+        <div class="sis-control-validation">
+            <sis-error [id]="'requiredValidation'" *ngIf="isRequired"
+                           [forControl]="questionRequiredName" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="validateRequired()"
+                           [class]="'sis-float-left'">
+            </sis-error>
+            <label class="sis-label"> {{filteredLabelName}} </label>
+        </div>
+    </div>
+    <input type="number" inputMaxLength="7" [(ngModel)]="filteredSubEntity.getProperty('actual_Value').value"
+           (ngModelChange)="onValueChanged($event, filteredSubEntity)"
+           class="sis-input sis-small-width sis-align-right"/>
+</div>

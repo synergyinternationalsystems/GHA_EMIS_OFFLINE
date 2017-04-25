@@ -1,0 +1,116 @@
+<div>
+    <label class="sis-label"> {{label}} </label>
+    <!--&lt;!&ndash;-->
+    <div class="sis-table-scroll">
+        <table class="sis-table-total mdl-data-table mdl-js-data-table sis-table-total sis-nested-table--no-pdd"
+               id="{{tableId}}">
+            <thead>
+                <tr *ngIf="!horizontalFirstLevelHeaderHidden">
+                    <th *ngIf="hasVerticalCodeColumn" rowspan="2">Code</th>
+                    <th rowspan="2" *ngIf="!noVerticalClassifierColumn" class="sis-vertical-center">{{topLeftCellLabel}}</th>
+                    <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
+                        [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
+                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                    </th>
+                    <th *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1">
+                        Total
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngIf="horizontalFirstLevelHeaderHidden">{{topLeftCellLabel}}</th>
+                    <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelAllClassifierList()" class="mdl-data-table__cell--centered" style="min-width:138px;">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </th>
+                    <ng-container *ngIf="hasVerticalTotalColumn">
+                        <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelClassifierList()">
+                            <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                        </th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="hasEmbeddedVerticalClassifier" >
+                    <td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length+2" *ngIf="hasVerticalTotalColumn">
+
+                        <table *ngFor="let indicatorTrackingItem of indicatorTrackingList; let m = index" class="sis-full-width">
+                            <tbody>
+                                <tr>
+                                    <td [attr.colspan]="indicatorTrackingItem.classifierValues.length"> {{tabNumber}}.{{m+1}}{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" >
+                                        <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-align-right"
+                                               *ngIf="indicatorTrackingItem.visibilityValues[i] && !(hasTotalRow || hasVerticalTotalColumn)"/>-->
+                                        <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                                               (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
+                                               *ngIf="indicatorTrackingItem.visibilityValues[i]"/>
+                                    </td>
+                                    <ng-container *ngIf="hasVerticalTotalColumn">
+                                        <td *ngFor="let value of totalValues(indicatorTrackingItem); let i = index">
+                                            {{value}}
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+
+                    <td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length" *ngIf="!hasVerticalTotalColumn">
+
+                        <table *ngFor="let indicatorTrackingItem of indicatorTrackingList; let k = index" class="sis-full-width mdl-data-table mdl-js-data-table">
+                            <tbody>
+                                <tr>
+                                    <td [attr.colspan]="indicatorTrackingItem.classifierValues.length">{{tabNumber}}.{{k+1}} {{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" >
+                                        <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                                               *ngIf="indicatorTrackingItem.visibilityValues[i] && !(hasTotalRow || hasVerticalTotalColumn)"/>-->
+                                        <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                                               (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
+                                               *ngIf="indicatorTrackingItem.visibilityValues[i]" class="sis-input sis-small-width sis-align-right"/>
+                                    </td>
+
+                                    <ng-container *ngIf="hasVerticalTotalColumn">
+                                        <td *ngFor="let value of totalValues(indicatorTrackingItem); let i = index">
+                                            {{value}}
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <ng-container   *ngIf="!hasEmbeddedVerticalClassifier">
+                    <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList" >
+                        <td *ngIf="hasVerticalCodeColumn" class="mdl-data-table__cell--non-numeric">
+                            {{indicatorTrackingItem.verticalClassifier.getProperty('Code').value}}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric" style="min-width: 126px;">{{indicatorTrackingItem.verticalClassifier.getName()}}
+                        </td>
+                        <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
+                            <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                                   *ngIf="indicatorTrackingItem.visibilityValues[i] && !(hasTotalRow || hasVerticalTotalColumn)"/>-->
+                            <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                                   (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
+                                   *ngIf="indicatorTrackingItem.visibilityValues[i]"/>
+                        </td>
+                        <ng-container *ngIf="hasVerticalTotalColumn">
+                            <td *ngFor="let value of totalValues(indicatorTrackingItem); let i = index" class="mdl-data-table__cell--right">
+                                {{value}}
+                            </td>
+                        </ng-container>
+                    </tr>
+                </ng-container>
+
+            </tbody>
+            <tfoot>
+                <tr *ngIf="hasTotalRow">
+                    <td class="mdl-data-table__cell--non-numeric">Total:</td>
+                    <td colspan="24" class="mdl-data-table__cell--right">{{totalValue}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

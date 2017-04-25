@@ -1,0 +1,98 @@
+    <label class="sis-label"> {{label}} </label>
+    <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+            <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Programme --'" [value]="selectEnrolmentProgrammeValue" (valueChange)="onEnrolmentProgrammeChanged($event)">
+                <sis-combo-box-items [data]="classifierList.get('EnrolmentProgrammeAdd')" [valueField]="" [nameField]="'name'" #enrolmentProgrammeAddName></sis-combo-box-items>
+            </sis-combo-box>
+            <sis-error [id]="'programmeValidation'" [errorMessage]="enrollmentProgrammeValidation()"
+                       [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAddName"
+                       [isInput]="true">
+            </sis-error>
+        </div>
+
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+            <sis-combo-box [id]="'enrolmentSubjectId'" [placeHolder]="'-- Select Subject --'" [isEnabled]="selectEnrolmentProgrammeValue" [value]="selectEnrolmentSubjectValue" (valueChange)="onEnrolmentSubjectChanged($event)">
+                <sis-combo-box-items [data]="getEnrolmentSubjects()" [valueField]="" [nameField]="'name'" #enrolmentSubjectName></sis-combo-box-items>
+            </sis-combo-box>
+            <sis-error [id]="'subjectValidation'" [errorMessage]="enrollmentSubjectValidation()"
+                       [class]="'sis-float-left'" [forControl]="enrolmentSubjectName"
+                       [isInput]="true">
+            </sis-error>
+        </div>
+
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
+            <input type="button" value="Add"
+                   class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect"
+                   (click)="addAction()">
+        </div>
+    </div>
+
+    <div class="mdl-grid mdl-grid--no-spacing" #subjectCodeNameDuplicateTVET>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <div class="sis-controls--top-margin">
+                <sis-error [id]="'subjectCodeValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
+                           [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectCode"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">Subject Code</label>
+            </div>
+            <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectCode" class="sis-input sis-small-width sis-align-right"
+                   name="enrolmentInProgrammeSubjectCodeId" #enrolmentProgrammeSubjectCode/>
+        </div>
+
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+            <div class="sis-controls--top-margin">
+                <sis-error [id]="'subjectNameValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
+                           [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectName"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">Subject Name</label>
+            </div>
+            <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectName" class="sis-input sis-small-width sis-align-right"
+                   name="enrolmentInProgrammeSubjectNameId" #enrolmentProgrammeSubjectName/>
+        </div>
+
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
+            <div class="sis-controls--top-margin">
+                <input type="button" value="Create New"
+                       class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect sis-btn-create-new sis-button-top-margin"
+                       (click)="createNewAction()">
+            </div>
+        </div>
+    </div>
+    <sis-error [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
+               [class]="'sis-float-left'" [forControl]="subjectCodeNameDuplicateTVET"
+               [isInput]="true">
+    </sis-error>
+
+
+    <div class="sis-controls--top-margin">
+        <table class="mdl-data-table mdl-js-data-table"
+               id="{{tableId}}">
+            <thead>
+                <tr>
+                    <td rowspan="2" *ngIf="hasVerticalCode" >{{topLeftCellCodeLabel}}</td>
+                    <td rowspan="2">{{topLeftCellSubjectLabel}}</td>
+                    <td *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
+                        colspan="2">
+                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList()">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+                    <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+                    <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
+                        <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                               (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

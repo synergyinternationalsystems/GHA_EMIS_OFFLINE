@@ -1,0 +1,25 @@
+<div>
+    <div *ngFor="let topLevelClassifier of classifierList.get(topLevelClassifierName)" #multi3LRequiredName>
+        <label class="sis-label">{{label}}</label>
+        <div class="sis-table-scroll">
+            <table class="mdl-data-table sis-table--margin-top mdl-js-data-table sis-full-width" id="{{tableId}}">
+                <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">{{topLevelClassifier.getName()}}</th>
+                    <th class="mdl-data-table__cell--centered">
+                        <span>Number Of Rooms</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let indicatorTrackingItem of currentIndicatorTrackingMap.get(topLevelClassifier.getId())">
+                    <td class="mdl-data-table__cell--non-numeric">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                    <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                        <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

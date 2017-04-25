@@ -1,0 +1,84 @@
+<div mdl class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div class="mdl-cell mdl-cell--8-col">
+            <div>
+                <label class="sis-label">16.1 Income and Expenditure of the School</label>
+                <sis-census-finances-1L-V [census]="census"
+                                          [classifierList]="classifierList"
+                                          [schoolTypeId]="schoolTypeId"
+                                          [verticalIncomeClassifierName]="'FinanceIncome'"
+                                          [verticalExpenditureClassifierName]="'FinanceExpenditure'"
+                                          [incomeSubEntityName]="'censusSchoolIncomes'"
+                                          [expenditureSubEntityName]="'censusSchoolExpenditures'">
+                </sis-census-finances-1L-V>
+            </div>
+
+            <div>
+                <label class="sis-label">16.2 Activities of PTAs</label>
+                <sis-census-finances-1L-V [census]="census"
+                                          [schoolTypeId]="schoolTypeId"
+                                          [classifierList]="classifierList"
+                                          [verticalIncomeClassifierName]="'FinanceActivityIncome'"
+                                          [verticalExpenditureClassifierName]="'FinanceActivityExpenditure'"
+                                          [incomeSubEntityName]="'censusSchoolActivityIncomes'"
+                                          [expenditureSubEntityName]="'censusSchoolActivityExpenditures'">
+                </sis-census-finances-1L-V>
+            </div>
+
+            <div class="sis-table-scroll sis-controls--top-margin">
+                <label class="sis-label">16.3 Resources Received In-kind</label>
+                <table class="mdl-data-table mdl-js-data-table  sis-table-total">
+                    <thead>
+                        <tr>
+                            <th style="width: 300px;">
+                                <span>Source </span>
+                            </th>
+                            <th style="width: 460px;">
+                                <span>Type of Work/Donation/Fund</span>
+                            </th>
+                            <th style="width: 350px;">
+                                <span>Estimated Cost (in GHS) </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let resource of resourcesList; let i = index">
+                            <td (click)="editResource(true,resource)">{{resource.getProperty("source").value}}</td>
+                            <td>{{resource.getProperty("typeofWork").value}}</td>
+                            <td class="mdl-data-table__cell--right">{{resource.getProperty("cost").value}}</td>
+                            <td>
+                                <i (click)="delete(resource)" class="material-icons mdl-data-table--action-icon" title="Remove">clear</i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                <span>TOTAL</span>
+                            </th>
+                            <th></th>
+                            <th class="mdl-data-table__cell--right">
+                                <span>{{totalValue()}}</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="sis-float-right">
+                <button id="addSourceId" (click)="addResource(true)"
+                        class="mdl-button sis-button-top-margin mdl-js-button mdl-button--raised mdl-js-ripple-effect button--full-width-mobile  sis-btn--primary">
+                    Add
+                </button>
+                <resources-add-popup #resourcesAddPopup *ngIf="isAddSourcePopupActive"
+                                     [resourcesList]="resourcesList"
+                                     [subEntity]="subEntity"
+                                     [isErrorMessageVisible]="isErrorMessageVisible"
+                                     (done)="updateResourcesList()"
+                                     (onClose)="setIsAddSourcePopupActive(false, null)">
+                </resources-add-popup>
+            </div>
+        </div>
+    </div>
+</div>

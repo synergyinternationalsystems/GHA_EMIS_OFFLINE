@@ -1,0 +1,179 @@
+<!--section  2.1 -->
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label sis-element-required">2.1 Indicate classes involved in
+                Multigrade by level</label>
+            <span>{{censusSchoolMultigradeLevelsNames()}}</span>
+        </div>
+
+        <!--section  2.2 -->
+
+        <div *ngIf="getIsBasicSchoolType()" #schoolLevelGroupClassifierCheckBoxes>
+            <label class="sis-label sis-element-required">2.2 Which of these levels run shift system in your school?</label>
+            <span>{{censusSchoolLevelSystemsNames()}}</span>
+        </div>
+
+        <!--section 2.3-->
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label sis-element-required">2.3 Is your school one of two DIFFERENT schools making
+                use of the same building? (Co-hosting)</label>
+
+            <span>{{coHostingYesNo.getProperty('coHostingYesNoId').value.getName()}}</span>
+            <span *ngIf="coHostingYesNo.getProperty('coHostingYesNoId').value.getId() == 1">{{coHostingYesNo.getProperty('otherSchoolName_ENG').value}}</span>
+
+        </div>
+        <!--section 2.1 or 2.4 -->
+        <div *ngIf="getIsSecondarySchoolType()|| getIsBasicSchoolType()">
+
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.1 Select your school
+                    type</label>
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.4 Select your school
+                    type</label>
+
+            <span>{{educationalType.getProperty('educationalTypeId').value.getName()}}</span>
+        </div>
+        <div *ngIf="getIsTVETSchoolType()">
+            <label class="sis-label sis-element-required">2.1 Select your institution type</label>
+            <div>
+                <span>{{genderInstitutionType.getProperty('genderInstitutionTypeId').value.getName()}}</span>
+            </div>
+        </div>
+
+        <!--section 2.2 -->
+        <div>
+            <label class="sis-label sis-element-required"
+                   *ngIf="!getIsTVETSchoolType()">2.5 Category of School</label>
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.2 Category of Institution</label>
+            <span>{{schoolCategory.getProperty('schoolCategoryId').value.getName()}}</span>
+        </div>
+        <div *ngIf="getIsSecondarySchoolType()">
+            <sis-census-indicator-tracking-2LH-view [census]="census"
+                                                    [classifierList]="classifierList"
+                                                    [label]="'2.3 If ANY at all, indicate the NUMBER of special pupils in your school.'"
+                                                    [tableId]="table2LHId"
+                                                    [horizontalFirstLevelClassifierName]="'Disability'"
+                                                    [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                    [indicatorType]="indicatorType2">
+            </sis-census-indicator-tracking-2LH-view>
+        </div>
+        <!-- section 2.6 basic school-->
+        <div *ngIf="getIsBasicSchoolType()">
+            <div class="sis-table-scroll">
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [classifierList]="classifierList"
+                                                       [label]="'2.6	If ANY at all, indicate the NUMBER of special pupils in your school.'"
+                                                       [tableId]="table3LId"
+                                                       [topLeftCellLabel]=""
+                                                       [verticalClassifierName]="'SchoolLevelGroup'"
+                                                       [horizontalFirstLevelClassifierName]="'Disability'"
+                                                       [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                       [verticalClassifierFilterArray]="SPECIAL_PUPILS_BASIC_ITEMS"
+                                                       [indicatorType]="indicatorType1">
+                </sis-census-indicator-tracking-3L-view>
+            </div>
+        </div>
+
+        <!--section 2.3 -->
+        <div *ngIf="getIsTVETSchoolType()">
+            <label class="sis-label sis-element-required">2.3 Is your Institution a Special Education Institution?</label>
+            <span>{{specialEducationYesNo.getProperty('specialEducationYesNoId').value.getName()}}</span>
+        </div>
+
+
+        <div *ngIf="getIsTVETSchoolType()">
+            <sis-census-indicator-tracking-2LH-view [census]="census"
+                                                    [classifierList]="classifierList"
+                                                    [label]="'2.4 If ANY at all, indicate the NUMBER of special students in your institution.'"
+                                                    [tableId]="table2LHId"
+                                                    [horizontalFirstLevelClassifierName]="'Disability'"
+                                                    [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                    [indicatorType]="indicatorType2">
+            </sis-census-indicator-tracking-2LH-view>
+        </div>
+
+        <!--section 2.7 -->
+        <div>
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.7 Does your school have
+                Ramps for physically challenged pupils?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.4 Does your school
+                have Ramps for physically challenged pupils?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">
+                2.5 Does your school have Ramps for physically challenged students?</label>
+            <span>{{sanitationRampRails.getProperty('yesNoRampId').value.getName()}}</span>
+            <span *ngIf="sanitationRampRails.getProperty('yesNoRampId').value.getId() == 1">,{{sanitationRampRails.getProperty('sanitationRampId').value.getName()}}</span>
+
+        </div>
+        <!--section 2.8 -->
+        <div>
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.8 Does your school have
+                Rails for visually impaired pupils?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.5 Does your school
+                have Rails for visually impaired pupils?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.6 Does your school have
+                Rails for visually impaired students?
+            </label>
+            <span>{{sanitationRampRails.getProperty('yesNoRailsId').value.getName()}}</span>
+            <span *ngIf="sanitationRampRails.getProperty('yesNoRailsId').value.getId() == 1">,{{sanitationRampRails.getProperty('sanitationRampRailsId').value.getName()}}</span>
+        </div>
+
+        <!--section 2.5 -->
+        <div>
+
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.7 What type of Government Support do you need for your Physically disabled students?
+            </label>
+            <label class="sis-label sis-element-required"
+                   *ngIf="getIsBasicSchoolType()">2.9 What type of Support do you need for your impaired / physically challenged pupils?</label>
+            <label class="sis-label sis-element-required"
+                   *ngIf="getIsSecondarySchoolType()">2.6 What type of Support do you need for your challenged students?
+            </label>
+            <span>{{censusSchoolSupportTypesNames()}}</span>
+        </div>
+        <!--section  2.10 -->
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label sis-element-required">
+                2.10 What Ghanaian language(s) are taught in your school?
+            </label>
+            <span>{{censusSchoolLanguagesNames()}}</span>
+        </div>
+
+        <!-- section  2.11-->
+        <div>
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">
+                2.8 How far away from the school is ...?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">
+                2.7 How far away from the school is ...?
+            </label>
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">
+                2.11 How far away from the school is ...?
+            </label>
+            <div #awayFromKms>
+                <div>
+                    <label class="sis-label">{{awayFromSchool_a}}</label>
+                    <div #awayFromKma>
+                        <span>{{awayFromKms_0.getProperty('name_ENG').value}}</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="sis-label">{{awayFromSchool_b}}</label>
+                    <div #awayFromKmb>
+                        <span>{{awayFromKms_1.getProperty('name_ENG').value}}</span>
+                    </div>
+                </div>
+                <div>
+                    <label class="sis-label">{{awayFromSchool_c}}</label>
+                    <div #awayFromKmc>
+                        <span>{{awayFromKms_2.getProperty('name_ENG').value}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+</form>-->

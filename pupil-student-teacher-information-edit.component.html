@@ -1,0 +1,331 @@
+        <div class="mdl-grid mdl-grid--no-spacing" title="">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div *ngIf="isBasicSchool()">
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'pupilsDeadBasicValidation'"
+                                       [forControl]="pupilsDeadBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDeadValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                14.1 How many pupils died in the previous year?
+                            </label>
+                    </div>
+                    <div #pupilsDeadBasicName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedPupilsSectionId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_BASIC_INFORMATION_PUPIL_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="pupilsDeadBasicSchool">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'pupilsDiseasedParentsBasicValidation'"
+                                       [forControl]="pupilsDiseasedParentsBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDiseasedParentsValidation()"
+                                       [class]="'sis-float-left'">
+                                </sis-error>
+                            <label class="sis-label sis-element-required">
+                                14.2 How many pupils have deceased parent(s)?
+                            </label>
+                    </div>
+                    <div #pupilsDiseasedParentsBasicName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedStudentsCompositionId"
+                                                          [topLeftCellLabel]="'Level'"
+                                                          [verticalClassifierName]="'SchoolLevelGroup'"
+                                                          [horizontalFirstLevelClassifierName]="'Pupil'"
+                                                          [horizontalSecondLevelClassifierName]="'DiedParent'"
+                                                          [verticalClassifierFilterPropertyName]="'schoolTypeId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.SCHOOL_LEVEL_GROUP_NURSERY"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="pupilsDiseasedParents">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'teacherDeadBasicValidation'"
+                                       [forControl]="teacherDeadBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                14.3 How many teachers died in the previous year?
+                            </label>
+                    </div>
+                    <div #teacherDeadBasicName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedTeachersCompositionBasicId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="teacherDied">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'ictTrainingBasicValidation'"
+                                       [forControl]="ictTrainingBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingBasicValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                14.4 ICT Trainings
+                            </label>
+                    </div>
+                    <div #ictTrainingBasicName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="ictTrainingsCompositionId"
+                                                          [verticalClassifierName]="'IctTraining'"
+                                                          [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                          [horizontalFirstLevelClassifierFilterArray]="ICT_TRAININGS_BASIC_ITEMS"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="pupilTeacherInfoBasicSchoolIctTraining">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'hivAidsTrainedTeachersBasicValidation'"
+                                       [forControl]="hivAidsTrainedTeachersBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.hivAidsTrainedTeachersValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">14.5 Number of teachers who have been trained in HIV/AIDS based education (Refer to the application)?</label>
+                    </div>
+                    <div #hivAidsTrainedTeachersBasicName>
+                        <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [classifierList]="classifierList"
+                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                            [noTopLeftCellLabel] = "true"
+                                                            [indicatorInstanceId]="hivAidsTrainedTeachersBasicSchool"
+                                                            [horizontalClassifierName]="'Gender'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'hivAidsTeachingTeachersBasicValidation'"
+                                       [forControl]="hivAidsTeachingTeachersBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.hivAidsTeachingTeachersValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">14.6 Number of teachers teaching HIV/AIDS based education this year</label>
+                    </div>
+                    <div #hivAidsTeachingTeachersBasicName>
+                        <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [classifierList]="classifierList"
+                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                            [noTopLeftCellLabel] = "true"
+                                                            [indicatorInstanceId]="hivAidsTeachingTeachersBasicSchool"
+                                                            [horizontalClassifierName]="'Gender'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'teachersReceivingInsetBasicValidation'"
+                                       [forControl]="teachersReceivingInsetBasicName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.teachersReceivingInsetValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">14.7 Of those teaching this subject, how many received INSET in this subject?</label>
+                    </div>
+                    <div #teachersReceivingInsetBasicName>
+                        <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [classifierList]="classifierList"
+                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                            [noTopLeftCellLabel] = "true"
+                                                            [indicatorInstanceId]="teachersReceivingInsetBasicSchool"
+                                                            [horizontalClassifierName]="'Gender'">
+                        </sis-census-indicator-tracking-1L-H>
+                    </div>
+                </div>
+
+                <div *ngIf="isSecondSchool()">
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'studentsDeadSecondaryValidation'"
+                                       [forControl]="studentsDeadSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeadSecondaryValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                12.1 How many students died in the previous year?
+                            </label>
+                    </div>
+                    <div #studentsDeadSecondaryName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedStudentsCompositionSecondId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_SEC_INFORMATION_STUDENT_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="studentDeadSecondaryTvetSchool">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'studentsDeceasedSecondaryValidation'"
+                                       [forControl]="studentsDeceasedSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeceasedValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                12.2 How many students have deceased parent(s)?
+                            </label>
+                    </div>
+                    <div #studentsDeceasedSecondaryName>
+                        <sis-census-indicator-tracking-2LH [census]="census"
+                                                           [classifierList]="classifierList"
+                                                           [tableId]="deceasedParentSecondarySectionId"
+                                                           [horizontalFirstLevelClassifierName]="'Gender'"
+                                                           [horizontalSecondLevelClassifierName]="'DiedParent'"
+                                                           [indicatorType]="pupilsDiseasedParentsSecondarySchool">
+                        </sis-census-indicator-tracking-2LH>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'teacherDeadSecondaryValidation'"
+                                       [forControl]="teacherDeadSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                12.3 How many teachers died in the previous year?
+                            </label>
+                    </div>
+                    <div #teacherDeadSecondaryName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedTeachersCompositionSecondId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="teacherDied">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'ictTrainingSecondaryValidation'"
+                                       [forControl]="ictTrainingSecondaryName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingSecondaryValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                12.4 ICT Trainings
+                            </label>
+                    </div>
+                    <div #ictTrainingSecondaryName>
+                        <sis-census-indicator-tracking-2L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="'beneficiaryTypeTableId'"
+                                                          [horizontalClassifierName]="'Gender'"
+                                                          [verticalClassifierName]="'IctTraining'"
+                                                          [indicatorInstanceId]="pupilTeacherInfoSecondarySchoolIctTraining">
+                        </sis-census-indicator-tracking-2L>
+                    </div>
+                </div>
+
+                <div *ngIf="isTVET()">
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'studentsDeadTVETValidation'"
+                                       [forControl]="studentsDeadTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeadTVETValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+
+                            <label class="sis-label sis-element-required">
+                                10.1 How many students died in the previous year?
+                            </label>
+                    </div>
+                    <div #studentsDeadTVETName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedStudentsCompositionTVETId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_INFORMATION_STUDENT_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="studentDeadSecondaryTvetSchool">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+
+
+                    <div class="sis-control-validation">
+                            <sis-error [id]="'teacherDeadTVETValidation'"
+                                       [forControl]="teacherDeadTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">
+                                10.2 How many teachers died in the previous year?
+                            </label>
+                    </div>
+                    <div #teacherDeadTVETName>
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [classifierList]="classifierList"
+                                                          [tableId]="diedTeachersCompositionTVETId"
+                                                          [topLeftCellLabel]="'Age Group'"
+                                                          [verticalClassifierName]="'Age'"
+                                                          [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                          [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
+                                                          [hasTotalRow]="true"
+                                                          [indicatorType]="teacherDied">
+                        </sis-census-indicator-tracking-3L>
+                    </div>
+                </div>
+            </div>
+        </div>
+

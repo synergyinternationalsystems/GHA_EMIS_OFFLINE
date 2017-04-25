@@ -1,0 +1,86 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div #pupilsTransferred *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label sis-element-required">11.1</label>
+            <sis-census-indicator-tracking-3L-view [census]="census"
+                                              [classifierList]="classifierList"
+                                              [tableId]="pupilAttTableId "
+                                              [verticalClassifierName]="'IndicatorPupilAttendance'"
+                                              [horizontalFirstLevelClassifierName]="'SchoolLevel'"
+                                              [horizontalSecondLevelClassifierName]="'Pupil'"
+                                              [verticalClassifierFilterPropertyName]="''"
+                                              [verticalClassifierFilterPropertyValue]="''"
+                                              [horizontalFirstLevelClassifierFilterPropertyName]="''"
+                                              [horizontalFirstLevelClassifierFilterPropertyValue]="''"
+                                              [horizontalSecondLevelClassifierFilterPropertyName]="''"
+                                              [horizontalSecondLevelClassifierFilterPropertyValue]="''"
+                                              [hasEmbeddedVerticalClassifier]="true"
+                                              [noVerticalClassifierColumn]="true"
+                                              [indicatorType]="35">
+            </sis-census-indicator-tracking-3L-view>
+        </div>
+
+
+        <div #studentsTransferred *ngIf="getIsSecondarySchoolType()">
+            <label class="sis-label sis-element-required">11.1</label>
+            <sis-census-indicator-tracking-3L-view [census]="census"
+                                              [classifierList]="classifierList"
+                                              [tableId]="studentAttTableId "
+                                              [verticalClassifierName]="'IndicatorStudentAttendance'"
+                                              [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                              [horizontalSecondLevelClassifierName]="'Pupil'"
+                                              [verticalClassifierFilterPropertyName]="''"
+                                              [verticalClassifierFilterPropertyValue]="''"
+                                              [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                              [horizontalFirstLevelClassifierFilterPropertyValue]="'2'"
+                                              [horizontalSecondLevelClassifierFilterPropertyName]="''"
+                                              [horizontalSecondLevelClassifierFilterPropertyValue]="''"
+                                              [hasVerticalTotalColumn]="true"
+                                              [hasEmbeddedVerticalClassifier]="true"
+                                              [noVerticalClassifierColumn]="true"
+                                              [indicatorType]="61">
+            </sis-census-indicator-tracking-3L-view>
+        </div>
+
+        <div class="sis-controls--top-margin">
+            <sis-census-indicator-tracking-1L-HView [census]="census"  *ngIf="getIsBasicSchoolType()"
+                                                [classifierList]="classifierList"
+                                                [label]="' 11.7 How many Girls got Pregnant last academic Year?'"
+                                                [tableId]="'girlsGotPregnantBasicTableId'"
+                                                [indicatorInstanceId]="36"
+                                                [horizontalClassifierName]="'SchoolLevel'"
+                                                [horizontalClassifierFilterArray]="SCHOOL_LEVEL_IS_USED_IN_PUPILSTUDENT_ATTENDANCE_TAB"
+                                                [topLeftCellLabel]=""
+                                                [verticalRowName]="''"
+                                                [noTopLeftCellLabel]="true">
+            </sis-census-indicator-tracking-1L-HView>
+        </div>
+
+        <sis-census-indicator-tracking-1L-HView [census]="census" *ngIf="getIsSecondarySchoolType()"
+                                            [classifierList]="classifierList"
+                                            [label]="'9.7 How many Girls got Pregnant last academic Year?'"
+                                            [tableId]="'girlsGotPregnantSecondaryTableId'"
+                                            [indicatorInstanceId]="59"
+                                            [horizontalClassifierName]="'SchoolLevelGroup'"
+                                            [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
+                                            [topLeftCellLabel]=""
+                                            [verticalRowName]="''"
+                                            [noTopLeftCellLabel]="true">
+
+        </sis-census-indicator-tracking-1L-HView>
+
+
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label">11.8 How many days was your school opened in the month of February?</label>
+        </div>
+        <div *ngIf="getIsSecondarySchoolType()">
+            <label class="sis-label">9.8 How many days was your school opened in the month of January?</label>
+        </div>
+        <div class="mdl-cell--2-col" #howManyDaysSchoolWasOpened>
+            <sis-census-indicator-tracking-0LevelView [census]="census"
+                                                  [classifierList]="classifierList"
+                                                  [indicatorInstanceId]="37">
+            </sis-census-indicator-tracking-0LevelView>
+        </div>
+    </div>
+</div>

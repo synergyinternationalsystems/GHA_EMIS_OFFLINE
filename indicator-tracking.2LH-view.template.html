@@ -1,0 +1,28 @@
+<div>
+    <label class="sis-label"> {{label}} </label>
+    <!--&lt;!&ndash;-->
+    <div class="sis-table-scroll">
+        <table class="mdl-data-table mdl-js-data-table" id="{{tableId}}">
+            <thead>
+                <tr>
+                    <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
+                        [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
+                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelAllClassifierList()" class="mdl-data-table__cell--centered">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--non-numeric">
+                        <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

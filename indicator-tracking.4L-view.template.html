@@ -1,0 +1,39 @@
+<div>
+    <label class="sis-label">{{label}}</label>
+
+    <div class="sis-table-scroll">
+        <table class="mdl-data-table mdl-js-data-table"
+               id="{{tableId}}">
+            <thead>
+            <tr>
+                <th rowspan="3" class="mdl-data-table__cell--non-numeric">{{topLeftCellLabel}}</th>
+                <th *ngFor="let horizontalFirstLevelClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
+                    colspan="6">
+                    <span>{{horizontalFirstLevelClassifier.getName()}}</span>
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList()" colspan="2" class="mdl-data-table__cell--centered">
+                    <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                </th>
+            </tr>
+            <tr>
+                <th *ngFor="let horizontalThirdLevelClassifier of filteredHorizontalThirdLevelByFirstAndSecondLevelClassifierList()" class="mdl-data-table__cell--centered">
+                    <span>{{horizontalThirdLevelClassifier.getName()}}</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+                <td class="mdl-data-table__cell--non-numeric">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
+                <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                    <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                           (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
+                           class="sis-input sis-small-width sis-align-right"/>-->
+                    <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

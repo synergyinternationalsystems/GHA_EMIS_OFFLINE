@@ -1,0 +1,76 @@
+<div mdl class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--12-col">
+        <div #documentType>
+            <div class="sis-control-validation">
+                <sis-error [id]="'documentTypeValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="documentType" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="attachmentValidationHelper.documentTypeRequiredValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <label class="sis-label sis-element-required">Type</label>
+            </div>
+            <div class="sis-large-width">
+                <sis-combo-box [id]="'attachmentTypeId'" [placeHolder]="'-- Select Type --'" [isEnabled]="true" [value]="document.getProperty('documentTypeId').value"
+                               (valueChange)="documentTypeComboValueChange($event)">
+                    <sis-combo-box-items [data]="documentTypes" [valueField]="" [nameField]="'name'"></sis-combo-box-items>
+                </sis-combo-box>
+            </div>
+        </div>
+
+        <div #attachmentTitle>
+            <div class="sis-control-validation">
+                <sis-error [id]="'attachmentTitleValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="attachmentTitle" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="attachmentValidationHelper.attachmentTitleRequiredValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <label class="sis-label sis-element-required">Title</label>
+            </div>
+            <input type="text" [(ngModel)]="document.getProperty('fileTitle_ENG').value" class="sis-input sis-full-width"/>
+        </div>
+
+        <div #attachment *ngIf="!isDocumentUploaded">
+            <div class="sis-control-validation">
+                <sis-error [id]="'attachmentValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="attachment" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="attachmentValidationHelper.attachmentRequiredValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <sis-error [id]="'attachmentSizeValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="attachment" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="attachmentValidationHelper.attachmentSizeValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <sis-error [id]="'attachmentExecutableTypeValidation'" *ngIf="isErrorMessageVisible"
+                           [forControl]="attachment" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorMessage]="attachmentValidationHelper.attachmentExecutableTypeValidation()"
+                           [class]="'sis-float-left'">
+                </sis-error>
+                <label class="sis-label sis-element-required">Attachments</label>
+            </div>
+            <div>
+                <form enctype="multipart/form-data" method="post">
+                    <input type="file" (change)="changeAttachment(uploadField.files)" #uploadField/>
+                </form>
+            </div>
+        </div>
+
+        <div class="mdl-cell mdl-cell--4-col" *ngIf="isDocumentUploaded">
+            <label class="sis-label">Attachments</label>
+            <div>
+                <a (click)="deleteDocument()"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a [href]="" (click)="getDocument()">{{document.getProperty('fileName').value}}</a>
+            </div>
+        </div>
+
+        <div class="sis-actions sis-align-right sis-button-top-margin">
+            <button class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect" (click)="onDoneClicked()"> Ok </button>
+            <button class="mdl-button mdl-button--raised mdl-js-button  sis-btn--sec mdl-js-ripple-effect" (click)="onCancelClicked()"> Cancel </button>
+        </div>
+    </div>
+</div>
