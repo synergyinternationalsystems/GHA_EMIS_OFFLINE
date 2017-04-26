@@ -15,7 +15,7 @@ var configFilePath;
 global.sharedObject = {db: null, onlineURL: null, logger:null, userDocuments: null, fileSystem: fsp, PDFWindow: PDFWindow};
 
 autoUpdater.logger = logger;
-autoUpdater.logger.transports.file.level = 'info';
+// autoUpdater.logger.transports.file.level = 'info';
 logger.info('App starting...');
 
 app.setName("GhanaEMIS");
