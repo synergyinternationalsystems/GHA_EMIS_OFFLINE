@@ -1,7 +1,7 @@
 "use strict"
 
-const builder = require("electron-builder")
-const Platform = builder.Platform
+const builder = require("electron-builder");
+const Platform = builder.Platform;
 
 // Promise is returned
 builder.build({
@@ -12,4 +12,4 @@ builder.build({
     })
     .catch((error) => {
         console.log("Error creating installer with electron-builder: " + error);
-    })
+    });
