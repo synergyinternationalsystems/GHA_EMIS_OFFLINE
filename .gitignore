@@ -19,5 +19,6 @@ app/**/*.d.ts
 app/**/*.css
 
 dist
+dist - Copy
 app.js
 app.bundle.js
