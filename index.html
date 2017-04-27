@@ -54,14 +54,14 @@
   <script>if (window.module) module = window.module;</script>
 </head>
   <body>
-      Current version: <span id="version">vX.Y.Z</span>
+      <!--Current version: <span id="version">vX.Y.Z</span>-->
       <div id="messages"></div>
-      <!--<sis-app>Loading...</sis-app>-->
+      <sis-app>Loading...</sis-app>
 
       <script>
           // Display the current version
-          let version = window.location.hash.substring(1);
-          document.getElementById('version').innerText = version;
+//          let version = window.location.hash.substring(1);
+//          document.getElementById('version').innerText = version;
           // Listen for messages
           const {ipcRenderer} = require('electron');
           ipcRenderer.on('message', function(event, text) {
