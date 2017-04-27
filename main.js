@@ -60,6 +60,7 @@ app.on('ready', function() {
         // Initialize DB - if newly installed then run creation script, else run appropriate migration scripts
         const dbInit = new DBInit(configFilePath, db);
         let dbInitPromise = dbInit.initDB();
+        autoUpdater.checkForUpdates();
         if(!dbInitPromise){
             return;
         } else {
