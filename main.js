@@ -60,6 +60,7 @@ app.on('ready', function() {
         // Initialize DB - if newly installed then run creation script, else run appropriate migration scripts
         const dbInit = new DBInit(configFilePath, db);
         let dbInitPromise = dbInit.initDB();
+        logger.info('Checking for updates...');
         autoUpdater.checkForUpdates();
         if(!dbInitPromise){
             return;
@@ -120,115 +121,42 @@ function sendStatusToWindow(text) {
     logger.info(text);
     mainWindow.webContents.send('message', text);
 }
-
-autoUpdater.on('error', (event, error) => {
-    dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
-});
-
 autoUpdater.on('checking-for-update', () => {
     sendStatusToWindow('Checking for update...');
 })
-
-autoUpdater.on('update-available', () => {
-    dialog.showMessageBox({
-        type: 'info',
-        title: 'Found Updates',
-        message: 'Found updates, do you want update now?',
-        buttons: ['Sure', 'No']
-    }, (buttonIndex) => {
-        if (buttonIndex === 0) {
-            autoUpdater.downloadUpdate()
-        }
-        else {
-            updater.enabled = true
-            updater = null
-        }
-    })
-});
-
-autoUpdater.on('update-not-available', () => {
-    dialog.showMessageBox({
-        title: 'No Updates',
-        message: 'Current version is up-to-date.'
-    });
-    updater.enabled = true;
-    updater = null;
-});
-
+autoUpdater.on('update-available', (ev, info) => {
+    sendStatusToWindow('Update available.');
+})
+autoUpdater.on('update-not-available', (ev, info) => {
+    sendStatusToWindow('Update not available.');
+})
+autoUpdater.on('error', (ev, err) => {
+    sendStatusToWindow('Error in auto-updater.');
+})
 autoUpdater.on('download-progress', (ev, progressObj) => {
     sendStatusToWindow('Download progress...');
+})
+autoUpdater.on('update-downloaded', (ev, info) => {
+    sendStatusToWindow('Update downloaded; will install in 5 seconds');
 });
-
-autoUpdater.on('update-downloaded', () => {
-    dialog.showMessageBox({
-        title: 'Install Updates',
-        message: 'Updates downloaded, application will be quit for update...'
-    }, () => {
-        autoUpdater.quitAndInstall()
-    })
-});
+autoUpdater.on('update-downloaded', (ev, info) => {
+    // Wait 5 seconds, then quit and install
+    // In your application, you don't need to wait 5 seconds.
+    // You could call autoUpdater.quitAndInstall(); immedia`tely
+    setTimeout(function() {
+        autoUpdater.quitAndInstall();
+    }, 5000)
+})
 
 // export this to MenuItem click callback
-function checkForUpdates (menuItem, focusedWindow, event) {
-    updater = menuItem;
-    updater.enabled = false;
-    autoUpdater.checkForUpdates();
-}
-module.exports.checkForUpdates = checkForUpdates;
+// function checkForUpdates (menuItem, focusedWindow, event) {
+//     updater = menuItem;
+//     updater.enabled = false;
+//     autoUpdater.checkForUpdates();
+// }
+// module.exports.checkForUpdates = checkForUpdates;
 
 /*=============================== /Auto Updater ============================*/
-
-// function setGlobalShortcuts() {
-//     globalShortcut.unregisterAll();
-//
-//     var shortcutKeysSetting = configuration.readSettings('shortcutKeys');
-//     var shortcutPrefix = shortcutKeysSetting.length === 0 ? '' : shortcutKeysSetting.join('+') + '+';
-//
-//     globalShortcut.register(shortcutPrefix + '1', function () {
-//         mainWindow.webContents.send('global-shortcut', 0);
-//     });
-//     globalShortcut.register(shortcutPrefix + '2', function () {
-//         mainWindow.webContents.send('global-shortcut', 1);
-//     });
-// }
-
-// var ipc = require('ipc');
-//
-// ipc.on('close-main-window', function () {
-//     app.quit();
-// });
-
-// var settingsWindow = null;
-
-// ipc.on('open-settings-window', function () {
-//     if (settingsWindow) {
-//         return;
-//     }
-//
-//     settingsWindow = new BrowserWindow({
-//         frame: false,
-//         height: 200,
-//         resizable: false,
-//         width: 200
-//     });
-//
-//     settingsWindow.loadUrl('file://' + __dirname + '/app/settings.html');
-//
-//     settingsWindow.on('closed', function () {
-//         settingsWindow = null;
-//     });
-// });
-//
-// ipc.on('close-settings-window', function () {
-//     if (settingsWindow) {
-//         settingsWindow.close();
-//     }
-// });
-//
-// ipc.on('set-global-shortcuts', function () {
-//     setGlobalShortcuts();
-// });
-
 
 
 // if(require('electron-squirrel-startup')) return;
