@@ -40,7 +40,7 @@ app.on('ready', function() {
 
     PDFWindow.addSupport(mainWindow);
     // mainWindow.loadURL('file://' + __dirname + '/index.html');
-    mainWindow.loadURL(`http://localhost:3333`);
+    mainWindow.loadURL(`http://localhost:3333#v${app.getVersion()}`);
 
     // Initiate %user/AppData/Roaming/applicationSettings folder
     configFilePath = app.getPath("userData");
@@ -112,11 +112,21 @@ app.on('window-all-closed', function () {
 /*=============================== Auto Updater ============================*/
 
 let updater;
-autoUpdater.autoDownload = false;
+// autoUpdater.autoDownload = false;
+
+
+function sendStatusToWindow(text) {
+    log.info(text);
+    win.webContents.send('message', text);
+}
 
 autoUpdater.on('error', (event, error) => {
     dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString())
 });
+
+autoUpdater.on('checking-for-update', () => {
+    sendStatusToWindow('Checking for update...');
+})
 
 autoUpdater.on('update-available', () => {
     dialog.showMessageBox({
@@ -133,16 +143,20 @@ autoUpdater.on('update-available', () => {
             updater = null
         }
     })
-})
+});
 
 autoUpdater.on('update-not-available', () => {
     dialog.showMessageBox({
         title: 'No Updates',
         message: 'Current version is up-to-date.'
-    })
-    updater.enabled = true
-    updater = null
-})
+    });
+    updater.enabled = true;
+    updater = null;
+});
+
+autoUpdater.on('download-progress', (ev, progressObj) => {
+    sendStatusToWindow('Download progress...');
+});
 
 autoUpdater.on('update-downloaded', () => {
     dialog.showMessageBox({
@@ -151,13 +165,13 @@ autoUpdater.on('update-downloaded', () => {
     }, () => {
         autoUpdater.quitAndInstall()
     })
-})
+});
 
 // export this to MenuItem click callback
 function checkForUpdates (menuItem, focusedWindow, event) {
-    updater = menuItem
-    updater.enabled = false
-    autoUpdater.checkForUpdates()
+    updater = menuItem;
+    updater.enabled = false;
+    autoUpdater.checkForUpdates();
 }
 module.exports.checkForUpdates = checkForUpdates;
 

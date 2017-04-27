@@ -6,7 +6,7 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.0.12",
+  "version": "1.0.15",
   "repository": "https://github.com/haykanushT/GhanaEMIS_Releases",
   "license": "ISC",
   "main": "./main.js",
@@ -27,6 +27,7 @@
   "scripts": {
     "start": "electron .",
     "lite": "lite-server",
+    "electron-builder": "node_modules/.bin/build --win -p always",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",

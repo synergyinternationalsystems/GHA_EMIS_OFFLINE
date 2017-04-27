@@ -1,0 +1,1 @@
+https://github.com/iffy/electron-updater-example
