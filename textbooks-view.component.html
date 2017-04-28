@@ -4,8 +4,7 @@
             <label class="sis-label sis-element-required">
                 9.1 Indicate the NUMBER of Teaching Guides / HandBooks available by grade
             </label>
-            <div class="mdl-grid mdl-grid--no-spacing">
-                <div class="mdl-cell mdl-cell--12-col">
+
                     <div #handBooksByGradeIndicator>
                         <sis-census-indicator-tracking-2L-view [census]="census"
                                                           [classifierList]="classifierList"
@@ -20,10 +19,8 @@
                                                           [horizontalClassifierFilterPropertyValue]="schoolLevelGroupNursery"
                                                           [verticalClassifierName]="'TeachingGuide'">
                         </sis-census-indicator-tracking-2L-view>
-
                     </div>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -52,7 +49,7 @@
     </div>
 
     <div class="mdl-grid mdl-grid--no-spacing">
-        <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--12-col">
             <label class="sis-label">
                 9.3 Does your school offer these subjects, and is a syllabus AVAILABLE?
             </label>

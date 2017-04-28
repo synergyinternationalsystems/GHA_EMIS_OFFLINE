@@ -8,7 +8,7 @@
                                    [errorMessage]="buildingValidationHelper.basicNumberClassroomEqualValidation()"
                                    [class]="'sis-float-left'">
                         </sis-error>
-                        <label class="sis-layout__section__title sis-controls--top-margin">5.1 Specify the GENERAL construction of the institution buildings by indicating the NUMBER of permanent classrooms with the appropriate description</label>
+                        <label class="sis-label">5.1 Specify the GENERAL construction of the institution buildings by indicating the NUMBER of permanent classrooms with the appropriate description</label>
                     </div>
                     <div #basicNumberClassroomEqualName>
                         <sis-census-indicator-tracking-multi3L [census]="census"
@@ -190,7 +190,7 @@
                     </div>
                 </div>
 
-                <div class="sis-controls--top-margin">
+                <div>
                     <sis-census-indicator-tracking-2L [census]="census" *ngIf="isBasicSchool()"
                                                       [classifierList]="classifierList"
                                                       [schoolTypeId]="schoolTypeId"
@@ -205,7 +205,7 @@
                     </sis-census-indicator-tracking-2L>
                 </div>
 
-                <div class="sis-controls--top-margin">
+                <div>
                     <sis-census-indicator-tracking-2L [census]="census" *ngIf="isTVET()"
                                                       [classifierList]="classifierList"
                                                       [schoolTypeId]="schoolTypeId"

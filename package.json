@@ -6,12 +6,15 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "repository": "https://github.com/haykanushT/GhanaEMIS_Releases",
   "license": "ISC",
   "main": "./main.js",
   "build": {
     "appId": "GhanaEMIS",
+    "directories": {
+      "output": "../RELEASES"
+    },
     "files": [
       "**/*"
     ],
@@ -32,6 +35,7 @@
     "tsc:w": "tsc -w",
     "typings": "typings",
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+    "electron-builder": "node_modules/.bin/build --win -p always",
     "not_used_cleanElectronPackage": "rimraf ../ghana-emis-packaged6",
     "not_used_buildElectronPackage": "npm run cleanElectronPackage && electron-packager . --out ../ghana-emis-packaged6 --asar --overwrite --platform=win32 --arch=x64 --icon=app/resources/images/logo.ico --version-string.CompanyName=\"Synergy International Systems\"",
     "not_used_setupElectronInstaller": "electron-installer-windows --debug --src ../ghana-emis-packaged6/GhanaEMIS-win32-x64/ --dest ../ghana-emis-packaged5_el_win_installer/ --config config.json",
@@ -56,7 +60,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "electron-logger": "0.0.3",
-    "electron-pdf-window": "~1.0.8",
+    "electron-pdf-window": "^1.0.8",
     "electron-updater": "^1.14.2",
     "express": "^4.14.0",
     "fs-promise": "^2.0.0",
@@ -77,7 +81,7 @@
     "concurrently": "^3.1.0",
     "css-loader": "^0.25.0",
     "diff": "^3.0.0",
-    "electron": "~1.4.1",
+    "electron": "^1.4.1",
     "electron-builder": "^16.4.2",
     "electron-packager": "^8.3.0",
     "electron-prebuilt": "^1.4.13",

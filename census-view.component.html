@@ -61,7 +61,7 @@
                                 <sis-census-organisation-view *ngIf="selectedTabId === 1" [census]="census" [classifierList]="classifierItems" [schoolTypeId]="schoolTypeId">Loading ...
                                 </sis-census-organisation-view>
                             </sis-tab>
-                            <sis-tab id="2" title="Materials and Equipment" *ngIf="isBasicOrSecondary()">-->
+                            <sis-tab id="2" title="Materials and Equipment" *ngIf="isBasicOrSecondary()">
                                <sis-census-materialsEquipment-view *ngIf="selectedTabId === 2" [census]="census" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
                                 </sis-census-materialsEquipment-view>
                             </sis-tab>
@@ -130,10 +130,10 @@
                                 <sis-census-finances-view *ngIf="selectedTabId === 18" [census]="census"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
                                 </sis-census-finances-view>
                             </sis-tab>
-                            <!--<sis-tab id="19" title="Notes and Attachments">-->
-                            <!--<sis-census-notes-and-attachments-edit *ngIf="selectedTabId === 19" [census]="census" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...-->
-                            <!--</sis-census-notes-and-attachments-edit>-->
-                            <!--</sis-tab>-->
+                            <sis-tab id="19" title="Notes and Attachments">
+                            <sis-census-notes-and-attachments-edit *ngIf="selectedTabId === 19" [census]="census" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
+                            </sis-census-notes-and-attachments-edit>
+                            </sis-tab>
                         </sis-nav-tabs>
 
 

@@ -40,7 +40,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let indicatorTrackingItem of indicatorTrackingFirstTableList" class="ui-state-default center">
-            <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+            <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier)}}</td>
             <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
             <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
                <!-- <input type="number" [ngModel]="indicatorTrackingItem.classifierValues[i].value"
@@ -98,7 +98,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let indicatorTrackingItem of indicatorTrackingSecondTableList" class="ui-state-default center">
-            <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+            <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier)}}</td>
             <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
             <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
                <!-- <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"

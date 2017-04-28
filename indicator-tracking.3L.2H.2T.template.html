@@ -86,7 +86,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList">
-                    <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier, "EnrolmentProgrammeAdd")}}</td>
+                    <td>{{getEnrolmentProgrammeName(indicatorTrackingItem.verticalClassifier)}}</td>
                     <td>{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
                     <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
                         <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"

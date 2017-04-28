@@ -1,6 +1,6 @@
          <div class="mdl-grid mdl-grid--no-spacing" title="">
             <div class="mdl-cell mdl-cell--12-col">
-                <label class="sis-layout__section__title">6.1 WATER FACILITIES</label>
+                <label class="sis-layout__section__title sis-controls--top-margin">6.1 WATER FACILITIES</label>
 
                 <div class="sis-control-validation">
                     <sis-error [id]="'waterFacilityYesNoValidation'"
@@ -99,11 +99,11 @@
                             </td>
                         </div>
                         <div *ngIf="isCensusSchoolFacilitiesNotEmpty()">
-                            <div class="sis-table-scroll" #facilityFunctioningAtTheTimeName>
+                            <div #facilityFunctioningAtTheTimeName>
                                 <div class="sis-control-validation">
                                     <sis-error [id]="'facilityFunctioningAtTheTimeValidation'"
                                                [forControl]="facilityFunctioningAtTheTimeName" [isInput]="true"
-                                               [errorClass]="'sis-validation-wrapper--grouped'"
+                                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                                [errorMessage]="waterAndSanitationValidationHelper.facilityFunctioningAtTheTimeValidation()"
                                                [class]="'sis-float-left'">
                                     </sis-error>

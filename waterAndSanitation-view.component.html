@@ -415,7 +415,7 @@
                     <!--<input type="text" value="{{effluentDischarge.getProperty('effluentDischarge_ENG').value}}" #effluentDischargeText
                            (change)="onTextChanged(effluentDischarge, 'effluentDischarge_ENG', effluentDischargeText.value)"
                            name="effluentDischargeId" class="sis-input sis-large-width"/>-->
-                    <span>{{effluentDischarge.getProperty('effluentDischarge_ENG').value}}</span>
+                    <span>{{getEffluentDischarge().getProperty('effluentDischarge_ENG').value}}</span>
                 </div>
             </div>
 
@@ -425,7 +425,7 @@
                     <!--<input type="text" value="{{solidWaste.getProperty('solidWaste_ENG').value}}" #solidWasteText
                            (change)="onTextChanged(solidWaste, 'solidWaste_ENG', solidWasteText.value)"
                            name="solidWasteId" class="sis-input sis-large-width"/>-->
-                    <span>{{solidWaste.getProperty('solidWaste_ENG').value}}</span>
+                    <span>{{getSolidWaste().getProperty('solidWaste_ENG').value}}</span>
                 </div>
             </div>
 
@@ -494,7 +494,7 @@
                        #hygieneTaughtSectionText
                        (change)="onTextChanged(hygieneTaught, 'hygieneTaught_ENG', hygieneTaughtSectionText.value)"
                        name="hygieneTaughtSectionId" class="sis-input sis-large-width"/>-->
-                <span> {{hygieneTaught.getProperty('hygieneTaught_ENG').value}}</span>
+                <span> {{getHygieneTaught().getProperty('hygieneTaught_ENG').value}}</span>
             </div>
 
 

@@ -5,12 +5,17 @@
   border: #b94a48 1px solid !important;
   display: inline-block; }
 
-.sis-btn--primary,
-.sis-btn--sec {
-  padding: 1px 16px; }
+.sis-validation-wrapper__icon {
+  margin-top: -2px; }
 
 .mdl-data-table--action-icon {
   vertical-align: middle; }
 
 .k-widget.k-menu .k-item > .k-link > .k-i-arrow-s {
   display: none !important; }
+
+.mdl-button {
+  padding-top: 1px; }
+
+.sis-display-flex.sis-full-width {
+  display: block !important; }

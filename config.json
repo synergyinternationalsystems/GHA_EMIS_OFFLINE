@@ -1,8 +1,0 @@
-{
-    "dest": "dist/installers/",
-    "iconUrl": "http://www.iconarchive.com/download/i103934/sora-meliae/matrilineare/Mimes-image-x-ico.ico",
-    "tags": [
-        "Utility"
-    ],
-    "remoteReleases": "https://github.com/haykanushT/GhanaEMIS_Releases"
-}

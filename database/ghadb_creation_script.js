@@ -2925,6 +2925,11 @@ CREATE TABLE "UserCheckedOutCensuses" (
 "censusSchoolId" integer NOT NULL  DEFAULT (null) ,
 "checkedOutUserId" integer NOT NULL );
 
+CREATE TABLE "OnlineDeVersion" (
+  VersionNumber  nvarchar(50) NOT NULL
+ );
+ insert into OnlineDeVersion values('0.0.44');
+
 
 
 CREATE VIEW "DE_Portfolio_CensusSchool" AS
