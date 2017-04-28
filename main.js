@@ -6,7 +6,7 @@ const server = require("./server");
 const path = require('path');
 const fs = require('fs');
 const fsp = require('fs-promise');
-const DBInit = require('./dbInit.js');
+const DBInit = require('./database/dbInit.js');
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 const logger = require('electron-logger');
@@ -25,11 +25,6 @@ logger.setOutput({file:`${app.getPath("userData")}\\gha-log.log`});
 global.sharedObject.logger = logger;
 
 var mainWindow = null;
-
-// app.on('will-finish-launching', function() {
-//     app.setName("GhanaEMIS");
-//     app.setPath("userData", app.getPath("appData") + "\\" + app.getName());
-// });
 
 app.on('ready', function() {
     mainWindow = new BrowserWindow({
@@ -94,11 +89,6 @@ function createConfigFile() {
     });
 }
 
-// app.on('login', (event, webContents, request, authInfo, callback) => {
-//     event.preventDefault();
-//     callback(authInfo, 'secret');
-// });
-
 app.on('browser-window-created',function(e,window) {
     window.setMenu(null);
 });
@@ -123,19 +113,19 @@ function sendStatusToWindow(text) {
 }
 autoUpdater.on('checking-for-update', () => {
     sendStatusToWindow('Checking for update...');
-})
+});
 autoUpdater.on('update-available', (ev, info) => {
     sendStatusToWindow('Update available.');
-})
+});
 autoUpdater.on('update-not-available', (ev, info) => {
     sendStatusToWindow('Update not available.');
-})
+});
 autoUpdater.on('error', (ev, err) => {
     sendStatusToWindow('Error in auto-updater.');
-})
+});
 autoUpdater.on('download-progress', (ev, progressObj) => {
     sendStatusToWindow('Download progress...');
-})
+});
 autoUpdater.on('update-downloaded', (ev, info) => {
     sendStatusToWindow('Update downloaded; will install in 5 seconds');
 });
@@ -148,13 +138,10 @@ autoUpdater.on('update-downloaded', (ev, info) => {
     }, 5000)
 })
 
-// export this to MenuItem click callback
-// function checkForUpdates (menuItem, focusedWindow, event) {
-//     updater = menuItem;
-//     updater.enabled = false;
-//     autoUpdater.checkForUpdates();
-// }
-// module.exports.checkForUpdates = checkForUpdates;
+function checkForUpdates () {
+    autoUpdater.checkForUpdates();
+}
+module.exports.checkForUpdates = checkForUpdates;
 
 /*=============================== /Auto Updater ============================*/
 

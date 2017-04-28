@@ -3,7 +3,7 @@
  */
 const logger = require('electron-logger');
 const fsp = require('fs-promise');
-const creation_script = require('./database/ghadb_creation_script.js');
+const creation_script = require('./ghadb_creation_script.js');
 
 class DBInit {
 
