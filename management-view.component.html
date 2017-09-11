@@ -4,47 +4,60 @@
             <label class="sis-label">4.1 Does your school have an elected School Management Committee?</label>
             <span>{{censusSchoolCommitteeName()}}</span>
 
+            <div #improvementPlanYesNoName>
+                <label class="sis-label sis-element-required">4.2 Does your school have a School Performance Improvement Plan?</label>
+                <sis-select-one-radio-view [census]="census"
+                                           [classifierList]="classifierList"
+                                           [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                           [censusSubEntityName]="'censusSchoolQuestions'"
+                                           [classifierId]="'IMPROVEMENT_PLAN_YES_NO_ID'"
+                                           [classifierNameFromInput]="'YesNoId'"
+                                           [subEntityFields]="questionSubEntityFields">
+                </sis-select-one-radio-view>
+            </div>
+
+
             <div #capitationGrantBasicName>
-                <label class="sis-label">4.2 Did your school receive its capitation grant for the previous year?</label>
+                <label class="sis-label">4.3 Did your school receive its capitation grant for the previous year?</label>
                 <span>{{censusSchoolQuestionsCapitationGrantName()}}</span>
             </div>
 
 
             <div #CSReceiveServiceBasicName>
-                <label class="sis-label">4.3 How often is your school visited by the Circuit Supervisor?</label>
+                <label class="sis-label">4.4 How often is your school visited by the Circuit Supervisor?</label>
                 <span>{{censusSchoolQuestionsReceiveServiceName()}}</span>
             </div>
 
             <div #insetYesNoBasicName>
-                <label class="sis-label">4.4 Have you attended INSET Training for Head Teachers?</label>
+                <label class="sis-label">4.5 Have you attended INSET (In-ServiceTraining) for Head Teachers</label>
                 <span>{{censusSchoolQuestionsInsetYesNoName()}}</span>
             </div>
 
             <div class="sis-controls--top-margin">
-                <label class="sis-label">4.5 Has any teacher from your school had any in-service training on?</label>
+                <label class="sis-label">4.6 Has any teacher from your school had any in-service training on?</label>
                 <span>{{censusSchoolTeacherTrainingsNames()}}</span>
             </div>
 
             <div #hivaidsYesNoBasicName>
-                <label class="sis-label">4.6 Does your school teach HIV/AIDS issues as integrated in the school
+                <label class="sis-label">4.7 Does your school teach HIV/AIDS issues as integrated in the school
                         curriculum?</label>
                 <span>{{censusSchoolHIVAIDsName()}}</span>
             </div>
 
             <div #schoolMealTypeBasicName>
-                <label class="sis-label">4.7 Indicate the type of School Free Meals scheme available</label>
+                <label class="sis-label">4.8 Indicate the type of School Free Meals scheme available</label>
                 <span>{{censusSchoolMealTypeName()}}</span>
             </div>
 
 
             <div #curriculumLeaderYesNoBasicName>
-                <label class="sis-label sis-element-required">4.8 Does your school have a trained Curriculum Leader?</label>
+                <label class="sis-label sis-element-required">4.9 Does your school have a trained Curriculum Leader?</label>
                 <span>{{censusSchoolCurriculumLeaderYesNoName()}}</span>
             </div>
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.9 Indicate the NUMBER of School Based INSET (SBI) and Cluster Based INSET (CBI) your school
+                    4.10 Indicate the NUMBER of School Based INSET (SBI) and Cluster Based INSET (CBI) your school
                     organised on the following subjects this past academic year
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
@@ -52,34 +65,37 @@
                                                         [tableId]="'SBI_CBINumberCompositionId'"
                                                         [indicatorInstanceId]="managementBasicSBICBINumber"
                                                         [noTopLeftCellLabel]="true"
-                                                        [horizontalClassifierName]="'SchoolSubject'">
+                                                        [horizontalClassifierName]="'SchoolSubject'"
+                                                        [horizontalClassifierFieldName]="'schoolSubjectId'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.10 Does your School have a set of INSET Sourcebooks (Module 3-6)?
+                    4.11 Does your School have a set of INSET Sourcebooks (Module 3-6)?
                 </label>
                 <span>{{censusSchoolInsetScourceBooksYesNoName()}}</span>
             </div>
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.11 How many pupils are Complementary Basic Education (CBE) graduates?
+                    4.12 How many pupils are Complementary Basic Education (CBE) graduates?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
                                                         [tableId]="'basicEducationCompositionId'"
                                                         [indicatorInstanceId]="managementBasicCBEGraduates"
                                                         [noTopLeftCellLabel]="true"
-                                                        [horizontalClassifierName]="'Pupil'">
+                                                        [horizontalClassifierName]="'Pupil'"
+                                                        [horizontalClassifierFieldName]="'pupilId'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
             <div #managementNeedyPupilsStudentsBasicName>
-                <label class="sis-label sis-element-required">4.12 {{needyPupilClassifier}}</label>
+                <label class="sis-label sis-element-required">4.13 {{needyPupilClassifier}}</label>
                 <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
                                                         [tableId]="'needyPupilsSectionId'"
                                                         [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                         [horizontalClassifierName]="'Pupil'"
+                                                        [horizontalClassifierFieldName]="'pupilId'"
                                                         [subEntityFilterPropertyName]="'indicatorManagement'"
                                                         [noTopLeftCellLabel]="true"
                                                         [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
@@ -87,11 +103,12 @@
             </div>
 
             <div #managementBrightButNeedyPupilsStudentsBasicName>
-                <label class="sis-label sis-element-required">4.13 {{brightPupilClassifier}}</label>
+                <label class="sis-label sis-element-required">4.14 {{brightPupilClassifier}}</label>
                 <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
                                                         [tableId]="'needyPupilsSectionId'"
                                                         [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                         [horizontalClassifierName]="'Pupil'"
+                                                        [horizontalClassifierFieldName]="'pupilId'"
                                                         [subEntityFilterPropertyName]="'indicatorManagement'"
                                                         [noTopLeftCellLabel]="true"
                                                         [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
@@ -100,30 +117,33 @@
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.14 How many of the following Incentives from Government have your school received to date?
+                    4.15 How many of the following Incentives from Government have your school received to date?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
                                                         [tableId]="'incentivesFromGovernmentCompositionId'"
                                                         [indicatorInstanceId]="managementIncentivesFromGoverment"
                                                         [noTopLeftCellLabel]="true"
-                                                        [horizontalClassifierName]="'Government'">
+                                                        [horizontalClassifierName]="'Government'"
+                                                        [horizontalClassifierFieldName]="'governmentId'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
             <div class="sis-controls--top-margin">
                 <sis-census-indicator-tracking-2L-view [census]="census"
                                                        [classifierList]="classifierList"
-                                                       [label]="'4.15 How many of your pupils/families are beneficiaries of the following?'"
+                                                       [label]="'4.16 How many of your pupils/families are beneficiaries of the following?'"
                                                        [tableId]="'beneficiaryTypeTableId'"
                                                        [indicatorInstanceId]="managementBeneficiaries"
                                                        [horizontalClassifierName]="'Pupil'"
-                                                       [verticalClassifierName]="'BeneficiaryType'">
+                                                       [horizontalClassifierFieldName]="'pupilId'"
+                                                       [verticalClassifierName]="'BeneficiaryType'"
+                                                       [verticalClassifierFieldName]="'beneficiaryTypeId'">
                 </sis-census-indicator-tracking-2L-view>
             </div>
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.16 Indicate any group(s) supporting your school in the following areas in the past year.
+                    4.17 Indicate any group(s) active in supporting your school in the following areas in the past year.
                 </label>
                 <div class="sis-table-scroll">
                     <table class="mdl-data-table mdl-js-data-table" id="basicActiveGroupSupportAreaSectionId">
@@ -203,6 +223,7 @@
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
+                                                                [horizontalClassifierFieldName]="'pupilId'"
                                                                 [subEntityFilterPropertyName]="'indicatorManagement'"
                                                                 [noTopLeftCellLabel]="true"
                                                                 [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
@@ -220,6 +241,7 @@
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
+                                                                [horizontalClassifierFieldName]="'pupilId'"
                                                                 [subEntityFilterPropertyName]="'indicatorManagement'"
                                                                 [noTopLeftCellLabel]="true"
                                                                 [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
@@ -237,7 +259,8 @@
                                                             [tableId]="'incentivesFromGovernmentCompositionId'"
                                                             [indicatorInstanceId]="managementIncentivesFromGoverment"
                                                             [noTopLeftCellLabel]="true"
-                                                            [horizontalClassifierName]="'Government'">
+                                                            [horizontalClassifierName]="'Government'"
+                                                            [horizontalClassifierFieldName]="'governmentId'">
                     </sis-census-indicator-tracking-1L-HView>
                 </div>
 
@@ -248,7 +271,9 @@
                                                            [tableId]="'beneficiaryTypeTableId'"
                                                            [indicatorInstanceId]="managementBeneficiaries"
                                                            [horizontalClassifierName]="'Pupil'"
-                                                           [verticalClassifierName]="'BeneficiaryType'">
+                                                           [horizontalClassifierFieldName]="'pupilId'"
+                                                           [verticalClassifierName]="'BeneficiaryType'"
+                                                           [verticalClassifierFieldName]="'beneficiaryTypeId'">
                     </sis-census-indicator-tracking-2L-view>
                 </div>
 
@@ -314,6 +339,7 @@
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
+                                                                [horizontalClassifierFieldName]="'pupilId'"
                                                                 [subEntityFilterPropertyName]="'indicatorManagement'"
                                                                 [noTopLeftCellLabel]="true"
                                                                 [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
@@ -332,6 +358,7 @@
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
+                                                                [horizontalClassifierFieldName]="'pupilId'"
                                                                 [subEntityFilterPropertyName]="'indicatorManagement'"
                                                                 [noTopLeftCellLabel]="true"
                                                                 [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
@@ -349,7 +376,8 @@
                                                             [tableId]="'incentivesFromGovernmentCompositionId'"
                                                             [indicatorInstanceId]="managementIncentivesFromGoverment"
                                                             [noTopLeftCellLabel]="true"
-                                                            [horizontalClassifierName]="'Government'">
+                                                            [horizontalClassifierName]="'Government'"
+                                                            [horizontalClassifierFieldName]="'governmentId'">
                     </sis-census-indicator-tracking-1L-HView>
                 </div>
 
@@ -373,7 +401,9 @@
                                                            [tableId]="'beneficiaryTypeTableId'"
                                                            [indicatorInstanceId]="managementBeneficiaries"
                                                            [horizontalClassifierName]="'Pupil'"
-                                                           [verticalClassifierName]="'BeneficiaryType'">
+                                                           [horizontalClassifierFieldName]="'pupilId'"
+                                                           [verticalClassifierName]="'BeneficiaryType'"
+                                                           [verticalClassifierFieldName]="'beneficiaryTypeId'">
                     </sis-census-indicator-tracking-2L-view>
                 </div>
 

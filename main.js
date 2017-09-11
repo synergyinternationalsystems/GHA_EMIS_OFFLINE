@@ -12,16 +12,14 @@ var BrowserWindow = electron.BrowserWindow;
 const logger = require('electron-logger');
 const {autoUpdater} = require("electron-updater");
 var configFilePath;
-global.sharedObject = {db: null, onlineURL: null, logger:null, userDocuments: null, fileSystem: fsp, PDFWindow: PDFWindow};
-
-autoUpdater.logger = logger;
-// autoUpdater.logger.transports.file.level = 'info';
-logger.info('App starting...');
+global.sharedObject = {db: null, onlineURL: null, logger:null, userDocuments: null, fileSystem: fsp, PDFWindow: PDFWindow, checkForUpdates: null};
 
 app.setName("GhanaEMIS");
 app.setPath("userData", app.getPath("appData") + "\\" + app.getName());
+autoUpdater.logger = logger;
+// autoUpdater.logger.transports.file.level = 'info';
 
-logger.setOutput({file:`${app.getPath("userData")}\\gha-log.log`});
+
 global.sharedObject.logger = logger;
 
 var mainWindow = null;
@@ -46,6 +44,10 @@ app.on('ready', function() {
     createConfigFile();
     global.sharedObject.userDocuments = app.getPath("downloads");
 
+    createLogFile().then((result)=>{
+        logger.info('App starting...');
+    });
+
     // Connect to DB
     const Promise = require('bluebird');
     const db = require('sqlite');
@@ -56,7 +58,7 @@ app.on('ready', function() {
         const dbInit = new DBInit(configFilePath, db);
         let dbInitPromise = dbInit.initDB();
         logger.info('Checking for updates...');
-        autoUpdater.checkForUpdates();
+        // autoUpdater.checkForUpdates();
         if(!dbInitPromise){
             return;
         } else {
@@ -72,7 +74,7 @@ function createConfigFile() {
     let settingsFilePath = `${configFilePath}\\gha-settings.xml`;
     return fsp.exists(settingsFilePath).then(exists => {
         if(!exists) {
-            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://sis2s014:8801/gha-emis-de/api/"}`);
+            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://sis3s009/emisde/api/"}`);
         }
     }).then(err => {
         if(err){
@@ -85,6 +87,21 @@ function createConfigFile() {
                     global.sharedObject.onlineURL = JSON.parse(data)["onlineURL"];
                 }
             });
+        }
+    });
+}
+
+function createLogFile() {
+    let logFilePath = `${configFilePath}\\gha-log.log`;
+    return fsp.exists(logFilePath).then(exists => {
+        if(!exists) {
+            return fsp.writeFile(logFilePath,'');
+        }
+    }).then(err => {
+        if(err){
+            console.error("Can't create log file");
+        } else {
+            logger.setOutput({file:`${app.getPath("userData")}\\gha-log.log`});
         }
     });
 }
@@ -106,28 +123,30 @@ app.on('window-all-closed', function () {
 let updater;
 // autoUpdater.autoDownload = false;
 
-
-function sendStatusToWindow(text) {
+let INFO_MESSAGE = 'INFO_MESSAGE';
+let OK_MESSAGE = 'OK_MESSAGE';
+let UPDATE_UNAVAILABLE_MESSAGE = 'UPDATE_NOT_AVAILABLE';
+function sendStatusToWindow(text, messageType) {
     logger.info(text);
-    mainWindow.webContents.send('message', text);
+    mainWindow.webContents.send(messageType, text);
 }
 autoUpdater.on('checking-for-update', () => {
-    sendStatusToWindow('Checking for update...');
+    sendStatusToWindow('Checking for update...', INFO_MESSAGE);
 });
 autoUpdater.on('update-available', (ev, info) => {
-    sendStatusToWindow('Update available.');
+    sendStatusToWindow('Update available.', INFO_MESSAGE);
 });
 autoUpdater.on('update-not-available', (ev, info) => {
-    sendStatusToWindow('Update not available.');
+    sendStatusToWindow('Update not available.', UPDATE_UNAVAILABLE_MESSAGE);
 });
 autoUpdater.on('error', (ev, err) => {
-    sendStatusToWindow('Error in auto-updater.');
+    sendStatusToWindow('Error in auto-updater.', INFO_MESSAGE);
 });
 autoUpdater.on('download-progress', (ev, progressObj) => {
-    sendStatusToWindow('Download progress...');
+    sendStatusToWindow('Download progress...', INFO_MESSAGE);
 });
 autoUpdater.on('update-downloaded', (ev, info) => {
-    sendStatusToWindow('Update downloaded; will install in 5 seconds');
+    sendStatusToWindow('Update downloaded; will install in 5 seconds', INFO_MESSAGE);
 });
 autoUpdater.on('update-downloaded', (ev, info) => {
     // Wait 5 seconds, then quit and install
@@ -141,8 +160,8 @@ autoUpdater.on('update-downloaded', (ev, info) => {
 function checkForUpdates () {
     autoUpdater.checkForUpdates();
 }
-module.exports.checkForUpdates = checkForUpdates;
-
+// module.exports.checkForUpdates = checkForUpdates;
+global.sharedObject.checkForUpdates = checkForUpdates;
 /*=============================== /Auto Updater ============================*/
 
 

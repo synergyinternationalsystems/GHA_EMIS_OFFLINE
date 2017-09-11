@@ -1,8 +1,10 @@
 <div mdl class="mdl-layout__container">
     <div class="sis-shell mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <sis-confirm-dialog (onClose)="confirmDialogClose()" [text]="'Are you sure?'" #confirmDialog></sis-confirm-dialog>
-        <sis-notification-dialog [text]="notificationMessage" #notificationDialog></sis-notification-dialog>
-        <sis-confirm-dialog (onClose)="confirmDialogClose()" [text]="'Are you sure you want to permanently delete those Censuses?'" #confirmDiscardDialog></sis-confirm-dialog>
+        <sis-confirm-dialog #confirmDialog (onClose)="confirmDialogClose()" [text]="'Are you sure?'"></sis-confirm-dialog>
+        <sis-notification-dialog #notificationDialog [text]="notificationMessage"></sis-notification-dialog>
+        <sis-notification-dialog #connectionNotificationDialog [text]="connectionNotificationMessage" (onclose)="switchToOffline()"></sis-notification-dialog>
+        <sis-confirm-dialog #confirmDiscardDialog (onClose)="confirmDialogClose()" [text]="'Are you sure you want to discard the changes made to these items?'"></sis-confirm-dialog>
+        <sis-confirm-dialog #confirmAppVersionUpdate (onClose)="confirmDialogClose()" [text]="'Your version is out of date. To be able to Checkout, Update Classifiers or Submit you should update your application to the latest version.\n\n Do you want to download and install the latest version of GHA EMIS?'"></sis-confirm-dialog>
 
         <header class="sis-header mdl-layout__header is-casting-shadow">
             <div class="mdl-layout__header-row sis-shell__header sis-gha-shell__header">
@@ -14,11 +16,11 @@
                     <li>
                         <button (click)="switchMode()" class="mdl-button mdl-js-button mdl-js-ripple-effect sis-switch-mode" *ngIf="!isOffline">
                             <span class="sis-switch-mode--circle-green"></span>
-                            <span>Switch to OFFLINE 1.0.26 Mode</span>
+                            <span>Switch to OFFLINE Mode</span>
                         </button>
                         <button (click)="switchMode()" class="mdl-button mdl-js-button mdl-js-ripple-effect sis-switch-mode" *ngIf="isOffline">
                             <span class="sis-switch-mode--circle-red"></span>
-                                <span>Switch to ONLINE 1.0.26 Mode</span>
+                                <span>Switch to ONLINE Mode</span>
                         </button>
                     </li>
                     <li class="sis-btn--hidden-mobile">
@@ -60,7 +62,7 @@
         <main class="sis-layout__content mdl-layout__content" id="sis-layout__content">
             <div class="mdl-grid sis-layout">
 
-                <div class="mdl-grid mdl-grid--no-spacing">
+                <div *ngIf="!isOffline" class="mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
                         <div class="sis-actions sis-checkout-btn__container sis-float-right">
                             <div class="sis-actions">
@@ -79,7 +81,7 @@
                 <div *ngIf="!isOffline" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
                     <h2 class="sis-layout__section__title sis-full-width">Draft Censuses</h2>
 
-                    <div *ngIf="isLoadedOnlineCensuses" class="sis-loader-icon__container">
+                    <div *ngIf="!isPortfolioLoaded" class="sis-loader-icon__container">
                         <img src="app/resources/images/loader.gif" class="sis-loader-icon__container-item"/>
                     </div>
 
@@ -192,7 +194,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let row of getCensuses()">
+                                                <tr *ngFor="let row of getOfflineCensusesForCurrentPage()">
                                                     <td class="mdl-data-table__cell--non-numeric">
                                                         <input type="checkbox" *ngIf="isDraft(row)"
                                                                [checked]="isCensusToBeSubmitted(row.getId())"

@@ -48,6 +48,7 @@
       };
       window.onlineURL = remote.getGlobal('sharedObject').onlineURL;
       window.logger = remote.getGlobal('sharedObject').logger;
+      window.checkForUpdates = remote.getGlobal('sharedObject').checkForUpdates;
   </script>
 
   <!-- Insert this line after script imports -->
@@ -58,18 +59,30 @@
       <div id="messages"></div>
       <sis-app>Loading...</sis-app>
 
-      <script>
-          // Display the current version
-//          let version = window.location.hash.substring(1);
-//          document.getElementById('version').innerText = version;
-          // Listen for messages
-          const {ipcRenderer} = require('electron');
-          ipcRenderer.on('message', function(event, text) {
-              var container = document.getElementById('messages');
-              var message = document.createElement('div');
-              message.innerHTML = text;
-              container.appendChild(message);
-          })
-      </script>
+    <script>
+        // Display the current version
+        //          let version = window.location.hash.substring(1);
+        //          document.getElementById('version').innerText = version;
+        // Listen for messages
+
+
+        const {ipcRenderer} = require('electron');
+//        var remote = require('electron').remote;
+        const {dialog} = require('electron').remote;
+        console.log("ipcRenderer = " + ipcRenderer);
+        console.log("dialog = " + dialog);
+        window.dialog = dialog;
+        console.log("window['dialog']1 = " + window['dialog']);
+        ipcRenderer.on('message', function(event, text) {
+            var container = document.getElementById('messages');
+            var message = document.createElement('div');
+            message.innerHTML = text;
+            container.appendChild(message);
+            console.log("window['dialog'] = " + window['dialog']);
+            console.log("window.dialog = " + window.dialog);
+            window['dialog'].showMessageBox({ message: text,
+             buttons: ["OK"] });
+        })
+    </script>
   </body>
 </html>

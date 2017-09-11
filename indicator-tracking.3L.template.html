@@ -83,11 +83,13 @@
                 </tr>
 
                 <ng-container   *ngIf="!hasEmbeddedVerticalClassifier">
-                    <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList" >
+                    <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList; let j = index" >
                         <td *ngIf="hasVerticalCodeColumn" class="mdl-data-table__cell--non-numeric">
                             {{indicatorTrackingItem.verticalClassifier.getProperty('Code').value}}
                         </td>
-                        <td class="mdl-data-table__cell--non-numeric" style="min-width: 126px;">{{indicatorTrackingItem.verticalClassifier.getName()}}
+                        <td class="mdl-data-table__cell--non-numeric" style="min-width: 126px;">
+                            {{sectionNumber ? sectionNumber+"."+(j+1) : ""}}
+                            {{indicatorTrackingItem.verticalClassifier.getName()}}
                         </td>
                         <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
                             <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"

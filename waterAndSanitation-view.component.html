@@ -1,20 +1,12 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
-        <label class="sis-layout__section__title">6.1 WATER FACILITIES</label>
 
-        <div #waterFacilityYesNoName>
-            <label class="sis-label">6.1.1 Does your school own a safe water facility?</label>
-            <sis-select-one-radio-view [census]="census" #value
-                                  [classifierList]="classifierList"
-                                  [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
-                                  [censusSubEntityName]="'censusSchoolQuestions'"
-                                  [classifierId]="'WATER_FACILITY_YES_NO_ID'"
-                                  [classifierNameFromInput]="'YesNoId'"
-                                  [subEntityFields]="questionSubEntityFields">
-            </sis-select-one-radio-view>
-        </div>
+        <div *ngIf="isSelectedNoOwnSafeWaterFacility()" #waterFacilityNoName><label class="sis-layout__section__title">6.1 WATER FACILITIES</label>
+            <div>
+                <label class="sis-label">6.1.1 Does your school own a safe water facility?</label>
+                <span>No</span>
+            </div>
 
-        <div *ngIf="isSelectedNoOwnSafeWaterFacility()" #waterFacilityNoName>
             <label class="sis-label">6.1.2 If there is no safe water source at/near the school compound, what is the source of drinking water?</label>
             <sis-select-one-radio-view [census]="census"
                                   [classifierList]="classifierList"
@@ -30,6 +22,10 @@
         </div>
 
         <div *ngIf="isSelectedYesOwnSafeWaterFacility()">
+            <div>
+                <label class="sis-label">6.1.1 Does your school own a safe water facility?</label>
+                <span>{{isWaterFacilityFunctionalCheckedItem() ? "Yes, Functional" : "Yes, Non functional"}}</span>
+            </div>
             <div #locateNearName>
                 <label class="sis-label">6.1.2 How far is it located from school compound?</label>
                 <sis-select-one-radio-view [census]="census"
@@ -90,7 +86,8 @@
                                                             [hasHorizontalClassifierListInArray]="true"
                                                             [noTopLeftCellLabel] = "true"
                                                             [arrayOfHorizontalClassifiers]="waterClassifiersList"
-                                                            [horizontalClassifierName]="'Water'">
+                                                            [horizontalClassifierName]="'Water'"
+                                                            [horizontalClassifierFieldName]="'waterId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                 </div>
@@ -155,7 +152,7 @@
                 </sis-select-one-radio-view>
             </div>
 
-            <div *ngIf="isSelectedBadReason" #badName>
+            <div *ngIf="isSelectedBadReason.value" #badName>
                 <label class="sis-label sis-element-required">
                     If Bad, assign reason(s):
                 </label>
@@ -222,6 +219,7 @@
                                                     [indicatorInstanceId]="sanitationToiletAvailability"
                                                     [noTopLeftCellLabel] = "true"
                                                     [horizontalClassifierName]="'PupilTeacher'"
+                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                     [subEntityFilterPropertyName]="'indicatorToilet'"
                                                     [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
@@ -267,6 +265,7 @@
                                                     [noTopLeftCellLabel] = "true"
                                                     [indicatorInstanceId]="sanitationToiletAvailability"
                                                     [horizontalClassifierName]="'PupilTeacher'"
+                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                     [subEntityFilterPropertyName]="'indicatorToilet'"
                                                     [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
@@ -282,6 +281,7 @@
                                                     [indicatorInstanceId]="sanitationToiletAvailability"
                                                     [noTopLeftCellLabel] = "true"
                                                     [horizontalClassifierName]="'PupilTeacher'"
+                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                     [subEntityFilterPropertyName]="'indicatorToilet'"
                                                     [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
@@ -346,7 +346,7 @@
                                        class="sis-radio-checkbox"
                                        [name]="getNamePlusId('yesNoPlace', handWashingPlace.firstClassifier.getId())"/>-->
                                <!-- <span *ngIf="isCheckedHandWashingItem(handWashingPlace.firstClassifier.getId(), k, constants.HAND_WASHING_PLACE_MAP_KEY)"> {{yesNoClassifier.getName()}}</span>-->
-                                {{handWashingPlace.secondClassifier.getName()}}
+                                {{handWashingPlace.secondClassifier?.getName()}}
                             </td>
                         </tr>
                         </tbody>
@@ -375,7 +375,7 @@
                                    (change)="onHandWashingRadioChanged(handWashingSoap.firstClassifier.getId(), k, constants.HAND_WASHING_SOAP_MAP_KEY)"
                                    class="form-radio-checkbox"
                                    [name]="getNamePlusId('yesNoSoap', handWashingSoap.firstClassifier.getId())"/>-->
-                            {{handWashingSoap.secondClassifier.getName()}}
+                            {{handWashingSoap.secondClassifier?.getName()}}
                         </td>
                     </tr>
                     </tbody>
@@ -402,7 +402,7 @@
                                    (change)="onHandWashingRadioChanged(handWashingWater.firstClassifier.getId(), k, constants.HAND_WASHING_WATER_MAP_KEY)"
                                    class="form-radio-checkbox"
                                    [name]="getNamePlusId('yesNoWater', handWashingWater.firstClassifier.getId())"/>-->
-                            {{handWashingWater.secondClassifier.getName()}}
+                            {{handWashingWater.secondClassifier?.getName()}}
                         </td>
                     </tr>
                     </tbody>
@@ -429,7 +429,7 @@
                 </div>
             </div>
 
-            <div #improvementPlanYesNoName>
+            <!--<div #improvementPlanYesNoName>
                 <label class="sis-label sis-element-required">6.2.15 Does your school have a School Performance Improvement Plan?</label>
                 <sis-select-one-radio-view [census]="census"
                                       [classifierList]="classifierList"
@@ -439,10 +439,10 @@
                                       [classifierNameFromInput]="'YesNoId'"
                                       [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio-view>
-            </div>
+            </div>-->
 
             <div #spipYesNoName>
-                <label class="sis-label sis-element-required">6.2.16 Does the SPIP include how you can improve / sustain WASH facilities in the school?</label>
+                <label class="sis-label sis-element-required">6.2.15 Does the SPIP include how you can improve / sustain WASH facilities in the school?</label>
 
                 <sis-select-one-radio-view [census]="census"
                                       [classifierList]="classifierList"
@@ -455,7 +455,7 @@
             </div>
 
             <div #washYesNoName>
-                <label class="sis-label sis-element-required">6.2.17 Does the school have an operational and maintenance plans for WASH facilities in the school?</label>
+                <label class="sis-label sis-element-required">6.2.16 Does the school have an operational and maintenance plans for WASH facilities in the school?</label>
 
                 <sis-select-one-radio-view [census]="census"
                                       [classifierList]="classifierList"
@@ -521,7 +521,9 @@
                                                   [tableId]="'teacherHygieneEducationCompositionId'"
                                                   [indicatorInstanceId]="teacherHygieneEducation"
                                                   [horizontalClassifierName]="'Gender'"
-                                                  [verticalClassifierName]="'HygieneEducation'">
+                                                  [horizontalClassifierFieldName]="'genderId'"
+                                                  [verticalClassifierName]="'HygieneEducation'"
+                                                  [verticalClassifierFieldName]="'hygieneEducationId'">
                 </sis-census-indicator-tracking-2L-view>
             </div>
 

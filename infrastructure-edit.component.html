@@ -118,7 +118,7 @@
                            [class]="'sis-float-left'" [forControl]="yesNoElectricityType"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">3.3 Is your community on electricity?</label>
+                <label class="sis-label sis-element-required">3.3 Is your surrounding community on electricity?</label>
             </div>
             <table #yesNoElectricityType>
                 <tbody>
@@ -242,7 +242,8 @@
                                                         [tableId]="'boardingFacilitiesCompositionId'"
                                                         [indicatorInstanceId]="infrastructureBasicBoarding"
                                                         [noTopLeftCellLabel]="true"
-                                                        [horizontalClassifierName]="'Pupil'">
+                                                        [horizontalClassifierName]="'Pupil'"
+                                                        [horizontalClassifierFieldName]="'pupilId'">
                     </sis-census-indicator-tracking-1L-H>
                 </div>
             </div>
@@ -290,7 +291,9 @@
                                                   [tableId]="'infrastructureSecondaryBoardingCompositionId'"
                                                   [indicatorInstanceId]="infrastructureSecondaryBoarding"
                                                   [horizontalClassifierName]="'Gender'"
-                                                  [verticalClassifierName]="'StudentsCountType'">
+                                                  [horizontalClassifierFieldName]="'genderId'"
+                                                  [verticalClassifierName]="'StudentsCountType'"
+                                                  [verticalClassifierFieldName]="'studentsCountTypeId'">
                 </sis-census-indicator-tracking-2L>
             </div>
         </div>
@@ -310,7 +313,9 @@
                                                   [tableId]="'infrastructureTVETBoardingCompositionId'"
                                                   [indicatorInstanceId]="infrastructureTVETBoarding"
                                                   [horizontalClassifierName]="'Gender'"
-                                                  [verticalClassifierName]="'Boarding'">
+                                                  [horizontalClassifierFieldName]="'genderId'"
+                                                  [verticalClassifierName]="'Boarding'"
+                                                  [verticalClassifierFieldName]="'boardingId'">
                 </sis-census-indicator-tracking-2L>
             </div>
 

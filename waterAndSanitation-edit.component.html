@@ -56,6 +56,15 @@
                 </div>
 
                 <div *ngIf="isSelectedYesOwnSafeWaterFacility()">
+                    <div>
+                        <input type="checkbox"
+                               [checked]="isWaterFacilityFunctionalCheckedItem()"
+                               (change)="onWaterFacilityFunctionalCheckBoxChanged()"
+                               class="sis-radio-checkbox"
+                               name="IsWaterFacilityFunctionalId"/>
+                        <label class="sis-radio-checkbox-label">Is it Functional?</label>
+                    </div>
+
                     <div class="sis-control-validation">
                         <sis-error [id]="'locateNearValidation'"
                                    [forControl]="locateNearName" [isInput]="true"
@@ -151,7 +160,8 @@
                                                                     [hasHorizontalClassifierListInArray]="true"
                                                                     [noTopLeftCellLabel] = "true"
                                                                     [arrayOfHorizontalClassifiers]="waterClassifiersList"
-                                                                    [horizontalClassifierName]="'Water'">
+                                                                    [horizontalClassifierName]="'Water'"
+                                                                    [horizontalClassifierFieldName]="'waterId'">
                                 </sis-census-indicator-tracking-1L-H>
                             </div>
                         </div>
@@ -272,7 +282,7 @@
                         </table>
                     </div>
 
-                    <div *ngIf="isSelectedBadReason">
+                    <div *ngIf="isSelectedBadReason.value">
                         <div class="sis-control-validation">
                             <sis-error [id]="'badValidation'"
                                        [forControl]="badName" [isInput]="true"
@@ -375,6 +385,7 @@
                                                             [indicatorInstanceId]="sanitationToiletAvailability"
                                                             [noTopLeftCellLabel] = "true"
                                                             [horizontalClassifierName]="'PupilTeacher'"
+                                                            [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                             [subEntityFilterPropertyName]="'indicatorToilet'"
                                                             [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
                         </sis-census-indicator-tracking-1L-H>
@@ -448,6 +459,7 @@
                                                                         [noTopLeftCellLabel] = "true"
                                                                         [indicatorInstanceId]="sanitationToiletAvailability"
                                                                         [horizontalClassifierName]="'PupilTeacher'"
+                                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                                         [subEntityFilterPropertyName]="'indicatorToilet'"
                                                                         [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
                                     </sis-census-indicator-tracking-1L-H>
@@ -472,6 +484,7 @@
                                                                         [indicatorInstanceId]="sanitationToiletAvailability"
                                                                         [noTopLeftCellLabel] = "true"
                                                                         [horizontalClassifierName]="'PupilTeacher'"
+                                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
                                                                         [subEntityFilterPropertyName]="'indicatorToilet'"
                                                                         [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
                                     </sis-census-indicator-tracking-1L-H>
@@ -682,25 +695,7 @@
                             </div>
 
 
-                    <div class="sis-control-validation">
-                            <sis-error [id]="'improvementPlanYesNoValidation'"
-                                       [forControl]="improvementPlanYesNoName" [isInput]="true"
-                                       [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                                       [errorMessage]="waterAndSanitationValidationHelper.improvementPlanYesNoValidation()"
-                                       [class]="'sis-float-left'">
-                            </sis-error>
-                            <label class="sis-label sis-element-required">6.2.15 Does your school have a School Performance Improvement Plan?</label>
-                    </div>
-                    <div #improvementPlanYesNoName>
-                        <sis-select-one-radio [census]="census"
-                                              [classifierList]="classifierList"
-                                              [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
-                                              [censusSubEntityName]="'censusSchoolQuestions'"
-                                              [classifierId]="'IMPROVEMENT_PLAN_YES_NO_ID'"
-                                              [classifierNameFromInput]="'YesNoId'"
-                                              [subEntityFields]="questionSubEntityFields">
-                        </sis-select-one-radio>
-                    </div>
+
 
 
                     <div class="sis-control-validation">
@@ -710,7 +705,7 @@
                                        [errorMessage]="waterAndSanitationValidationHelper.spipYesNoValidation()"
                                        [class]="'sis-float-left'">
                             </sis-error>
-                            <label class="sis-label sis-element-required">6.2.16 Does the SPIP include how you can improve / sustain WASH facilities in the school?</label>
+                            <label class="sis-label sis-element-required">6.2.15 Does the SPIP include how you can improve / sustain WASH facilities in the school?</label>
                     </div>
                     <div #spipYesNoName>
                         <sis-select-one-radio [census]="census"
@@ -731,7 +726,7 @@
                                        [errorMessage]="waterAndSanitationValidationHelper.washYesNoValidation()"
                                        [class]="'sis-float-left'">
                             </sis-error>
-                            <label class="sis-label sis-element-required">6.2.17 Does the school have an operational and maintenance plans for WASH facilities in the school?</label>
+                            <label class="sis-label sis-element-required">6.2.16 Does the school have an operational and maintenance plans for WASH facilities in the school?</label>
                         </div>
                     <div #washYesNoName>
                         <sis-select-one-radio [census]="census"
@@ -825,7 +820,9 @@
                                                               [tableId]="'teacherHygieneEducationCompositionId'"
                                                               [indicatorInstanceId]="teacherHygieneEducation"
                                                               [horizontalClassifierName]="'Gender'"
-                                                              [verticalClassifierName]="'HygieneEducation'">
+                                                              [horizontalClassifierFieldName]="'genderId'"
+                                                              [verticalClassifierName]="'HygieneEducation'"
+                                                              [verticalClassifierFieldName]="'hygieneEducationId'">
                             </sis-census-indicator-tracking-2L>
                         </div>
 

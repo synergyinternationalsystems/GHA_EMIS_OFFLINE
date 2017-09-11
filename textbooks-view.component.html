@@ -12,12 +12,14 @@
                                                           [tableId]="'handBooksByGradeTableId'"
                                                           [indicatorInstanceId]="handBooksByGradeIndicatorInstanceId"
                                                           [horizontalClassifierName]="'SchoolLevel'"
+                                                          [horizontalClassifierFieldName]="'schoolLevelId'"
                                                           [IsNegated]="true"
                                                           [visibilityFilter]="'SubjectSchoolLevel'"
                                                           [visibilityFilterPropertyName]="'isChecked'"
                                                           [horizontalClassifierFilterPropertyName]="'schoolLevelGroupId'"
                                                           [horizontalClassifierFilterPropertyValue]="schoolLevelGroupNursery"
-                                                          [verticalClassifierName]="'TeachingGuide'">
+                                                          [verticalClassifierName]="'TeachingGuide'"
+                                                          [verticalClassifierFieldName]="'teachingGuideId'">
                         </sis-census-indicator-tracking-2L-view>
                     </div>
 
@@ -36,12 +38,14 @@
                                                       [tableId]="'pupilTextBooksTableId'"
                                                       [indicatorInstanceId]="pupilTextBooksIndicatorInstanceId"
                                                       [horizontalClassifierName]="'SchoolLevel'"
+                                                      [horizontalClassifierFieldName]="'schoolLevelId'"
                                                       [IsNegated]="true"
                                                       [visibilityFilter]="'SubjectSchoolLevel'"
                                                       [visibilityFilterPropertyName]="'isChecked'"
                                                       [horizontalClassifierFilterPropertyName]="'schoolLevelGroupId'"
                                                       [horizontalClassifierFilterPropertyValue]="schoolLevelGroupNursery"
-                                                      [verticalClassifierName]="'TeachingGuide'">
+                                                      [verticalClassifierName]="'TeachingGuide'"
+                                                      [verticalClassifierFieldName]="'teachingGuideId'">
                 </sis-census-indicator-tracking-2L-view>
 
             </div>

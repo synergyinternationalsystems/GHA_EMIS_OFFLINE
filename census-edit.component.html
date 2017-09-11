@@ -6,7 +6,7 @@
                     <div class="sis-header__subheader">
                         <div class="sis-header__subheader--left">
                             <h1 class="sis-header__title mdl-layout__title">School Census:
-                                {{census.getProperty('censusSchoolCode').value}}</h1>
+                                {{census.getProperty('name').value}}</h1>
                             <div class="sis-last-modified">Last modified by {{census.getProperty('UpdatedUserId').value.getProperty("name").value}} on {{census.getProperty('DateUpdated').value | date : "dd-MMM-yyyy HH:mm"}} </div>
                         </div>
                         <div class="sis-actions">
@@ -37,10 +37,11 @@
                                 <sis-menu-item [value]="'12'" [name]="tabNumbersMap.get(12)" [isEnabled]="!isDisableNavigation" *ngIf="isBasic()"></sis-menu-item><!--Pupil Attendance and Movement-->
                                 <sis-menu-item [value]="'9'" [name]="tabNumbersMap.get(9)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Teachers-->
                                 <sis-menu-item [value]="'10'" [name]="tabNumbersMap.get(10)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Professional Staff Workload-->
+                                <sis-menu-item [value]="'20'" [name]="tabNumbersMap.get(20)" [isEnabled]="!isDisableNavigation" *ngIf="isTvet()"></sis-menu-item><!--Training Facilities-->
                                 <sis-menu-item [value]="'14'" [name]="tabNumbersMap.get(14)" [isEnabled]="!isDisableNavigation" *ngIf="!isBasicFromCensus()"></sis-menu-item><!--Student and Teacher Information-->
                                 <sis-menu-item [value]="'16'" [name]="tabNumbersMap.get(16)" [isEnabled]="!isDisableNavigation" *ngIf="isBasicFromCensus()"></sis-menu-item><!--Pupil and Teacher Information-->
                                 <sis-menu-item [value]="'15'" [name]="tabNumbersMap.get(15)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Staff Movement-->
-                                <sis-menu-item [value]="'17'" [name]="tabNumbersMap.get(17)" [isEnabled]="!isDisableNavigation" *ngIf="isSecondary()"></sis-menu-item><!--Targeting-->
+                                <sis-menu-item [value]="'17'" [name]="tabNumbersMap.get(17)" [isEnabled]="!isDisableNavigation" *ngIf="!isBasic()"></sis-menu-item><!--Targeting-->
                                 <sis-menu-item [value]="'18'" [name]="tabNumbersMap.get(18)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Finances-->
                                 <sis-menu-item [value]="'19'" [name]="tabNumbersMap.get(19)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Notes and Attachments-->
 
@@ -56,95 +57,161 @@
                 <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
                     <div *ngIf="deLoaded" class="sis-full-width">
 
-                <sis-nav-tabs (mouseup)="onSaveValidation()" [selectedTabId]="selectedTabId" (selectedTabChange)="chooseMenuItem($event)" [disableNavigation]="isDisableNavigation">
-                              <sis-tab id="0" title="1. Identification">
-                                  <sis-census-identification-edit *ngIf="getSchool()" [school]="school" [classifierList]="classifierItems" [census]="census">Loading ...
-                                  </sis-census-identification-edit>
-                              </sis-tab>
-                              <sis-tab id="1" title="2. Profile and Organisation">
-                                  <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census" [organisationValidationHelper]="organisationValidationHelper" [classifierList]="classifierItems" [schoolTypeId]="schoolTypeId">Loading ...
-                                  </sis-census-organisation-edit>
-                              </sis-tab>
-                              <sis-tab id="6" title="7. Materials and Equipment" *ngIf="isBasicOrSecondary()">
-                                  <sis-census-materialsEquipment-edit *ngIf="selectedTabId === 6" [census]="census" [materialsEquipmentValidationHelper]="materialsEquipmentValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-materialsEquipment-edit>
-                              </sis-tab>
-                              <sis-tab id="2" title="3. Infrastructure">
-                                  <sis-census-infrastructure-edit *ngIf="selectedTabId === 2" [census]="census" [infrastructureValidationHelper]="infrastructureValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...</sis-census-infrastructure-edit>
-                              </sis-tab>
-                              <sis-tab id="3" title="4. Management">
-                                  <sis-census-management-edit *ngIf="selectedTabId === 3" [census]="census" [managementValidationHelper]="managementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-management-edit>
-                              </sis-tab>
-                              <sis-tab id="4" title="5. Building">
-                                  <sis-census-building-edit *ngIf="selectedTabId === 4" [census]="census" [buildingValidationHelper]="buildingValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-building-edit>
-                              </sis-tab>
-                              <sis-tab id="5" title="6. Water and Sanitation">
-                                  <sis-census-waterAndSanitation-edit *ngIf="selectedTabId === 5" [isSelectedBadReason]="isSelectedBadReason" [isWaterCheckBoxChanged]="isWaterCheckBoxChanged" [census]="census" [waterAndSanitationValidationHelper]="waterAndSanitationValidationHelper" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-waterAndSanitation-edit>
-                              </sis-tab>
-                              <sis-tab id="7" title="{{tabNumbersMap.get(7)}}">
-                                  <sis-census-enrollment-edit *ngIf="selectedTabId === 7" [census]="census" [enrollmentValidationHelper]="enrollmentValidationHelper"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-enrollment-edit>
-                              </sis-tab>
-                              <sis-tab id="8" title="{{tabNumbersMap.get(8)}}" *ngIf="isBasicFromCensus()">
-                                  <sis-census-textbooks-edit *ngIf="selectedTabId === 8" [census]="census" [textbooksValidationHelper]="textbooksValidationHelper" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-textbooks-edit>
-                              </sis-tab>
-                              <sis-tab id="9" title="{{tabNumbersMap.get(9)}}">
-                                  <sis-census-teachers-edit *ngIf="selectedTabId === 9" [census]="census" [teachersEditValidationHelper]="teachersEditValidationHelper"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-teachers-edit>
-                              </sis-tab>
-                              <sis-tab id="10" title="{{tabNumbersMap.get(10)}}">
-                                  <sis-census-prof-staff-work-edit *ngIf="selectedTabId === 10" [census]="census" [profStaffWorkloadValidationHelper]="profStaffWorkloadValidationHelper" [censusSchoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-prof-staff-work-edit>
-                              </sis-tab>
-                              <sis-tab id="11" title="{{tabNumbersMap.get(11)}}" *ngIf="isSecondary()">
-                                  <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 11" [census]="census" [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-pupil-student-att-movement-edit>
-                              </sis-tab>
-                              <sis-tab id="12" *ngIf="isBasic()" title="{{tabNumbersMap.get(12)}}">
-                                  <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 12" [census]="census" [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-pupil-student-att-movement-edit>
-                              </sis-tab>
-                              <sis-tab id="13" title="{{tabNumbersMap.get(13)}}" *ngIf="isBasic()">
-                                  <sis-census-nonTeachingStaffInformation-edit *ngIf="selectedTabId === 13" [census]="census" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-nonTeachingStaffInformation-edit>
-                              </sis-tab>
-
-
-
-                              <sis-tab id="14" title="{{tabNumbersMap.get(14)}}" *ngIf="!isBasicFromCensus()">
-                                  <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 14" [census]="census" [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-pupil-student-teacher-information-edit>
-                              </sis-tab>
-
-                              <sis-tab id="15" title="{{tabNumbersMap.get(15)}}">
-                                  <sis-census-staffMovement-edit *ngIf="selectedTabId === 15" [census]="census" [staffMovementValidationHelper]="staffMovementValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-staffMovement-edit>
-                              </sis-tab>
-                              <sis-tab id="16" title="{{tabNumbersMap.get(16)}}" *ngIf="isBasicFromCensus()">
-                                  <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 16" [census]="census" [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-pupil-student-teacher-information-edit>
-                              </sis-tab>
-
-                              <sis-tab id="17" title="{{tabNumbersMap.get(17)}}" *ngIf="isSecondary()">
-                              <sis-census-targeting-edit *ngIf="selectedTabId === 17" [census]="census" [classifierList]="classifierItems">Loading ...
-                              </sis-census-targeting-edit>
-                              </sis-tab>
-
-                              <sis-tab id="18" title="{{tabNumbersMap.get(18)}}">
-                                  <sis-census-finances-edit *ngIf="selectedTabId === 18" [census]="census"  [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-finances-edit>
-                              </sis-tab>
-                              <sis-tab id="19" title="{{tabNumbersMap.get(19)}}">
-                                  <sis-census-notes-and-attachments-edit *ngIf="selectedTabId === 19" [census]="census" [schoolTypeId]="schoolTypeId" [classifierList]="classifierItems">Loading ...
-                                  </sis-census-notes-and-attachments-edit>
-                              </sis-tab>
-
-
+                        <sis-nav-tabs (mouseup)="onSaveValidation()" [selectedTabId]="selectedTabId"
+                                      (selectedTabChange)="chooseMenuItem($event)"
+                                      [disableNavigation]="isDisableNavigation">
+                            <sis-tab id="0" title="1. Identification">
+                                <sis-census-identification-edit *ngIf="getSchool()" [school]="school"
+                                                                [classifierList]="classifierItems" [census]="census">
+                                    Loading ...
+                                </sis-census-identification-edit>
+                            </sis-tab>
+                            <sis-tab id="1" title="2. Profile and Organisation">
+                                <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census"
+                                                              [organisationValidationHelper]="organisationValidationHelper"
+                                                              [classifierList]="classifierItems"
+                                                              [schoolTypeId]="schoolTypeId">Loading ...
+                                </sis-census-organisation-edit>
+                            </sis-tab>
+                            <sis-tab id="2" title="3. Infrastructure">
+                                <sis-census-infrastructure-edit *ngIf="selectedTabId === 2" [census]="census"
+                                                                [infrastructureValidationHelper]="infrastructureValidationHelper"
+                                                                [schoolTypeId]="schoolTypeId"
+                                                                [classifierList]="classifierItems">Loading ...
+                                </sis-census-infrastructure-edit>
+                            </sis-tab>
+                            <sis-tab id="3" title="4. Management">
+                                <sis-census-management-edit *ngIf="selectedTabId === 3" [census]="census"
+                                                            [managementValidationHelper]="managementValidationHelper"
+                                                            [schoolTypeId]="schoolTypeId"
+                                                            [classifierList]="classifierItems">Loading ...
+                                </sis-census-management-edit>
+                            </sis-tab>
+                            <sis-tab id="4" title="5. Building">
+                                <sis-census-building-edit *ngIf="selectedTabId === 4" [census]="census"
+                                                          [buildingValidationHelper]="buildingValidationHelper"
+                                                          [schoolTypeId]="schoolTypeId"
+                                                          [classifierList]="classifierItems">Loading ...
+                                </sis-census-building-edit>
+                            </sis-tab>
+                            <sis-tab id="5" title="6. Water and Sanitation">
+                                <sis-census-waterAndSanitation-edit *ngIf="selectedTabId === 5"
+                                                                    [isSelectedBadReason]="isSelectedBadReason"
+                                                                    [isWaterCheckBoxChanged]="isWaterCheckBoxChanged"
+                                                                    [census]="census"
+                                                                    [waterAndSanitationValidationHelper]="waterAndSanitationValidationHelper"
+                                                                    [classifierList]="classifierItems">Loading ...
+                                </sis-census-waterAndSanitation-edit>
+                            </sis-tab>
+                            <sis-tab id="6" title="7. Materials and Equipment" *ngIf="isBasicOrSecondary()">
+                                <sis-census-materialsEquipment-edit *ngIf="selectedTabId === 6" [census]="census"
+                                                                    [materialsEquipmentValidationHelper]="materialsEquipmentValidationHelper"
+                                                                    [schoolTypeId]="schoolTypeId"
+                                                                    [classifierList]="classifierItems">Loading ...
+                                </sis-census-materialsEquipment-edit>
+                            </sis-tab>
+                            <sis-tab id="7" title="{{tabNumbersMap.get(7)}}">
+                                <sis-census-enrollment-edit *ngIf="selectedTabId === 7" [census]="census"
+                                                            [enrollmentValidationHelper]="enrollmentValidationHelper"
+                                                            [schoolTypeId]="schoolTypeId"
+                                                            [classifierList]="classifierItems">Loading ...
+                                </sis-census-enrollment-edit>
+                            </sis-tab>
+                            <sis-tab id="11" title="{{tabNumbersMap.get(11)}}" *ngIf="isSecondary()">
+                                <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 11"
+                                                                            [census]="census"
+                                                                            [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper"
+                                                                            [schoolTypeId]="schoolTypeId"
+                                                                            [classifierList]="classifierItems">Loading
+                                    ...
+                                </sis-census-pupil-student-att-movement-edit>
+                            </sis-tab>
+                            <sis-tab id="8" title="{{tabNumbersMap.get(8)}}" *ngIf="isBasicFromCensus()">
+                                <sis-census-textbooks-edit *ngIf="selectedTabId === 8" [census]="census"
+                                                           [textbooksValidationHelper]="textbooksValidationHelper"
+                                                           [classifierList]="classifierItems">Loading ...
+                                </sis-census-textbooks-edit>
+                            </sis-tab>
+                            <sis-tab id="13" title="{{tabNumbersMap.get(13)}}" *ngIf="isBasic()">
+                                <sis-census-nonTeachingStaffInformation-edit *ngIf="selectedTabId === 13"
+                                                                             [census]="census"
+                                                                             [classifierList]="classifierItems">Loading
+                                    ...
+                                </sis-census-nonTeachingStaffInformation-edit>
+                            </sis-tab>
+                            <sis-tab id="12" *ngIf="isBasic()" title="{{tabNumbersMap.get(12)}}">
+                                <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 12"
+                                                                            [census]="census"
+                                                                            [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper"
+                                                                            [schoolTypeId]="schoolTypeId"
+                                                                            [classifierList]="classifierItems">Loading
+                                    ...
+                                </sis-census-pupil-student-att-movement-edit>
+                            </sis-tab>
+                            <sis-tab id="9" title="{{tabNumbersMap.get(9)}}">
+                                <sis-census-teachers-edit *ngIf="selectedTabId === 9" [census]="census"
+                                                          [teachersEditValidationHelper]="teachersEditValidationHelper"
+                                                          [schoolTypeId]="schoolTypeId"
+                                                          [classifierList]="classifierItems">Loading ...
+                                </sis-census-teachers-edit>
+                            </sis-tab>
+                            <sis-tab id="10" title="{{tabNumbersMap.get(10)}}">
+                                <sis-census-prof-staff-work-edit *ngIf="selectedTabId === 10" [census]="census"
+                                                                 [profStaffWorkloadValidationHelper]="profStaffWorkloadValidationHelper"
+                                                                 [censusSchoolTypeId]="schoolTypeId"
+                                                                 [classifierList]="classifierItems">Loading ...
+                                </sis-census-prof-staff-work-edit>
+                            </sis-tab>
+                            <sis-tab id="20" title="{{tabNumbersMap.get(20)}}" *ngIf="isTvet()">
+                                <sis-census-training-facilities-edit *ngIf="selectedTabId === 20" [census]="census"
+                                                                     [classifierList]="classifierItems">Loading ...
+                                </sis-census-training-facilities-edit>
+                            </sis-tab>
+                            <sis-tab id="14" title="{{tabNumbersMap.get(14)}}" *ngIf="!isBasicFromCensus()">
+                                <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 14"
+                                                                                   [census]="census"
+                                                                                   [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper"
+                                                                                   [schoolTypeId]="schoolTypeId"
+                                                                                   [classifierList]="classifierItems">
+                                    Loading ...
+                                </sis-census-pupil-student-teacher-information-edit>
+                            </sis-tab>
+                            <sis-tab id="16" title="{{tabNumbersMap.get(16)}}" *ngIf="isBasicFromCensus()">
+                                <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 16"
+                                                                                   [census]="census"
+                                                                                   [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper"
+                                                                                   [schoolTypeId]="schoolTypeId"
+                                                                                   [classifierList]="classifierItems">
+                                    Loading ...
+                                </sis-census-pupil-student-teacher-information-edit>
+                            </sis-tab>
+                            <sis-tab id="15" title="{{tabNumbersMap.get(15)}}">
+                                <sis-census-staffMovement-edit *ngIf="selectedTabId === 15" [census]="census"
+                                                               [staffMovementValidationHelper]="staffMovementValidationHelper"
+                                                               [schoolTypeId]="schoolTypeId"
+                                                               [classifierList]="classifierItems">Loading ...
+                                </sis-census-staffMovement-edit>
+                            </sis-tab>
+                            <sis-tab id="17" title="{{tabNumbersMap.get(17)}}" *ngIf="!isBasic()">
+                                <sis-census-targeting-edit *ngIf="selectedTabId === 17" [schoolTypeId]="schoolTypeId"
+                                                           [census]="census" [classifierList]="classifierItems">Loading
+                                    ...
+                                </sis-census-targeting-edit>
+                            </sis-tab>
+                            <sis-tab id="18" title="{{tabNumbersMap.get(18)}}">
+                                <sis-census-finances-edit *ngIf="selectedTabId === 18" [census]="census"
+                                                          [schoolTypeId]="schoolTypeId"
+                                                          [classifierList]="classifierItems">Loading ...
+                                </sis-census-finances-edit>
+                            </sis-tab>
+                            <sis-tab id="19" title="{{tabNumbersMap.get(19)}}">
+                                <sis-census-notes-and-attachments-edit *ngIf="selectedTabId === 19" [census]="census"
+                                                                       [schoolTypeId]="schoolTypeId"
+                                                                       [classifierList]="classifierItems">Loading ...
+                                </sis-census-notes-and-attachments-edit>
+                            </sis-tab>
                         </sis-nav-tabs>
+
                     </div>
                 </div>
             </div>

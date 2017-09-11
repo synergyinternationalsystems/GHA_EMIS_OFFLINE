@@ -33,6 +33,20 @@
                     </td>
                 </tr>
             </tbody>
+            <tfoot>
+            <tr *ngIf="hasTotalRowByThirdLevel">
+                <td class="mdl-data-table__cell--non-numeric">Total by Gender</td>
+                <td class="mdl-data-table__cell--centered" *ngFor="let horizontalThirdLevelClassifier of filteredHorizontalThirdLevelByFirstAndSecondLevelClassifierList(); let i = index">
+                    {{totalByThirdLevel[i]}}
+                </td>
+            </tr>
+            <tr *ngIf="hasTotalRowBySecondLevel">
+                <td class="mdl-data-table__cell--non-numeric">Total by Class</td>
+                <td colspan="2" class="mdl-data-table__cell--centered" *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList(); let i = index">
+                    {{totalBySecondLevel[i]}}
+                </td>
+            </tr>
+            </tfoot>
         </table>
     </div>
 </div>

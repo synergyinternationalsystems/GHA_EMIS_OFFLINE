@@ -10,8 +10,11 @@
                                                           [tableId]="diedPupilsSectionId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_BASIC_INFORMATION_PUPIL_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -29,8 +32,11 @@
                                                           [tableId]="diedStudentsCompositionId"
                                                           [topLeftCellLabel]="'Level'"
                                                           [verticalClassifierName]="'SchoolLevelGroup'"
+                                                          [verticalClassifierFieldName]="'schoolLevelGroupId'"
                                                           [horizontalFirstLevelClassifierName]="'Pupil'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'pupilId'"
                                                           [horizontalSecondLevelClassifierName]="'DiedParent'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'diedParentId'"
                                                           [verticalClassifierFilterPropertyName]="'schoolTypeId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.SCHOOL_LEVEL_GROUP_NURSERY"
                                                           [hasTotalRow]="true"
@@ -48,8 +54,11 @@
                                                           [tableId]="diedTeachersCompositionBasicId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -65,9 +74,12 @@
                                                           [classifierList]="classifierList"
                                                           [tableId]="ictTrainingsCompositionId"
                                                           [verticalClassifierName]="'IctTraining'"
+                                                          [verticalClassifierFieldName]="'ictTrainingId'"
                                                           [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
                                                           [horizontalFirstLevelClassifierFilterArray]="ICT_TRAININGS_BASIC_ITEMS"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [hasTotalRow]="true"
                                                           [indicatorType]="pupilTeacherInfoBasicSchoolIctTraining">
                         </sis-census-indicator-tracking-3L-view>
@@ -81,7 +93,8 @@
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
                                                             [indicatorInstanceId]="hivAidsTrainedTeachersBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'">
+                                                            [horizontalClassifierName]="'Gender'"
+                                                            [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
 
@@ -92,7 +105,8 @@
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
                                                             [indicatorInstanceId]="hivAidsTeachingTeachersBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'">
+                                                            [horizontalClassifierName]="'Gender'"
+                                                            [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                     <div #teachersReceivingInsetBasicName>
@@ -102,7 +116,8 @@
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
                                                             [indicatorInstanceId]="teachersReceivingInsetBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'">
+                                                            [horizontalClassifierName]="'Gender'"
+                                                            [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                 </div>
@@ -117,8 +132,11 @@
                                                           [tableId]="diedStudentsCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_SEC_INFORMATION_STUDENT_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -134,8 +152,10 @@
                                                            [classifierList]="classifierList"
                                                            [tableId]="deceasedParentSecondarySectionId"
                                                            [horizontalFirstLevelClassifierName]="'Gender'"
+                                                           [horizontalFirstLevelClassifierFieldName]="'genderId'"
                                                            [horizontalSecondLevelClassifierName]="'DiedParent'"
-                                                           [indicatorType]="pupilsDiseasedParentsSecondarySchool">
+                                                           [horizontalSecondLevelClassifierFieldName]="'diedParentId'"
+                                                           [indicatorType]="pupilsDiseasedParentsSecondaryTvetSchool">
                         </sis-census-indicator-tracking-2LH-view>
                     </div>
 
@@ -148,8 +168,11 @@
                                                           [tableId]="diedTeachersCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -166,7 +189,9 @@
                                                           [classifierList]="classifierList"
                                                           [tableId]="'beneficiaryTypeTableId'"
                                                           [horizontalClassifierName]="'Gender'"
+                                                          [horizontalClassifierFieldName]="'genderId'"
                                                           [verticalClassifierName]="'IctTraining'"
+                                                          [verticalClassifierFieldName]="'ictTrainingId'"
                                                           [indicatorInstanceId]="pupilTeacherInfoSecondarySchoolIctTraining">
                         </sis-census-indicator-tracking-2L-view>
                     </div>
@@ -180,8 +205,11 @@
                                                           [tableId]="diedStudentsCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_INFORMATION_STUDENT_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -189,18 +217,36 @@
                         </sis-census-indicator-tracking-3L-view>
                     </div>
 
+                    <div #studentsDeceasedTvetName>
+                        <label class="sis-label sis-element-required">
+                            10.2 How many students have deceased parent(s)?
+                        </label>
+                        <sis-census-indicator-tracking-2LH-view [census]="census"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="deceasedParentSecondarySectionId"
+                                                                [horizontalFirstLevelClassifierName]="'Gender'"
+                                                                [horizontalFirstLevelClassifierFieldName]="'genderId'"
+                                                                [horizontalSecondLevelClassifierName]="'DiedParent'"
+                                                                [horizontalSecondLevelClassifierFieldName]="'diedParentId'"
+                                                                [indicatorType]="pupilsDiseasedParentsSecondaryTvetSchool">
+                        </sis-census-indicator-tracking-2LH-view>
+                    </div>
+
 
                     <div #teacherDeadTVETName>
                         <label class="sis-label sis-element-required">
-                            10.2 How many teachers died in the previous year?
+                            10.3 How many teachers died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'CauseDeath'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'causeDeathId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_INFORMATION_TEACHER_DIED_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"

@@ -6,8 +6,11 @@
                                           [tableId]="'typeOfLeaveBasicTableId'"
                                           [topLeftCellLabel]="'Type Of Leave'"
                                           [verticalClassifierName]="'TypeOfLeave'"
+                                          [verticalClassifierFieldName]="'typeOfLeaveId'"
                                           [horizontalFirstLevelClassifierName]="'SchoolLevelGroupAdministration'"
+                                          [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupAdministrationId'"
                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                           [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
                                           [horizontalFirstLevelClassifierFilterPropertyValue]="'1'"
                                           [indicatorType]="26">
@@ -18,9 +21,13 @@
                                           [classifierList]="classifierList"
                                           [tableId]="'reasonOfLeaveBasicTableId'"
                                           [topLeftCellLabel]="'Reasons for leaving'"
-                                          [verticalClassifierName]="'TypeOfLeave'"
+                                          [verticalClassifierName]="'ReasonsforLeaving'"
+                                          [verticalClassifierFieldName]="'reasonsForLeavingId'"
+                                          [verticalClassifierFilterArray]="filteredReasonIdsForSchoolType"
                                           [horizontalFirstLevelClassifierName]="'SchoolLevelGroupAdministration'"
+                                          [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupAdministrationId'"
                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                           [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
                                           [horizontalFirstLevelClassifierFilterPropertyValue]="'1'"
                                           [indicatorType]="27">
@@ -32,8 +39,11 @@
                                           [tableId]="'typeOfleaveSecTableId'"
                                           [topLeftCellLabel]="'Type Of Leave'"
                                           [verticalClassifierName]="'TypeOfLeave'"
+                                          [verticalClassifierFieldName]="'typeOfLeaveId'"
                                           [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                          [horizontalFirstLevelClassifierFieldName]="'teacherStaffId'"
                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                           [indicatorType]="28">
         </sis-census-indicator-tracking-3L-view>
 
@@ -45,23 +55,30 @@
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"
                                               [horizontalFirstLevelClassifierName]="'TeacherStaff'"
-                                              [verticalClassifierName]="'ReasonForLeaving'"
+                                              [horizontalFirstLevelClassifierFieldName]="'teacherStaffId'"
+                                              [verticalClassifierName]="'ReasonsforLeaving'"
+                                              [verticalClassifierFieldName]="'reasonsForLeavingId'"
+                                              [verticalClassifierFilterArray]="filteredReasonIdsForSchoolType"
                                               [horizontalSecondLevelClassifierName]="'Gender'"
+                                              [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                               [indicatorType]="29">
             </sis-census-indicator-tracking-3L-view>
         </div>
 
         <div *ngIf="getIsTVETSchoolType()">
             <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
-            <sis-census-indicator-tracking-3L [census]="census"
+            <sis-census-indicator-tracking-3L-view [census]="census"
                                               [classifierList]="classifierList"
                                               [tableId]="'typeOfleaveSecTableId'"
                                               [topLeftCellLabel]="'Type Of Leave'"
                                               [verticalClassifierName]="'TypeOfLeave'"
+                                              [verticalClassifierFieldName]="'typeOfLeaveId'"
                                               [horizontalFirstLevelClassifierName]="'TeacherStaff'"
+                                              [horizontalFirstLevelClassifierFieldName]="'teacherStaffId'"
                                               [horizontalSecondLevelClassifierName]="'Gender'"
+                                              [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                               [indicatorType]="28">
-            </sis-census-indicator-tracking-3L>
+            </sis-census-indicator-tracking-3L-view>
         </div>
 
         <div  *ngIf="getIsTVETSchoolType()">
@@ -71,8 +88,12 @@
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"
                                               [horizontalFirstLevelClassifierName]="'TeacherStaff'"
-                                              [verticalClassifierName]="'ReasonForLeaving'"
+                                              [horizontalFirstLevelClassifierFieldName]="'teacherStaffId'"
+                                              [verticalClassifierName]="'ReasonsforLeaving'"
+                                              [verticalClassifierFieldName]="'reasonsForLeavingId'"
+                                              [verticalClassifierFilterArray]="filteredReasonIdsForSchoolType"
                                               [horizontalSecondLevelClassifierName]="'Gender'"
+                                              [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                               [indicatorType]="29">
             </sis-census-indicator-tracking-3L-view>
         </div>

@@ -18,9 +18,11 @@
                                                           [topLeftCellLabel]="'Age'"
                                                           [indicatorInstanceId]="enrolmentBasicManyPrimary"
                                                           [horizontalClassifierName]="'Pupil'"
+                                                          [horizontalClassifierFieldName]="'pupilId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
-                                                          [verticalClassifierName]="'Age'">
+                                                          [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'">
                         </sis-census-indicator-tracking-2L>
                     </div>
 
@@ -38,7 +40,7 @@
                                        [errorMessage]="enrollmentValidationHelper.enrolmentExceedPrimaryValidation()"
                                        [class]="'sis-float-left'">
                             </sis-error>
-                            <label class="sis-label sis-element-required">8.2 Out of the NEW Pupils admitted to Primary 1, how many of them are from KG?</label>
+                            <label class="sis-label sis-element-required">8.2 Out of the NEW Pupils admitted to Primary 1, how many of them are directly from KG?</label>
                     </div>
                     <div #enrolmentNewPrimaryName>
                         <sis-census-indicator-tracking-2L [census]="census"
@@ -47,9 +49,11 @@
                                                           [topLeftCellLabel]="'Age'"
                                                           [indicatorInstanceId]="enrolmentBasicNewPrimary"
                                                           [horizontalClassifierName]="'Pupil'"
+                                                          [horizontalClassifierFieldName]="'pupilId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
-                                                          [verticalClassifierName]="'Age'">
+                                                          [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'">
                         </sis-census-indicator-tracking-2L>
                     </div>
 
@@ -75,6 +79,7 @@
                                                             [tableId]="'enrolmentByGradeTableId'"
                                                             [indicatorInstanceId]="enrolmentBasicGrade"
                                                             [horizontalClassifierName]="'SchoolLevel'"
+                                                            [horizontalClassifierFieldName]="'schoolLevelId'"
                                                             [topLeftCellLabel]="'Grade'"
                                                             [verticalRowName]="'Number of classes held in open air'">
                         </sis-census-indicator-tracking-1L-H>
@@ -87,6 +92,7 @@
                                                             [tableId]="'enrolmentByStreamsTableId'"
                                                             [indicatorInstanceId]="enrolmentBasicStreams"
                                                             [horizontalClassifierName]="'SchoolLevel'"
+                                                            [horizontalClassifierFieldName]="'schoolLevelId'"
                                                             [topLeftCellLabel]="'Grade'"
                                                             [verticalRowName]="'Number of classes held in open air'">
                         </sis-census-indicator-tracking-1L-H>
@@ -108,9 +114,12 @@
                                                           [tableId]="enrolmentBySexAndAgeTableId"
                                                           [topLeftCellLabel]="'Grade'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelHeaderHidden]="true"
                                                           [horizontalFirstLevelClassifierName]="'SchoolLevel'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'schoolLevelId'"
                                                           [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_BASIC_ENROLMENT_BY_AGE_CLASSIFIER_ID"
                                                           [visibilityFilter]="'EnrolmentAgeSchoolLevel'"
@@ -137,9 +146,12 @@
                                                                 [tableId]="enrolmentInProgrammeTableId"
                                                                 [topLeftCellCodeLabel]="'Code'"
                                                                 [topLeftCellSubjectLabel]="'Subjects'"
-                                                                [verticalClassifierName]="'EnrolmentSubject'"
+                                                                [verticalClassifierName]="'EnrolmentSubjects'"
+                                                                [verticalClassifierFieldName]="'enrolmentSubjectId'"
                                                                 [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                                [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
                                                                 [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                                [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                                 [hasParent]="'true'"
                                                                 [hasVerticalCode]="'true'"
                                                                 [hasVerticalTotalColumn]="'false'"
@@ -166,13 +178,19 @@
                                                           [tableId]="enrolmentProgrammeTableId"
                                                           [topLeftCellLabel]="'Programme'"
                                                           [verticalClassifierName]="'EnrolmentProgramme'"
+                                                          [verticalClassifierFieldName]="'enrolmentProgrammeId'"
                                                           [horizontalFirstLevelClassifierName]="'EnrolmentSummary'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'enrolmentSummaryId'"
                                                           [horizontalSecondLevelClassifierName]="'SchoolLevelGroup'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'schoolLevelGroupId'"
                                                           [horizontalThirdLevelClassifierName]="'Pupil'"
+                                                          [horizontalThirdLevelClassifierFieldName]="'pupilId'"
                                                           [hasHorizontalSecondLevelClassifierFilterRange]="'true'"
                                                           [horizontalSecondLevelClassifierFilterRangeFrom]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_FROM"
                                                           [horizontalSecondLevelClassifierFilterRangeTo]="constants.SUMMARY_OF_ENROLMENT_BY_PROGRAMME_RANGE_TO"
-                                                          [indicatorType]="enrolmentSecondarySummaryOfProgramme">
+                                                          [indicatorType]="enrolmentSecondarySummaryOfProgramme"
+                                                          [hasTotalRowBySecondLevel]="true"
+                                                          [hasTotalRowByThirdLevel]="true">
                         </sis-census-indicator-tracking-4L>
                     </div>
 
@@ -193,6 +211,7 @@
                                                             [tableId]="'enrolmentByGradeSecondaryTableId'"
                                                             [indicatorInstanceId]="enrolmentSecStreamsByGrade"
                                                             [horizontalClassifierName]="'SchoolLevelGroup'"
+                                                            [horizontalClassifierFieldName]="'schoolLevelGroupId'"
                                                             [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
                                                             [hasVerticalTotalColumn]="true"
                                                             [topLeftCellLabel]="'Grade'"
@@ -203,11 +222,14 @@
                                                           [tableId]="enrolmentByAgeGroupSecondaryTableId"
                                                           [topLeftCellLabel]="'Age'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelHeaderHidden]="true"
                                                           [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
                                                           [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
                                                           [horizontalFirstLevelClassifierFilterPropertyValue]="constants.ENROLMENT_BY_GRADE_FILTER_PROPERTY_VALUE"
                                                           [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_SEC_ENROLMENT_BY_AGE_CLASSIFIER_ID"
                                                           [hasTotalRow]="true"
@@ -233,8 +255,11 @@
                                                           [tableId]="enrolmentByAgePart1TableId"
                                                           [topLeftCellLabel]="'Grade / Age'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'proficiencyId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_ENROLMENT_BY_AGE_CLASSIFIER_ID"
                                                           [horizontalFirstLevelClassifierRangeFilterTypeIsLesserThan]="true"
@@ -248,8 +273,11 @@
                                                           [tableId]="enrolmentByAgePart2TableId"
                                                           [topLeftCellLabel]="'Grade / Age'"
                                                           [verticalClassifierName]="'Age'"
+                                                          [verticalClassifierFieldName]="'ageId'"
                                                           [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                          [horizontalFirstLevelClassifierFieldName]="'proficiencyId'"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
+                                                          [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                           [verticalClassifierFilterPropertyName]="'ageParentId'"
                                                           [verticalClassifierFilterPropertyValue]="constants.AGE_TVET_ENROLMENT_BY_AGE_CLASSIFIER_ID"
                                                           [horizontalFirstLevelClassifierRangeFilterTypeIsLesserThan]="false"
@@ -276,9 +304,12 @@
                                                              [tableId]="enrolmentByProgrammesFullTimeTableId"
                                                              [topLeftCellCodeLabel]="'Code'"
                                                              [topLeftCellProgrammeLabel]="'Programmes'"
-                                                             [verticalClassifierName]="'EnrolmentSubject'"
+                                                             [verticalClassifierName]="'EnrolmentSubjects'"
+                                                             [verticalClassifierFieldName]="'enrolmentSubjectId'"
                                                              [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                             [horizontalFirstLevelClassifierFieldName]="'proficiencyId'"
                                                              [horizontalSecondLevelClassifierName]="'Gender'"
+                                                             [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                              [question]="'How many Full-TIME students are enrolled in the programmes provided in your institution?'"
                                                              [hasParent]="'true'"
                                                              [hasVerticalCode]="'true'"
@@ -307,9 +338,12 @@
                                                              [tableId]="enrolmentByProgrammesPartTimeTableId"
                                                              [topLeftCellCodeLabel]="'Code'"
                                                              [topLeftCellProgrammeLabel]="'Programmes'"
-                                                             [verticalClassifierName]="'EnrolmentSubject'"
+                                                             [verticalClassifierName]="'EnrolmentSubjects'"
+                                                             [verticalClassifierFieldName]="'enrolmentSubjectId'"
                                                              [horizontalFirstLevelClassifierName]="'Proficiency'"
+                                                             [horizontalFirstLevelClassifierFieldName]="'proficiencyId'"
                                                              [horizontalSecondLevelClassifierName]="'Gender'"
+                                                             [horizontalSecondLevelClassifierFieldName]="'genderId'"
                                                              [question]="'How many PART-TIME students are enrolled in the programmes provided in your institution?'"
                                                              [hasParent]="'true'"
                                                              [hasVerticalCode]="'true'"

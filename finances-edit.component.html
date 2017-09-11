@@ -6,8 +6,10 @@
                 <sis-census-finances-1L-V [census]="census"
                                           [classifierList]="classifierList"
                                           [schoolTypeId]="schoolTypeId"
-                                          [verticalIncomeClassifierName]="'FinanceIncome'"
-                                          [verticalExpenditureClassifierName]="'FinanceExpenditure'"
+                                          [verticalIncomeClassifierName]="'SchoolIncomeTypes'"
+                                          [verticalIncomeClassifierFieldName]="'financeIncomeId'"
+                                          [verticalExpenditureClassifierName]="'SchoolExpenditureTypes'"
+                                          [verticalExpenditureClassifierFieldName]="'financeExpenditureId'"
                                           [incomeSubEntityName]="'censusSchoolIncomes'"
                                           [expenditureSubEntityName]="'censusSchoolExpenditures'">
                 </sis-census-finances-1L-V>
@@ -18,8 +20,10 @@
                 <sis-census-finances-1L-V [census]="census"
                                           [schoolTypeId]="schoolTypeId"
                                           [classifierList]="classifierList"
-                                          [verticalIncomeClassifierName]="'FinanceActivityIncome'"
-                                          [verticalExpenditureClassifierName]="'FinanceActivityExpenditure'"
+                                          [verticalIncomeClassifierName]="'PTAIncomeTypes'"
+                                          [verticalIncomeClassifierFieldName]="'financeActivityIncomeId'"
+                                          [verticalExpenditureClassifierName]="'PTAExpenditureTypes'"
+                                          [verticalExpenditureClassifierFieldName]="'financeActivityExpenditureId'"
                                           [incomeSubEntityName]="'censusSchoolActivityIncomes'"
                                           [expenditureSubEntityName]="'censusSchoolActivityExpenditures'">
                 </sis-census-finances-1L-V>
@@ -37,7 +41,7 @@
                                 <span>Type of Work/Donation/Fund</span>
                             </th>
                             <th style="width: 350px;">
-                                <span>Estimated Cost (in GHS) </span>
+                                <span>Estimated Cost (in Ghana Cedis) </span>
                             </th>
                         </tr>
                     </thead>

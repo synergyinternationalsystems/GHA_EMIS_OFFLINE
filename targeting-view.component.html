@@ -4,13 +4,18 @@
             <div class="mdl-cell mdl-cell--12-col">
                 <sis-census-indicator-tracking-3L-view [census]="census"
                                                   [classifierList]="classifierList"
+                                                  [sectionNumber]="getSectionNumber()"
                                                   [tableId]="'targetingTableId'"
                                                   [verticalClassifierName]="'Targeting'"
+                                                  [verticalClassifierFieldName]="'targetingId'"
+                                                  [verticalClassifierFilterArray]="notEscapedTargetingIds"
                                                   [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                  [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
                                                   [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                  [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                   [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
-                                                  [horizontalFirstLevelClassifierFilterPropertyValue]="2"
-                                                  [indicatorType]="targetingSecondaryStudentStatistics">
+                                                  [horizontalFirstLevelClassifierFilterPropertyValue]="schoolTypeId"
+                                                  [indicatorType]="getSchoolTypeStatistics()">
                 </sis-census-indicator-tracking-3L-view>
             </div>
         </div>

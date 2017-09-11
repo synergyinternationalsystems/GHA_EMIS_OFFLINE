@@ -166,7 +166,10 @@
                                                    [label]="'2.3 If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                    [tableId]="table2LHId"
                                                    [horizontalFirstLevelClassifierName]="'Disability'"
+                                                   [horizontalFirstLevelClassifierFieldName]="'disabilityId'"
                                                    [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                   [horizontalSecondLevelClassifierFieldName]="'pupilId'"
+
                                                    [indicatorType]="indicatorType2">
                 </sis-census-indicator-tracking-2LH>
             </div>
@@ -179,8 +182,11 @@
                                                       [tableId]="table3LId"
                                                       [topLeftCellLabel]=""
                                                       [verticalClassifierName]="'SchoolLevelGroup'"
+                                                      [verticalClassifierFieldName]="'schoolLevelGroupId'"
                                                       [horizontalFirstLevelClassifierName]="'Disability'"
+                                                      [horizontalFirstLevelClassifierFieldName]="'disabilityId'"
                                                       [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                      [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                       [verticalClassifierFilterArray]="SPECIAL_PUPILS_BASIC_ITEMS"
                                                       [indicatorType]="indicatorType1">
                     </sis-census-indicator-tracking-3L>
@@ -218,7 +224,9 @@
                                                    [label]="'2.4 If ANY at all, indicate the NUMBER of special students in your institution.'"
                                                    [tableId]="table2LHId"
                                                    [horizontalFirstLevelClassifierName]="'Disability'"
+                                                   [horizontalFirstLevelClassifierFieldName]="'disabilityId'"
                                                    [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                   [horizontalSecondLevelClassifierFieldName]="'pupilId'"
                                                    [indicatorType]="indicatorType2">
                 </sis-census-indicator-tracking-2LH>
             </div>
@@ -252,29 +260,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <div *ngIf="isSelectedRadioItem(sanitationRampRails, questionSubEntityFields.RAMPS_YES_NO_ID, organisationRadioButtonIds.ORGANISATION_SELECT_YES_ID)">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'supportTypeCheckBoxValidation'"
-                                   [errorMessage]="organisationValidationHelper.rampValidation()"
-                                   [class]="'sis-float-left'" [forControl]="rampRadioButton"
-                                   [isInput]="true">
-                        </sis-error>
-                        <label class="sis-label sis-element-required">If Yes, where does the  Ramps lead to?</label>
-                    </div>
-                    <table #rampRadioButton>
-                        <tbody>
-                            <td *ngFor="let sanitationRampClassifier of filteredSanitationRampClassifierList()">
-                                <input type="radio"
-                                       [checked]="isCheckedItem(questionSubEntityFields.SANITATION_RAMP_ID, sanitationRampClassifier.getId(), sanitationRampRails)"
-                                       (change)="onRadioChanged(questionSubEntityFields.SANITATION_RAMP_ID, sanitationRampClassifier.getId(), sanitationRampRails,questionSubEntityFields.SANITATION_RAMP_ID_REAL)"
-                                       class="sis-radio-checkbox"
-                                       name="sanitationRampClassifierIdItemsId"/>
-                                <label class="sis-radio-checkbox-label">{{sanitationRampClassifier.getName()}}</label>
-                            </td>
-                        </tbody>
-                    </table>
-                </div>
             </div>
             <!--section 2.8 -->
             <div>
@@ -305,29 +290,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <div *ngIf="isSelectedRadioItem(sanitationRampRails, questionSubEntityFields.YES_NO_RAILS_ID, organisationRadioButtonIds.ORGANISATION_SELECT_YES_ID)">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'supportTypeCheckBoxValidation'"
-                                   [errorMessage]="organisationValidationHelper.railsValidation()"
-                                   [class]="'sis-float-left'" [forControl]="railsRadioButton"
-                                   [isInput]="true">
-                        </sis-error>
-                        <label class="sis-label sis-element-required">If Yes, where does the Rails lead to?</label>
-                    </div>
-                    <table #railsRadioButton>
-                        <tbody>
-                            <td *ngFor="let sanitationRampRailsClassifier of filteredSanitationRampClassifierList()">
-                                <input type="radio"
-                                       [checked]="isCheckedItem(questionSubEntityFields.SANITATION_RAMP_RAILS_ID, sanitationRampRailsClassifier.getId(), sanitationRampRails)"
-                                       (change)="onRadioChanged(questionSubEntityFields.SANITATION_RAMP_RAILS_ID, sanitationRampRailsClassifier.getId(), sanitationRampRails,questionSubEntityFields.SANITATION_RAMP_RAILS_ID_REAL)"
-                                       class="sis-radio-checkbox"
-                                       name="sanitationRampRailsClassifierIdItemsId"/>
-                                <label class="sis-radio-checkbox-label">{{sanitationRampRailsClassifier.getName()}}</label>
-                            </td>
-                        </tbody>
-                    </table>
-                </div>
             </div>
 
             <!--section 2.5 -->
@@ -427,7 +389,7 @@
                                            [value]="awayFromKms_1.id"
                                            (valueChange)="awayFromKmsOneValueChange($event)"
                                            class="sis-large-width">
-                                <sis-combo-box-items [data]="classifierList.get('AwayFromKms')"
+                                <sis-combo-box-items [data]="classifierList.get(getAwayFromHeadHouseSystemNameBySchoolType())"
                                                      [valueField]="'id'"
                                                      [nameField]="'name'">
                                 </sis-combo-box-items>
@@ -450,6 +412,30 @@
                         </div>
                         <!--<sis-combo-box  [id]="awayFromKmcId" [dataItems]="classifierList.get('awayFromKms')" [placeHolder]="'–- Select Distance –-'" [(ngModel)] = "awayFromKms_2" ></sis-combo-box>-->
                     </div>
+                </div>
+            </div>
+
+            <!-- section  2.12-->
+            <div *ngIf="getIsTVETSchoolType()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'censusSchoolIndicatorTrackingsStudentsDayMeansValidation'"
+                               [errorClass]="'sis-validation-wrapper--grouped'"
+                               [errorMessage]="organisationValidationHelper.studentsDayMeansValidation()"
+                               [class]="'sis-float-left'" [forControl]="meansForStudent"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        2.9 Indicate the number of DAY STUDENTS who come to school by the following means.
+                    </label>
+                </div>
+                <div #meansForStudent class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                                                        [tableId]="'studentsDayMeansSectionId'"
+                                                        [indicatorInstanceId]="meansForStudentAdmissionToSchoolTvet"
+                                                        [horizontalClassifierName]="'MeansForStudent'"
+                                                        [horizontalClassifierFieldName]="'meansForStudentId'"
+                                                        [noTopLeftCellLabel]="true">
+                    </sis-census-indicator-tracking-1L-H>
                 </div>
             </div>
         </div>

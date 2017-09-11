@@ -3,20 +3,23 @@
         <div #pupilsTransferred *ngIf="getIsBasicSchoolType()">
             <label class="sis-label sis-element-required">11.1</label>
             <sis-census-indicator-tracking-3L-view [census]="census"
-                                              [classifierList]="classifierList"
-                                              [tableId]="pupilAttTableId "
-                                              [verticalClassifierName]="'IndicatorPupilAttendance'"
-                                              [horizontalFirstLevelClassifierName]="'SchoolLevel'"
-                                              [horizontalSecondLevelClassifierName]="'Pupil'"
-                                              [verticalClassifierFilterPropertyName]="''"
-                                              [verticalClassifierFilterPropertyValue]="''"
-                                              [horizontalFirstLevelClassifierFilterPropertyName]="''"
-                                              [horizontalFirstLevelClassifierFilterPropertyValue]="''"
-                                              [horizontalSecondLevelClassifierFilterPropertyName]="''"
-                                              [horizontalSecondLevelClassifierFilterPropertyValue]="''"
-                                              [hasEmbeddedVerticalClassifier]="true"
-                                              [noVerticalClassifierColumn]="true"
-                                              [indicatorType]="35">
+                                                    [classifierList]="classifierList"
+                                                    [tableId]="pupilAttTableId "
+                                                    [verticalClassifierName]="'IndicatorPupilAttendance'"
+                                                    [verticalClassifierFieldName]="'indicatorPupilAttendanceId'"
+                                                    [horizontalFirstLevelClassifierName]="'SchoolLevel'"
+                                                    [horizontalFirstLevelClassifierFieldName]="'schoolLevelId'"
+                                                    [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                    [horizontalSecondLevelClassifierFieldName]="'pupilId'"
+                                                    [verticalClassifierFilterPropertyName]="''"
+                                                    [verticalClassifierFilterPropertyValue]="''"
+                                                    [horizontalFirstLevelClassifierFilterPropertyName]="''"
+                                                    [horizontalFirstLevelClassifierFilterPropertyValue]="''"
+                                                    [horizontalSecondLevelClassifierFilterPropertyName]="''"
+                                                    [horizontalSecondLevelClassifierFilterPropertyValue]="''"
+                                                    [hasEmbeddedVerticalClassifier]="true"
+                                                    [noVerticalClassifierColumn]="true"
+                                                    [indicatorType]="35">
             </sis-census-indicator-tracking-3L-view>
         </div>
 
@@ -24,21 +27,24 @@
         <div #studentsTransferred *ngIf="getIsSecondarySchoolType()">
             <label class="sis-label sis-element-required">11.1</label>
             <sis-census-indicator-tracking-3L-view [census]="census"
-                                              [classifierList]="classifierList"
-                                              [tableId]="studentAttTableId "
-                                              [verticalClassifierName]="'IndicatorStudentAttendance'"
-                                              [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
-                                              [horizontalSecondLevelClassifierName]="'Pupil'"
-                                              [verticalClassifierFilterPropertyName]="''"
-                                              [verticalClassifierFilterPropertyValue]="''"
-                                              [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
-                                              [horizontalFirstLevelClassifierFilterPropertyValue]="'2'"
-                                              [horizontalSecondLevelClassifierFilterPropertyName]="''"
-                                              [horizontalSecondLevelClassifierFilterPropertyValue]="''"
-                                              [hasVerticalTotalColumn]="true"
-                                              [hasEmbeddedVerticalClassifier]="true"
-                                              [noVerticalClassifierColumn]="true"
-                                              [indicatorType]="61">
+                                                [classifierList]="classifierList"
+                                                [tableId]="studentAttTableId "
+                                                [verticalClassifierName]="'IndicatorStudentAttendance'"
+                                                [verticalClassifierFieldName]="'indicatorStudentAttendanceId'"
+                                                [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
+                                                [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
+                                                [horizontalSecondLevelClassifierName]="'Pupil'"
+                                                [horizontalSecondLevelClassifierFieldName]="'pupilId'"
+                                                [verticalClassifierFilterPropertyName]="''"
+                                                [verticalClassifierFilterPropertyValue]="''"
+                                                [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                                [horizontalFirstLevelClassifierFilterPropertyValue]="'2'"
+                                                [horizontalSecondLevelClassifierFilterPropertyName]="''"
+                                                [horizontalSecondLevelClassifierFilterPropertyValue]="''"
+                                                [hasVerticalTotalColumn]="true"
+                                                [hasEmbeddedVerticalClassifier]="true"
+                                                [noVerticalClassifierColumn]="true"
+                                                [indicatorType]="61">
             </sis-census-indicator-tracking-3L-view>
         </div>
 
@@ -49,6 +55,7 @@
                                                 [tableId]="'girlsGotPregnantBasicTableId'"
                                                 [indicatorInstanceId]="36"
                                                 [horizontalClassifierName]="'SchoolLevel'"
+                                                [horizontalClassifierFieldName]="'schoolLevelId'"
                                                 [horizontalClassifierFilterArray]="SCHOOL_LEVEL_IS_USED_IN_PUPILSTUDENT_ATTENDANCE_TAB"
                                                 [topLeftCellLabel]=""
                                                 [verticalRowName]="''"
@@ -62,6 +69,7 @@
                                             [tableId]="'girlsGotPregnantSecondaryTableId'"
                                             [indicatorInstanceId]="59"
                                             [horizontalClassifierName]="'SchoolLevelGroup'"
+                                            [horizontalClassifierFieldName]="'schoolLevelGroupId'"
                                             [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
                                             [topLeftCellLabel]=""
                                             [verticalRowName]="''"

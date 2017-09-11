@@ -124,7 +124,7 @@ gulp.task('copy-db-scripts', function () {
 });
 
 gulp.task('copy-root-files', function () {
-    return gulp.src(['*.css', '*.html', '*.js', '*.json', '!index.html'])
+    return gulp.src(['*.css', '*.html', '*.js', '*.json', '*.sh', '!index.html'])
         .pipe(gulp.dest('../gha-emis-offline-production'))
 });
 

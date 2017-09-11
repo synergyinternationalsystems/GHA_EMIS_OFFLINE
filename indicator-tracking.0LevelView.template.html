@@ -1,6 +1,5 @@
 <div #questionRequiredName>
-    <label class="sis-label">
-        {{filteredLabelName}} </label>
+    <label class="sis-label"> {{sectionNumber ? sectionNumber + " " + filteredLabelName : filteredLabelName}} </label>
     <tr>
         <span>{{filteredSubEntity.getProperty('actual_Value').value}}</span>
     </tr>

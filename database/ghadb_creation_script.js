@@ -62,6 +62,24 @@ CREATE TABLE "C_AwayFromKms" (
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
 );
+CREATE TABLE "C_AwayFromKmsHeadHouseBasic" (
+  awayFromKmsHeadHouseBasicId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer
+);
+CREATE TABLE "C_AwayFromKmsHeadHouseSec" (
+  awayFromKmsHeadHouseSecId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer
+);
+CREATE TABLE "C_AwayFromKmsHeadHouseTVET" (
+  awayFromKmsHeadHouseTVETId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer
+);
 CREATE TABLE "C_AwayFromSchool" (
   awayFromSchoolId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG          nvarchar(100),
@@ -366,13 +384,34 @@ CREATE TABLE "C_Equipment" (
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
 );
-CREATE TABLE "C_EquipmentKG" (
-  equipmentKGId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "C_MeansForStudent" (
+  meansForStudentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG       nvarchar(50),
   DeletedOn      datetime,
   DeletedBy      integer,
   /* Foreign keys */
-  CONSTRAINT FK__C_Equipme__Delet__7CDCB3C51
+  CONSTRAINT FK__C_MeansFo__Delet__7CDCB3C51
+    FOREIGN KEY (DeletedBy)
+    REFERENCES C_User(id)
+);
+CREATE TABLE "C_RequiredProgrammeEquipment" (
+  requiredProgrammeEquipmentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  code           nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer,
+  /* Foreign keys */
+  CONSTRAINT FK__C_RequiPE__Delet__7CDCB3C51
+    FOREIGN KEY (DeletedBy)
+    REFERENCES C_User(id)
+);
+CREATE TABLE "C_RequiredEquipmentCourse" (
+  requiredEquipmentCourseId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer,
+  /* Foreign keys */
+  CONSTRAINT FK__C_RequiEC__Delet__7CDCB3C51
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
 );
@@ -430,6 +469,17 @@ CREATE TABLE "C_Facility" (
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
 );
+
+CREATE TABLE "C_FacilitySchoolType" (
+  facilitySchoolTypeID  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG            nvarchar(255),
+  schoolTypeId        integer,
+  facilityId        integer,
+  DeletedOn           datetime,
+  DeletedBy           integer
+
+);
+
 CREATE TABLE "C_FacilityForReport" (
   facilityForReportId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG             nvarchar(255),
@@ -791,6 +841,9 @@ CREATE TABLE "C_PupilTeacher" (
 CREATE TABLE "C_ReasonForLeaving" (
   reasonForLeavingId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG            nvarchar(50),
+  isBasic integer,
+  isSecondary integer,
+  isTvet integer,
   DeletedOn           datetime,
   DeletedBy           integer,
   /* Foreign keys */
@@ -857,20 +910,6 @@ CREATE TABLE "C_SBGMeet" (
   CONSTRAINT FK__C_SBGMeet__Delet__27720C0F1
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
-);
-CREATE TABLE "C_SanitationRamp" (
-  sanitationRampId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  name_ENG          nvarchar(100),
-  yesNoId           integer,
-  DeletedOn         datetime,
-  DeletedBy         integer,
-  /* Foreign keys */
-  CONSTRAINT FK__C_Sanitat__Delet__1978F2731
-    FOREIGN KEY (DeletedBy)
-    REFERENCES C_User(id), 
-  CONSTRAINT FK_C_SanitationRamp_C_YesNo1
-    FOREIGN KEY (YesNoID)
-    REFERENCES C_YesNo(YesNoID)
 );
 CREATE TABLE "C_SchoolApplyType" (
   schoolApplyTypeId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -1384,7 +1423,7 @@ CREATE TABLE "CensusSchool" (
   CensusSchoolInstanceId            integer,
   majorVersion                      integer,
   minorVersion                      integer,
-  censusSchoolCode                  nvarchar(255),
+  name                              nvarchar(255),
   yearId                            integer,
   schoolInstanceId                  integer,
   effluentFrom                      nvarchar(255),
@@ -1496,11 +1535,23 @@ CREATE TABLE "CensusSchoolAwayFrom" (
   censusSchoolId          integer,
   awayFromSchoolId        integer,
   awayFromKmsId           integer,
+  awayFromKmsHeadHouseBasicId        integer,
+  awayFromKmsHeadHouseSecId          integer,
+  awayFromKmsHeadHouseTVETId         integer,
 
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolAwayFrom_C_AwayFromKms
     FOREIGN KEY (AwayFromKmsID)
     REFERENCES C_AwayFromKms(AwayFromKmsID), 
+  CONSTRAINT FK_DE_CensusSchoolAwayFrom_C_AwayFromKmsHeadHouseBasic
+    FOREIGN KEY (AwayFromKmsHeadHouseBasicID)
+    REFERENCES C_AwayFromKmsHeadHouseBasic(AwayFromKmsHeadHouseBasicID), 
+  CONSTRAINT FK_DE_CensusSchoolAwayFrom_C_AwayFromKmsHeadHouseSec
+    FOREIGN KEY (AwayFromKmsHeadHouseSecID)
+    REFERENCES C_AwayFromKmsHeadHouseSec(AwayFromKmsHeadHouseSecID), 
+  CONSTRAINT FK_DE_CensusSchoolAwayFrom_C_AwayFromKmsHeadHouseTVET
+    FOREIGN KEY (AwayFromKmsHeadHouseTVETID)
+    REFERENCES C_AwayFromKmsHeadHouseTVET(AwayFromKmsHeadHouseTVETID), 
   CONSTRAINT FK_DE_CensusSchoolAwayFrom_CensusSchool
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
@@ -1618,11 +1669,11 @@ CREATE TABLE "CensusSchoolEnvProblem" (
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
-CREATE TABLE "CensusSchoolEquipment" (
-  censusSchoolEquipmentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE "CensusSchoolRequiredEquipment" (
+  censusSchoolRequiredEquipmentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   censusSchoolId           integer,
-  equipmentId              integer,
-  equipmentKGId            integer
+  requiredProgrammeEquipmentId              integer,
+  requiredEquipmentCourseId            integer
 );
 CREATE TABLE "CensusSchoolExamAccredit" (
   censusSchoolExamAccreditId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -1766,6 +1817,7 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   availableRoomsTypeId              integer,
   repairTypeNumberId                integer,
   facilityId                        integer,
+  facilitySchoolTypeID              integer,
   structureTypeNumberId             integer,
   classroomFurnitureId              integer,
   classFurnitureId                  integer,
@@ -1811,6 +1863,8 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   equipmentMaterialId               integer,
   governmentId                      integer,
   enrolmentSummaryId                integer,
+  meansForStudentId                      integer,
+  equipmentId                integer,
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking1_C_Age
     FOREIGN KEY (SchoolTypeID)
@@ -1983,6 +2037,12 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_YesNo
     FOREIGN KEY (AgeGroupID)
     REFERENCES C_YesNo(YesNoID), 
+  CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_MeansForStudent
+    FOREIGN KEY (MeansForStudentID)
+    REFERENCES C_MeansForStudent(MeansForStudentID), 
+  CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_Equipment
+    FOREIGN KEY (EquipmentID)
+    REFERENCES C_Equipment(EquipmentID), 
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_CensusSchool
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
@@ -2100,7 +2160,6 @@ CREATE TABLE "CensusSchoolQuestion" (
   schoolCategoryId                  integer,
   documentedYesNoId                 integer,
   schoolApplyTypeId                 integer,
-
   capitationGrantYesNoPartiallyId   integer,
   sbgMeetId                         integer,
   inServiceReceiveServiceId         integer,
@@ -2131,6 +2190,9 @@ CREATE TABLE "CensusSchoolQuestion" (
   tvetProgrammId                    integer,
   tvetProgramm_ENG                  nvarchar(200),
   isDocumentedId                    integer,
+  yesNoRampId                       integer,  
+  yesNoRailsId                      integer,  
+  isItFunctional                    boolean,  
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolQuestion1_C_AwayFromKms1
     FOREIGN KEY (SchoolLevelGroupAdministrationID)
@@ -2322,32 +2384,6 @@ CREATE TABLE "CensusSchoolRoadType" (
     FOREIGN KEY (YesNoID)
     REFERENCES C_YesNo(YesNoID), 
   CONSTRAINT FK_DE_CensusSchoolRoadType_DE_CensusSchool
-    FOREIGN KEY (CensusSchoolID)
-    REFERENCES CensusSchool(CensusSchoolID)
-);
-CREATE TABLE "CensusSchoolSanitation" (
-  censusSchoolSanitationId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  censusSchoolId            integer,
-  yesNoRampId               integer,
-  sanitationRampId          integer,
-  yesNoRailsId              integer,
-  sanitationRampRailsId     integer,
-  censusSchoolRamp_ENG      nvarchar(250),
-
-  /* Foreign keys */
-  CONSTRAINT FK_DE_CensusSchoolSanitation_C_SanitationRamp
-    FOREIGN KEY (SanitationRampID)
-    REFERENCES C_SanitationRamp(SanitationRampID), 
-  CONSTRAINT FK_DE_CensusSchoolSanitation_C_SanitationRamp_Rail
-    FOREIGN KEY (SanitationRampRailsID)
-    REFERENCES C_SanitationRamp(SanitationRampID), 
-  CONSTRAINT FK_DE_CensusSchoolSanitation_C_YesNo_Rails
-    FOREIGN KEY (YesNoRailsID)
-    REFERENCES C_YesNo(YesNoID), 
-  CONSTRAINT FK_DE_CensusSchoolSanitation_C_YesNo_Ramp
-    FOREIGN KEY (YesNoRampID)
-    REFERENCES C_YesNo(YesNoID), 
-  CONSTRAINT FK_DE_CensusSchoolSanitation_DE_CensusSchool
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
@@ -2928,12 +2964,12 @@ CREATE TABLE "UserCheckedOutCensuses" (
 CREATE TABLE "OnlineDeVersion" (
   VersionNumber  nvarchar(50) NOT NULL
  );
- insert into OnlineDeVersion values('0.0.44');
+ insert into OnlineDeVersion values('0.0.58');
 
 
 
 CREATE VIEW "DE_Portfolio_CensusSchool" AS
-SELECT C_Location2.Location2ID, 
+SELECT DISTINCT C_Location2.Location2ID, 
 	   C_Location2.Name_ENG AS RegionName,
 	   C_Location3.Location3ID,
 	   C_Location3.Name_ENG AS DistrictName,
@@ -3003,7 +3039,7 @@ where CensusSchoolID = OLD.CensusSchoolID ;
 delete from CensusSchoolEnvProblem
 where CensusSchoolID = OLD.CensusSchoolID ;
 
-delete from CensusSchoolEquipment
+delete from CensusSchoolRequiredEquipment
 where CensusSchoolID = OLD.CensusSchoolID ;
 
 delete from CensusSchoolExamAccredit
@@ -3052,9 +3088,6 @@ where CensusSchoolID = OLD.CensusSchoolID ;
 delete from CensusSchoolRoadType
 where CensusSchoolID = OLD.CensusSchoolID ;
 
-
-delete from CensusSchoolSanitation
-where CensusSchoolID = OLD.CensusSchoolID ;
 
 delete from CensusSchoolShiftSystems_Del
 where CensusSchoolID = OLD.CensusSchoolID ;

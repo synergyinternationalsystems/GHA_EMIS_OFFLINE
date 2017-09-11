@@ -7,7 +7,7 @@
                            [errorMessage]="validateRequired()"
                            [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label"> {{filteredLabelName}} </label>
+            <label class="sis-label"> {{sectionNumber ? sectionNumber + " " + filteredLabelName : filteredLabelName}} </label>
         </div>
     </div>
     <input type="number" inputMaxLength="7" [(ngModel)]="filteredSubEntity.getProperty('actual_Value').value"
