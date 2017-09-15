@@ -1,0 +1,66 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <label class="sis-label">10.1 Indicate if the training facilities used for training of your Institution's
+            course(s) is appropriate and functional.</label>
+        <div class="sis-table-scroll">
+            <table class="mdl-data-table mdl-js-data-table" id="trainingEquipmentSectionId">
+                <thead>
+                <tr>
+                    <th>
+                        <label>Code</label>
+                    </th>
+                    <th>
+                        <label>Programme/course for which the equipment is required</label>
+                    </th>
+                    <th *ngFor="let requiredEquipmentCourseClassifier of classifierList.get('RequiredEquipmentCourse')"
+                        class="ui-state-default center">
+                                        <span>
+                                            <span>{{requiredEquipmentCourseClassifier.getName()}}</span>
+                                            <span class="yell-asterisk"> *</span>
+                                        </span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let requiredProgrammeEquipmentClassifier of classifierList.get('RequiredProgrammeEquipment')">
+                    <td>
+                        <span>
+                            <span>{{requiredProgrammeEquipmentClassifier.getProperty("code").value}}</span>
+                        </span>
+                    </td>
+                    <td>
+                        <span>
+                            <span>{{requiredProgrammeEquipmentClassifier.getName()}}</span>
+                        </span>
+                    </td>
+                    <td *ngFor="let requiredEquipmentCourseClassifier of classifierList.get('RequiredEquipmentCourse')">
+                        <input type="radio" name="requiredProgramme{{requiredProgrammeEquipmentClassifier.getId()}}"
+                               [checked]="isRequiredEquipmentCheckedItem(requiredProgrammeEquipmentClassifier.getId(), requiredEquipmentCourseClassifier.getId())"
+                               (change)="onRequiredEquipmentCheckedItemChanged(requiredProgrammeEquipmentClassifier.getId(), requiredEquipmentCourseClassifier.getId())"
+                               class="form-radio-checkbox center"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <span class="yell-asterisk">* </span>
+            <span><b>Well equipped: </b>The full complement of equipment required for the effective delivery of the training is available and each
+                               student has hands on experience with it by the end of a lesson.</span>
+        </div>
+        <div>
+            <span class="yell-asterisk">* </span>
+            <span><b>Partly equipped: </b>It takes a number of days for each student to obtain hands on experience using the equipment for the
+                                   course being taught.</span>
+        </div>
+        <div>
+            <span class="yell-asterisk">* </span>
+            <span><b>Poorly equipped: </b>The full complement of equipment required for the effective delivery of the training is missing or not
+                                    functional.</span>
+        </div>
+        <div>
+            <span class="yell-asterisk">* </span>
+            <span><b>Not equipped: </b>There is little or no equipment available to support the teaching and learning for the course.</span>
+        </div>
+    </div>
+</div>

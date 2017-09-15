@@ -1,0 +1,75 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <label class="sis-label"> 18.1 Notes </label>
+        <div class="sis-table-scroll">
+            <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--centered">
+                            Date
+                        </th>
+                        <th class="mdl-data-table__cell--non-numeric" style="min-width: 108px;">
+                            Note Type
+                        </th>
+                        <th class="mdl-data-table__cell--non-numeric" style="min-width: 236px;">
+                            Note Details
+                        </th>
+                        <th class="mdl-data-table__cell--non-numeric" style="min-width: 185px;">
+                            User
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of notesList; let j = index">
+                        <td class="mdl-data-table__cell--centered">
+                            {{row.getProperty('dateCreated').value | date : "dd-MMM-yyyy hh:mm"}}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {{row.getProperty('noteTypeId').value.getName()}}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {{row.getProperty('note_ENG').value}}
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            {{row.getProperty('userId').value.getProperty('name').value}}
+                        </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <label class="sis-label"> 18.2 Attachments </label>
+            <div class="sis-table-scroll">
+                <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
+                    <thead>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric" style="min-width: 225px;">
+                                Title
+                            </th>
+                            <th class="mdl-data-table__cell--centered" style="min-width: 102px;">
+                                Created by / Created on
+                            </th>
+                            <th class="mdl-data-table__cell--non-numeric" style="min-width: 140px;">
+                                Document Type
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of documentsList; let j = index">
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <a [href]="" (click)="getDocument(row)">{{row.getProperty('documentId').value.getProperty('fileTitle_ENG').value}}</a>
+                            </td>
+                            <td class="mdl-data-table__cell--centered">
+                                {{row.getProperty('documentId').value.getProperty('userId').value.getProperty('name').value + ' / '}}
+                                {{row.getProperty('documentId').value.getProperty('uploadDate').value | date : "dd-MMM-yyyy hh:mm"}}
+                            </td>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                {{row.getProperty('documentId').value.getProperty('documentTypeId').value.getProperty('typeName_Eng').value}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

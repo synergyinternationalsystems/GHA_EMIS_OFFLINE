@@ -1817,7 +1817,6 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   availableRoomsTypeId              integer,
   repairTypeNumberId                integer,
   facilityId                        integer,
-  facilitySchoolTypeID              integer,
   structureTypeNumberId             integer,
   classroomFurnitureId              integer,
   classFurnitureId                  integer,

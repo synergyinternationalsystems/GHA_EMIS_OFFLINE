@@ -1,0 +1,45 @@
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <label class="sis-label">10.1 Indicate if the training facilities used for training of your Institution's
+            course(s) is appropriate and functional.</label>
+        <div class="sis-table-scroll">
+            <table class="mdl-data-table mdl-js-data-table" id="trainingEquipmentSectionId">
+                <thead>
+                <tr>
+                    <th>
+                        <label>Code</label>
+                    </th>
+                    <th>
+                        <label>Programme/course for which the equipment is required</label>
+                    </th>
+                    <th *ngFor="let requiredEquipmentCourseClassifier of classifierList.get('RequiredEquipmentCourse')"
+                        class="ui-state-default center">
+                                        <span>
+                                            <span>{{requiredEquipmentCourseClassifier.getName()}}</span>
+                                        </span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let requiredProgrammeEquipmentClassifier of classifierList.get('RequiredProgrammeEquipment')">
+                    <td>
+                        <span>
+                            <span>{{requiredProgrammeEquipmentClassifier.getProperty("code").value}}</span>
+                        </span>
+                    </td>
+                    <td>
+                        <span>
+                            <span>{{requiredProgrammeEquipmentClassifier.getName()}}</span>
+                        </span>
+                    </td>
+                    <td *ngFor="let requiredEquipmentCourseClassifier of classifierList.get('RequiredEquipmentCourse')"
+                        class="mdl-data-table__cell--centered sis-vertical-center">
+                        <i class="material-icons material-check-icon"
+                           *ngIf="isRequiredEquipmentCheckedItem(requiredProgrammeEquipmentClassifier.getId(), requiredEquipmentCourseClassifier.getId())">done</i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
