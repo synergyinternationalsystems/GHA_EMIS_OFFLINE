@@ -415,6 +415,16 @@ CREATE TABLE "C_RequiredEquipmentCourse" (
     FOREIGN KEY (DeletedBy)
     REFERENCES C_User(id)
 );
+CREATE TABLE "C_BuildingRepair" (
+  buildingRepairId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name_ENG       nvarchar(50),
+  DeletedOn      datetime,
+  DeletedBy      integer,
+  /* Foreign keys */
+  CONSTRAINT FK__C_BuildingRepair__Delet__7CDCB3C51
+    FOREIGN KEY (DeletedBy)
+    REFERENCES C_User(id)
+);
 CREATE TABLE "C_EquipmentMaterial" (
   equipmentMaterialId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG             nvarchar(100),
@@ -1862,8 +1872,9 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   equipmentMaterialId               integer,
   governmentId                      integer,
   enrolmentSummaryId                integer,
-  meansForStudentId                      integer,
-  equipmentId                integer,
+  meansForStudentId                 integer,
+  equipmentId                       integer,
+  buildingRepairId                integer,
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking1_C_Age
     FOREIGN KEY (SchoolTypeID)
@@ -2042,6 +2053,9 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_Equipment
     FOREIGN KEY (EquipmentID)
     REFERENCES C_Equipment(EquipmentID), 
+  CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_BuildingRepair
+    FOREIGN KEY (BuildingRepairID)
+    REFERENCES CensusSchool(BuildingRepairID)
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_CensusSchool
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)

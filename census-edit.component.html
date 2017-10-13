@@ -67,7 +67,7 @@
                                 </sis-census-identification-edit>
                             </sis-tab>
                             <sis-tab id="1" title="2. Profile and Organisation">
-                                <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census"
+                                <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census" [school]="school"
                                                               [organisationValidationHelper]="organisationValidationHelper"
                                                               [classifierList]="classifierItems"
                                                               [schoolTypeId]="schoolTypeId">Loading ...
@@ -88,7 +88,7 @@
                                 </sis-census-management-edit>
                             </sis-tab>
                             <sis-tab id="4" title="5. Building">
-                                <sis-census-building-edit *ngIf="selectedTabId === 4" [census]="census"
+                                <sis-census-building-edit *ngIf="selectedTabId === 4" [census]="census" [school]="school"
                                                           [buildingValidationHelper]="buildingValidationHelper"
                                                           [schoolTypeId]="schoolTypeId"
                                                           [classifierList]="classifierItems">Loading ...
@@ -104,14 +104,14 @@
                                 </sis-census-waterAndSanitation-edit>
                             </sis-tab>
                             <sis-tab id="6" title="7. Materials and Equipment" *ngIf="isBasicOrSecondary()">
-                                <sis-census-materialsEquipment-edit *ngIf="selectedTabId === 6" [census]="census"
+                                <sis-census-materialsEquipment-edit *ngIf="selectedTabId === 6" [census]="census" [school]="school"
                                                                     [materialsEquipmentValidationHelper]="materialsEquipmentValidationHelper"
                                                                     [schoolTypeId]="schoolTypeId"
                                                                     [classifierList]="classifierItems">Loading ...
                                 </sis-census-materialsEquipment-edit>
                             </sis-tab>
                             <sis-tab id="7" title="{{tabNumbersMap.get(7)}}">
-                                <sis-census-enrollment-edit *ngIf="selectedTabId === 7" [census]="census"
+                                <sis-census-enrollment-edit *ngIf="selectedTabId === 7" [census]="census" [school]="school"
                                                             [enrollmentValidationHelper]="enrollmentValidationHelper"
                                                             [schoolTypeId]="schoolTypeId"
                                                             [classifierList]="classifierItems">Loading ...
@@ -127,7 +127,7 @@
                                 </sis-census-pupil-student-att-movement-edit>
                             </sis-tab>
                             <sis-tab id="8" title="{{tabNumbersMap.get(8)}}" *ngIf="isBasicFromCensus()">
-                                <sis-census-textbooks-edit *ngIf="selectedTabId === 8" [census]="census"
+                                <sis-census-textbooks-edit *ngIf="selectedTabId === 8" [census]="census" [school]="school"
                                                            [textbooksValidationHelper]="textbooksValidationHelper"
                                                            [classifierList]="classifierItems">Loading ...
                                 </sis-census-textbooks-edit>
@@ -141,7 +141,7 @@
                             </sis-tab>
                             <sis-tab id="12" *ngIf="isBasic()" title="{{tabNumbersMap.get(12)}}">
                                 <sis-census-pupil-student-att-movement-edit *ngIf="selectedTabId === 12"
-                                                                            [census]="census"
+                                                                            [census]="census" [school]="school"
                                                                             [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper"
                                                                             [schoolTypeId]="schoolTypeId"
                                                                             [classifierList]="classifierItems">Loading
@@ -178,7 +178,7 @@
                             </sis-tab>
                             <sis-tab id="16" title="{{tabNumbersMap.get(16)}}" *ngIf="isBasicFromCensus()">
                                 <sis-census-pupil-student-teacher-information-edit *ngIf="selectedTabId === 16"
-                                                                                   [census]="census"
+                                                                                   [census]="census" [school]="school"
                                                                                    [pupilTeacherInformationValidationHelper]="pupilTeacherInformationValidationHelper"
                                                                                    [schoolTypeId]="schoolTypeId"
                                                                                    [classifierList]="classifierItems">

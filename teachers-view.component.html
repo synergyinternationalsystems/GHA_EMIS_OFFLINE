@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                     <tr *ngFor="let teacher of teachersList; let i = index">
-                        <td></td>
+                        <td>{{i+1}}</td>
                         <td> {{getTeachersNoteOn(teacher)}}</td>
                         <td>
                             {{teacher.getProperty('teacherId').value.getProperty('surname').value}}

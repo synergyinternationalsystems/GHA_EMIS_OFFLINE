@@ -44,7 +44,7 @@
                             </label>
                     </div>
                     <div #pupilsDiseasedParentsBasicName>
-                        <sis-census-indicator-tracking-3L [census]="census"
+                        <sis-census-indicator-tracking-3L [census]="census" [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionId"
                                                           [topLeftCellLabel]="'Level'"
@@ -115,7 +115,7 @@
                                                           [horizontalFirstLevelClassifierFilterArray]="ICT_TRAININGS_BASIC_ITEMS"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
                                                           [horizontalSecondLevelClassifierFieldName]="'genderId'"
-                                                          [hasTotalRow]="true"
+                                                          [hasTotalRow]="false"
                                                           [indicatorType]="pupilTeacherInfoBasicSchoolIctTraining">
                         </sis-census-indicator-tracking-3L>
                     </div>

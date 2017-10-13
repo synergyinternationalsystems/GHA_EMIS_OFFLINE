@@ -1,26 +1,26 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
         <label class="sis-label">7.1 Indicate the number of equipment at your school.</label>
-        <sis-census-indicator-tracking-3L-view   [census]="census" *ngIf="getIsBasicSchoolType()"
-                                                [classifierList]="classifierList"
-                                                [tableId]="'basicEquipmentTableId'"
-                                                [topLeftCellLabel]=""
-                                                [verticalClassifierName]="'SchoolLevelGroup'"
-                                                [verticalClassifierFieldName]="'schoolLevelGroupId'"
-                                                [horizontalFirstLevelClassifierName]="'EquipmentSchool'"
-                                                [horizontalFirstLevelClassifierFieldName]="'equipmentSchoolId'"
-                                                [horizontalSecondLevelClassifierName]="'ClassFurniture'"
-                                                [horizontalSecondLevelClassifierFieldName]="'classFurnitureId'"
-                                                [horizontalSecondLevelClassifierFilteringByParent]="true"
-                                                [horizontalSecondLevelClassifierParentPropertyName]="'equipmentSchoolId'"
-                                                [verticalClassifierFilterPropertyName]="'schoolTypeId'"
-                                                [verticalClassifierFilterPropertyValue]="'1'"
-                                                [indicatorType]="24">
-        </sis-census-indicator-tracking-3L-view >
+        <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsBasicSchoolType()"
+                                               [school]="school"
+                                               [classifierList]="classifierList"
+                                               [tableId]="'basicEquipmentTableId'"
+                                               [topLeftCellLabel]=""
+                                               [verticalClassifierName]="'SchoolLevelGroup'"
+                                               [verticalClassifierFieldName]="'schoolLevelGroupId'"
+                                               [horizontalFirstLevelClassifierName]="'EquipmentSchool'"
+                                               [horizontalFirstLevelClassifierFieldName]="'equipmentSchoolId'"
+                                               [horizontalSecondLevelClassifierName]="'ClassFurniture'"
+                                               [horizontalSecondLevelClassifierFieldName]="'classFurnitureId'"
+                                               [horizontalSecondLevelClassifierFilteringByParent]="true"
+                                               [horizontalSecondLevelClassifierParentPropertyName]="'equipmentSchoolId'"
+                                               [verticalClassifierFilterPropertyName]="'schoolTypeId'"
+                                               [verticalClassifierFilterPropertyValue]="'1'"
+                                               [indicatorType]="24">
+        </sis-census-indicator-tracking-3L-view>
 
-        <sis-census-indicator-tracking-2LH-view  *ngIf="getIsSecondarySchoolType()"
+        <sis-census-indicator-tracking-2LH-view *ngIf="getIsSecondarySchoolType()"
                                                 [census]="census"
-                                                [label]="'7.1 Indicate the number of equipment at your school.'"
                                                 [classifierList]="classifierList"
                                                 [tableId]="'secondaryEquipmentTableId'"
                                                 [horizontalFirstLevelClassifierName]="'EquipmentSchoolStudent'"
@@ -32,7 +32,8 @@
                                                 [indicatorType]="54">
         </sis-census-indicator-tracking-2LH-view>
 
-        <label class="sis-label sis-element-required"> 7.2 How many of the following record books does your School have?</label>
+        <label class="sis-label sis-element-required"> 7.2 How many of the following record books does your School
+            have?</label>
         <sis-census-indicator-tracking-1L-V-view
                 [census]="census"
                 [classifierList]="classifierList"
@@ -60,67 +61,69 @@
         </sis-census-indicator-tracking-1L-V-view>
 
 
+        <label class="sis-label">
+            7.4 Do you have the following equipment in your school?</label>
 
-            <label class="sis-label">
-                7.4 Do you have the following equipment in your school?</label>
+        <sis-census-indicator-tracking-1L-V-view
+                [census]="census"
+                [classifierList]="classifierList"
+                [tableId]="'equipmentCompositionId'"
+                [topLeftCellLabel]="'Equipment'"
+                [topRightCellLabel]="'Number Of Units'"
+                [indicatorInstanceId]="182"
+                [columnCount]="0"
+                [verticalClassifierName]="'Equipment'"
+                [verticalClassifierFieldName]="'equipmentId'">
+        </sis-census-indicator-tracking-1L-V-view>
 
-            <sis-census-indicator-tracking-1L-V-view
-                    [census]="census"
-                    [classifierList]="classifierList"
-                    [tableId]="'equipmentCompositionId'"
-                    [topLeftCellLabel]="'Equipment'"
-                    [topRightCellLabel]="'Number Of Units'"
-                    [indicatorInstanceId]="182"
-                    [columnCount]="0"
-                    [verticalClassifierName]="'Equipment'"
-                    [verticalClassifierFieldName]="'equipmentId'">
-            </sis-census-indicator-tracking-1L-V-view>
-
-          <div *ngIf="getIsBasicSchoolType()">
-                <label class="sis-label" style="font-weight: bold;">
-                    7.5 Do you have the following infrastructure in place for ICT?
-                </label>
-                <div class="sis-table-scroll">
-                    <table  class="mdl-data-table mdl-js-data-table"
-                            id="ads1">
-                        <tr>
-                            <th> Infrastructure </th>
-                            <th *ngFor="let columnHeader of columnListForInfrastructure">
-                                {{columnHeader.getName()}}
-                            </th>
-                        </tr>
-                        <tr *ngFor="let inf of censusSchoolInfrastructures; let i = index">
-                            <td>
-                                {{inf.getProperty("infrastructureId").value.getProperty("name_ENG").value}}
-                            </td>
-                            <td *ngFor="let yesNoItem of _columnListForInfrastructure;  let j=index">
-                                <span *ngIf="yesNoChecked(inf, yesNoItem.getId()) === true">{{yesNoItem.getProperty('name_ENG').value}}</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label" style="font-weight: bold;">
+                7.5 Do you have the following infrastructure in place for ICT?
+            </label>
+            <div class="sis-table-scroll">
+                <table class="mdl-data-table mdl-js-data-table"
+                       id="ads1">
+                    <tr>
+                        <th> Infrastructure</th>
+                        <th *ngFor="let columnHeader of columnListForInfrastructure">
+                            {{columnHeader.getName()}}
+                        </th>
+                    </tr>
+                    <tr *ngFor="let inf of censusSchoolInfrastructures; let i = index">
+                        <td>
+                            {{inf.getProperty("infrastructureId").value.getProperty("name_ENG").value}}
+                        </td>
+                        <td *ngFor="let yesNoItem of _columnListForInfrastructure;  let j=index">
+                            <span *ngIf="yesNoChecked(inf, yesNoItem.getId()) === true">{{yesNoItem.getProperty('name_ENG').value}}</span>
+                        </td>
+                    </tr>
+                </table>
             </div>
+        </div>
 
-        <label class="sis-label sis-element-required">7.5 How many textbooks, syllabi and Teacher Handbooks does your school have ?</label>
+        <div *ngIf="getIsSecondarySchoolType()">
+            <label class="sis-label sis-element-required">7.5 How many textbooks, syllabi and Teacher Handbooks does your
+                school have ?</label>
 
-        <sis-census-indicator-tracking-3L-view [census]="census"
-                                            [classifierList]="classifierList"
-                                            [tableId]="syllabiTableId "
-                                            [hasVerticalCodeColumn]="true"
-                                            [topLeftCellLabel]="'Core subjects'"
-                                            [verticalClassifierName]="'CoreSubject'"
-                                            [verticalClassifierFieldName]="'coreSubjectId'"
-                                            [horizontalFirstLevelClassifierName]="'TeacherHandbook'"
-                                            [horizontalFirstLevelClassifierFieldName]="'teacherHandbookId'"
-                                            [horizontalSecondLevelClassifierName]="'SchoolLevelGroup'"
-                                            [horizontalSecondLevelClassifierFieldName]="'schoolLevelGroupId'"
-                                            [verticalClassifierFilterPropertyName]="''"
-                                            [verticalClassifierFilterPropertyValue]="''"
-                                            [horizontalFirstLevelClassifierFilterPropertyName]="''"
-                                            [horizontalFirstLevelClassifierFilterPropertyValue]="''"
-                                            [horizontalSecondLevelClassifierFilterPropertyName]="'schoolTypeId'"
-                                            [horizontalSecondLevelClassifierFilterPropertyValue]="'2'"
-                                            [indicatorType]="30">
-        </sis-census-indicator-tracking-3L-view>
+            <sis-census-indicator-tracking-3L-view [census]="census"
+                                                   [classifierList]="classifierList"
+                                                   [tableId]="syllabiTableId "
+                                                   [hasVerticalCodeColumn]="true"
+                                                   [topLeftCellLabel]="'Core subjects'"
+                                                   [verticalClassifierName]="'CoreSubject'"
+                                                   [verticalClassifierFieldName]="'coreSubjectId'"
+                                                   [horizontalFirstLevelClassifierName]="'TeacherHandbook'"
+                                                   [horizontalFirstLevelClassifierFieldName]="'teacherHandbookId'"
+                                                   [horizontalSecondLevelClassifierName]="'SchoolLevelGroup'"
+                                                   [horizontalSecondLevelClassifierFieldName]="'schoolLevelGroupId'"
+                                                   [verticalClassifierFilterPropertyName]="''"
+                                                   [verticalClassifierFilterPropertyValue]="''"
+                                                   [horizontalFirstLevelClassifierFilterPropertyName]="''"
+                                                   [horizontalFirstLevelClassifierFilterPropertyValue]="''"
+                                                   [horizontalSecondLevelClassifierFilterPropertyName]="'schoolTypeId'"
+                                                   [horizontalSecondLevelClassifierFilterPropertyValue]="'2'"
+                                                   [indicatorType]="30">
+            </sis-census-indicator-tracking-3L-view>
+        </div>
     </div>
 </div>

@@ -74,7 +74,7 @@ function createConfigFile() {
     let settingsFilePath = `${configFilePath}\\gha-settings.xml`;
     return fsp.exists(settingsFilePath).then(exists => {
         if(!exists) {
-            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://dad.synisys.com/gha-emisde/api/"}`);
+            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://dad.synisys.com/gha-emis2_de/api/"}`);
         }
     }).then(err => {
         if(err){

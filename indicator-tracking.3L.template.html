@@ -69,6 +69,7 @@
                                         <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
                                                (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
                                                *ngIf="indicatorTrackingItem.visibilityValues[i]" class="sis-input sis-small-width sis-align-right"/>
+                                        <span *ngIf="!indicatorTrackingItem.visibilityValues[i]" class="sis-small-width sis-align-right"></span>
                                     </td>
 
                                     <ng-container *ngIf="hasVerticalTotalColumn">

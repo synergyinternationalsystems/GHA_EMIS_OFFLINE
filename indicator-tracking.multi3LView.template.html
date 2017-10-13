@@ -21,7 +21,7 @@
                     </td>
                     <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index"
                         class="mdl-data-table__cell--centered">
-                        <span >{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                        <span *ngIf="indicatorTrackingItem.visibilityValues[i]">{{indicatorTrackingItem.classifierValues[i].value}}</span>
                     </td>
                 </tr>
                 </tbody>

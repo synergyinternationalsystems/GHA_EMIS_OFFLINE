@@ -9,7 +9,7 @@
                         </sis-error>
                     </div>
                     <div #pupilsTransferred>
-                        <sis-census-indicator-tracking-3L [census]="census"
+                        <sis-census-indicator-tracking-3L [census]="census" [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="'pupilAttTableId' "
                                                           [verticalClassifierName]="'IndicatorPupilAttendance'"
@@ -42,7 +42,7 @@
                         </sis-error>
 
                     </div>
-                    <div *ngIf="getIsSecondarySchoolType()" >
+                    <div  #studentsTransferred>
                         <sis-census-indicator-tracking-3L [census]="census"
                                                           [classifierList]="classifierList"
                                                           [tableId]="'studentAttTableId' "

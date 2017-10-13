@@ -7,6 +7,7 @@
                 NUMBER of permanent classrooms with the appropriate description</label>
 
             <sis-census-indicator-tracking-multi3LView [census]="census" *ngIf="isBasicSchool()"
+                                                       [school]="school"
                                                        [classifierList]="classifierList"
                                                        [tableId]="'generalConstructionTableId'"
                                                        [topLevelClassifierName]="'ClassroomConstruction'"
@@ -44,6 +45,7 @@
         <div class="sis-controls--top-margin sis-clear" *ngIf="isBasicSchool()">
             <label class="sis-label">5.2 How many rooms in each level does the school have?</label>
             <sis-census-indicator-tracking-2L-view [census]="census"
+                                                   [school]="school"
                                                    [classifierList]="classifierList"
                                                    [tableId]="'buildingBasicRoomsTableId'"
                                                    [topLeftCellLabel]="'Rooms'"
@@ -94,6 +96,7 @@
         <div class="sis-controls--top-margin sis-clear" *ngIf="isBasicSchool()">
             <label class="sis-label">5.3 How many of your permanent rooms need REPAIR?</label>
             <sis-census-indicator-tracking-2L-view [census]="census"
+                                                   [school]="school"
                                                    [classifierList]="classifierList"
                                                    [tableId]="'buildingBasicRoomsRepairedTableId'"
                                                    [topLeftCellLabel]="'Rooms'"
@@ -107,9 +110,38 @@
             </sis-census-indicator-tracking-2L-view>
         </div>
 
+        <div class="sis-controls--top-margin sis-clear" *ngIf="isBasicSchool()">
+            <label class="sis-label">5.4 Out of those needing major repairs, how many have:</label>
+            <sis-census-indicator-tracking-2L-view [census]="census" *ngIf="isBasicSchool()"
+                                                   [school]="school"
+                                                   [classifierList]="classifierList"
+                                                   [tableId]="'buildingBasicBuildingRepairedTableId'"
+                                                   [topLeftCellLabel]=""
+                                                   [indicatorInstanceId]="183"
+                                                   [horizontalClassifierName]="'SchoolLevelGroup'"
+                                                   [horizontalClassifierFieldName]="'schoolLevelGroupId'"
+                                                   [horizontalClassifierFilterPropertyName]="'schoolTypeId'"
+                                                   [horizontalClassifierFilterPropertyValue]="basicSchoolTypeId"
+                                                   [verticalClassifierName]="'BuildingRepair'"
+                                                   [verticalClassifierFieldName]="'buildingRepairId'">
+            </sis-census-indicator-tracking-2L-view>
+
+            <sis-census-indicator-tracking-1L-V-view [census]="census" *ngIf="!isBasicSchool()"
+                                                    [classifierList]="classifierList"
+                                                    [isLabelRequired]="true"
+                                                    [tableId]="'buildingBuildingRepairedTableId'"
+                                                    [topLeftCellLabel]=""
+                                                    [topRightCellLabel]=""
+                                                    [columnCount]="0"
+                                                    [indicatorInstanceId]="184"
+                                                    [verticalClassifierName]="'BuildingRepair'"
+                                                    [verticalClassifierFieldName]="'buildingRepairId'">
+            </sis-census-indicator-tracking-1L-V-view>
+        </div>
+
 
         <div class="sis-controls--top-margin sis-clear">
-            <label class="sis-label">5.4 How many classrooms need REPAIR?</label>
+            <label class="sis-label">5.5 How many classrooms need REPAIR?</label>
             <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
                                                     [noTopLeftCellLabel]="true"
                                                     [tableId]="'repairTableId'"
@@ -122,7 +154,7 @@
 
         <sis-census-indicator-tracking-0LevelView [census]="census" *ngIf="!isTVET()" [classifierList]="classifierList"
                                                   [indicatorInstanceId]="basicSecUncompletedIndicatorInstanceId"
-                                                  [sectionNumber]="'5.5'"
+                                                  [sectionNumber]="'5.6'"
                                                   [filteredClassifierId]="1"
                                                   [filteredClassifierName]="'ClassroomUncompleted'"
                                                   [filteredClassifierFieldName]="'classroomUncompletedId'">
@@ -130,9 +162,10 @@
 
         <div class="sis-controls--top-margin">
             <sis-census-indicator-tracking-2L-view [census]="census" *ngIf="isBasicSchool()"
+                                                   [school]="school"
                                                    [classifierList]="classifierList"
                                                    [schoolTypeId]="schoolTypeId"
-                                                   [label]="'5.6 What is the number and the conditions of the following rooms/blocks?'"
+                                                   [label]="'5.7 What is the number and the conditions of the following rooms/blocks?'"
                                                    [tableId]="'buildingBasicTvetRepairStateStructuresTableId'"
                                                    [topLeftCellLabel]="'Facilities'"
                                                    [indicatorInstanceId]="buildingBasicTvetRepairStateStructuresIndicatorInstanceId"
@@ -146,7 +179,7 @@
             <sis-census-indicator-tracking-2L-view [census]="census" *ngIf="isSecondSchool()"
                                                    [classifierList]="classifierList"
                                                    [schoolTypeId]="schoolTypeId"
-                                                   [label]="'5.6 What is the number and the conditions of the following rooms/blocks?'"
+                                                   [label]="'5.7 What is the number and the conditions of the following rooms/blocks?'"
                                                    [tableId]="'buildingBasicTvetRepairStateStructuresTableId'"
                                                    [topLeftCellLabel]="'Facilities'"
                                                    [indicatorInstanceId]="buildingBasicTvetRepairStateStructuresIndicatorInstanceId"
@@ -160,7 +193,7 @@
             <sis-census-indicator-tracking-2L-view [census]="census" *ngIf="isTVET()"
                                                    [classifierList]="classifierList"
                                                    [schoolTypeId]="schoolTypeId"
-                                                   [label]="'5.5 What is the number and the conditions of the following rooms/blocks?'"
+                                                   [label]="'5.6 What is the number and the conditions of the following rooms/blocks?'"
                                                    [tableId]="'buildingBasicTvetRepairStateStructuresTableId'"
                                                    [topLeftCellLabel]="'Facilities'"
                                                    [indicatorInstanceId]="buildingBasicTvetRepairStateStructuresIndicatorInstanceId"
@@ -173,7 +206,7 @@
         </div>
 
         <div class="sis-controls--top-margin" *ngIf="isSecondSchool()">
-            <label class="sis-label">5.7 What is the NUMBER and condition of vehicles at your institution?</label>
+            <label class="sis-label">5.8 What is the NUMBER and condition of vehicles at your institution?</label>
             <sis-census-indicator-tracking-2L-view [census]="census"
                                                    [classifierList]="classifierList"
                                                    [tableId]="'buildingSecVehicleNumberConditionTableId'"

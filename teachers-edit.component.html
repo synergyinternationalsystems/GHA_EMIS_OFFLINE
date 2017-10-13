@@ -52,7 +52,8 @@
                             <td>
                                 <i (click)="editTeachers(true,teacher)" class="material-icons mdl-data-table--action-icon">mode_edit</i>
                             </td>
-                            <td></td>
+
+                            <td>{{i+1}}</td>
                             <td> {{getTeachersNoteOn(teacher)}}</td>
                             <td>
                                 {{teacher.getProperty('teacherId').value.getProperty('surname').value}}

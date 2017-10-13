@@ -27,7 +27,7 @@
                         <label class="sis-label sis-element-required">
                             14.2 How many pupils have deceased parent(s)?
                         </label>
-                        <sis-census-indicator-tracking-3L-view [census]="census"
+                        <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionId"
                                                           [topLeftCellLabel]="'Level'"
@@ -80,7 +80,7 @@
                                                           [horizontalFirstLevelClassifierFilterArray]="ICT_TRAININGS_BASIC_ITEMS"
                                                           [horizontalSecondLevelClassifierName]="'Gender'"
                                                           [horizontalSecondLevelClassifierFieldName]="'genderId'"
-                                                          [hasTotalRow]="true"
+                                                          [hasTotalRow]="false"
                                                           [indicatorType]="pupilTeacherInfoBasicSchoolIctTraining">
                         </sis-census-indicator-tracking-3L-view>
                     </div>

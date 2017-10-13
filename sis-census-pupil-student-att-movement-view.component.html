@@ -2,7 +2,7 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div #pupilsTransferred *ngIf="getIsBasicSchoolType()">
             <label class="sis-label sis-element-required">11.1</label>
-            <sis-census-indicator-tracking-3L-view [census]="census"
+            <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
                                                     [classifierList]="classifierList"
                                                     [tableId]="pupilAttTableId "
                                                     [verticalClassifierName]="'IndicatorPupilAttendance'"

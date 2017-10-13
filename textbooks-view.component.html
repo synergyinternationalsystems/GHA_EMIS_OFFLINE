@@ -6,7 +6,7 @@
             </label>
 
                     <div #handBooksByGradeIndicator>
-                        <sis-census-indicator-tracking-2L-view [census]="census"
+                        <sis-census-indicator-tracking-2L-view [census]="census" [school]="school"
                                                           [classifierList]="classifierList"
                                                           [label]=""
                                                           [tableId]="'handBooksByGradeTableId'"
@@ -32,7 +32,7 @@
                 9.2 How MANY Pupil Textbooks for each subject and grade is available?
             </label>
             <div class="sis-controls--top-margin" #pupilTextBooksIndicator>
-                <sis-census-indicator-tracking-2L-view [census]="census"
+                <sis-census-indicator-tracking-2L-view [census]="census" [school]="school"
                                                       [classifierList]="classifierList"
                                                       [label]=""
                                                       [tableId]="'pupilTextBooksTableId'"

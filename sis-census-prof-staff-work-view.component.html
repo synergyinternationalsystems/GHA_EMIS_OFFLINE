@@ -37,8 +37,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                        <td>{{j}}</td>
-                        <td class="mdl-data-table__cell--centered">{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value}}</td>
+                        <td>{{j+1}}</td>
+                        <td class="mdl-data-table__cell--centered">{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
                         <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
                             <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
                         </td>
@@ -70,8 +70,8 @@
                 <tbody>
                     <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
                         <tr *ngFor="let teacher of tempTeacherList(); let j = index">
-                            <td>{{j}}</td>
-                            <td>{{teacher.getProperty('firstName').value}}</td>
+                            <td>{{j+1}}</td>
+                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
                         </tr>
                     </ng-container>
                     <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
@@ -117,8 +117,8 @@
                     </ng-container>
                     <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
                         <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                            <td>{{j}}</td>
-                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value}}</td>
+                            <td>{{j+1}}</td>
+                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
                             <td> {{indicatorTrackingItem.verticalClassifier.getProperty('sSFNumber').value}}</td>
                             <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
                                 <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>

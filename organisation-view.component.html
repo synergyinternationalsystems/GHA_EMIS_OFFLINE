@@ -62,7 +62,7 @@
         <!-- section 2.6 basic school-->
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-table-scroll">
-                <sis-census-indicator-tracking-3L-view [census]="census"
+                <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
                                                        [classifierList]="classifierList"
                                                        [label]="'2.6	If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                        [tableId]="table3LId"

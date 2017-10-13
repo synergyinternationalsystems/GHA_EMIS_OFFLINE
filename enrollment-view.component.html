@@ -35,7 +35,7 @@
 
             <div #enrolmentGradeName>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Grade</label>
-                <sis-census-indicator-tracking-1L-HView [census]="census"
+                <sis-census-indicator-tracking-1L-HView [census]="census" [school]="school"
                                                     [classifierList]="classifierList"
                                                     [tableId]="'enrolmentByGradeTableId'"
                                                     [indicatorInstanceId]="enrolmentBasicGrade"
@@ -47,7 +47,7 @@
             </div>
 
             <div class="sis-controls--top-margin">
-                <sis-census-indicator-tracking-1L-HView [census]="census"
+                <sis-census-indicator-tracking-1L-HView [census]="census" [school]="school"
                                                     [classifierList]="classifierList"
                                                     [label]="'8.4 How MANY Streams have classes in the open air?'"
                                                     [tableId]="'enrolmentByStreamsTableId'"
@@ -61,13 +61,12 @@
 
             <div #enrolmentBasicBySexAndAgeName>
                 <label class="sis-label sis-element-required">8.5 Enrolment by sex and age</label>
-                <sis-census-indicator-tracking-3L-view [census]="census"
+                <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
                                                         [classifierList]="classifierList"
                                                         [tableId]="enrolmentBySexAndAgeTableId"
                                                         [topLeftCellLabel]="'Grade'"
                                                         [verticalClassifierName]="'Age'"
                                                         [verticalClassifierFieldName]="'ageId'"
-                                                        [horizontalFirstLevelHeaderHidden]="true"
                                                         [horizontalFirstLevelClassifierName]="'SchoolLevel'"
                                                         [horizontalFirstLevelClassifierFieldName]="'schoolLevelId'"
                                                         [horizontalSecondLevelClassifierName]="'Pupil'"

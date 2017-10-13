@@ -19,6 +19,7 @@
                         <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" class="mdl-data-table__cell--centered">
                             <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" *ngIf="!hasVerticalTotalColumn" class="sis-input sis-small-width sis-align-right"/>-->
                             <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
+                                   *ngIf="indicatorTrackingItem.visibilityValues[i]"
                                    (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"/>
                         </td>
                         <td *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1" class="mdl-data-table__cell--right">

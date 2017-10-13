@@ -11,7 +11,7 @@
                 </label>
             </div>
             <div #handBooksByGradeIndicator>
-                <sis-census-indicator-tracking-2L [census]="census"
+                <sis-census-indicator-tracking-2L [census]="census" [school]="school"
                                                   [classifierList]="classifierList"
                                                   [label]=""
                                                   [tableId]="'handBooksByGradeTableId'"
@@ -40,7 +40,7 @@
                     </label>
                 </div>
                 <div class="sis-controls--top-margin" #pupilTextBooksIndicator>
-                    <sis-census-indicator-tracking-2L [census]="census"
+                    <sis-census-indicator-tracking-2L [census]="census" [school]="school"
                                                       [classifierList]="classifierList"
                                                       [label]=""
                                                       [tableId]="'pupilTextBooksTableId'"
