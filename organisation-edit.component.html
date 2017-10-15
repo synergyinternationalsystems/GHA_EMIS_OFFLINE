@@ -368,11 +368,11 @@
                 </div>
                 <div #awayFromKms class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                     <div>
-                        <label class="sis-label">{{awayFromSchool_a}}</label>
+                        <label class="sis-label">{{awayFromSchool_a.getName()}}</label>
                         <div #awayFromKma>
                             <sis-combo-box [id]="'awayFromKmaId'" [placeHolder]="'-- Select Distance --'"
                                            [value]="awayFromKms_0.id"
-                                           (valueChange)="awayFromKmsZeroValueChange($event)"
+                                           (valueChange)="awayFromKmsValueChangeBySchoolType($event, awayFromSchool_a)"
                                            class="sis-large-width">
                                 <sis-combo-box-items [data]="classifierList.get('AwayFromKms')"
                                                      [valueField]="'id'"
@@ -380,14 +380,13 @@
                                 </sis-combo-box-items>
                             </sis-combo-box>
                         </div>
-                        <!--<sis-combo-box  [id]="awayFromKmaId" [dataItems]="classifierList.get('awayFromKms')" [placeHolder]="'–- Select Distance –-'" [(ngModel)] = "awayFromKms_0" ></sis-combo-box>-->
                     </div>
                     <div>
-                        <label class="sis-label">{{awayFromSchool_b}}</label>
+                        <label class="sis-label">{{awayFromSchool_b.getName()}}</label>
                         <div #awayFromKmb>
                             <sis-combo-box [id]="'awayFromKmbId'" [placeHolder]="'-- Select Distance --'"
                                            [value]="awayFromKms_1.id"
-                                           (valueChange)="awayFromKmsOneValueChange($event)"
+                                           (valueChange)="awayFromKmsValueChangeBySchoolType($event, awayFromSchool_b)"
                                            class="sis-large-width">
                                 <sis-combo-box-items [data]="classifierList.get(getAwayFromHeadHouseSystemNameBySchoolType())"
                                                      [valueField]="'id'"
@@ -395,14 +394,13 @@
                                 </sis-combo-box-items>
                             </sis-combo-box>
                         </div>
-                        <!--<sis-combo-box  [id]="awayFromKmbId" [dataItems]="classifierList.get('awayFromKms')" [placeHolder]="'–- Select Distance –-'" [(ngModel)] = "awayFromKms_1" ></sis-combo-box>-->
                     </div>
                     <div>
-                        <label class="sis-label">{{awayFromSchool_c}}</label>
+                        <label class="sis-label">{{awayFromSchool_c.getName()}}</label>
                         <div #awayFromKmc>
                             <sis-combo-box [id]="'awayFromKmcId'" [placeHolder]="'-- Select Distance --'"
                                            [value]="awayFromKms_2.id"
-                                           (valueChange)="awayFromKmsTwoValueChange($event)"
+                                           (valueChange)="awayFromKmsValueChangeBySchoolType($event, awayFromSchool_c)"
                                            class="sis-large-width">
                                 <sis-combo-box-items [data]="classifierList.get('AwayFromKms')"
                                                      [valueField]="'id'"
@@ -410,7 +408,6 @@
                                 </sis-combo-box-items>
                             </sis-combo-box>
                         </div>
-                        <!--<sis-combo-box  [id]="awayFromKmcId" [dataItems]="classifierList.get('awayFromKms')" [placeHolder]="'–- Select Distance –-'" [(ngModel)] = "awayFromKms_2" ></sis-combo-box>-->
                     </div>
                 </div>
             </div>
