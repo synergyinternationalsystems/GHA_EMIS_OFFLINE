@@ -95,50 +95,6 @@
                     {{managementUnit}}
                 </div>
             </div>
-            <div *ngIf="isBasicSchool()">
-                <label class="sis-label"> 1.12 Summary Count</label>
-                <div class="sis-table-scroll mdl-cell--7-col">
-                    <table class="mdl-data-table sis-table--margin-top mdl-js-data-table sis-full-width">
-                        <tr>
-                            <th></th>
-                            <th *ngFor="let columnHeader of columnList">
-                                {{columnHeader.getName()}}
-                            </th>
-                        </tr>
-                        <tr *ngFor="let summaryType of classifierList.get('SummaryType')">
-                            <td>
-                                {{summaryType.getName()}}
-                            </td>
-                            <td *ngFor="let schoolLevelGroup of columnList">
-                                {{filterValue(summaryType.getId(), schoolLevelGroup.getId())}}
-                            </td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div *ngIf="isSecondarySchool()">
-                <h5><label class="sis-label"> 1.11 Summary Count</label>
-                    <div class="sis-table-scroll mdl-cell--7-col">
-                        <table class="mdl-data-table sis-table--margin-top mdl-js-data-table sis-full-width">
-                            <tr>
-                                <th></th>
-                                <th>SH1</th>
-                                <th>SH2</th>
-                                <th>SH3</th>
-                            </tr>
-                            <tr *ngFor="let summaryType of classifierList.get('SummaryType')">
-                                <td>
-                                    {{summaryType.getName()}}
-                                </td>
-                                <td *ngFor="let schoolLevelGroup of columnList">
-                                    {{filterValue(summaryType.getId(), schoolLevelGroup.getId())}}
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </h5>
-            </div>
         </div>
     </div>
 

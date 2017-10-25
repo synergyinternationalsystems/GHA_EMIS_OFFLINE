@@ -1,22 +1,50 @@
-<!--section  2.1 -->
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
+        <!--section  2.1 -->
         <div *ngIf="getIsBasicSchoolType()">
             <label class="sis-label sis-element-required">2.1 Indicate classes involved in
                 Multigrade by level</label>
             <span>{{censusSchoolMultigradeLevelsNames()}}</span>
         </div>
 
-        <!--section  2.2 -->
+        <!-- section 2.1 or 2.2 -->
+        <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
+            <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.2 Summary Count</label>
+            <label *ngIf="getIsSecondarySchoolType()" class="sis-label"> 2.1 Summary Count</label>
+            <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
+                <table class="mdl-data-table mdl-js-data-table sis-full-width">
+                    <tr>
+                        <th></th>
+                        <th *ngFor="let schoolLevelGroup of schoolLevelGroups" class="mdl-data-table__cell--centered">
+                            <span class="ui-column-title">
+                                {{schoolLevelGroup.getName()}}
+                            </span>
+                        </th>
+                    </tr>
+                    <tr *ngFor="let summaryType of classifierList.get('SummaryType')">
+                        <td class="mdl-data-table__cell--non-numeric" style="min-width: 172px;">
+                            {{summaryType.getName()}}
+                        </td>
 
+                        <td *ngFor="let schoolLevelGroup of schoolLevelGroups" class="mdl-data-table__cell--centered">
+                            {{getSchoolSummaryEntity(summaryType, schoolLevelGroup).getProperty('count').value}}
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!--section  2.2 -->
         <div *ngIf="getIsBasicSchoolType()" #schoolLevelGroupClassifierCheckBoxes>
-            <label class="sis-label sis-element-required">2.2 Which of these levels run shift system in your school?</label>
+            <label class="sis-label sis-element-required">2.3 Which of these levels run shift system in your
+                school?</label>
             <span>{{censusSchoolLevelSystemsNames()}}</span>
         </div>
 
         <!--section 2.3-->
         <div *ngIf="getIsBasicSchoolType()">
-            <label class="sis-label sis-element-required">2.3 Is your school one of two DIFFERENT schools making
+            <label class="sis-label sis-element-required">2.4 Is your school one of two DIFFERENT schools making
                 use of the same building? (Co-hosting)</label>
 
             <span>{{coHostingYesNo.getProperty('coHostingYesNoId').value?.getName()}}</span>
@@ -26,10 +54,10 @@
         <!--section 2.1 or 2.4 -->
         <div *ngIf="getIsSecondarySchoolType()|| getIsBasicSchoolType()">
 
-            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.1 Select your school
-                    type</label>
-            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.4 Select your school
-                    type</label>
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.2 Select your school
+                type</label>
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.5 Select your school
+                type</label>
 
             <span>{{educationalType.getProperty('educationalTypeId').value?.getName()}}</span>
         </div>
@@ -43,14 +71,17 @@
         <!--section 2.2 -->
         <div>
             <label class="sis-label sis-element-required"
-                   *ngIf="!getIsTVETSchoolType()">2.5 Category of School</label>
-            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.2 Category of Institution</label>
+                   *ngIf="getIsBasicSchoolType()">2.6 Category of School</label>
+            <label class="sis-label sis-element-required"
+                   *ngIf="getIsSecondarySchoolType()">2.3 Category of School</label>
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.2 Category of
+                Institution</label>
             <span>{{schoolCategory.getProperty('schoolCategoryId').value?.getName()}}</span>
         </div>
         <div *ngIf="getIsSecondarySchoolType()">
             <sis-census-indicator-tracking-2LH-view [census]="census"
                                                     [classifierList]="classifierList"
-                                                    [label]="'2.3 If ANY at all, indicate the NUMBER of special pupils in your school.'"
+                                                    [label]="'2.4 If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                     [tableId]="table2LHId"
                                                     [horizontalFirstLevelClassifierName]="'Disability'"
                                                     [horizontalFirstLevelClassifierFieldName]="'disabilityId'"
@@ -64,7 +95,7 @@
             <div class="sis-table-scroll">
                 <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
                                                        [classifierList]="classifierList"
-                                                       [label]="'2.6	If ANY at all, indicate the NUMBER of special pupils in your school.'"
+                                                       [label]="'2.7 If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                        [tableId]="table3LId"
                                                        [topLeftCellLabel]=""
                                                        [verticalClassifierName]="'SchoolLevelGroup'"
@@ -81,7 +112,8 @@
 
         <!--section 2.3 -->
         <div *ngIf="getIsTVETSchoolType()">
-            <label class="sis-label sis-element-required">2.3 Is your Institution a Special Education Institution?</label>
+            <label class="sis-label sis-element-required">2.3 Is your Institution a Special Education
+                Institution?</label>
             <span>{{specialEducationYesNo.getProperty('specialEducationYesNoId').value?.getName()}}</span>
         </div>
 
@@ -101,26 +133,26 @@
 
         <!--section 2.7 -->
         <div>
-            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.7 Does your school have
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.8 Does your school have
                 Ramps for physically challenged pupils?
             </label>
-            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.4 Does your school
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.5 Does your school
                 have Ramps for physically challenged pupils?
             </label>
             <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">
-                2.5 Does your school have Ramps for physically challenged students?</label>
+                2.6 Does your school have Ramps for physically challenged students?</label>
             <span>{{sanitationRampRails.getProperty('yesNoRampId').value?.getName()}}</span>
 
         </div>
         <!--section 2.8 -->
         <div>
-            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.8 Does your school have
+            <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.9 Does your school have
                 Rails for visually impaired pupils?
             </label>
-            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.5 Does your school
+            <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.6 Does your school
                 have Rails for visually impaired pupils?
             </label>
-            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.6 Does your school have
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.7 Does your school have
                 Rails for visually impaired students?
             </label>
             <span>{{sanitationRampRails.getProperty('yesNoRailsId').value?.getName()}}</span>
@@ -129,19 +161,21 @@
         <!--section 2.5 -->
         <div>
 
-            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.7 What type of Government Support do you need for your Physically disabled students?
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.8 What type of Government
+                Support do you need for your Physically disabled students?
             </label>
             <label class="sis-label sis-element-required"
-                   *ngIf="getIsBasicSchoolType()">2.9 What type of Support do you need for your impaired / physically challenged pupils?</label>
+                   *ngIf="getIsBasicSchoolType()">2.10 What type of Support do you need for your impaired / physically
+                challenged pupils?</label>
             <label class="sis-label sis-element-required"
-                   *ngIf="getIsSecondarySchoolType()">2.6 What type of Support do you need for your challenged students?
+                   *ngIf="getIsSecondarySchoolType()">2.7 What type of Support do you need for your challenged students?
             </label>
             <span>{{censusSchoolSupportTypesNames()}}</span>
         </div>
         <!--section  2.10 -->
         <div *ngIf="getIsBasicSchoolType()">
             <label class="sis-label sis-element-required">
-                2.10 What Ghanaian language(s) are taught in your school?
+                2.11 What Ghanaian language(s) are taught in your school?
             </label>
             <span>{{censusSchoolLanguagesNames()}}</span>
         </div>
@@ -149,13 +183,13 @@
         <!-- section  2.11-->
         <div>
             <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">
-                2.8 How far away from the school is ...?
+                2.9 How far away from the school is ...?
             </label>
             <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">
-                2.7 How far away from the school is ...?
+                2.8 How far away from the school is ...?
             </label>
             <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">
-                2.11 How far away from the school is ...?
+                2.12 How far away from the school is ...?
             </label>
             <div #awayFromKms>
                 <div>
@@ -182,19 +216,17 @@
         <!-- section  2.12-->
         <div *ngIf="getIsTVETSchoolType()">
             <label class="sis-label">
-                2.9 Indicate the number of DAY STUDENTS who come to school by the following means.
+                2.10 Indicate the number of DAY STUDENTS who come to school by the following means.
             </label>
             <div class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
                 <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
-                                                    [tableId]="'studentsDayMeansSectionId'"
-                                                    [indicatorInstanceId]="meansForStudentAdmissionToSchoolTvet"
-                                                    [horizontalClassifierName]="'MeansForStudent'"
-                                                    [horizontalClassifierFieldName]="'meansForStudentId'"
-                                                    [noTopLeftCellLabel]="true">
+                                                        [tableId]="'studentsDayMeansSectionId'"
+                                                        [indicatorInstanceId]="meansForStudentAdmissionToSchoolTvet"
+                                                        [horizontalClassifierName]="'MeansForStudent'"
+                                                        [horizontalClassifierFieldName]="'meansForStudentId'"
+                                                        [noTopLeftCellLabel]="true">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
         </div>
     </div>
 </div>
-<!--
-</form>-->

@@ -57,7 +57,7 @@
                 <label class="sis-label sis-element-required">4 Staff Number (IPPD) (for government employee)</label>
             </div>-->
             <label class="sis-label">4 Staff Number (IPPD) (for government employee)</label>
-            <input #staffNumber type="number"
+            <input #staffNumber type="text" maxlength="13"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('staffNumber').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -71,7 +71,7 @@
                 <label class="sis-label sis-element-required">5 SSF Number</label>
             </div>-->
             <label class="sis-label">5 SSF Number</label>
-            <input #sSFNumber type="number"
+            <input #sSFNumber type="text" maxlength="13"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('sSFNumber').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -85,7 +85,7 @@
                 <label class="sis-label sis-element-required">6 Registration Number</label>
             </div>-->
             <label class="sis-label">6 Registration Number</label>
-            <input #registrationNumber type="number"
+            <input #registrationNumber type="text" maxlength="13"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('registrationNumber').value"
                    class="sis-input sis-small-width"/>
         </div>

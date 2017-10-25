@@ -65,19 +65,19 @@
                         <td>{{teacher.getProperty('teacherId').value.getProperty('rankAppointedYear').value}}</td>
 
                         <td *ngIf="!getIsTVETSchoolType()">
-                            {{teacher.getProperty('teacherId').value.getProperty('teacherTypeId').value.getProperty('name_ENG').value}}
+                            {{teacher.getProperty('teacherId').value.getProperty('teacherTypeId').value && teacher.getProperty('teacherId').value.getProperty('teacherTypeId').value.getProperty('name_ENG').value}}
                         </td>
                         <td>
-                            {{teacher.getProperty('teacherId').value.getProperty('teacherStatusId').value.getProperty('name_ENG').value}}
+                            {{teacher.getProperty('teacherId').value.getProperty('teacherStatusId').value && teacher.getProperty('teacherId').value.getProperty('teacherStatusId').value.getProperty('name_ENG').value}}
                         </td>
                         <td>
-                            {{teacher.getProperty('teacherId').value.getProperty('teacherFunctionId').value.getProperty('name_ENG').value}}
+                            {{teacher.getProperty('teacherId').value.getProperty('teacherFunctionId').value && teacher.getProperty('teacherId').value.getProperty('teacherFunctionId').value.getProperty('name_ENG').value}}
                         </td>
                         <td>
-                            {{teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
+                            {{teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value && teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
                         </td>
                         <td>
-                            {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
+                            {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value && teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
                         </td>
                         <td>{{teacher.getProperty('teacherId').value.getProperty('yearCompleted').value}}</td>
 

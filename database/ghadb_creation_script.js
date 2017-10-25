@@ -2926,19 +2926,19 @@ CREATE TABLE "SchoolNote" (
     FOREIGN KEY (SchoolID)
     REFERENCES School(SchoolID)
 );
-CREATE TABLE "SchoolSummary" (
-  schoolSummaryId     integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  schoolId            integer,
+CREATE TABLE "CensusSchoolSummary" (
+  censusSchoolSummaryId     integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  censusSchoolId            integer,
   summaryTypeId       integer,
   schoolLevelGroupId  integer,
   count            integer,
   /* Foreign keys */
-  CONSTRAINT FK_SchoolSummary_C_Summary1
+  CONSTRAINT FK_CensusSchoolSummary_C_Summary1
     FOREIGN KEY (SummaryTypeID)
     REFERENCES C_SummaryType(SummaryTypeID), 
-  CONSTRAINT FK_SchoolSummary_School1
-    FOREIGN KEY (SchoolID)
-    REFERENCES School(SchoolID)
+  CONSTRAINT FK_CensusSchoolSummary_School1
+    FOREIGN KEY (CensusSchoolID)
+    REFERENCES CensusSchool(CensusSchoolID)
 );
 CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER);
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
@@ -3007,6 +3007,7 @@ SELECT DISTINCT C_Location2.Location2ID,
 	   INNER JOIN C_SchoolType ON C_SchoolType.SchoolTypeID = School.SchoolTypeID
            INNER JOIN UserCheckedOutCensuses ON CensusSchool.censusSchoolId = UserCheckedOutCensuses.censusSchoolId
            INNER JOIN UserData ON UserCheckedOutCensuses.checkedOutUserId = UserData.id;
+
 
 CREATE TRIGGER "_delete1" AFTER DELETE ON "CensusSchool"
 BEGIN 
@@ -3097,10 +3098,8 @@ where CensusSchoolID = OLD.CensusSchoolID ;
 delete from CensusSchoolRepair
 where CensusSchoolID = OLD.CensusSchoolID ;
 
-
 delete from CensusSchoolRoadType
 where CensusSchoolID = OLD.CensusSchoolID ;
-
 
 delete from CensusSchoolShiftSystems_Del
 where CensusSchoolID = OLD.CensusSchoolID ;
@@ -3129,7 +3128,12 @@ where CensusSchoolID = OLD.CensusSchoolID ;
 delete from CensusSchoolWFActionComment
 where CensusSchoolID = OLD.CensusSchoolID ;
 
+delete from CensusSchoolSummary
+where   CensusSchoolID = OLD.CensusSchoolID ;
+
 END;
+
+
 CREATE TRIGGER "_delete2" AFTER DELETE ON "School"
 BEGIN 
 delete from SchoolDocument
@@ -3141,12 +3145,7 @@ where   SchoolID       =OLD.SchoolID ;
 delete from SchoolNote
 where   SchoolID       =OLD.SchoolID ;
 
-delete from SchoolSummary
-where   SchoolID       =OLD.SchoolID ;
-
 END;
-
-
 
 
 CREATE TRIGGER "_delete3" AFTER DELETE ON "Teacher"
@@ -3161,4 +3160,4 @@ delete from TeacherSchoolLevel
 where   teacherId       =OLD. teacherId ;
 
 END
-`
+`;
