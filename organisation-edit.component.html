@@ -1,22 +1,5 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
-        <!-- section 2.1 -->
-        <div *ngIf="getIsBasicSchoolType()">
-            <label class="sis-label">2.1 Indicate classes involved in Multigrade by level</label>
-            <table>
-                <tbody>
-                <td *ngFor="let schoolLevelClassifier of sortedSchoolLevelClassifierList()">
-                    <input type="checkbox"
-                           [checked]="isSchoolLevelCheckedItem(schoolLevelClassifier.getId())"
-                           (change)="onSchoolLevelCheckBoxChanged(schoolLevelClassifier.getId())"
-                           class="sis-radio-checkbox"
-                           name="teacherTrainingItems{{schoolLevelClassifier.getId()}}Id"/>
-                    <label class="sis-radio-checkbox-label">{{schoolLevelClassifier.getName()}}</label>
-                </td>
-                </tbody>
-            </table>
-        </div>
-
         <!-- section 2.1 or 2.2 -->
         <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
             <div class="sis-control-validation">
@@ -27,8 +10,7 @@
                            [forControl]="schoolSummaryGroup"
                            [isInput]="true">
                 </sis-error>
-                <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.2 Summary Count</label>
-                <label *ngIf="getIsSecondarySchoolType()" class="sis-label"> 2.1 Summary Count</label>
+                <label class="sis-label"> 2.1 Summary Count</label>
             </div>
             <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
                 <table class="mdl-data-table sis-table--margin-top mdl-js-data-table sis-full-width">
@@ -52,6 +34,23 @@
                     </tr>
                 </table>
             </div>
+        </div>
+
+        <!-- section 2.2 -->
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label">2.2 Indicate classes involved in Multigrade by level</label>
+            <table>
+                <tbody>
+                <td *ngFor="let schoolLevelClassifier of sortedSchoolLevelClassifierList()">
+                    <input type="checkbox"
+                           [checked]="isSchoolLevelCheckedItem(schoolLevelClassifier.getId())"
+                           (change)="onSchoolLevelCheckBoxChanged(schoolLevelClassifier.getId())"
+                           class="sis-radio-checkbox"
+                           name="teacherTrainingItems{{schoolLevelClassifier.getId()}}Id"/>
+                    <label class="sis-radio-checkbox-label">{{schoolLevelClassifier.getName()}}</label>
+                </td>
+                </tbody>
+            </table>
         </div>
 
         <!--section  2.2 -->

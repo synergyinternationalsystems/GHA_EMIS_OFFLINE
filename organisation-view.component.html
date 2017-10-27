@@ -1,16 +1,8 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
-        <!--section  2.1 -->
-        <div *ngIf="getIsBasicSchoolType()">
-            <label class="sis-label sis-element-required">2.1 Indicate classes involved in
-                Multigrade by level</label>
-            <span>{{censusSchoolMultigradeLevelsNames()}}</span>
-        </div>
-
         <!-- section 2.1 or 2.2 -->
         <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
-            <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.2 Summary Count</label>
-            <label *ngIf="getIsSecondarySchoolType()" class="sis-label"> 2.1 Summary Count</label>
+            <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.1 Summary Count</label>
             <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
                 <table class="mdl-data-table mdl-js-data-table sis-full-width">
                     <tr>
@@ -33,6 +25,13 @@
                     </tr>
                 </table>
             </div>
+        </div>
+
+        <!--section  2.1 -->
+        <div *ngIf="getIsBasicSchoolType()">
+            <label class="sis-label sis-element-required">2.2 Indicate classes involved in
+                Multigrade by level</label>
+            <span>{{censusSchoolMultigradeLevelsNames()}}</span>
         </div>
 
         <!--section  2.2 -->
