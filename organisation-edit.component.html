@@ -202,7 +202,6 @@
             </table>
         </div>
 
-
         <div *ngIf="getIsSecondarySchoolType()">
             <sis-census-indicator-tracking-2LH [census]="census"
                                                [classifierList]="classifierList"
@@ -219,6 +218,7 @@
         <div *ngIf="getIsBasicSchoolType()" class="sis-controls--top-margin">
             <div class="sis-table-scroll sis-controls--top-margin">
                 <sis-census-indicator-tracking-3L [census]="census" [school]="school"
+                                                  [isReRender]="isReRender"
                                                   [classifierList]="classifierList"
                                                   [label]="'2.7	If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                   [tableId]="table3LId"

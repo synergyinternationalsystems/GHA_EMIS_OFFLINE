@@ -39,8 +39,6 @@
                                 </tr>
                                 <tr>
                                     <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index" >
-                                        <!--<input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-align-right"
-                                               *ngIf="indicatorTrackingItem.visibilityValues[i] && !(hasTotalRow || hasVerticalTotalColumn)"/>-->
                                         <input type="number" inputMaxLength="7" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width sis-align-right"
                                                (ngModelChange)="onValueChanged($event, indicatorTrackingItem.subEntityValues[i])"
                                                *ngIf="indicatorTrackingItem.visibilityValues[i]"/>

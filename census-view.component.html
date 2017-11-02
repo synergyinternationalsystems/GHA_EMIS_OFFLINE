@@ -139,7 +139,7 @@
                                 </sis-census-teachers-view>
                             </sis-tab>
                             <sis-tab id="12" title="Professional Staff Workload">
-                                <sis-census-prof-staff-work-view *ngIf="selectedTabId === 12" [census]="census"
+                                <sis-census-prof-staff-work-view *ngIf="selectedTabId === 12" [census]="census" [school]="school"
                                                                  [censusSchoolTypeId]="schoolTypeId"
                                                                  [classifierList]="classifierItems">Loading ...
                                 </sis-census-prof-staff-work-view>

@@ -1,185 +1,198 @@
-        <div class="mdl-grid mdl-grid--no-spacing" title="">
-            <div class="mdl-cell mdl-cell--12-col">
-                <label class="sis-layout__section__title sis-controls--top-margin">13.1 State actual periods of teaching PER WEEK for each teacher</label>
-                <div class="sis-control-validation">
-                    <sis-error [id]="'enrolmentProgrammeValidation'" [errorMessage]="enrollmentProgrammeValidationMessage"
-                               [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
-                               [isInput]="true">
-                    </sis-error>
-                    <sis-error [id]="'enrolmentProgrammeDuplicateValidation'" [errorMessage]="enrollmentProgrammeDuplicateValidationMessage"
-                               [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
-                               [isInput]="true">
-                    </sis-error>
-                </div>
-                <div class="sis-float-left">
-                    <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Subject --'" [(value)]="selectEnrolmentSubjectValue">
-                        <sis-combo-box-items [data]="enrolmentSubjectList" #enrolmentProgrammeAdd [valueField]="id" [nameField]="'name'"></sis-combo-box-items>
-                    </sis-combo-box>
-                </div>
-                <input type="button" value="Add"
-                       class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect button--full-width-mobile sis-btn--primary"
-                       (click)="addAction()" style="margin-left:30px;">
+<div class="mdl-grid mdl-grid--no-spacing" title="">
+    <div class="mdl-cell mdl-cell--12-col">
+        <label class="sis-layout__section__title sis-controls--top-margin">13.1 State actual periods of teaching PER
+            WEEK for each teacher</label>
+        <div class="sis-control-validation">
+            <sis-error [id]="'enrolmentProgrammeValidation'" [errorMessage]="enrollmentProgrammeValidationMessage"
+                       [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
+                       [isInput]="true">
+            </sis-error>
+            <sis-error [id]="'enrolmentProgrammeDuplicateValidation'"
+                       [errorMessage]="enrollmentProgrammeDuplicateValidationMessage"
+                       [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
+                       [isInput]="true">
+            </sis-error>
+        </div>
+        <div class="sis-float-left">
+            <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Subject --'"
+                           [(value)]="selectEnrolmentSubjectValue">
+                <sis-combo-box-items [data]="enrolmentSubjectList" #enrolmentProgrammeAdd [valueField]="id"
+                                     [nameField]="'name'"></sis-combo-box-items>
+            </sis-combo-box>
+        </div>
+        <input type="button" value="Add"
+               class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect button--full-width-mobile sis-btn--primary"
+               (click)="addAction()" style="margin-left:30px;">
 
-                    <!--<sis-combo-box [id]="enrolmentProgrammeAddId" [dataItems]="enrolmentSubjectList"-->
-                                   <!--[placeHolder]="'-- Select Subject --'"-->
-                                   <!--[(ngModel)]="selectEnrolmentSubjectValue"></sis-combo-box>-->
-                 <!--   <div class="mdl-cell mdl-cell&#45;&#45;2-col mdl-cell&#45;&#45;2-col-tablet mdl-cell&#45;&#45;4-col-phone">
+        <div class="sis-clear"></div>
 
-                    </div>-->
+        <div *ngIf="isBasicSchool()" class="sis-table-scroll sis-controls--top-margin">
+            <div class="sis-control-validation">
+                <sis-error [id]="'titleValidation'"
+                           [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
+                           [class]="'sis-float-left'" [forControl]="valueRequiredValidationForBasic"
+                           [isInput]="true">
+                </sis-error>
+            </div>
+            <table #valueRequiredValidationForBasic class="mdl-data-table mdl-js-data-table"
+                   id="basicTeacherId">
+                <thead>
+                <tr>
+                    <th rowspan="2">
+                        <span>No</span>
+                    </th>
+                    <th rowspan="2" style="min-width: 98px;">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2" class="mdl-data-table__cell--centered">
+                        <span>Creche/Nursery </span>
+                    </th>
+                    <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()"
+                        class="mdl-data-table__cell--centered"
+                        [attr.colspan]="filteredHorizontalSLByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
+                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                    </th>
+                    <th *ngIf="!isEnrolmentSubjectListEmpty()" class="mdl-data-table__cell--centered"
+                        [attr.colspan]="enrolmentProgrammeAddItems.length">
+                        <span>Junior High School</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierListForView()"
+                        class="mdl-data-table__cell--centered">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems"
+                            class="mdl-data-table__cell--centered">
+                            <span>{{enrolmentClassifier.getName()}}</span>
+                        </th>
+                    </ng-container>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                    <td>{{j+1}}</td>
+                    <td class="mdl-data-table__cell--centered">
+                        {{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                        indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                    </td>
+                    <td class="mdl-data-table__cell--centered"
+                        *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                        <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                               inputMaxLength="7"
+                               class="sis-input sis-small-width" *ngIf="indicatorTrackingItem.visibilityValues[i]"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <div class="sis-clear"></div>
-
-                <div *ngIf="isBasicSchool()" class="sis-table-scroll sis-controls--top-margin">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'titleValidation'"
-                                   [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
-                                   [class]="'sis-float-left'" [forControl]="valueRequiredValidationForBasic"
-                                   [isInput]="true">
-                        </sis-error>
-                    </div>
-                    <table #valueRequiredValidationForBasic class="mdl-data-table mdl-js-data-table"
-                           id="basicTeacherId">
-                        <thead>
-                            <tr>
-                                <th rowspan="2" >
-                                    <span>No</span>
-                                </th>
-                                <th rowspan="2" style="min-width: 98px;">
-                                    <span>Full Name</span>
-                                </th>
-                                <th rowspan="2" class="mdl-data-table__cell--centered">
-                                    <span>Creche/Nursery </span>
-                                </th>
-                                <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
-                                    [attr.colspan]="filteredHorizontalSLByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
-                                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
-                                </th>
-                                <th *ngIf="!isEnrolmentSubjectListEmpty()" class="mdl-data-table__cell--centered"
-                                    [attr.colspan]="enrolmentProgrammeAddItems.length">
-                                        <span>Junior High School</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierListForView()" class="mdl-data-table__cell--centered">
-                                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
-                                </th>
-                                <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                                    <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems" class="mdl-data-table__cell--centered">
-                                        <span>{{enrolmentClassifier.getName()}}</span>
-                                    </th>
-                                </ng-container>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                                <td>{{j+1}}</td>
-                                <td class="mdl-data-table__cell--centered">{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                                <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                                    <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="sis-table-scroll sis-controls--top-margin" *ngIf="isSecondSchool()">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'titleValidation'"
-                                   [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
-                                   [class]="'sis-float-left'" [forControl]="valueRequiredValidationForSecondSchool"
-                                   [isInput]="true">
-                        </sis-error>
-                    </div>
-                    <table #valueRequiredValidationForSecondSchool class="mdl-data-table mdl-js-data-table" id="secondaryTeacherId">
-                        <thead>
-                        <tr>
-                            <th  rowspan="2" >
-                                <span> No</span>
-                            </th>
-                            <th  rowspan="2">
-                                <span>Full Name</span>
-                            </th>
-                            <th rowspan="2">
-                                <span>Subject Specialisation in Professional or Academic Qualification </span>
-                            </th>
-                            <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                                <th  *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
+        <div class="sis-table-scroll sis-controls--top-margin" *ngIf="isSecondSchool()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'titleValidation'"
+                           [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
+                           [class]="'sis-float-left'" [forControl]="valueRequiredValidationForSecondSchool"
+                           [isInput]="true">
+                </sis-error>
+            </div>
+            <table #valueRequiredValidationForSecondSchool class="mdl-data-table mdl-js-data-table"
+                   id="secondaryTeacherId">
+                <thead>
+                <tr>
+                    <th rowspan="2">
+                        <span> No</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Subject Specialisation in Professional or Academic Qualification </span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
                                     <span class="ui-column-title">
                                         <span>{{enrolmentClassifier.getName()}}</span>
                                     </span>
-                                </th>
-                            </ng-container>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
-                                <tr *ngFor="let teacher of tempTeacherList(); let j = index">
-                                    <td>{{j+1}}</td>
-                                    <td>{{teacher.getProperty('firstName').value}}</td>
+                        </th>
+                    </ng-container>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let teacher of tempTeacherList(); let j = index">
+                        <td>{{j+1}}</td>
+                        <td>{{teacher.getProperty('firstName').value}}</td>
 
-                                </tr>
-                            </ng-container>
-                            <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
-                                <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                                    <td>{{j}}</td>
-                                    <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                                    <td> </td>
-                                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                                        <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width"/>
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="sis-table-scroll" *ngIf="isTVET()">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'titleValidation'"
-                                   [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
-                                   [class]="'sis-float-left'" [forControl]="valueRequiredValidationForTVET"
-                                   [isInput]="true">
-                        </sis-error>
-                    </div>
-                    <table #valueRequiredValidationForTVET class="mdl-data-table mdl-js-data-table" id="tvetTeacherId">
-                        <thead>
-                        <tr>
-                            <th  rowspan="2" >
-                                <span> No</span>
-                            </th>
-                            <th  rowspan="2">
-                                <span>Full Name</span>
-                            </th>
-                            <th rowspan="2">
-                                <span>Tutor Number </span>
-                            </th>
-                            <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                                <th  *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
-                                    <span>{{enrolmentClassifier.getName()}}</span>
-                                </th>
-                            </ng-container>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
-                                <tr *ngFor="let teacher of tempTeacherList(); let j = index">
-                                    <td>{{j+1}}</td>
-                                    <td>{{teacher.getProperty('firstName').value}}</td>
-
-                                </tr>
-                            </ng-container>
-                            <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
-                                <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                                    <td>{{j}}</td>
-                                    <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                                    <td> {{indicatorTrackingItem.verticalClassifier.getProperty('sSFNumber').value}}</td>
-                                    <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                                        <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value" class="sis-input sis-small-width"/>
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                        <td>{{j}}</td>
+                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                            indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                        </td>
+                        <td></td>
+                        <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                            <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                                   class="sis-input sis-small-width"/>
+                        </td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
         </div>
+
+        <div class="sis-table-scroll" *ngIf="isTVET()">
+            <div class="sis-control-validation">
+                <sis-error [id]="'titleValidation'"
+                           [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
+                           [class]="'sis-float-left'" [forControl]="valueRequiredValidationForTVET"
+                           [isInput]="true">
+                </sis-error>
+            </div>
+            <table #valueRequiredValidationForTVET class="mdl-data-table mdl-js-data-table" id="tvetTeacherId">
+                <thead>
+                <tr>
+                    <th rowspan="2">
+                        <span> No</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Tutor Number </span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
+                            <span>{{enrolmentClassifier.getName()}}</span>
+                        </th>
+                    </ng-container>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let teacher of tempTeacherList(); let j = index">
+                        <td>{{j+1}}</td>
+                        <td>{{teacher.getProperty('firstName').value}}</td>
+
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                        <td>{{j}}</td>
+                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                            indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                        </td>
+                        <td> {{indicatorTrackingItem.verticalClassifier.getProperty('sSFNumber').value}}</td>
+                        <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                            <input type="number" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"
+                                   class="sis-input sis-small-width"/>
+                        </td>
+                    </tr>
+                </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

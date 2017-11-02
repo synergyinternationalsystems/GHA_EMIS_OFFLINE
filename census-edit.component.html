@@ -156,7 +156,7 @@
                                 </sis-census-teachers-edit>
                             </sis-tab>
                             <sis-tab id="10" title="{{tabNumbersMap.get(10)}}">
-                                <sis-census-prof-staff-work-edit *ngIf="selectedTabId === 10" [census]="census"
+                                <sis-census-prof-staff-work-edit *ngIf="selectedTabId === 10" [census]="census" [school]="school"
                                                                  [profStaffWorkloadValidationHelper]="profStaffWorkloadValidationHelper"
                                                                  [censusSchoolTypeId]="schoolTypeId"
                                                                  [classifierList]="classifierItems">Loading ...
