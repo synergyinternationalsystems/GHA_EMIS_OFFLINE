@@ -35,7 +35,7 @@
     "tsc:w": "tsc -w",
     "typings": "typings",
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
-    "electron-builder-see-electron-builder.sh-file": "node_modules/.bin/build --win -p always",
+    "electron-builder-see-electron-builder.sh-file": "node_modules/.bin/build --win -p always --ia32",
     "not_used_cleanElectronPackage": "rimraf ../ghana-emis-packaged6",
     "not_used_buildElectronPackage": "npm run cleanElectronPackage && electron-packager . --out ../ghana-emis-packaged6 --asar --overwrite --platform=win32 --arch=x64 --icon=app/resources/images/logo.ico --version-string.CompanyName=\"Synergy International Systems\"",
     "not_used_setupElectronInstaller": "electron-installer-windows --debug --src ../ghana-emis-packaged6/GhanaEMIS-win32-x64/ --dest ../ghana-emis-packaged5_el_win_installer/ --config config.json",
