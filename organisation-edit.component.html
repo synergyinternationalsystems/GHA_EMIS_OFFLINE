@@ -142,7 +142,7 @@
                 <td *ngFor="let educationTypeClassifier of classifierList.get(getSubEntityKeyNameWithoutId(questionSubEntityFields.EDUCATION_TYPE_ID_REAL))">
                     <input type="radio"
                            [checked]="isCheckedItem(questionSubEntityFields.EDUCATION_TYPE_ID, educationTypeClassifier.getId(), educationalType)"
-                           (change)="onRadioChanged(questionSubEntityFields.EDUCATION_TYPE_ID, educationTypeClassifier.getId(), educationalType,questionSubEntityFields.EDUCATION_TYPE_ID_REAL)"
+                           (change)="onRadioChanged(questionSubEntityFields.EDUCATION_TYPE_ID, educationTypeClassifier.getId(), educationalType, questionSubEntityFields.EDUCATION_TYPE_ID_REAL)"
                            class="sis-radio-checkbox"
                            name="educationTypeItemsId"/>
                     <label class="sis-radio-checkbox-label">{{educationTypeClassifier.getName()}}</label>
