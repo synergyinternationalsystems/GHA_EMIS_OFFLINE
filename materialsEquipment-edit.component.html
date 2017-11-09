@@ -3,7 +3,7 @@
 
         <div class="sis-control-validation">
             <sis-error [id]="'numberofequipmentValidation'"
-                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation()"
+                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation() || materialsEquipmentValidationHelper.censusSchoolFurnitureNumberValidator()"
                        *ngIf="getIsBasicSchoolType()"
                        Indicate the number of equipment at your school.
                        [class]="'sis-float-left'" [forControl]="numberOfEquipment"
@@ -12,7 +12,8 @@
             <label class="sis-label">7.1 Indicate the number of equipment at your school.</label>
         </div>
         <div #numberOfEquipment>
-            <sis-census-indicator-tracking-3L [census]="census" *ngIf="getIsBasicSchoolType()" [school]="school"
+            <sis-census-indicator-tracking-3L [census]="census" *ngIf="getIsBasicSchoolType()"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'basicEquipmentTableId'"
                                               [topLeftCellLabel]=""
@@ -49,7 +50,7 @@
         <div class="sis-control-validation">
             <sis-error [id]="'recordBooksValidation'"
                        [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                       [errorMessage]="materialsEquipmentValidationHelper.recordBooksValidation()"
+                       [errorMessage]="materialsEquipmentValidationHelper.recordBooksValidation() || materialsEquipmentValidationHelper.censusSchoolRecordBooksValidation()"
                        [class]="'sis-float-left'" [forControl]="recordBooks"
                        [isInput]="true">
             </sis-error>
@@ -142,6 +143,7 @@
                 </div>
                 <div #syllabi>
                     <sis-census-indicator-tracking-3L [census]="census"
+                                                      [school]="school"
                                                       [classifierList]="classifierList"
                                                       [tableId]="syllabiTableId "
                                                       [hasVerticalCodeColumn]="true"

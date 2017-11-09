@@ -2,6 +2,7 @@
     <div class="mdl-cell mdl-cell--12-col">
         <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">15.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
         <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsBasicSchoolType()"
+                                               [school]="school"
                                           [classifierList]="classifierList"
                                           [tableId]="'typeOfLeaveBasicTableId'"
                                           [topLeftCellLabel]="'Type Of Leave'"
@@ -18,6 +19,7 @@
 
         <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">15.1 How Many Staff have left your school for the following reasons in the past school year?</label>
         <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsBasicSchoolType()"
+                                               [school]="school"
                                           [classifierList]="classifierList"
                                           [tableId]="'reasonOfLeaveBasicTableId'"
                                           [topLeftCellLabel]="'Reasons for leaving'"
@@ -35,6 +37,7 @@
 
         <label  *ngIf="getIsSecondarySchoolType()" class="sis-label sis-element-required">13.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
         <sis-census-indicator-tracking-3L-view [census]="census" *ngIf="getIsSecondarySchoolType()"
+                                               [school]="school"
                                           [classifierList]="classifierList"
                                           [tableId]="'typeOfleaveSecTableId'"
                                           [topLeftCellLabel]="'Type Of Leave'"
@@ -51,6 +54,7 @@
         <div *ngIf="getIsSecondarySchoolType()">
             <label class="sis-label sis-element-required">13.2 How many Staff have left your institution for the following reasons in the past academic year?</label>
             <sis-census-indicator-tracking-3L-view [census]="census"
+                                                   [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"
@@ -68,6 +72,7 @@
         <div *ngIf="getIsTVETSchoolType()">
             <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
             <sis-census-indicator-tracking-3L-view [census]="census"
+                                                   [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'typeOfleaveSecTableId'"
                                               [topLeftCellLabel]="'Type Of Leave'"
@@ -84,6 +89,7 @@
         <div  *ngIf="getIsTVETSchoolType()">
             <label class="sis-label sis-element-required">11.2	How many Staff have left your institution for the following reasons in the past academic year?</label>
             <sis-census-indicator-tracking-3L-view [census]="census"
+                                                   [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"

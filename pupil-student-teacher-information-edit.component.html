@@ -5,7 +5,7 @@
                             <sis-error [id]="'pupilsDeadBasicValidation'"
                                        [forControl]="pupilsDeadBasicName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped'"
-                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDeadValidation()"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilsDiedPrevYearCountValidator()"
                                        [class]="'sis-float-left'">
                             </sis-error>
                             <label class="sis-label sis-element-required">
@@ -14,6 +14,7 @@
                     </div>
                     <div #pupilsDeadBasicName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedPupilsSectionId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -36,7 +37,7 @@
                             <sis-error [id]="'pupilsDiseasedParentsBasicValidation'"
                                        [forControl]="pupilsDiseasedParentsBasicName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped'"
-                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDiseasedParentsValidation()"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDiseasedParentsValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilsDeceasedParentCountValidator()"
                                        [class]="'sis-float-left'">
                                 </sis-error>
                             <label class="sis-label sis-element-required">
@@ -44,7 +45,8 @@
                             </label>
                     </div>
                     <div #pupilsDiseasedParentsBasicName>
-                        <sis-census-indicator-tracking-3L [census]="census" [school]="school"
+                        <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionId"
                                                           [topLeftCellLabel]="'Level'"
@@ -67,7 +69,7 @@
                             <sis-error [id]="'teacherDeadBasicValidation'"
                                        [forControl]="teacherDeadBasicName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped'"
-                                       [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolTeachersDiedPrevYearCountValidator()"
                                        [class]="'sis-float-left'">
                             </sis-error>
                             <label class="sis-label sis-element-required">
@@ -76,6 +78,7 @@
                     </div>
                     <div #teacherDeadBasicName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionBasicId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -97,7 +100,7 @@
                             <sis-error [id]="'ictTrainingBasicValidation'"
                                        [forControl]="ictTrainingBasicName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped'"
-                                       [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingBasicValidation()"
+                                       [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingBasicValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilTeacherInfoICTTrainingsValidation()"
                                        [class]="'sis-float-left'">
                             </sis-error>
                             <label class="sis-label sis-element-required">
@@ -106,6 +109,7 @@
                     </div>
                     <div #ictTrainingBasicName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="ictTrainingsCompositionId"
                                                           [verticalClassifierName]="'IctTraining'"
@@ -133,6 +137,7 @@
                     </div>
                     <div #hivAidsTrainedTeachersBasicName>
                         <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
@@ -155,6 +160,7 @@
                     </div>
                     <div #hivAidsTeachingTeachersBasicName>
                         <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
@@ -176,6 +182,7 @@
                     </div>
                     <div #teachersReceivingInsetBasicName>
                         <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'hivAidsTrainedTeachersCompositionId'"
                                                             [noTopLeftCellLabel] = "true"
@@ -200,6 +207,7 @@
                     </div>
                     <div #studentsDeadSecondaryName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -254,6 +262,7 @@
                     </div>
                     <div #teacherDeadSecondaryName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -285,6 +294,7 @@
                     </div>
                     <div #ictTrainingSecondaryName>
                         <sis-census-indicator-tracking-2L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="'beneficiaryTypeTableId'"
                                                           [horizontalClassifierName]="'Gender'"
@@ -311,6 +321,7 @@
                     </div>
                     <div #studentsDeadTVETName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -364,6 +375,7 @@
                     </div>
                     <div #teacherDeadTVETName>
                         <sis-census-indicator-tracking-3L [census]="census"
+                                                          [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"

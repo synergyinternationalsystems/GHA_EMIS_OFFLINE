@@ -10,6 +10,14 @@
                            [forControl]="schoolSummaryGroup"
                            [isInput]="true">
                 </sis-error>
+                <sis-error [id]="'titleValidation'"
+                           *ngIf="getIsBasicSchoolType()"
+                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryCountValidator()"
+                           [class]="'sis-float-left'"
+                           [errorClass]="'sis-validation-wrapper--grouped'"
+                           [forControl]="schoolSummaryGroup"
+                           [isInput]="true">
+                </sis-error>
                 <label class="sis-label"> 2.1 Summary Count</label>
             </div>
             <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
@@ -216,8 +224,16 @@
         </div>
         <!-- section 2.6 basic school-->
         <div *ngIf="getIsBasicSchoolType()" class="sis-controls--top-margin">
-            <div class="sis-table-scroll sis-controls--top-margin">
-                <sis-census-indicator-tracking-3L [census]="census" [school]="school"
+            <div class="sis-control-validation">
+                <sis-error [id]="'specialPupilsCountValidation'"
+                           [errorMessage]="organisationValidationHelper.censusSchoolSpecialPupilsCountValidator()"
+                           [class]="'sis-float-left'" [forControl]="specialPupilsCount"
+                           [isInput]="true">
+                </sis-error>
+            </div>
+            <div #specialPupilsCount class="sis-table-scroll sis-controls--top-margin">
+                <sis-census-indicator-tracking-3L [census]="census"
+                                                  [school]="school"
                                                   [isReRender]="isReRender"
                                                   [classifierList]="classifierList"
                                                   [label]="'2.7	If ANY at all, indicate the NUMBER of special pupils in your school.'"
@@ -477,7 +493,9 @@
                 </label>
             </div>
             <div #meansForStudent class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-                <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-H [census]="census"
+                                                    [school]="school"
+                                                    [classifierList]="classifierList"
                                                     [tableId]="'studentsDayMeansSectionId'"
                                                     [indicatorInstanceId]="meansForStudentAdmissionToSchoolTvet"
                                                     [horizontalClassifierName]="'MeansForStudent'"

@@ -10,7 +10,7 @@
             <label class="sis-label"> {{sectionNumber ? sectionNumber + " " + filteredLabelName : filteredLabelName}} </label>
         </div>
     </div>
-    <input type="number" inputMaxLength="7" [(ngModel)]="filteredSubEntity.getProperty('actual_Value').value"
+    <input type="number" inputMaxLength="3" [(ngModel)]="filteredSubEntity.getProperty('actual_Value').value"
            (ngModelChange)="onValueChanged($event, filteredSubEntity)"
            class="sis-input sis-small-width sis-align-right"/>
 </div>

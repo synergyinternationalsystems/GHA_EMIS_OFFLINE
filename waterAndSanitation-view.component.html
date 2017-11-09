@@ -80,14 +80,15 @@
                     <div class="sis-controls--top-margin" #sanitationTotalDaysName>
                         <label class="sis-label sis-element-required">6.1.5 How many days in total over the past year has it been out of use?</label>
                         <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                            [classifierList]="classifierList"
-                                                            [tableId]="'sanitationTotalDaysGroupId'"
-                                                            [indicatorInstanceId]="sanitationTotalDays"
-                                                            [hasHorizontalClassifierListInArray]="true"
-                                                            [noTopLeftCellLabel] = "true"
-                                                            [arrayOfHorizontalClassifiers]="waterClassifiersList"
-                                                            [horizontalClassifierName]="'Water'"
-                                                            [horizontalClassifierFieldName]="'waterId'">
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'sanitationTotalDaysGroupId'"
+                                                                [indicatorInstanceId]="sanitationTotalDays"
+                                                                [hasHorizontalClassifierListInArray]="true"
+                                                                [noTopLeftCellLabel] = "true"
+                                                                [arrayOfHorizontalClassifiers]="waterClassifiersList"
+                                                                [horizontalClassifierName]="'Water'"
+                                                                [horizontalClassifierFieldName]="'waterId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                 </div>
@@ -214,14 +215,15 @@
                        6.2.3 {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsAvailabilityFunctionalityTableId'"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [noTopLeftCellLabel] = "true"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsAvailabilityFunctionalityTableId'"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [noTopLeftCellLabel] = "true"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
@@ -260,14 +262,15 @@
                     6.2.6 {{toiletAvailabilityDisaggregationClassifierName}}?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsAvailabilityTableId'"
-                                                    [noTopLeftCellLabel] = "true"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsAvailabilityTableId'"
+                                                        [noTopLeftCellLabel] = "true"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
@@ -276,14 +279,15 @@
                     6.2.7 {{toiletFunctionalityDisaggregationClassifierName}}?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsFunctionalityTableId'"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [noTopLeftCellLabel] = "true"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsFunctionalityTableId'"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [noTopLeftCellLabel] = "true"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
@@ -517,13 +521,14 @@
                 <label class="sis-label sis-element-required">6.3.4 Teacher’s Hygiene Education</label>
 
                 <sis-census-indicator-tracking-2L-view [census]="census"
-                                                  [classifierList]="classifierList"
-                                                  [tableId]="'teacherHygieneEducationCompositionId'"
-                                                  [indicatorInstanceId]="teacherHygieneEducation"
-                                                  [horizontalClassifierName]="'Gender'"
-                                                  [horizontalClassifierFieldName]="'genderId'"
-                                                  [verticalClassifierName]="'HygieneEducation'"
-                                                  [verticalClassifierFieldName]="'hygieneEducationId'">
+                                                       [school]="school"
+                                                       [classifierList]="classifierList"
+                                                       [tableId]="'teacherHygieneEducationCompositionId'"
+                                                       [indicatorInstanceId]="teacherHygieneEducation"
+                                                       [horizontalClassifierName]="'Gender'"
+                                                       [horizontalClassifierFieldName]="'genderId'"
+                                                       [verticalClassifierName]="'HygieneEducation'"
+                                                       [verticalClassifierFieldName]="'hygieneEducationId'">
                 </sis-census-indicator-tracking-2L-view>
             </div>
 

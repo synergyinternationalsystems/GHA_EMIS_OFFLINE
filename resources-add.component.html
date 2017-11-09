@@ -21,7 +21,7 @@
 
     <div class="sis-clear">
         <label class="sis-label">Estimated Cost (in GHS)</label>
-        <input type="number" [(ngModel)]="subEntity.getProperty('cost').value" class="sis-input sis-mid-width"/>
+        <input type="number" [(ngModel)]="subEntity.getProperty('cost').value" inputMaxLength="6" class="sis-input sis-mid-width"/>
     </div>
     <div class="sis-actions sis-align-right">
         <button class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect" (click)="onDoneClicked()"> Ok </button>

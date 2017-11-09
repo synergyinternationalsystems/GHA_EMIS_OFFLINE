@@ -1,5 +1,15 @@
-<div title="">
+<div class="sis-control-validation">
+    <sis-error [id]="'nonTeachingStaffInformationValidation'"
+               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+               [errorMessage]="nonTeachingStaffInformationValidationHelper.censusSchoolNonTeachingStaffCountValidator()"
+               [class]="'sis-float-left'" [forControl]="nonTeachingStaffInformation"
+               [isInput]="true">
+    </sis-error>
+    <label class="sis-label sis-element-required"> 10.1 How MANY non-teaching staff do you have in your school?</label>
+</div>
+<div #nonTeachingStaffInformation title="">
     <sis-census-indicator-tracking-2L [census]="census"
+                                      [school]="school"
                                       [classifierList]="classifierList"
                                       [label]="'10.1 How MANY non-teaching staff do you have in your school?'"
                                       [tableId]="'nonTeachingStaffCompositionId'"

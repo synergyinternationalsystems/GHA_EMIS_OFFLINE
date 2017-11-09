@@ -6,6 +6,7 @@
                             14.1 How many pupils died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedPupilsSectionId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -27,7 +28,8 @@
                         <label class="sis-label sis-element-required">
                             14.2 How many pupils have deceased parent(s)?
                         </label>
-                        <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
+                        <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionId"
                                                           [topLeftCellLabel]="'Level'"
@@ -50,6 +52,7 @@
                             14.3 How many teachers died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionBasicId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -71,6 +74,7 @@
                             14.4 ICT Trainings
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="ictTrainingsCompositionId"
                                                           [verticalClassifierName]="'IctTraining'"
@@ -89,35 +93,38 @@
                     <div #hivAidsTrainedTeachersBasicName>
                         <label class="sis-label sis-element-required">14.5 Number of teachers who have been trained in HIV/AIDS based education (Refer to the application)?</label>
                         <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                            [classifierList]="classifierList"
-                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
-                                                            [noTopLeftCellLabel] = "true"
-                                                            [indicatorInstanceId]="hivAidsTrainedTeachersBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'"
-                                                            [horizontalClassifierFieldName]="'genderId'">
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                                [noTopLeftCellLabel] = "true"
+                                                                [indicatorInstanceId]="hivAidsTrainedTeachersBasicSchool"
+                                                                [horizontalClassifierName]="'Gender'"
+                                                                [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
 
                     <div #hivAidsTeachingTeachersBasicName>
                         <label class="sis-label sis-element-required">14.6 Number of teachers teaching HIV/AIDS based education this year</label>
                         <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                            [classifierList]="classifierList"
-                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
-                                                            [noTopLeftCellLabel] = "true"
-                                                            [indicatorInstanceId]="hivAidsTeachingTeachersBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'"
-                                                            [horizontalClassifierFieldName]="'genderId'">
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                                [noTopLeftCellLabel] = "true"
+                                                                [indicatorInstanceId]="hivAidsTeachingTeachersBasicSchool"
+                                                                [horizontalClassifierName]="'Gender'"
+                                                                [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                     <div #teachersReceivingInsetBasicName>
                         <label class="sis-label sis-element-required">14.7 Of those teaching this subject, how many received INSET in this subject?</label>
                         <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                            [classifierList]="classifierList"
-                                                            [tableId]="'hivAidsTrainedTeachersCompositionId'"
-                                                            [noTopLeftCellLabel] = "true"
-                                                            [indicatorInstanceId]="teachersReceivingInsetBasicSchool"
-                                                            [horizontalClassifierName]="'Gender'"
-                                                            [horizontalClassifierFieldName]="'genderId'">
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'hivAidsTrainedTeachersCompositionId'"
+                                                                [noTopLeftCellLabel] = "true"
+                                                                [indicatorInstanceId]="teachersReceivingInsetBasicSchool"
+                                                                [horizontalClassifierName]="'Gender'"
+                                                                [horizontalClassifierFieldName]="'genderId'">
                         </sis-census-indicator-tracking-1L-HView>
                     </div>
                 </div>
@@ -128,6 +135,7 @@
                                 12.1 How many students died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -149,13 +157,13 @@
                             12.2 How many students have deceased parent(s)?
                         </label>
                         <sis-census-indicator-tracking-2LH-view [census]="census"
-                                                           [classifierList]="classifierList"
-                                                           [tableId]="deceasedParentSecondarySectionId"
-                                                           [horizontalFirstLevelClassifierName]="'Gender'"
-                                                           [horizontalFirstLevelClassifierFieldName]="'genderId'"
-                                                           [horizontalSecondLevelClassifierName]="'DiedParent'"
-                                                           [horizontalSecondLevelClassifierFieldName]="'diedParentId'"
-                                                           [indicatorType]="pupilsDiseasedParentsSecondaryTvetSchool">
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="deceasedParentSecondarySectionId"
+                                                                [horizontalFirstLevelClassifierName]="'Gender'"
+                                                                [horizontalFirstLevelClassifierFieldName]="'genderId'"
+                                                                [horizontalSecondLevelClassifierName]="'DiedParent'"
+                                                                [horizontalSecondLevelClassifierFieldName]="'diedParentId'"
+                                                                [indicatorType]="pupilsDiseasedParentsSecondaryTvetSchool">
                         </sis-census-indicator-tracking-2LH-view>
                     </div>
 
@@ -164,6 +172,7 @@
                             12.3 How many teachers died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionSecondId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -186,13 +195,14 @@
                                 12.4 ICT Trainings
                         </label>
                         <sis-census-indicator-tracking-2L-view [census]="census"
-                                                          [classifierList]="classifierList"
-                                                          [tableId]="'beneficiaryTypeTableId'"
-                                                          [horizontalClassifierName]="'Gender'"
-                                                          [horizontalClassifierFieldName]="'genderId'"
-                                                          [verticalClassifierName]="'IctTraining'"
-                                                          [verticalClassifierFieldName]="'ictTrainingId'"
-                                                          [indicatorInstanceId]="pupilTeacherInfoSecondarySchoolIctTraining">
+                                                               [school]="school"
+                                                               [classifierList]="classifierList"
+                                                               [tableId]="'beneficiaryTypeTableId'"
+                                                               [horizontalClassifierName]="'Gender'"
+                                                               [horizontalClassifierFieldName]="'genderId'"
+                                                               [verticalClassifierName]="'IctTraining'"
+                                                               [verticalClassifierFieldName]="'ictTrainingId'"
+                                                               [indicatorInstanceId]="pupilTeacherInfoSecondarySchoolIctTraining">
                         </sis-census-indicator-tracking-2L-view>
                     </div>
                 </div>
@@ -201,6 +211,7 @@
                     <div #studentsDeadTVETName>
                         <label class="sis-label sis-element-required"> 10.1 How many students died in the previous year? </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedStudentsCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"
@@ -238,6 +249,7 @@
                             10.3 How many teachers died in the previous year?
                         </label>
                         <sis-census-indicator-tracking-3L-view [census]="census"
+                                                               [school]="school"
                                                           [classifierList]="classifierList"
                                                           [tableId]="diedTeachersCompositionTVETId"
                                                           [topLeftCellLabel]="'Age Group'"

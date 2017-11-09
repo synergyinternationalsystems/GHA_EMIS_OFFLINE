@@ -68,13 +68,13 @@
                                 </sis-census-organisation-view>
                             </sis-tab>
                             <sis-tab id="2" title="Infrastructure">
-                                <sis-census-infrastructure-view *ngIf="selectedTabId === 2" [census]="census"
+                                <sis-census-infrastructure-view *ngIf="selectedTabId === 2" [census]="census" [school]="school"
                                                                 [schoolTypeId]="schoolTypeId"
                                                                 [classifierList]="classifierItems">Loading ...
                                 </sis-census-infrastructure-view>
                             </sis-tab>
                             <sis-tab id="3" title="Management">
-                                <sis-census-management-view *ngIf="selectedTabId === 3" [census]="census"
+                                <sis-census-management-view *ngIf="selectedTabId === 3" [census]="census" [school]="school"
                                                             [schoolTypeId]="schoolTypeId"
                                                             [classifierList]="classifierItems">Loading ...
                                 </sis-census-management-view>
@@ -88,7 +88,7 @@
                             <sis-tab id="5" title="Water and Sanitation">
                                 <sis-census-waterAndSanitation-view *ngIf="selectedTabId === 5"
                                                                     [isSelectedBadReason]="isSelectedBadReason"
-                                                                    [census]="census"
+                                                                    [census]="census" [school]="school"
                                                                     [classifierList]="classifierItems">Loading ...
                                 </sis-census-waterAndSanitation-view>
                             </sis-tab>
@@ -106,7 +106,7 @@
                             </sis-tab>
                             <sis-tab id="8" title="Student Attendance and Movement" *ngIf="isSecondary()">
                                 <sis-census-pupil-student-att-movement-view *ngIf="selectedTabId === 8"
-                                                                            [census]="census"
+                                                                            [census]="census" [school]="school"
                                                                             [schoolTypeId]="schoolTypeId"
                                                                             [classifierList]="classifierItems">Loading ...
                                 </sis-census-pupil-student-att-movement-view>
@@ -121,7 +121,8 @@
 
                             <sis-tab id="9" title="Non-Teaching Staff Information" *ngIf="isBasic()">
                                 <sis-census-nonTeachingStaffInformation-view *ngIf="selectedTabId === 9"
-                                                                             [census]="census"
+                                                                             [census]="census" [school]="school"
+                                                                             [nonTeachingStaffInformationValidationHelper]="nonTeachingStaffInformationValidationHelper"
                                                                              [classifierList]="classifierItems">Loading ...
                                 </sis-census-nonTeachingStaffInformation-view>
                             </sis-tab>
@@ -129,6 +130,7 @@
                                 <sis-census-pupil-student-att-movement-view *ngIf="selectedTabId === 10"
                                                                             [census]="census" [school]="school"
                                                                             [schoolTypeId]="schoolTypeId"
+                                                                            [pupilStudentAttendanceAndMovementValidationHelper]="pupilStudentAttendanceAndMovementValidationHelper"
                                                                             [classifierList]="classifierItems">Loading ...
                                 </sis-census-pupil-student-att-movement-view>
                             </sis-tab>
@@ -145,13 +147,13 @@
                                 </sis-census-prof-staff-work-view>
                             </sis-tab>
                             <sis-tab id="20" title="Training Facilities" *ngIf="isTvet()">
-                                <sis-census-training-facilities-view *ngIf="selectedTabId === 20" [census]="census"
+                                <sis-census-training-facilities-view *ngIf="selectedTabId === 20" [census]="census" [school]="school"
                                                                      [classifierList]="classifierItems">Loading ...
                                 </sis-census-training-facilities-view>
                             </sis-tab>
                             <sis-tab id="16" title="Staudent and Teacher Information" *ngIf="!isBasicFromCensus()">
                                 <sis-census-pupil-student-teacher-information-view *ngIf="selectedTabId === 16"
-                                                                                   [census]="census"
+                                                                                   [census]="census" [school]="school"
                                                                                    [schoolTypeId]="schoolTypeId"
                                                                                    [classifierList]="classifierItems">
                                     Loading ...
@@ -167,13 +169,13 @@
                             </sis-tab>
                             <sis-tab id="17" title="Staff Movement">
                                 <sis-census-staffMovement-view *ngIf="selectedTabId === 17" [census]="census"
-                                                               [schoolTypeId]="schoolTypeId"
+                                                               [schoolTypeId]="schoolTypeId" [school]="school"
                                                                [classifierList]="classifierItems">Loading ...
                                 </sis-census-staffMovement-view>
                             </sis-tab>
 
                             <sis-tab id="13" title="Targeting" *ngIf="!isBasic()">
-                                <sis-census-targeting-view *ngIf="selectedTabId === 13" [schoolTypeId]="schoolTypeId"
+                                <sis-census-targeting-view *ngIf="selectedTabId === 13" [schoolTypeId]="schoolTypeId" [school]="school"
                                                            [census]="census" [classifierList]="classifierItems">Loading ...
                                 </sis-census-targeting-view>
                             </sis-tab>

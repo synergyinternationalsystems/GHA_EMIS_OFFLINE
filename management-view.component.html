@@ -61,6 +61,7 @@
                     organised on the following subjects this past academic year
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
                                                         [classifierList]="classifierList"
                                                         [tableId]="'SBI_CBINumberCompositionId'"
                                                         [indicatorInstanceId]="managementBasicSBICBINumber"
@@ -80,7 +81,9 @@
                 <label class="sis-label">
                     4.12 How many pupils are Complementary Basic Education (CBE) graduates?
                 </label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'basicEducationCompositionId'"
                                                         [indicatorInstanceId]="managementBasicCBEGraduates"
                                                         [noTopLeftCellLabel]="true"
@@ -91,7 +94,9 @@
 
             <div #managementNeedyPupilsStudentsBasicName>
                 <label class="sis-label sis-element-required">4.13 {{needyPupilClassifier}}</label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'needyPupilsSectionId'"
                                                         [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                         [horizontalClassifierName]="'Pupil'"
@@ -104,7 +109,9 @@
 
             <div #managementBrightButNeedyPupilsStudentsBasicName>
                 <label class="sis-label sis-element-required">4.14 {{brightPupilClassifier}}</label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'needyPupilsSectionId'"
                                                         [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                         [horizontalClassifierName]="'Pupil'"
@@ -119,9 +126,11 @@
                 <label class="sis-label">
                     4.15 How many of the following Incentives from Government have your school received to date?
                 </label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'incentivesFromGovernmentCompositionId'"
-                                                        [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                        [indicatorInstanceId]="managementIncentivesFromGovernment"
                                                         [noTopLeftCellLabel]="true"
                                                         [horizontalClassifierName]="'Government'"
                                                         [horizontalClassifierFieldName]="'governmentId'">
@@ -130,6 +139,7 @@
 
             <div class="sis-controls--top-margin">
                 <sis-census-indicator-tracking-2L-view [census]="census"
+                                                       [school]="school"
                                                        [classifierList]="classifierList"
                                                        [label]="'4.16 How many of your pupils/families are beneficiaries of the following?'"
                                                        [tableId]="'beneficiaryTypeTableId'"
@@ -219,7 +229,9 @@
                     <label class="sis-label sis-element-required">4.8 {{needyPupilClassifier}}</label>
                     <table>
                         <tbody>
-                        <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                        <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
@@ -237,7 +249,9 @@
                     <label class="sis-label sis-element-required">4.9 {{brightPupilClassifier}}</label>
                     <table>
                         <tbody>
-                        <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                        <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
@@ -255,9 +269,10 @@
                         4.10 How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'incentivesFromGovernmentCompositionId'"
-                                                            [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                            [indicatorInstanceId]="managementIncentivesFromGovernment"
                                                             [noTopLeftCellLabel]="true"
                                                             [horizontalClassifierName]="'Government'"
                                                             [horizontalClassifierFieldName]="'governmentId'">
@@ -266,6 +281,7 @@
 
                 <div class="sis-controls--top-margin">
                     <sis-census-indicator-tracking-2L-view [census]="census"
+                                                           [school]="school"
                                                            [classifierList]="classifierList"
                                                            [label]="'4.11 How many of your students/families are beneficiaries of the following?'"
                                                            [tableId]="'beneficiaryTypeTableId'"
@@ -335,7 +351,9 @@
                     <label class="sis-label sis-element-required">4.4 {{needyPupilClassifier}}</label>
                     <table>
                         <tbody>
-                        <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                        <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
@@ -354,7 +372,9 @@
                     <label class="sis-label sis-element-required">4.5 {{brightPupilClassifier}}</label>
                     <table>
                         <tbody>
-                        <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                        <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
                                                                 [tableId]="'needyPupilsSectionId'"
                                                                 [indicatorInstanceId]="managementNeedyPupilsStudents"
                                                                 [horizontalClassifierName]="'Pupil'"
@@ -372,9 +392,10 @@
                         4.6 How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'incentivesFromGovernmentCompositionId'"
-                                                            [indicatorInstanceId]="managementIncentivesFromGoverment"
+                                                            [indicatorInstanceId]="managementIncentivesFromGovernment"
                                                             [noTopLeftCellLabel]="true"
                                                             [horizontalClassifierName]="'Government'"
                                                             [horizontalClassifierFieldName]="'governmentId'">
@@ -396,6 +417,7 @@
 
                 <div class="sis-controls--top-margin">
                     <sis-census-indicator-tracking-2L-view [census]="census"
+                                                           [school]="school"
                                                            [classifierList]="classifierList"
                                                            [label]="'4.9 How many of your students are beneficiaries of the following?'"
                                                            [tableId]="'beneficiaryTypeTableId'"

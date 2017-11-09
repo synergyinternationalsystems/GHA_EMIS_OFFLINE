@@ -239,7 +239,9 @@
                     <label class="sis-label sis-element-required">3.6.1 If YES, how many pupils are BOARDERS?</label>
                 </div>
                 <div #basicBoarding class="mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--5-col-phone">
-                    <sis-census-indicator-tracking-1L-H [census]="census" [classifierList]="classifierList"
+                    <sis-census-indicator-tracking-1L-H [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'boardingFacilitiesCompositionId'"
                                                         [indicatorInstanceId]="infrastructureBasicBoarding"
                                                         [noTopLeftCellLabel]="true"
@@ -288,6 +290,7 @@
             </div>
             <div #secondaryBoarding>
                 <sis-census-indicator-tracking-2L [census]="census"
+                                                  [school]="school"
                                                   [classifierList]="classifierList"
                                                   [tableId]="'infrastructureSecondaryBoardingCompositionId'"
                                                   [indicatorInstanceId]="infrastructureSecondaryBoarding"
@@ -310,6 +313,7 @@
             </div>
             <div #TVETBoarding>
                 <sis-census-indicator-tracking-2L [census]="census"
+                                                  [school]="school"
                                                   [classifierList]="classifierList"
                                                   [tableId]="'infrastructureTVETBoardingCompositionId'"
                                                   [indicatorInstanceId]="infrastructureTVETBoarding"

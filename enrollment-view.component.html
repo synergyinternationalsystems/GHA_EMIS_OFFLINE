@@ -4,64 +4,69 @@
             <div #enrolmentManyPrimaryName>
                 <label class="sis-label sis-element-required">8.1 How MANY pupils did you admit to Primary 1 this academic year (do not include repeaters)?</label>
                 <sis-census-indicator-tracking-2L-view [census]="census"
-                                                  [classifierList]="classifierList"
-                                                  [tableId]="'enrolmentManyTableId'"
-                                                  [topLeftCellLabel]="'Age'"
-                                                  [indicatorInstanceId]="enrolmentBasicManyPrimary"
-                                                  [horizontalClassifierName]="'Pupil'"
-                                                  [horizontalClassifierFieldName]="'pupilId'"
-                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
-                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
-                                                  [verticalClassifierName]="'Age'"
-                                                  [verticalClassifierFieldName]="'ageId'">
+                                                       [school]="school"
+                                                       [classifierList]="classifierList"
+                                                       [tableId]="'enrolmentManyTableId'"
+                                                       [topLeftCellLabel]="'Age'"
+                                                       [indicatorInstanceId]="enrolmentBasicManyPrimary"
+                                                       [horizontalClassifierName]="'Pupil'"
+                                                       [horizontalClassifierFieldName]="'pupilId'"
+                                                       [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                       [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
+                                                       [verticalClassifierName]="'Age'"
+                                                       [verticalClassifierFieldName]="'ageId'">
                 </sis-census-indicator-tracking-2L-view>
             </div>
 
             <div #enrolmentNewPrimaryName>
                 <label class="sis-label sis-element-required">8.2 Out of the NEW Pupils admitted to Primary 1, how many of them are directly from KG?</label>
                 <sis-census-indicator-tracking-2L-view [census]="census"
-                                                  [classifierList]="classifierList"
-                                                  [tableId]="'enrolmentNewTableId'"
-                                                  [topLeftCellLabel]="'Age'"
-                                                  [indicatorInstanceId]="enrolmentBasicNewPrimary"
-                                                  [horizontalClassifierName]="'Pupil'"
-                                                  [horizontalClassifierFieldName]="'pupilId'"
-                                                  [verticalClassifierFilterPropertyName]="'ageParentId'"
-                                                  [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
-                                                  [verticalClassifierName]="'Age'"
-                                                  [verticalClassifierFieldName]="'ageId'">
+                                                       [school]="school"
+                                                       [classifierList]="classifierList"
+                                                       [tableId]="'enrolmentNewTableId'"
+                                                       [topLeftCellLabel]="'Age'"
+                                                       [indicatorInstanceId]="enrolmentBasicNewPrimary"
+                                                       [horizontalClassifierName]="'Pupil'"
+                                                       [horizontalClassifierFieldName]="'pupilId'"
+                                                       [verticalClassifierFilterPropertyName]="'ageParentId'"
+                                                       [verticalClassifierFilterPropertyValue]="constants.AGE_BENROLMENT_CLASSIFIER_ID"
+                                                       [verticalClassifierName]="'Age'"
+                                                       [verticalClassifierFieldName]="'ageId'">
                 </sis-census-indicator-tracking-2L-view>
             </div>
 
             <div #enrolmentGradeName>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Grade</label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'enrolmentByGradeTableId'"
-                                                    [indicatorInstanceId]="enrolmentBasicGrade"
-                                                    [horizontalClassifierName]="'SchoolLevel'"
-                                                    [horizontalClassifierFieldName]="'schoolLevelId'"
-                                                    [topLeftCellLabel]="'Grade'"
-                                                    [verticalRowName]="'Number of classes held in open air'">
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'enrolmentByGradeTableId'"
+                                                        [indicatorInstanceId]="enrolmentBasicGrade"
+                                                        [horizontalClassifierName]="'SchoolLevel'"
+                                                        [horizontalClassifierFieldName]="'schoolLevelId'"
+                                                        [topLeftCellLabel]="'Grade'"
+                                                        [verticalRowName]="'Number of classes held in open air'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
             <div class="sis-controls--top-margin">
-                <sis-census-indicator-tracking-1L-HView [census]="census" [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [label]="'8.4 How MANY Streams have classes in the open air?'"
-                                                    [tableId]="'enrolmentByStreamsTableId'"
-                                                    [indicatorInstanceId]="enrolmentBasicStreams"
-                                                    [horizontalClassifierName]="'SchoolLevel'"
-                                                    [horizontalClassifierFieldName]="'schoolLevelId'"
-                                                    [topLeftCellLabel]="'Grade'"
-                                                    [verticalRowName]="'Number of classes held in open air'">
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [label]="'8.4 How MANY Streams have classes in the open air?'"
+                                                        [tableId]="'enrolmentByStreamsTableId'"
+                                                        [indicatorInstanceId]="enrolmentBasicStreams"
+                                                        [horizontalClassifierName]="'SchoolLevel'"
+                                                        [horizontalClassifierFieldName]="'schoolLevelId'"
+                                                        [topLeftCellLabel]="'Grade'"
+                                                        [verticalRowName]="'Number of classes held in open air'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
             <div #enrolmentBasicBySexAndAgeName>
                 <label class="sis-label sis-element-required">8.5 Enrolment by sex and age</label>
-                <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [school]="school"
                                                         [classifierList]="classifierList"
                                                         [tableId]="enrolmentBySexAndAgeTableId"
                                                         [topLeftCellLabel]="'Grade'"
@@ -132,18 +137,20 @@
             <div #enrolmentByAgeSecondaryName>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Age</label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'enrolmentByGradeSecondaryTableId'"
-                                                    [indicatorInstanceId]="enrolmentSecStreamsByGrade"
-                                                    [horizontalClassifierName]="'SchoolLevelGroup'"
-                                                    [horizontalClassifierFieldName]="'schoolLevelGroupId'"
-                                                    [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
-                                                    [hasVerticalTotalColumn]="true"
-                                                    [topLeftCellLabel]="'Grade'"
-                                                    [verticalRowName]="'Number of Streams in each grade'">
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'enrolmentByGradeSecondaryTableId'"
+                                                        [indicatorInstanceId]="enrolmentSecStreamsByGrade"
+                                                        [horizontalClassifierName]="'SchoolLevelGroup'"
+                                                        [horizontalClassifierFieldName]="'schoolLevelGroupId'"
+                                                        [horizontalClassifierFilterArray]="SCHOOL_LEVEL_GROUP_FOR_SECONDARY "
+                                                        [hasVerticalTotalColumn]="true"
+                                                        [topLeftCellLabel]="'Grade'"
+                                                        [verticalRowName]="'Number of Streams in each grade'">
                 </sis-census-indicator-tracking-1L-HView>
 
                 <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [school]="school"
                                                     [classifierList]="classifierList"
                                                     [tableId]="enrolmentByAgeGroupSecondaryTableId"
                                                     [topLeftCellLabel]="'Age'"
@@ -169,6 +176,7 @@
             <div #enrolmentByAgeTVETName>
                 <label class="sis-label sis-element-required">7.1 Enrolment by Age</label>
                 <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [school]="school"
                                                     [classifierList]="classifierList"
                                                     [tableId]="enrolmentByAgePart1TableId"
                                                     [topLeftCellLabel]="'Grade / Age'"
@@ -188,6 +196,7 @@
                                                     </sis-census-indicator-tracking-3L-view>
 
                 <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [school]="school"
                                                     [classifierList]="classifierList"
                                                     [tableId]="enrolmentByAgePart2TableId"
                                                     [topLeftCellLabel]="'Grade / Age'"

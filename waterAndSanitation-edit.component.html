@@ -154,6 +154,7 @@
                                     <label class="sis-label sis-element-required">6.1.5 How many days in total over the past year has it been out of use?</label>
                                 </div>
                                 <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                    [school]="school"
                                                                     [classifierList]="classifierList"
                                                                     [tableId]="'sanitationTotalDaysGroupId'"
                                                                     [indicatorInstanceId]="sanitationTotalDays"
@@ -380,6 +381,7 @@
                     </div>
                     <div #urinalsAvailabilityName>
                         <sis-census-indicator-tracking-1L-H [census]="census"
+                                                            [school]="school"
                                                             [classifierList]="classifierList"
                                                             [tableId]="'toiletsAvailabilityFunctionalityTableId'"
                                                             [indicatorInstanceId]="sanitationToiletAvailability"
@@ -454,6 +456,7 @@
                                 </div>
                                 <div #individualToiletSeatsAvailableName>
                                     <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                        [school]="school"
                                                                         [classifierList]="classifierList"
                                                                         [tableId]="'toiletsAvailabilityTableId'"
                                                                         [noTopLeftCellLabel] = "true"
@@ -479,6 +482,7 @@
                                 </div>
                                 <div #individualToiletSeatsFunctionalName>
                                     <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                        [school]="school"
                                                                         [classifierList]="classifierList"
                                                                         [tableId]="'toiletsFunctionalityTableId'"
                                                                         [indicatorInstanceId]="sanitationToiletAvailability"
@@ -816,6 +820,7 @@
                          </div>
                         <div #teacherHygieneEducationName>
                             <sis-census-indicator-tracking-2L [census]="census"
+                                                              [school]="school"
                                                               [classifierList]="classifierList"
                                                               [tableId]="'teacherHygieneEducationCompositionId'"
                                                               [indicatorInstanceId]="teacherHygieneEducation"

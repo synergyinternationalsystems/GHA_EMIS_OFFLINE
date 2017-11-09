@@ -5,7 +5,7 @@
             <sis-error [id]="'typeOfLeaveBasicId'"
                        [forControl]="typeOfLeaveBasic"
                        [isInput]="true"
-                       [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveValidation()"
+                       [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveValidation() || staffMovementValidationHelper.censusSchoolStaffMovementLeaveCountValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
             <label class="sis-label sis-element-required">15.1 How many staff have taken leave in the past school year
@@ -13,6 +13,7 @@
         </div>
         <div #typeOfLeaveBasic>
             <sis-census-indicator-tracking-3L [census]="census" *ngIf="getIsBasicSchoolType()"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'typeOfLeaveBasicTableId'"
                                               [topLeftCellLabel]="'Type Of Leave'"
@@ -35,13 +36,14 @@
             <sis-error [id]="'reasonOfLeaveBasicId'"
                        [forControl]="reasonOfLeaveBasic"
                        [isInput]="true"
-                       [errorMessage]="staffMovementValidationHelper.staffHaveLeftValidation()"
+                       [errorMessage]="staffMovementValidationHelper.staffHaveLeftValidation() || staffMovementValidationHelper.censusSchoolStaffMovementLeftCountValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
             <label class="sis-label sis-element-required">15.2 How Many Staff have left your school for the following reasons in the past school year?</label>
         </div>
         <div  #reasonOfLeaveBasic>
             <sis-census-indicator-tracking-3L [census]="census"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'reasonOfLeaveBasicTableId'"
                                               [topLeftCellLabel]="'Reasons for leaving'"
@@ -72,6 +74,7 @@
         </div>
         <div #typeOfLeaveSec>
             <sis-census-indicator-tracking-3L [census]="census"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'typeOfleaveSecTableId'"
                                               [topLeftCellLabel]="'Type Of Leave'"
@@ -98,6 +101,7 @@
         </div>
         <div #reasonOfLeaveSec>
             <sis-census-indicator-tracking-3L [census]="census"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"
@@ -126,6 +130,7 @@
         </div>
         <div #typeOfLeaveTvet>
             <sis-census-indicator-tracking-3L [census]="census"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'typeOfleaveSecTableId'"
                                               [topLeftCellLabel]="'Type Of Leave'"
@@ -153,6 +158,7 @@
         </div>
         <div #reasonOfLeaveTvet>
             <sis-census-indicator-tracking-3L [census]="census"
+                                              [school]="school"
                                               [classifierList]="classifierList"
                                               [tableId]="'ableI2d1'"
                                               [topLeftCellLabel]="'Reasons for leaving'"

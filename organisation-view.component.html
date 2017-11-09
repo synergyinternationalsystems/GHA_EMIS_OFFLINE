@@ -92,7 +92,8 @@
         <!-- section 2.6 basic school-->
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-table-scroll">
-                <sis-census-indicator-tracking-3L-view [census]="census" [school]="school"
+                <sis-census-indicator-tracking-3L-view [census]="census"
+                                                       [school]="school"
                                                        [classifierList]="classifierList"
                                                        [label]="'2.7 If ANY at all, indicate the NUMBER of special pupils in your school.'"
                                                        [tableId]="table3LId"
@@ -218,7 +219,9 @@
                 2.10 Indicate the number of DAY STUDENTS who come to school by the following means.
             </label>
             <div class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'studentsDayMeansSectionId'"
                                                         [indicatorInstanceId]="meansForStudentAdmissionToSchoolTvet"
                                                         [horizontalClassifierName]="'MeansForStudent'"

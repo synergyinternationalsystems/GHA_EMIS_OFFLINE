@@ -2,7 +2,7 @@
         <div class="mdl-cell mdl-cell--12-col">
             <div class="sis-control-validation">
                 <sis-error [id]="'handBooksByGradeIndicatorValidation'"
-                           [errorMessage]="textbooksValidationHelper.handBooksByGradeIndicatorValidation()"
+                           [errorMessage]="textbooksValidationHelper.handBooksByGradeIndicatorValidation() || textbooksValidationHelper.censusSchoolTeachingGuidesHandBooksNumberValidator()"
                            [class]="'sis-float-left'" [forControl]="handBooksByGradeIndicator"
                            [isInput]="true">
                 </sis-error>
@@ -11,7 +11,8 @@
                 </label>
             </div>
             <div #handBooksByGradeIndicator>
-                <sis-census-indicator-tracking-2L [census]="census" [school]="school"
+                <sis-census-indicator-tracking-2L [census]="census"
+                                                  [school]="school"
                                                   [classifierList]="classifierList"
                                                   [label]=""
                                                   [tableId]="'handBooksByGradeTableId'"
@@ -31,7 +32,7 @@
             <div>
                 <div class="sis-control-validation">
                     <sis-error [id]="'pupilTextBooksIndicatorValidation'"
-                               [errorMessage]="textbooksValidationHelper.pupilTextBooksIndicatorValidation()"
+                               [errorMessage]="textbooksValidationHelper.pupilTextBooksIndicatorValidation() || textbooksValidationHelper.censusSchoolPupilTextbooksAvailableCountValidator()"
                                [class]="'sis-float-left'" [forControl]="pupilTextBooksIndicator"
                                [isInput]="true">
                     </sis-error>
@@ -40,7 +41,8 @@
                     </label>
                 </div>
                 <div class="sis-controls--top-margin" #pupilTextBooksIndicator>
-                    <sis-census-indicator-tracking-2L [census]="census" [school]="school"
+                    <sis-census-indicator-tracking-2L [census]="census"
+                                                      [school]="school"
                                                       [classifierList]="classifierList"
                                                       [label]=""
                                                       [tableId]="'pupilTextBooksTableId'"

@@ -101,7 +101,9 @@
             </sis-select-one-radio-view>
             <div *ngIf="subEntityBoardingFacilityIsYes()" class="sis-controls--top-margin">
                 <label class="sis-label ">3.6.1 If YES, how many pupils are BOARDERS?</label>
-                <sis-census-indicator-tracking-1L-HView [census]="census" [classifierList]="classifierList"
+                <sis-census-indicator-tracking-1L-HView [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
                                                         [tableId]="'boardingFacilitiesCompositionId'"
                                                         [indicatorInstanceId]="infrastructureBasicBoarding"
                                                         [noTopLeftCellLabel]="true"
@@ -125,6 +127,7 @@
         <div *ngIf="getIsSecondarySchoolType()">
             <label class="sis-label ">3.7 How MANY students are? </label>
             <sis-census-indicator-tracking-2L-view [census]="census"
+                                                   [school]="school"
                                                    [classifierList]="classifierList"
                                                    [tableId]="'infrastructureSecondaryBoardingCompositionId'"
                                                    [indicatorInstanceId]="infrastructureSecondaryBoarding"
@@ -137,13 +140,14 @@
         <div *ngIf="getIsTVETSchoolType()">
             <label class="sis-label ">3.7 If your institution has boarding/hostel facilities, how MANY students are?</label>
             <sis-census-indicator-tracking-2L-view [census]="census"
-                                              [classifierList]="classifierList"
-                                              [tableId]="'infrastructureTVETBoardingCompositionId'"
-                                              [indicatorInstanceId]="infrastructureTVETBoarding"
-                                              [horizontalClassifierName]="'Gender'"
-                                              [horizontalClassifierFieldName]="'genderId'"
-                                              [verticalClassifierName]="'Boarding'"
-                                              [verticalClassifierFieldName]="'boardingId'">
+                                                   [school]="school"
+                                                   [classifierList]="classifierList"
+                                                   [tableId]="'infrastructureTVETBoardingCompositionId'"
+                                                   [indicatorInstanceId]="infrastructureTVETBoarding"
+                                                   [horizontalClassifierName]="'Gender'"
+                                                   [horizontalClassifierFieldName]="'genderId'"
+                                                   [verticalClassifierName]="'Boarding'"
+                                                   [verticalClassifierFieldName]="'boardingId'">
             </sis-census-indicator-tracking-2L-view>
             <label class="sis-label ">3.8 Is your institution's property walled or fenced?</label>
             <sis-select-one-radio-view
