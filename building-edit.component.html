@@ -5,7 +5,7 @@
                 <sis-error [id]="'basicNumberClassroomEqualValidation'"
                            [forControl]="basicNumberClassroomEqualName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="buildingValidationHelper.basicNumberClassroomEqualValidation()"
+                           [errorMessage]="buildingValidationHelper.censusSchoolNumberClassroomFieldValidator()"
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label">5.1 Specify the GENERAL construction of the institution buildings by indicating
@@ -108,7 +108,7 @@
                 <sis-error [id]="'buildingRoomsValidation'"
                            [forControl]="buildingRoomsName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="buildingValidationHelper.buildingBasicRoomsValidation()"
+                           [errorMessage]="buildingValidationHelper.buildingBasicRoomsValidation() || buildingValidationHelper.censusSchoolNumberRoomsTotalValidator()"
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label">5.2 How many rooms in each level does the school have?</label>
@@ -136,7 +136,7 @@
                 <sis-error [id]="'buildingRoomsToBeRepairedValidation'"
                            [forControl]="buildingRoomsToBeRepairedName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="buildingValidationHelper.buildingBasicRoomsToBeRepairedValidation()"
+                           [errorMessage]="buildingValidationHelper.buildingBasicRoomsToBeRepairedValidation() || buildingValidationHelper.censusSchoolPermanentRepairClassroomsNumberValidator()"
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label">5.3 How many of your permanent rooms need REPAIR?</label>
@@ -161,9 +161,15 @@
         <!-- START Out of those needing major repairs, how many have:-->
         <div>
             <div class="sis-control-validation">
+                <sis-error [id]="'buildingNeedingRepairedValidation'"
+                           [forControl]="buildingNeedingRepairedName" [isInput]="true"
+                           [errorClass]="'sis-validation-wrapper--grouped'"
+                           [errorMessage]="buildingValidationHelper.censusSchoolNeedingRepairClassroomsNumberValidator() || buildingValidationHelper.censusSchoolSummaryNumberNeedingMajorRepairsValidator()"
+                           [class]="'sis-float-left'">
+                </sis-error>
                 <label class="sis-label">5.4 Out of those needing major repairs, how many have:</label>
             </div>
-            <div>
+            <div #buildingNeedingRepairedName>
                 <sis-census-indicator-tracking-2L [census]="census" *ngIf="isBasicSchool()"
                                                   [school]="school"
                                                   [classifierList]="classifierList"

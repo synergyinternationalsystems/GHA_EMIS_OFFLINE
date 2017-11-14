@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div *ngIf="getIsBasicSchoolType() && pupilStudentAttendanceAndMovementValidationHelper.isShowGirlsPregnantSection()">
+        <div *ngIf="getIsBasicSchoolType() && isShowGirlsPregnantSection()">
             <div class="sis-control-validation">
                 <sis-error [id]="'pregnantGirlsValidator'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.censusSchoolPregnantGirlsValidator()"
@@ -121,9 +121,9 @@
                            [class]="'sis-float-left'" [forControl]="howManyDaysSchoolWasOpened"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required" *ngIf="pupilStudentAttendanceAndMovementValidationHelper.isShowGirlsPregnantSection()">11.8 How many days was your school opened in the month of
+                <label class="sis-label sis-element-required" *ngIf="isShowGirlsPregnantSection()">11.8 How many days was your school opened in the month of
                     February?</label>
-                <label class="sis-label sis-element-required" *ngIf="!pupilStudentAttendanceAndMovementValidationHelper.isShowGirlsPregnantSection()">11.7 How many days was your school opened in the month of
+                <label class="sis-label sis-element-required" *ngIf="!isShowGirlsPregnantSection()">11.7 How many days was your school opened in the month of
                     February?</label>
             </div>
         </div>
