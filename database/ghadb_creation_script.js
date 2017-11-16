@@ -2055,7 +2055,7 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
     REFERENCES C_Equipment(EquipmentID), 
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_BuildingRepair
     FOREIGN KEY (BuildingRepairID)
-    REFERENCES CensusSchool(BuildingRepairID)
+    REFERENCES C_BuildingRepair(BuildingRepairID)
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_CensusSchool
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
@@ -3074,8 +3074,10 @@ where CensusSchoolID = OLD.CensusSchoolID ;
 delete from CensusSchoolIncome
 where CensusSchoolID = OLD.CensusSchoolID ;
 
-delete from CensusSchoolIndicatorTracking
-where CensusSchoolID = OLD.CensusSchoolID ;
+/* This part of delete trigger is commented because it hinders entity save process.
+ instead on Census discard action we have explicit call to delete appropriate row in CensusSchoolIndicatorTracking table */
+/*delete from CensusSchoolIndicatorTracking
+where CensusSchoolID = OLD.CensusSchoolID ;*/
 
 delete from CensusSchoolInfrastructure
 where CensusSchoolID = OLD.CensusSchoolID ;
