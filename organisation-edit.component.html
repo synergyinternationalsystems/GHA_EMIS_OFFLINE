@@ -4,15 +4,7 @@
         <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
             <div class="sis-control-validation">
                 <sis-error [id]="'titleValidation'"
-                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryRequiredValidation()"
-                           [class]="'sis-float-left'"
-                           [errorClass]="'sis-validation-wrapper--grouped'"
-                           [forControl]="schoolSummaryGroup"
-                           [isInput]="true">
-                </sis-error>
-                <sis-error [id]="'titleValidation'"
-                           *ngIf="getIsBasicSchoolType()"
-                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryCountValidator()"
+                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryRequiredValidation() || organisationValidationHelper.censusSchoolSummaryCountValidator()"
                            [class]="'sis-float-left'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [forControl]="schoolSummaryGroup"
