@@ -5,24 +5,24 @@
                 9.1 Indicate the NUMBER of Teaching Guides / HandBooks available by grade
             </label>
 
-                    <div #handBooksByGradeIndicator>
-                        <sis-census-indicator-tracking-2L-view [census]="census"
-                                                               [school]="school"
-                                                               [classifierList]="classifierList"
-                                                               [label]=""
-                                                               [tableId]="'handBooksByGradeTableId'"
-                                                               [indicatorInstanceId]="handBooksByGradeIndicatorInstanceId"
-                                                               [horizontalClassifierName]="'SchoolLevel'"
-                                                               [horizontalClassifierFieldName]="'schoolLevelId'"
-                                                               [IsNegated]="true"
-                                                               [visibilityFilter]="'SubjectSchoolLevel'"
-                                                               [visibilityFilterPropertyName]="'isChecked'"
-                                                               [horizontalClassifierFilterPropertyName]="'schoolLevelGroupId'"
-                                                               [horizontalClassifierFilterPropertyValue]="schoolLevelGroupNursery"
-                                                               [verticalClassifierName]="'TeachingGuide'"
-                                                               [verticalClassifierFieldName]="'teachingGuideId'">
-                        </sis-census-indicator-tracking-2L-view>
-                    </div>
+            <div #handBooksByGradeIndicator>
+                <sis-census-indicator-tracking-2L-view [census]="census"
+                                                       [school]="school"
+                                                       [classifierList]="classifierList"
+                                                       [label]=""
+                                                       [tableId]="'handBooksByGradeTableId'"
+                                                       [indicatorInstanceId]="handBooksByGradeIndicatorInstanceId"
+                                                       [horizontalClassifierName]="'SchoolLevel'"
+                                                       [horizontalClassifierFieldName]="'schoolLevelId'"
+                                                       [IsNegated]="true"
+                                                       [visibilityFilter]="'SubjectSchoolLevel'"
+                                                       [visibilityFilterPropertyName]="'isChecked'"
+                                                       [horizontalClassifierFilterPropertyName]="'schoolLevelGroupId'"
+                                                       [horizontalClassifierFilterPropertyValue]="schoolLevelGroupNursery"
+                                                       [verticalClassifierName]="'TeachingGuide'"
+                                                       [verticalClassifierFieldName]="'teachingGuideId'">
+                </sis-census-indicator-tracking-2L-view>
+            </div>
 
         </div>
     </div>
@@ -62,32 +62,34 @@
             <div class="sis-table-scroll">
                 <table class="mdl-data-table mdl-js-data-table sis-full-width" id="availableSyllabusId">
                     <thead>
-                        <th colspan="2">
-                            <span>Core Subject</span>
+                    <th colspan="2">
+                        <span>Core Subject</span>
+                    </th>
+                    <th *ngFor="let horizontalLevelFirstClassifier of filteredHorizontalFirstClassifierList()"
+                        colspan="2" class="mdl-data-table__cell--centered">
+                        <span>{{horizontalLevelFirstClassifier.getName()}}</span>
+                    </th>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList()"
+                            class="mdl-data-table__cell--centered">
+                            <span>{{horizontalSecondLevelClassifier.getName()}}</span>
                         </th>
-                        <th *ngFor="let horizontalLevelFirstClassifier of filteredHorizontalFirstClassifierList()"
-                            colspan="2" class="mdl-data-table__cell--centered">
-                            <span>{{horizontalLevelFirstClassifier.getName()}}</span>
-                        </th>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList()"
-                                class="mdl-data-table__cell--centered">
-                                <span>{{horizontalSecondLevelClassifier.getName()}}</span>
-                            </th>
-                        </tr>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let verticalClassifier of filteredVerticalClassifierList()" rowspan="2">
-                            <th colspan="2" class="mdl-data-table__cell--non-numeric">
-                                <span>{{verticalClassifier.getName()}}</span>
-                            </th>
-                            <ng-container *ngFor="let schoolGroupClassifier of filteredHorizontalFirstClassifierList()">
-                                <td *ngFor="let availableSubjectClassifier of classifierList.get('AvailableSubject')"  class="mdl-data-table__cell--centered">
-                                    <i class="material-icons material-check-icon" *ngIf="isVisibleCheckBox(verticalClassifier.getId(),schoolGroupClassifier.getId()) && isTeachingGuideCheckedItem(verticalClassifier.getId(), schoolGroupClassifier.getId(),availableSubjectClassifier.getId())">done</i>
-                                </td>
-                            </ng-container>
-                        </tr>
+                    <tr *ngFor="let verticalClassifier of filteredVerticalClassifierList()" rowspan="2">
+                        <th colspan="2" class="mdl-data-table__cell--non-numeric">
+                            <span>{{verticalClassifier.getName()}}</span>
+                        </th>
+                        <ng-container *ngFor="let schoolGroupClassifier of filteredHorizontalFirstClassifierList()">
+                            <td *ngFor="let availableSubjectClassifier of classifierList.get('AvailableSubject')"
+                                class="mdl-data-table__cell--centered">
+                                <i class="material-icons material-check-icon"
+                                   *ngIf="isVisibleCheckBox(verticalClassifier.getId(),schoolGroupClassifier.getId()) && isTeachingGuideCheckedItem(verticalClassifier.getId(), schoolGroupClassifier.getId(),availableSubjectClassifier.getId())">done</i>
+                            </td>
+                        </ng-container>
+                    </tr>
                     </tbody>
                 </table>
             </div>

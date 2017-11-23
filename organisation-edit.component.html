@@ -28,7 +28,8 @@
                         <td *ngFor="let schoolLevelGroup of schoolLevelGroups" class="mdl-data-table__cell--centered">
                             <input type="number" inputMaxLength="7"
                                    (ngModelChange)="onValueChanged($event, summaryType, schoolLevelGroup)"
-                                   [(ngModel)]="getSchoolSummaryEntity(summaryType, schoolLevelGroup).getProperty('count').value" class="sis-input sis-small-width sis-align-right"/>
+                                   [(ngModel)]="getSchoolSummaryEntity(summaryType, schoolLevelGroup).getProperty('count').value"
+                                   class="sis-input sis-small-width sis-align-right"/>
                         </td>
 
                     </tr>

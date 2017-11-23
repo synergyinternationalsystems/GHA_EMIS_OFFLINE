@@ -33,39 +33,40 @@
                 <label class="sis-label">16.3 Resources Received In-kind</label>
                 <table class="mdl-data-table mdl-js-data-table  sis-table-total">
                     <thead>
-                        <tr>
-                            <th style="width: 300px;">
-                                <span>Source </span>
-                            </th>
-                            <th style="width: 460px;">
-                                <span>Type of Work/Donation/Fund</span>
-                            </th>
-                            <th style="width: 350px;">
-                                <span>Estimated Cost (in Ghana Cedis) </span>
-                            </th>
-                        </tr>
+                    <tr>
+                        <th style="width: 300px;">
+                            <span>Source </span>
+                        </th>
+                        <th style="width: 460px;">
+                            <span>Type of Work/Donation/Fund</span>
+                        </th>
+                        <th style="width: 350px;">
+                            <span>Estimated Cost (in Ghana Cedis) </span>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let resource of resourcesList; let i = index">
-                            <td (click)="editResource(true,resource)">{{resource.getProperty("source").value}}</td>
-                            <td>{{resource.getProperty("typeofWork").value}}</td>
-                            <td class="mdl-data-table__cell--right">{{resource.getProperty("cost").value}}</td>
-                            <td>
-                                <i (click)="delete(resource)" class="material-icons mdl-data-table--action-icon" title="Remove">clear</i>
-                            </td>
-                        </tr>
+                    <tr *ngFor="let resource of resourcesList; let i = index">
+                        <td (click)="editResource(true,resource)">{{resource.getProperty("source").value}}</td>
+                        <td>{{resource.getProperty("typeofWork").value}}</td>
+                        <td class="mdl-data-table__cell--right">{{resource.getProperty("cost").value}}</td>
+                        <td>
+                            <i (click)="delete(resource)" class="material-icons mdl-data-table--action-icon"
+                               title="Remove">clear</i>
+                        </td>
+                    </tr>
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <th>
-                                <span>TOTAL</span>
-                            </th>
-                            <th></th>
-                            <th class="mdl-data-table__cell--right">
-                                <span>{{totalValue()}}</span>
-                            </th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th>
+                            <span>TOTAL</span>
+                        </th>
+                        <th></th>
+                        <th class="mdl-data-table__cell--right">
+                            <span>{{totalValue()}}</span>
+                        </th>
+                        <th></th>
+                    </tr>
                     </tfoot>
                 </table>
             </div>

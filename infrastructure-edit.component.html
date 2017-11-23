@@ -11,17 +11,17 @@
             </div>
             <table #yesNoRoad>
                 <tbody>
-                    <td>
-                        <sis-select-one-radio
-                                [name]="'yesNoRoad'"
-                                [census]="census"
-                                [classifierList]="classifierList"
-                                [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
-                                [censusSubEntityName]="'censusSchoolRoadTypes'"
-                                [classifierId]="'YES_NO_ID'"
-                                [subEntityFields]="infrastructureSubEntityFields">
-                        </sis-select-one-radio>
-                    </td>
+                <td>
+                    <sis-select-one-radio
+                            [name]="'yesNoRoad'"
+                            [census]="census"
+                            [classifierList]="classifierList"
+                            [censusSubEntityCategoryName]="'CensusSchoolRoadType'"
+                            [censusSubEntityName]="'censusSchoolRoadTypes'"
+                            [classifierId]="'YES_NO_ID'"
+                            [subEntityFields]="infrastructureSubEntityFields">
+                    </sis-select-one-radio>
+                </td>
                 </tbody>
             </table>
 
@@ -63,7 +63,8 @@
                            [forControl]="yesNoElectricity"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">3.2 Is your {{schoolOrInstitution}} wired for electricity?</label>
+                <label class="sis-label sis-element-required">3.2 Is your {{schoolOrInstitution}} wired for
+                    electricity?</label>
             </div>
             <table #yesNoElectricity>
                 <tbody>
@@ -167,10 +168,12 @@
                        [class]="'sis-float-left'" [forControl]="environmentalProblem"
                        [isInput]="true">
             </sis-error>
-            <label class="sis-label sis-element-required">3.4 Which of these environmental problems are experienced in your institution?</label>
+            <label class="sis-label sis-element-required">3.4 Which of these environmental problems are experienced in
+                your institution?</label>
         </div>
         <div #environmentalProblem class="sis-display-inline-block">
-            <div *ngFor="let environmentalProblemClassifier of classifierList.get(getSubEntityKeyNameWithoutId(infrastructureSubEntityFields.ENVIRONMENTAL_PROBLEM_ID))" class="sis-display-inline-block">
+            <div *ngFor="let environmentalProblemClassifier of classifierList.get(getSubEntityKeyNameWithoutId(infrastructureSubEntityFields.ENVIRONMENTAL_PROBLEM_ID))"
+                 class="sis-display-inline-block">
                 <input type="checkbox"
                        [checked]="isEnvironmentalProblemCheckedItem(environmentalProblemClassifier.getId())"
                        (change)="onEnvironmentalProblemCheckBoxChanged(environmentalProblemClassifier.getId())"
@@ -186,7 +189,8 @@
                        [class]="'sis-float-left'" [forControl]="isDocumented"
                        [isInput]="true">
             </sis-error>
-            <label class="sis-label sis-element-required">3.5 Is your {{schoolOrInstitution}}'s land properly documented?</label>
+            <label class="sis-label sis-element-required">3.5 Is your {{schoolOrInstitution}}'s land properly
+                documented?</label>
         </div>
         <table #isDocumented>
             <tbody>
@@ -257,7 +261,7 @@
                 <sis-error [id]="'schoolApplyTypeValidation'"
                            [errorMessage]="infrastructureValidationHelper.schoolApplyTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="schoolApplyType"
-                           [isInput]="true" >
+                           [isInput]="true">
                 </sis-error>
                 <label class="sis-label sis-element-required">3.6 Which of the following apply to your school?</label>
             </div>
@@ -309,7 +313,8 @@
                            [class]="'sis-float-left'" [forControl]="TVETBoarding"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">3.7 If your institution has boarding/hostel facilities, how MANY students are?</label>
+                <label class="sis-label sis-element-required">3.7 If your institution has boarding/hostel facilities,
+                    how MANY students are?</label>
             </div>
             <div #TVETBoarding>
                 <sis-census-indicator-tracking-2L [census]="census"
@@ -330,7 +335,8 @@
                            [class]="'sis-float-left'" [forControl]="yesNoPropertyWalled"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">3.8 Is your institution's property walled or fenced?</label>
+                <label class="sis-label sis-element-required">3.8 Is your institution's property walled or
+                    fenced?</label>
             </div>
             <div #yesNoPropertyWalled>
                 <sis-select-one-radio

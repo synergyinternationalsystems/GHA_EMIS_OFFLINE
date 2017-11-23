@@ -1,101 +1,101 @@
 <div *ngIf="classifierList" class="mdl-grid mdl-grid--no-spacing" title="">
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
-            <div *ngIf="true">
-                <div>
-                    <label class="sis-label">1.1 School type</label>
-                    {{schoolType}}
-                </div>
-                <div>
-                    <label class="sis-label">1.2 School Name</label>
-                    {{schoolName}}
-                </div>
-                <div>
-                    <label class="sis-label">1.3 Year Established</label>
-                    {{yearEstablished}}
-                </div>
-                <div>
-                    <label class="sis-label">1.4 School Code</label>
-                    {{schoolCode}}
-                </div>
-                <div>
-                    <label class="sis-label">1.5 School Status</label>
-                    <label class="sis-label">Status: </label>
-                    {{schoolStatus}}
-                    <label *ngIf="!isPublic()" class="sis-label">GES Registration
-                        Number: </label>{{gESRegistrationNumber}}
-                </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+        <div *ngIf="true">
+            <div>
+                <label class="sis-label">1.1 School type</label>
+                {{schoolType}}
             </div>
-            <div *ngIf="isBasicSchool()">
-                <label class="sis-label"> 1.6 School Levels</label>
-                <label *ngFor="let schoolLevel of school.getProperty('schoolLevels').value">
-                    {{schoolLevel.getProperty('schoolLevelGroupId').value.getName()}}
-                </label>
+            <div>
+                <label class="sis-label">1.2 School Name</label>
+                {{schoolName}}
+            </div>
+            <div>
+                <label class="sis-label">1.3 Year Established</label>
+                {{yearEstablished}}
+            </div>
+            <div>
+                <label class="sis-label">1.4 School Code</label>
+                {{schoolCode}}
+            </div>
+            <div>
+                <label class="sis-label">1.5 School Status</label>
+                <label class="sis-label">Status: </label>
+                {{schoolStatus}}
+                <label *ngIf="!isPublic()" class="sis-label">GES Registration
+                    Number: </label>{{gESRegistrationNumber}}
             </div>
         </div>
+        <div *ngIf="isBasicSchool()">
+            <label class="sis-label"> 1.6 School Levels</label>
+            <label *ngFor="let schoolLevel of school.getProperty('schoolLevels').value">
+                {{schoolLevel.getProperty('schoolLevelGroupId').value.getName()}}
+            </label>
+        </div>
+    </div>
 
-        <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--10-col-phone">
-            <div *ngIf="true">
-                <div>
-                    <h5 *ngIf="isBasicSchool()" class="sis-label"><label>1.7 Location of School</label></h5>
-                    <h5 *ngIf="!isBasicSchool()" class="sis-label"><label>1.6 Location of School</label></h5>
+    <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--10-col-phone">
+        <div *ngIf="true">
+            <div>
+                <h5 *ngIf="isBasicSchool()" class="sis-label"><label>1.7 Location of School</label></h5>
+                <h5 *ngIf="!isBasicSchool()" class="sis-label"><label>1.6 Location of School</label></h5>
 
-                    <div class="mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                        <div class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--5-col-phone sis-float-left">
-                            <label class="sis-label sis-margin--top0">Region: </label>
-                            <span>{{location2}}</span>
-                            <label class="sis-label">District: </label>
-                            <span>{{location3}}</span>
-                            <label class="sis-label">Circuit: </label>
-                            <span>{{circuit}}</span>
-                        </div>
-                        <div class="mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--5-col-phone sis-float-right">
-                            <label class="sis-label sis-margin--top0">Circuit Code: </label>
-                            <span>{{circuitCode}}</span>
-                            <label class="sis-label">Political Constituency: </label>
-                            <span>{{politicalConstituency}}</span>
-                            <label class="sis-label">Locality: </label>
-                            <span>{{locality}}</span>
-                        </div>
+                <div class="mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--5-col-phone sis-float-left">
+                        <label class="sis-label sis-margin--top0">Region: </label>
+                        <span>{{location2}}</span>
+                        <label class="sis-label">District: </label>
+                        <span>{{location3}}</span>
+                        <label class="sis-label">Circuit: </label>
+                        <span>{{circuit}}</span>
+                    </div>
+                    <div class="mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--5-col-phone sis-float-right">
+                        <label class="sis-label sis-margin--top0">Circuit Code: </label>
+                        <span>{{circuitCode}}</span>
+                        <label class="sis-label">Political Constituency: </label>
+                        <span>{{politicalConstituency}}</span>
+                        <label class="sis-label">Locality: </label>
+                        <span>{{locality}}</span>
                     </div>
                 </div>
+            </div>
+            <div class="sis-clear"></div>
+            <div>
+                <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.8 Type of Locality</label></h5>
+                <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.7 Type of Locality</label></h5>
+                {{localityType}}
+            </div>
+            <div>
+                <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.9 School Address for Correspondence</label></h5>
+                <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.8 School Address for Correspondence</label></h5>
+                {{address}}
+                {{address1}}
+                {{address2}}
+                {{address3}}
+
                 <div class="sis-clear"></div>
-                <div>
-                    <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.8 Type of Locality</label></h5>
-                    <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.7 Type of Locality</label></h5>
-                    {{localityType}}
-                </div>
-                <div>
-                    <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.9 School Address for Correspondence</label></h5>
-                    <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.8 School Address for Correspondence</label></h5>
-                    {{address}}
-                    {{address1}}
-                    {{address2}}
-                    {{address3}}
+                <label class="sis-label">Telephone No of Head: </label>
+                <span>{{phone}}</span>
+                <label class="sis-label">Fax: </label>
+                <span>{{fax}}</span>
+                <label class="sis-label">Email: </label>
+                <span>{{email}}</span>
+            </div>
+            <div>
+                <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.10 Geo-coordinates</label></h5>
+                <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.9 Geo-coordinates</label></h5>
 
-                    <div class="sis-clear"></div>
-                    <label class="sis-label">Telephone No of Head: </label>
-                    <span>{{phone}}</span>
-                    <label class="sis-label">Fax: </label>
-                    <span>{{fax}}</span>
-                    <label class="sis-label">Email: </label>
-                    <span>{{email}}</span>
-                </div>
-                <div>
-                    <h5 *ngIf="isBasicSchool()"><label class="sis-label">1.10 Geo-coordinates</label></h5>
-                    <h5 *ngIf="!isBasicSchool()"><label class="sis-label">1.9 Geo-coordinates</label></h5>
-
-                    <label class="sis-label">Longitude: </label>
-                    <span>{{longitude}}</span>
-                    <label class="sis-label">Latitude:</label>
-                    <span>{{latitude}}</span>
-                </div>
-                <div>
-                    <label class="sis-label" *ngIf="isBasicSchool()">1.11 Education Management Unit</label>
-                    <label class="sis-label" *ngIf="!isBasicSchool()">1.10 Education Management Unit</label>
-                    {{managementUnit}}
-                </div>
+                <label class="sis-label">Longitude: </label>
+                <span>{{longitude}}</span>
+                <label class="sis-label">Latitude:</label>
+                <span>{{latitude}}</span>
+            </div>
+            <div>
+                <label class="sis-label" *ngIf="isBasicSchool()">1.11 Education Management Unit</label>
+                <label class="sis-label" *ngIf="!isBasicSchool()">1.10 Education Management Unit</label>
+                {{managementUnit}}
             </div>
         </div>
     </div>
+</div>
 
 

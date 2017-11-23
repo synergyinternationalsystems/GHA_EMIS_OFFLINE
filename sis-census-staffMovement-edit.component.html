@@ -39,9 +39,10 @@
                        [errorMessage]="staffMovementValidationHelper.staffHaveLeftValidation() || staffMovementValidationHelper.censusSchoolStaffMovementLeftCountValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">15.2 How Many Staff have left your school for the following reasons in the past school year?</label>
+            <label class="sis-label sis-element-required">15.2 How Many Staff have left your school for the following
+                reasons in the past school year?</label>
         </div>
-        <div  #reasonOfLeaveBasic>
+        <div #reasonOfLeaveBasic>
             <sis-census-indicator-tracking-3L [census]="census"
                                               [school]="school"
                                               [classifierList]="classifierList"
@@ -70,7 +71,8 @@
                        [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveSecondaryValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">13.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
+            <label class="sis-label sis-element-required">13.1 How many staff have taken leave in the past school year
+                and what kind of leave it was?</label>
         </div>
         <div #typeOfLeaveSec>
             <sis-census-indicator-tracking-3L [census]="census"
@@ -97,7 +99,8 @@
                        [errorMessage]="staffMovementValidationHelper.reasonOfLeaveSecondaryValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">13.2 How many Staff have left your institution for the following reasons in the past academic year?</label>
+            <label class="sis-label sis-element-required">13.2 How many Staff have left your institution for the
+                following reasons in the past academic year?</label>
         </div>
         <div #reasonOfLeaveSec>
             <sis-census-indicator-tracking-3L [census]="census"
@@ -126,7 +129,8 @@
                        [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveTvetValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year and what kind of leave it was?</label>
+            <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year
+                and what kind of leave it was?</label>
         </div>
         <div #typeOfLeaveTvet>
             <sis-census-indicator-tracking-3L [census]="census"
@@ -148,13 +152,14 @@
 
     <div *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-error [id]="'reasonOfLeaveTvetId'"  *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'reasonOfLeaveTvetId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="reasonOfLeaveTvet"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.reasonOfLeaveTvetValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">11.2	How many Staff have left your institution for the following reasons in the past academic year?</label>
+            <label class="sis-label sis-element-required">11.2 How many Staff have left your institution for the
+                following reasons in the past academic year?</label>
         </div>
         <div #reasonOfLeaveTvet>
             <sis-census-indicator-tracking-3L [census]="census"
@@ -176,13 +181,14 @@
 
     <div #movementRecieveService *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-error [id]="'movementRecieveServiceTVETValidationId'"  *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'movementRecieveServiceTVETValidationId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="movementRecieveService" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--element'"
                        [errorMessage]="staffMovementValidationHelper.movementRecieveServiceValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">11.3 How often did your teachers receive in-service training in the past year?</label>
+            <label class="sis-label sis-element-required">11.3 How often did your teachers receive in-service training
+                in the past year?</label>
         </div>
         <sis-select-one-radio [census]="census"
                               [classifierList]="classifierList"
@@ -203,7 +209,8 @@
                        [errorMessage]="staffMovementValidationHelper.hivaidsYesNoValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">11.4 Has your institution had any in-service training on HIV/AIDs?</label>
+            <label class="sis-label sis-element-required">11.4 Has your institution had any in-service training on
+                HIV/AIDs?</label>
         </div>
         <sis-select-one-radio [census]="census"
                               [classifierList]="classifierList"
@@ -216,15 +223,16 @@
     </div>
 
 
-    <div class="sis-controls--top-margin"  #hivaidsyesnoissues *ngIf="getIsTVETSchoolType()">
+    <div class="sis-controls--top-margin" #hivaidsyesnoissues *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-error [id]="'hivaidsyesnoIssuesTVETValidationId'"  *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'hivaidsyesnoIssuesTVETValidationId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="hivaidsyesnoissues" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--element'"
                        [errorMessage]="staffMovementValidationHelper.hivaidsIssuesYesNoServiceValidation()"
                        [class]="'sis-float-left'">
             </sis-error>
-            <label class="sis-label sis-element-required">11.5 Does your institution teach HIV/AIDS issues as integrated in the curriculum?</label>
+            <label class="sis-label sis-element-required">11.5 Does your institution teach HIV/AIDS issues as integrated
+                in the curriculum?</label>
         </div>
         <sis-select-one-radio [census]="census"
                               [classifierList]="classifierList"

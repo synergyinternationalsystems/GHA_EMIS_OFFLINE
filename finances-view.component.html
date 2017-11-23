@@ -1,8 +1,8 @@
 <div mdl class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--8-col">
-            <div>
-                <label class="sis-label">16.1 Income and Expenditure of the School</label>
-                <sis-census-finances-1L-VView [census]="census"
+        <div>
+            <label class="sis-label">16.1 Income and Expenditure of the School</label>
+            <sis-census-finances-1L-VView [census]="census"
                                           [classifierList]="classifierList"
                                           [schoolTypeId]="schoolTypeId"
                                           [verticalIncomeClassifierName]="'SchoolIncomeTypes'"
@@ -11,12 +11,12 @@
                                           [verticalExpenditureClassifierFieldName]="'financeExpenditureId'"
                                           [incomeSubEntityName]="'censusSchoolIncomes'"
                                           [expenditureSubEntityName]="'censusSchoolExpenditures'">
-                </sis-census-finances-1L-VView>
-            </div>
+            </sis-census-finances-1L-VView>
+        </div>
 
-            <div>
-                <label class="sis-label">16.2 Activities of PTAs</label>
-                <sis-census-finances-1L-VView [census]="census"
+        <div>
+            <label class="sis-label">16.2 Activities of PTAs</label>
+            <sis-census-finances-1L-VView [census]="census"
                                           [schoolTypeId]="schoolTypeId"
                                           [classifierList]="classifierList"
                                           [verticalIncomeClassifierName]="'PTAIncomeTypes'"
@@ -25,45 +25,45 @@
                                           [verticalExpenditureClassifierFieldName]="'financeActivityExpenditureId'"
                                           [incomeSubEntityName]="'censusSchoolActivityIncomes'"
                                           [expenditureSubEntityName]="'censusSchoolActivityExpenditures'">
-                </sis-census-finances-1L-VView>
-            </div>
+            </sis-census-finances-1L-VView>
+        </div>
 
-            <div class="sis-table-scroll sis-controls--top-margin">
-                <label class="sis-label">16.3 Resources Received In-kind</label>
-                <table class="mdl-data-table mdl-js-data-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 250px;">
-                                <span>Source </span>
-                            </th>
-                            <th style="width: 460px;">
-                                <span>Type of Work/Donation/Fund</span>
-                            </th>
-                            <th style="width: 350px;">
-                                <span>Estimated Cost (in Ghana Cedis) </span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let resource of resourcesList; let i = index">
-                            <td>{{resource.getProperty("source").value}}</td>
-                            <td>{{resource.getProperty("typeofWork").value}}</td>
-                            <td>{{resource.getProperty("cost").value}}</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>
-                                <span>TOTAL</span>
-                            </th>
-                            <th></th>
-                            <th class="mdl-data-table__cell--right">
-                                <span>{{totalValue()}}</span>
-                            </th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+        <div class="sis-table-scroll sis-controls--top-margin">
+            <label class="sis-label">16.3 Resources Received In-kind</label>
+            <table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                <tr>
+                    <th style="width: 250px;">
+                        <span>Source </span>
+                    </th>
+                    <th style="width: 460px;">
+                        <span>Type of Work/Donation/Fund</span>
+                    </th>
+                    <th style="width: 350px;">
+                        <span>Estimated Cost (in Ghana Cedis) </span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let resource of resourcesList; let i = index">
+                    <td>{{resource.getProperty("source").value}}</td>
+                    <td>{{resource.getProperty("typeofWork").value}}</td>
+                    <td>{{resource.getProperty("cost").value}}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>
+                        <span>TOTAL</span>
+                    </th>
+                    <th></th>
+                    <th class="mdl-data-table__cell--right">
+                        <span>{{totalValue()}}</span>
+                    </th>
+                    <th></th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>

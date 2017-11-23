@@ -1,89 +1,101 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
-        <label class="sis-layout__section__title sis-controls--top-margin">13.1 State actual periods of teaching PER WEEK for each teacher</label>
+        <label class="sis-layout__section__title sis-controls--top-margin">13.1 State actual periods of teaching PER
+            WEEK for each teacher</label>
         <div class="sis-clear"></div>
         <div *ngIf="isBasicSchool()" class="sis-table-scroll sis-controls--top-margin">
-            <table #valueRequiredValidationForBasic class="mdl-data-table mdl-js-data-table sis-full-width" id="basicTeacherId">
+            <table #valueRequiredValidationForBasic class="mdl-data-table mdl-js-data-table sis-full-width"
+                   id="basicTeacherId">
                 <thead>
-                    <tr>
-                        <th rowspan="2" >
-                            <span>No</span>
+                <tr>
+                    <th rowspan="2">
+                        <span>No</span>
+                    </th>
+                    <th rowspan="2" class="mdl-data-table__cell--centered" style="min-width: 98px;">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2" class="mdl-data-table__cell--centered">
+                        <span>Creche/Nursery </span>
+                    </th>
+                    <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()"
+                        class="mdl-data-table__cell--centered"
+                        [attr.colspan]="filteredHorizontalSLByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
+                        <span>{{horizontalFirstLevellClassifier.getName()}}</span>
+                    </th>
+                    <th *ngIf="!isEnrolmentSubjectListEmpty()" class="mdl-data-table__cell--centered"
+                        [attr.colspan]="enrolmentProgrammeAddItems.length">
+                        <span>Junior High School</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierListForView()"
+                        class="mdl-data-table__cell--centered">
+                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems"
+                            class="mdl-data-table__cell--centered">
+                            <span>{{enrolmentClassifier.getName()}}</span>
                         </th>
-                        <th rowspan="2"  class="mdl-data-table__cell--centered" style="min-width: 98px;">
-                            <span>Full Name</span>
-                        </th>
-                        <th rowspan="2" class="mdl-data-table__cell--centered">
-                            <span>Creche/Nursery </span>
-                        </th>
-                        <th *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()" class="mdl-data-table__cell--centered"
-                            [attr.colspan]="filteredHorizontalSLByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId()).length">
-                            <span>{{horizontalFirstLevellClassifier.getName()}}</span>
-                        </th>
-                        <th *ngIf="!isEnrolmentSubjectListEmpty()" class="mdl-data-table__cell--centered"
-                            [attr.colspan]="enrolmentProgrammeAddItems.length">
-                            <span>Junior High School</span>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierListForView()" class="mdl-data-table__cell--centered">
-                            <span>{{horizontalSecondLevelClassifier.getName()}}</span>
-                        </th>
-                        <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                            <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems" class="mdl-data-table__cell--centered">
-                                <span>{{enrolmentClassifier.getName()}}</span>
-                            </th>
-                        </ng-container>
-                    </tr>
+                    </ng-container>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                        <td>{{j+1}}</td>
-                        <td class="mdl-data-table__cell--centered">{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                        <td class="mdl-data-table__cell--centered" *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                            <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
-                        </td>
-                    </tr>
+                <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                    <td>{{j+1}}</td>
+                    <td class="mdl-data-table__cell--centered">
+                        {{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                        indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                    </td>
+                    <td class="mdl-data-table__cell--centered"
+                        *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                        <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="sis-table-scroll"  *ngIf="isSecondSchool()">
-            <table #valueRequiredValidationForSecondSchool class="mdl-data-table mdl-js-data-table" id="secondaryTeacherId">
+        <div class="sis-table-scroll" *ngIf="isSecondSchool()">
+            <table #valueRequiredValidationForSecondSchool class="mdl-data-table mdl-js-data-table"
+                   id="secondaryTeacherId">
                 <thead>
-                    <tr>
-                        <th rowspan="2" >
-                            <span> No</span>
+                <tr>
+                    <th rowspan="2">
+                        <span> No</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Subject Specialisation in Professional or Academic Qualification </span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
+                            <span>{{enrolmentClassifier.getName()}}</span>
                         </th>
-                        <th rowspan="2">
-                            <span>Full Name</span>
-                        </th>
-                        <th rowspan="2">
-                            <span>Subject Specialisation in Professional or Academic Qualification </span>
-                        </th>
-                        <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                            <th  *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
-                                <span>{{enrolmentClassifier.getName()}}</span>
-                            </th>
-                        </ng-container>
-                    </tr>
+                    </ng-container>
+                </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
-                        <tr *ngFor="let teacher of tempTeacherList(); let j = index">
-                            <td>{{j+1}}</td>
-                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                        </tr>
-                    </ng-container>
-                    <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
-                        <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                            <td>{{j}}</td>
-                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value}}</td>
-                            <td> </td>
-                            <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                                <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
-                            </td>
-                        </tr>
-                    </ng-container>
+                <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let teacher of tempTeacherList(); let j = index">
+                        <td>{{j+1}}</td>
+                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                            indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                        </td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                        <td>{{j}}</td>
+                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value}}</td>
+                        <td></td>
+                        <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                            <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                        </td>
+                    </tr>
+                </ng-container>
                 </tbody>
             </table>
         </div>
@@ -91,40 +103,42 @@
         <div class="sis-table-scroll" *ngIf="isTVET()">
             <table #valueRequiredValidationForTVET class="mdl-data-table mdl-js-data-table" id="tvetTeacherId">
                 <thead>
-                    <tr>
-                        <th  rowspan="2" >
-                            <span> No</span>
+                <tr>
+                    <th rowspan="2">
+                        <span> No</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Full Name</span>
+                    </th>
+                    <th rowspan="2">
+                        <span>Tutor Number </span>
+                    </th>
+                    <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
+                        <th *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
+                            <span>{{enrolmentClassifier.getName()}}</span>
                         </th>
-                        <th  rowspan="2">
-                            <span>Full Name</span>
-                        </th>
-                        <th rowspan="2">
-                            <span>Tutor Number </span>
-                        </th>
-                        <ng-container *ngIf="!isEnrolmentSubjectListEmpty()">
-                            <th  *ngFor="let enrolmentClassifier of enrolmentProgrammeAddItems">
-                                <span>{{enrolmentClassifier.getName()}}</span>
-                            </th>
-                        </ng-container>
-                    </tr>
+                    </ng-container>
+                </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
-                        <tr *ngFor="let teacher of tempTeacherList(); let j = index">
-                            <td>{{j}}</td>
-                            <td>{{teacher.getProperty('firstName').value}}</td>
-                        </tr>
-                    </ng-container>
-                    <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
-                        <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
-                            <td>{{j+1}}</td>
-                            <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " + indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}</td>
-                            <td> {{indicatorTrackingItem.verticalClassifier.getProperty('sSFNumber').value}}</td>
-                            <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
-                                <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
-                            </td>
-                        </tr>
-                    </ng-container>
+                <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let teacher of tempTeacherList(); let j = index">
+                        <td>{{j}}</td>
+                        <td>{{teacher.getProperty('firstName').value}}</td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isSubEntityEmptyAndIsNotBasic()">
+                    <tr *ngFor="let indicatorTrackingItem of teacherWorkloadList; let j = index">
+                        <td>{{j+1}}</td>
+                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
+                            indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                        </td>
+                        <td> {{indicatorTrackingItem.verticalClassifier.getProperty('sSFNumber').value}}</td>
+                        <td *ngFor="let value of indicatorTrackingItem.classifierValues; let i = index">
+                            <span>{{indicatorTrackingItem.classifierValues[i].value}}</span>
+                        </td>
+                    </tr>
+                </ng-container>
                 </tbody>
             </table>
         </div>

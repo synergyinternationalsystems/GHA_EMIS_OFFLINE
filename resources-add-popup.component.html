@@ -1,14 +1,15 @@
 <div>
-<!--    <div><label class="form-label form--controls-top-margin strong" style="font-weight: bold;">2 Surname / Family Name
-        <span class="form-asterix">*</span></label>
-    </div>
-    <input type="text" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"/>
-<div *ngIf="resourcesList">
-    <button (click)="addAction(resourcesList)">Add</button>
-</div>-->
+    <!--    <div><label class="form-label form--controls-top-margin strong" style="font-weight: bold;">2 Surname / Family Name
+            <span class="form-asterix">*</span></label>
+        </div>
+        <input type="text" [(ngModel)]="indicatorTrackingItem.classifierValues[i].value"/>
+    <div *ngIf="resourcesList">
+        <button (click)="addAction(resourcesList)">Add</button>
+    </div>-->
 
 
-        <resources-add #resourceAdd  [resourcesList]="resourcesList" [subEntity]="subEntity" [isErrorMessageVisible]="isErrorMessageVisible" (done)="doneAction()"></resources-add>
+    <resources-add #resourceAdd [resourcesList]="resourcesList" [subEntity]="subEntity"
+                   [isErrorMessageVisible]="isErrorMessageVisible" (done)="doneAction()"></resources-add>
 
 
 </div>
