@@ -104,7 +104,14 @@
                         {{teacher.getProperty('teacherId').value.getProperty('currentPositionYear').value}}
                     </td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getProperty('name_ENG').value}}
+                        <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value">
+                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getId() !== 23">
+                                {{teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getProperty('name_ENG').value}}
+                            </div>
+                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getId() === 23">
+                                {{teacher.getProperty('teacherId').value.getProperty('teacherRankName_ENG').value}}
+                            </div>
+                        </div>
                     </td>
                     <td class="mdl-data-table__cell--centered">
                         {{teacher.getProperty('teacherId').value.getProperty('rankAppointedYear').value}}
@@ -127,9 +134,14 @@
                         teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
                     </td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value
-                        &&
-                        teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
+                        <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value">
+                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getId() !== 8">
+                                {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
+                            </div>
+                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getId() === 8">
+                                {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationName_ENG').value}}
+                            </div>
+                        </div>
                     </td>
                     <td class="mdl-data-table__cell--centered">
                         {{teacher.getProperty('teacherId').value.getProperty('yearCompleted').value}}

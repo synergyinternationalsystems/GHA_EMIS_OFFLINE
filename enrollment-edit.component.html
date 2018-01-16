@@ -1,7 +1,6 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
         <div id="indicatorBasicId" *ngIf="isBasicSchool()">
-
             <div class="sis-control-validation">
                 <sis-error [id]="'enrolmentManyPrimaryValidation'"
                            [forControl]="enrolmentManyPrimaryName" [isInput]="true"
@@ -27,7 +26,6 @@
                                                   [verticalClassifierFieldName]="'ageId'">
                 </sis-census-indicator-tracking-2L>
             </div>
-
 
             <div class="sis-control-validation">
                 <sis-error [id]="'enrolmentNewPrimaryValidation'"
@@ -168,7 +166,6 @@
                 </sis-census-indicator-tracking-3L-2H-2T>
             </div>
 
-
             <div class="sis-control-validation">
                 <sis-error [id]="'summaryOfEnrolmentInProgrammeSecondaryValidation'"
                            [forControl]="summaryOfEnrolmentInProgrammeSecondaryName" [isInput]="true"
@@ -199,7 +196,6 @@
                                                   [hasTotalRowByThirdLevel]="true">
                 </sis-census-indicator-tracking-4L>
             </div>
-
 
             <div class="sis-control-validation">
                 <sis-error [id]="'enrolmentByAgeSecondaryValidation'"
@@ -297,7 +293,6 @@
                 </sis-census-indicator-tracking-3L>
             </div>
 
-
             <div class="sis-control-validation">
                 <sis-error [id]="'enrolmentProgrammeFullTimeValidation'"
                            [forControl]="enrolmentProgrammeFullTimeName" [isInput]="true"
@@ -322,7 +317,6 @@
                                                      [question]="'How many Full-TIME students are enrolled in the programmes provided in your institution?'"
                                                      [hasParent]="'true'"
                                                      [hasVerticalCode]="'true'"
-                                                     [hasVerticalTotalColumn]="'true'"
                                                      [horizontalFirstLevelClassifierRangeFilterType]="true"
                                                      [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
                                                      [hasTotalRow]="true"
@@ -330,7 +324,6 @@
                                                      [indicatorType]="enrolmentTVETFullTime">
                 </sis-census-indicator-tracking-3L-2T>
             </div>
-
 
             <div class="sis-control-validation">
                 <sis-error [id]="'enrolmentProgrammePartTimeValidation'"
@@ -356,7 +349,6 @@
                                                      [question]="'How many PART-TIME students are enrolled in the programmes provided in your institution?'"
                                                      [hasParent]="'true'"
                                                      [hasVerticalCode]="'true'"
-                                                     [hasVerticalTotalColumn]="'true'"
                                                      [horizontalFirstLevelClassifierRangeFilterType]="true"
                                                      [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
                                                      [hasTotalRow]="true"

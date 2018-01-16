@@ -119,7 +119,7 @@
                                        [class]="'sis-float-left'">
                             </sis-error>
                             <label class="sis-label sis-element-required">6.1.4 Is the facility functioning at the time
-                                of the survey?</label>
+                                of the census?</label>
                         </div>
                         <table class="mdl-data-table mdl-js-data-table">
                             <thead>
@@ -353,57 +353,6 @@
                 </sis-select-one-radio>
             </div>
 
-
-            <div class="sis-control-validation">
-                <sis-error [id]="'urinalsFunctionalYesNoValidation'"
-                           [forControl]="urinalsFunctionalYesNoName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.urinalsFunctionalYesNoValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">6.2.2 Were the urinals functional at the time of the
-                    survey?</label>
-            </div>
-            <div #urinalsFunctionalYesNoName>
-                <sis-select-one-radio [census]="census"
-                                      [classifierList]="classifierList"
-                                      [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
-                                      [censusSubEntityName]="'censusSchoolQuestions'"
-                                      [classifierId]="'URINALS_FUNCTIONAL_YES_NO_ID'"
-                                      [classifierNameFromInput]="'YesNoId'"
-                                      [hasInputSubEntity]="true"
-                                      [parentClassifierKeyName]="'waterFacilityYesNoId'"
-                                      [subEntityFields]="questionSubEntityFields">
-                </sis-select-one-radio>
-            </div>
-
-
-            <div class="sis-control-validation">
-                <sis-error [id]="'urinalsAvailabilityValidation'"
-                           [forControl]="urinalsAvailabilityName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.urinalsAvailabilityValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">
-                    6.2.3 {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
-                </label>
-            </div>
-            <div #urinalsAvailabilityName>
-                <sis-census-indicator-tracking-1L-H [census]="census"
-                                                    [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsAvailabilityFunctionalityTableId'"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [noTopLeftCellLabel]="true"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
-                </sis-census-indicator-tracking-1L-H>
-            </div>
-
-
             <div class="sis-control-validation">
                 <sis-error [id]="'toiletsFunctionalYesNoValidation'"
                            [forControl]="toiletsFunctionalYesNoName" [isInput]="true"
@@ -412,7 +361,7 @@
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
-                    6.2.4 Were the toilets functional at the time of the survey?
+                    6.2.2 Were the toilets functional at the time of the census?
                 </label>
             </div>
             <div #toiletsFunctionalYesNoName>
@@ -428,7 +377,6 @@
                 </sis-select-one-radio>
             </div>
 
-
             <div class="sis-control-validation">
                 <sis-error [id]="'useToiletsYesNoValidation'"
                            [forControl]="useToiletsYesNoName" [isInput]="true"
@@ -437,7 +385,7 @@
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
-                    6.2.5 Were the toilets in use at the time of the survey?
+                    6.2.3 Were the toilets in use at the time of the census?
                 </label>
             </div>
             <div #useToiletsYesNoName>
@@ -450,113 +398,164 @@
                                       [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio>
             </div>
+
+            <div *ngIf="isSelectedUseToilets()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'individualToiletSeatsAvailableValidation'"
+                               [forControl]="individualToiletSeatsAvailableName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsAvailableValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        6.2.4 {{toiletAvailabilityDisaggregationClassifierName}}?
+                    </label>
+                </div>
+                <div #individualToiletSeatsAvailableName>
+                    <sis-census-indicator-tracking-1L-H [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsAvailabilityTableId'"
+                                                        [noTopLeftCellLabel]="true"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
+                    </sis-census-indicator-tracking-1L-H>
+                </div>
+
+                <div class="sis-control-validation">
+                    <sis-error [id]="'individualToiletSeatsFunctionalValidation'"
+                               [forControl]="individualToiletSeatsFunctionalName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsFunctionalValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        6.2.5 {{toiletFunctionalityDisaggregationClassifierName}}?
+                    </label>
+                </div>
+                <div #individualToiletSeatsFunctionalName>
+                    <sis-census-indicator-tracking-1L-H [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsFunctionalityTableId'"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [noTopLeftCellLabel]="true"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
+                    </sis-census-indicator-tracking-1L-H>
+                </div>
+            </div>
         </div>
 
         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div *ngIf="isSelectedUseToilets()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'cleanToiletsYesNoValidation'"
+                               [forControl]="cleanToiletsYesNoName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.cleanToiletsYesNoValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        6.2.6 Were the toilets clean at the time of the census?
+                    </label>
+                </div>
+                <div #cleanToiletsYesNoName>
+                    <sis-select-one-radio [census]="census"
+                                          [classifierList]="classifierList"
+                                          [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                          [censusSubEntityName]="'censusSchoolQuestions'"
+                                          [classifierId]="'CLEAN_TOILETS_YES_NO_ID'"
+                                          [classifierNameFromInput]="'YesNoId'"
+                                          [subEntityFields]="questionSubEntityFields">
+                    </sis-select-one-radio>
+                </div>
+
+                <div class="sis-control-validation">
+                    <sis-error [id]="'toiletResponsibleValidation'"
+                               [forControl]="toiletResponsibleName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <sis-error [id]="'toiletResponsibleOtherValidation'"
+                               [forControl]="toiletResponsibleName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleOtherValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        6.2.7 Who is responsible for cleaning the toilet facilities?
+                    </label>
+                </div>
+                <div #toiletResponsibleName>
+                    <sis-select-one-radio [census]="census"
+                                          [classifierList]="classifierList"
+                                          [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                          [censusSubEntityName]="'censusSchoolQuestions'"
+                                          [classifierId]="'TOILET_RESPONSIBLE_ID'"
+                                          [hasOther]="true"
+                                          [otherId]="waterAndSanitationRadioButtonIds.TOILET_RESPONSIBLE_OTHER_ID"
+                                          [otherText]="'Other Specify'"
+                                          [subEntityOtherFieldName]="'toiletResponsible_ENG'"
+                                          [subEntityFields]="questionSubEntityFields">
+                    </sis-select-one-radio>
+                </div>
+            </div>
+
             <div class="sis-control-validation">
-                <sis-error [id]="'individualToiletSeatsAvailableValidation'"
-                           [forControl]="individualToiletSeatsAvailableName" [isInput]="true"
+                <sis-error [id]="'urinalsFunctionalYesNoValidation'"
+                           [forControl]="urinalsFunctionalYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsAvailableValidation()"
+                           [errorMessage]="waterAndSanitationValidationHelper.urinalsFunctionalYesNoValidation()"
                            [class]="'sis-float-left'">
                 </sis-error>
-                <label class="sis-label sis-element-required">
-                    6.2.6 {{toiletAvailabilityDisaggregationClassifierName}}?
-                </label>
+                <label class="sis-label sis-element-required">6.2.{{isSelectedUseToilets() ? 8 : 4}} Were the urinals functional at the time of the
+                    census?</label>
             </div>
-            <div #individualToiletSeatsAvailableName>
-                <sis-census-indicator-tracking-1L-H [census]="census"
-                                                    [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsAvailabilityTableId'"
-                                                    [noTopLeftCellLabel]="true"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsAvailabilitySubEntityFilterPropertyValue">
-                </sis-census-indicator-tracking-1L-H>
-            </div>
-
-
-            <div class="sis-control-validation">
-                <sis-error [id]="'individualToiletSeatsFunctionalValidation'"
-                           [forControl]="individualToiletSeatsFunctionalName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsFunctionalValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">
-                    6.2.7 {{toiletFunctionalityDisaggregationClassifierName}}?
-                </label>
-            </div>
-            <div #individualToiletSeatsFunctionalName>
-                <sis-census-indicator-tracking-1L-H [census]="census"
-                                                    [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'toiletsFunctionalityTableId'"
-                                                    [indicatorInstanceId]="sanitationToiletAvailability"
-                                                    [noTopLeftCellLabel]="true"
-                                                    [horizontalClassifierName]="'PupilTeacher'"
-                                                    [horizontalClassifierFieldName]="'pupilTeacherId'"
-                                                    [subEntityFilterPropertyName]="'indicatorToilet'"
-                                                    [subEntityFilterPropertyValue]="toiletsFunctionalitySubEntityFilterPropertyValue">
-                </sis-census-indicator-tracking-1L-H>
-            </div>
-
-
-            <div class="sis-control-validation">
-                <sis-error [id]="'cleanToiletsYesNoValidation'"
-                           [forControl]="cleanToiletsYesNoName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.cleanToiletsYesNoValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">
-                    6.2.8 Were the toilets clean at the time of the survey?
-                </label>
-            </div>
-            <div #cleanToiletsYesNoName>
+            <div #urinalsFunctionalYesNoName>
                 <sis-select-one-radio [census]="census"
                                       [classifierList]="classifierList"
                                       [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
                                       [censusSubEntityName]="'censusSchoolQuestions'"
-                                      [classifierId]="'CLEAN_TOILETS_YES_NO_ID'"
+                                      [classifierId]="'URINALS_FUNCTIONAL_YES_NO_ID'"
                                       [classifierNameFromInput]="'YesNoId'"
+                                      [hasInputSubEntity]="true"
+                                      [parentClassifierKeyName]="'waterFacilityYesNoId'"
                                       [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio>
             </div>
 
-
-            <div class="sis-control-validation">
-                <sis-error [id]="'toiletResponsibleValidation'"
-                           [forControl]="toiletResponsibleName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <sis-error [id]="'toiletResponsibleOtherValidation'"
-                           [forControl]="toiletResponsibleName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
-                           [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleOtherValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">
-                    6.2.9 Who is responsible for cleaning the toilet facilities?
-                </label>
-            </div>
-            <div #toiletResponsibleName>
-                <sis-select-one-radio [census]="census"
-                                      [classifierList]="classifierList"
-                                      [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
-                                      [censusSubEntityName]="'censusSchoolQuestions'"
-                                      [classifierId]="'TOILET_RESPONSIBLE_ID'"
-                                      [hasOther]="true"
-                                      [otherId]="waterAndSanitationRadioButtonIds.TOILET_RESPONSIBLE_OTHER_ID"
-                                      [otherText]="'Other Specify'"
-                                      [subEntityOtherFieldName]="'toiletResponsible_ENG'"
-                                      [subEntityFields]="questionSubEntityFields">
-                </sis-select-one-radio>
+            <div *ngIf="isSelectedUrinalsFunctional()">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'urinalsAvailabilityValidation'"
+                               [forControl]="urinalsAvailabilityName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="waterAndSanitationValidationHelper.urinalsAvailabilityValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">
+                        6.2.{{isSelectedUseToilets() ? 9 : 5}} {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
+                    </label>
+                </div>
+                <div #urinalsAvailabilityName>
+                    <sis-census-indicator-tracking-1L-H [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'toiletsAvailabilityFunctionalityTableId'"
+                                                        [indicatorInstanceId]="sanitationToiletAvailability"
+                                                        [noTopLeftCellLabel]="true"
+                                                        [horizontalClassifierName]="'PupilTeacher'"
+                                                        [horizontalClassifierFieldName]="'pupilTeacherId'"
+                                                        [subEntityFilterPropertyName]="'indicatorToilet'"
+                                                        [subEntityFilterPropertyValue]="toiletsAvailabilityFunctionalitySubEntityFilterPropertyValue">
+                    </sis-census-indicator-tracking-1L-H>
+                </div>
             </div>
         </div>
 
@@ -569,7 +568,7 @@
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
-                    6.2.10 Does your school have Hand washing facilities at the following places?
+                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 10 : (isSelectedUrinalsFunctional() ? 6 : (isSelectedUseToilets() ? 9 : 5))}} Does your school have Hand washing facilities at the following places?
                 </label>
             </div>
             <div class="sis-table-scroll" #washingFacilitiesFollowingPlacesName>
@@ -600,7 +599,6 @@
                 </table>
             </div>
 
-
             <div class="sis-control-validation">
                 <sis-error [id]="'soapAvailableForHandWashingValidation'"
                            [forControl]="soapAvailableForHandWashingName" [isInput]="true"
@@ -609,7 +607,7 @@
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
-                    6.2.11 Is soap available for handwashing at these places at the time of the survey?
+                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 11 : (isSelectedUrinalsFunctional() ? 7 : (isSelectedUseToilets() ? 10 : 6))}} Is soap available for handwashing at these places at the time of the census?
                 </label>
             </div>
             <div #soapAvailableForHandWashingName>
@@ -640,7 +638,6 @@
                 </table>
             </div>
 
-
             <div class="sis-control-validation">
                 <sis-error [id]="'waterAvailableForHandWashingValidation'"
                            [forControl]="waterAvailableForHandWashingName" [isInput]="true"
@@ -649,7 +646,7 @@
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
-                    6.2.12 Is water available for handwashing at these places at the time of the survey?
+                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 12 : (isSelectedUrinalsFunctional() ? 8 : (isSelectedUseToilets() ? 11 : 7))}} Is water available for handwashing at these places at the time of the census?
                 </label>
             </div>
             <div #waterAvailableForHandWashingName>
@@ -682,13 +679,13 @@
 
             <div #effluentDischargeName>
                 <div class="sis-control-validation">
-                    <sis-error [id]="'effluentDischargeValidation'"
+                    <!--<sis-error [id]="'effluentDischargeValidation'"
                                [forControl]="effluentDischargeName" [isInput]="true"
-                               [errorClass]="'sis-validation-wrapper--element'"
+                               [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
                                [errorMessage]="waterAndSanitationValidationHelper.effluentDischargeValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
-                    <label class="sis-label sis-element-required">6.2.13 Where does the effluent from the urinal
+                    </sis-error>-->
+                    <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 13 : (isSelectedUrinalsFunctional() ? 9 : (isSelectedUseToilets() ? 12 : 8))}} Where does the effluent from the urinal
                         discharge to?</label>
                 </div>
                 <div>
@@ -701,13 +698,13 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'solidWasteValidation'"
+                <!--<sis-error [id]="'solidWasteValidation'"
                            [forControl]="solidWasteName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--element'"
+                           [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
                            [errorMessage]="waterAndSanitationValidationHelper.solidWasteValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">6.2.14 How is solid waste from the school disposed
+                </sis-error>-->
+                <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 14 : (isSelectedUrinalsFunctional() ? 10 : (isSelectedUseToilets() ? 13 : 9))}} How is solid waste from the school disposed
                     off?</label>
             </div>
             <div #solidWasteName>
@@ -718,13 +715,13 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'spipYesNoValidation'"
+                <!--<sis-error [id]="'spipYesNoValidation'"
                            [forControl]="spipYesNoName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                           [errorClass]="'sis-validation-wrapper&#45;&#45;grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.spipYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">6.2.15 Does the SPIP include how you can improve / sustain
+                </sis-error>-->
+                <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 15 : (isSelectedUrinalsFunctional() ? 11 : (isSelectedUseToilets() ? 14 : 10))}} Does the SPIP include how you can improve / sustain
                     WASH facilities in the school?</label>
             </div>
             <div #spipYesNoName>
@@ -738,15 +735,14 @@
                 </sis-select-one-radio>
             </div>
 
-
             <div class="sis-control-validation">
-                <sis-error [id]="'washYesNoValidation'"
+                <!--<sis-error [id]="'washYesNoValidation'"
                            [forControl]="washYesNoName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                           [errorClass]="'sis-validation-wrapper&#45;&#45;grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.washYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">6.2.16 Does the school have an operational and maintenance
+                </sis-error>-->
+                <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 16 : (isSelectedUrinalsFunctional() ? 12 : (isSelectedUseToilets() ? 15 : 11))}} Does the school have an operational and maintenance
                     plans for WASH facilities in the school?</label>
             </div>
             <div #washYesNoName>

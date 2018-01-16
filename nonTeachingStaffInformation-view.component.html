@@ -1,9 +1,22 @@
-<div class="mdl-grid mdl-grid--no-spacing" title="">
+<div>
+    <label class="sis-label">10.1 Do you have non teaching staff in your school?</label>
+</div>
+<sis-select-one-radio-view
+        [census]="census"
+        [classifierList]="classifierList"
+        [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+        [censusSubEntityName]="'censusSchoolQuestions'"
+        [classifierId]="'NON_TEACHING_STAFF_YES_NO'"
+        [classifierNameFromInput]="'YesNoId'"
+        [subEntityFields]="questionSubEntityFields">
+</sis-select-one-radio-view>
+
+<div class="mdl-grid mdl-grid--no-spacing" title="" *ngIf="isSelectedNonTeachingStaff()">
     <div class="mdl-cell mdl-cell--12-col">
         <sis-census-indicator-tracking-2L-view [census]="census"
                                                [school]="school"
                                                [classifierList]="classifierList"
-                                               [label]="'10.1 How MANY non-teaching staff do you have in your school?'"
+                                               [label]="'10.2 How MANY non-teaching staff do you have in your school?'"
                                                [tableId]="'nonTeachingStaffCompositionId'"
                                                [indicatorInstanceId]="34"
                                                [horizontalClassifierName]="'Gender'"

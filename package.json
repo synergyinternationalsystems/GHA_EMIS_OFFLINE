@@ -6,7 +6,7 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.0.52",
+  "version": "1.0.53",
   "repository": "https://github.com/haykanushT/GhanaEMIS_Releases",
   "license": "ISC",
   "main": "./main.js",
@@ -55,6 +55,7 @@
     "@angular/router": "3.4.1",
     "@angular/upgrade": "2.4.1",
     "@synisys/ng-controls": "1.0.0-rc-3",
+    "angular2-flash-messages": "^1.0.8",
     "app": "^0.1.0",
     "bluebird": "^3.4.7",
     "bootstrap": "^3.3.7",
@@ -108,7 +109,7 @@
     "string-replace-loader": "^1.0.5",
     "systemjs-builder": "^0.16.4",
     "to-string-loader": "^1.1.5",
-    "typescript": "^2.2.2",
+    "typescript": "2.1.6",
     "typings": "^1.4.0",
     "webpack": "^1.13.2"
   }

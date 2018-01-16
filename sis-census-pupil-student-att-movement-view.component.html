@@ -84,16 +84,14 @@
 
 
         <div *ngIf="getIsBasicSchoolType()">
-            <label class="sis-label sis-element-required" *ngIf="isShowGirlsPregnantSection()">11.8 How many days was
-                your school opened in the month of
-                February?</label>
-            <label class="sis-label sis-element-required" *ngIf="!isShowGirlsPregnantSection()">11.7 How many days was
-                your school opened in the month of
-                February?</label>
+            <label class="sis-label sis-element-required" *ngIf="isShowGirlsPregnantSection()">11.8 How many days was your school opened in the month of
+                November?</label>
+            <label class="sis-label sis-element-required" *ngIf="!isShowGirlsPregnantSection()">11.7 How many days was your school opened in the month of
+                November?</label>
         </div>
         <div *ngIf="getIsSecondarySchoolType()">
             <label class="sis-label sis-element-required">9.8 How many days was your school opened in the month of
-                January?</label>
+                November?</label>
         </div>
         <div class="mdl-cell--2-col" #howManyDaysSchoolWasOpened>
             <sis-census-indicator-tracking-0LevelView [census]="census"

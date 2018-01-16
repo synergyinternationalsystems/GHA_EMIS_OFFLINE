@@ -24,7 +24,7 @@
                         <div *ngIf="deLoaded" class="sis-header--width sis-navigation">
                             <sis-menu [icon]="'menu'" (mouseover)="onSaveValidation()" (onSelect)="chooseMenuItem($event)">
                                 <sis-menu-item [value]="'0'" [name]="tabNumbersMap.get(0)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Identification-->
-                                <sis-menu-item [value]="'1'" [name]="tabNumbersMap.get(1)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Profile and Organisation-->
+                                <sis-menu-item [value]="'1'" [name]="tabNumbersMap.get(1)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Profile and Organization-->
                                 <sis-menu-item [value]="'2'" [name]="tabNumbersMap.get(2)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Infrastructure-->
                                 <sis-menu-item [value]="'3'" [name]="tabNumbersMap.get(3)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Management-->
                                 <sis-menu-item [value]="'4'" [name]="tabNumbersMap.get(4)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Building-->
@@ -42,9 +42,8 @@
                                 <sis-menu-item [value]="'16'" [name]="tabNumbersMap.get(16)" [isEnabled]="!isDisableNavigation" *ngIf="isBasicFromCensus()"></sis-menu-item><!--Pupil and Teacher Information-->
                                 <sis-menu-item [value]="'15'" [name]="tabNumbersMap.get(15)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Staff Movement-->
                                 <sis-menu-item [value]="'17'" [name]="tabNumbersMap.get(17)" [isEnabled]="!isDisableNavigation" *ngIf="!isBasic()"></sis-menu-item><!--Targeting-->
-                                <sis-menu-item [value]="'18'" [name]="tabNumbersMap.get(18)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Finances-->
+                                <sis-menu-item [value]="'18'" [name]="tabNumbersMap.get(18)" [isEnabled]="!isDisableNavigation" *ngIf="isShowFinanceTab()"></sis-menu-item><!--Finances-->
                                 <sis-menu-item [value]="'19'" [name]="tabNumbersMap.get(19)" [isEnabled]="!isDisableNavigation"></sis-menu-item><!--Notes and Attachments-->
-
                             </sis-menu>
 
                         </div>
@@ -66,7 +65,7 @@
                                     Loading ...
                                 </sis-census-identification-edit>
                             </sis-tab>
-                            <sis-tab id="1" title="2. Profile and Organisation">
+                            <sis-tab id="1" title="2. Profile and Organization">
                                 <sis-census-organisation-edit *ngIf="selectedTabId === 1" [census]="census" [school]="school"
                                                               [organisationValidationHelper]="organisationValidationHelper"
                                                               [classifierList]="classifierItems"
@@ -199,7 +198,7 @@
                                     ...
                                 </sis-census-targeting-edit>
                             </sis-tab>
-                            <sis-tab id="18" title="{{tabNumbersMap.get(18)}}">
+                            <sis-tab id="18" title="{{tabNumbersMap.get(18)}}" *ngIf="isShowFinanceTab()">
                                 <sis-census-finances-edit *ngIf="selectedTabId === 18" [census]="census"
                                                           [schoolTypeId]="schoolTypeId"
                                                           [classifierList]="classifierItems">Loading ...

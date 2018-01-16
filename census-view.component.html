@@ -22,7 +22,7 @@
                         <div *ngIf="deLoaded" class="sis-header--width sis-navigation">
                             <sis-menu [icon]="'menu'" (onSelect)="chooseMenuItem($event)">
                                 <sis-menu-item [value]="'0'" [name]="'Identification'" [isEnabled]="true"></sis-menu-item>
-                                <sis-menu-item [value]="'1'" [name]="'Profile and Organisation'" [isEnabled]="true"></sis-menu-item>
+                                <sis-menu-item [value]="'1'" [name]="'Profile and Organization'" [isEnabled]="true"></sis-menu-item>
                                 <sis-menu-item [value]="'2'" [name]="'Infrastructure'" [isEnabled]="true"></sis-menu-item>
                                 <sis-menu-item [value]="'3'" [name]="'Management'" [isEnabled]="true"></sis-menu-item>
                                 <sis-menu-item [value]="'4'" [name]="'Building'" [isEnabled]="true"></sis-menu-item>
@@ -40,7 +40,7 @@
                                 <sis-menu-item [value]="'15'" [name]="'Pupil and Teacher Information'" *ngIf="isBasicFromCensus()" [isEnabled]="true"></sis-menu-item>
                                 <sis-menu-item [value]="'17'" [name]="'Staff Movement'" [isEnabled]="true"></sis-menu-item>
                                 <sis-menu-item [value]="'13'" [name]="'Targeting'"  *ngIf="!isBasic()" [isEnabled]="true"></sis-menu-item>
-                                <sis-menu-item [value]="'18'" [name]="'Finances'" [isEnabled]="true"></sis-menu-item>
+                                <sis-menu-item [value]="'18'" [name]="'Finances'" [isEnabled]="true" *ngIf="isShowFinanceTab()"></sis-menu-item>
                                 <sis-menu-item [value]="'19'" [name]="'Notes and Attachments'" [isEnabled]="true"></sis-menu-item>
                             </sis-menu>
                         </div>
@@ -61,7 +61,7 @@
                                     Loading ...
                                 </sis-census-identification-edit>
                             </sis-tab>
-                            <sis-tab id="1" title="Profile and Organisation">
+                            <sis-tab id="1" title="Profile and Organization">
                                 <sis-census-organisation-view *ngIf="selectedTabId === 1" [census]="census" [school]="school"
                                                               [classifierList]="classifierItems"
                                                               [schoolTypeId]="schoolTypeId">Loading ...
@@ -178,7 +178,7 @@
                                                            [census]="census" [classifierList]="classifierItems">Loading ...
                                 </sis-census-targeting-view>
                             </sis-tab>
-                            <sis-tab id="18" title="Finances">
+                            <sis-tab id="18" title="Finances" *ngIf="isShowFinanceTab()">
                                 <sis-census-finances-view *ngIf="selectedTabId === 18" [census]="census"
                                                           [schoolTypeId]="schoolTypeId"
                                                           [classifierList]="classifierItems">Loading ...

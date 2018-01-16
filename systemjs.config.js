@@ -25,6 +25,7 @@
             "@synisys/ng-controls": "npm:@synisys/ng-controls",
             "@synisys/idm-common-util-frontend": "npm:@synisys/idm-common-util-frontend",
             "@synisys/idm-crosscutting-concepts-frontend": "npm:@synisys/idm-crosscutting-concepts-frontend",
+            'angular2-flash-messages': 'npm:angular2-flash-messages',
 
             // other libraries
             'rxjs':                      'npm:rxjs'
@@ -33,6 +34,7 @@
         packages: {
             app: { main: './main.js', defaultExtension: 'js' },
             rxjs: { defaultExtension: 'js' },
+            "angular2-flash-messages": {main: 'index.js', defaultExtension: 'js'},
             '@synisys/ng-controls': { main: "./index.js", defaultExtension: "js" },
             '@synisys/idm-common-util-frontend': { main: "./index.js", defaultExtension: "js" },
             '@synisys/idm-crosscutting-concepts-frontend': { main: "./index.js", defaultExtension: "js" }

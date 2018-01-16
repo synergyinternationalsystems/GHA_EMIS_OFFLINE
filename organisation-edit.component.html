@@ -4,7 +4,15 @@
         <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
             <div class="sis-control-validation">
                 <sis-error [id]="'titleValidation'"
-                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryRequiredValidation() || organisationValidationHelper.censusSchoolSummaryCountValidator()"
+                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryRequiredValidation()"
+                           [class]="'sis-float-left'"
+                           [errorClass]="'sis-validation-wrapper--grouped'"
+                           [forControl]="schoolSummaryGroup"
+                           [isInput]="true">
+                </sis-error>
+                <sis-error [id]="'titleValidation'"
+                           *ngIf="getIsBasicSchoolType()"
+                           [errorMessage]="organisationValidationHelper.censusSchoolSummaryCountValidator()"
                            [class]="'sis-float-left'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [forControl]="schoolSummaryGroup"
@@ -268,7 +276,6 @@
                 </tbody>
             </table>
         </div>
-
 
         <div *ngIf="getIsTVETSchoolType()">
             <sis-census-indicator-tracking-2LH [census]="census"

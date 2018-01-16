@@ -2205,7 +2205,8 @@ CREATE TABLE "CensusSchoolQuestion" (
   isDocumentedId                    integer,
   yesNoRampId                       integer,  
   yesNoRailsId                      integer,  
-  isItFunctional                    boolean,  
+  isItFunctional                    boolean,
+  nonTeachingStaffYesNoId           integer,  
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolQuestion1_C_AwayFromKms1
     FOREIGN KEY (SchoolLevelGroupAdministrationID)
@@ -2940,7 +2941,7 @@ CREATE TABLE "CensusSchoolSummary" (
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
-CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER);
+CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
 CREATE TABLE "TeacherSalaryPaid" (
   teacherSalaryPaidId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,

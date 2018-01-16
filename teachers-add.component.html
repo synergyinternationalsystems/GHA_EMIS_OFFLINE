@@ -125,7 +125,7 @@
             </div>-->
             <label *ngIf="!getIsTVETSchoolType()" class="sis-label">8 Year of Birth</label>
             <label *ngIf="getIsTVETSchoolType()" class="sis-label">7 Year of Birth</label>
-            <input #yearOfBirth type="number"
+            <input #yearOfBirth type="number" inputMaxLength="4"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('yearOfBirth').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -165,7 +165,7 @@
             </div>-->
             <label *ngIf="!getIsTVETSchoolType()" class="sis-label">10 Year of First Appointment</label>
             <label *ngIf="getIsTVETSchoolType()" class="sis-label">9 Year of First Appointment</label>
-            <input #firstAppointmentYear type="number"
+            <input #firstAppointmentYear type="number" inputMaxLength="4"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('firstAppointmentYear').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -182,7 +182,7 @@
             </div>-->
             <label *ngIf="!getIsTVETSchoolType()" class="sis-label">11 Year Posted to Present Station</label>
             <label *ngIf="getIsTVETSchoolType()" class="sis-label">10 Experience in TVET</label>
-            <input #currentPositionYear type="number"
+            <input #currentPositionYear type="number" inputMaxLength="4"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('currentPositionYear').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -194,6 +194,11 @@
             <div class="sis-control-validation">
                 <sis-error [id]="'teacherRankValidation'"
                            [errorMessage]="teachersValidationHelper.teacherRankValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherRankCombo"
+                           [isInput]="true">
+                </sis-error>
+                <sis-error [id]="'teacherRankOtherValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherRankOtherValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherRankCombo"
                            [isInput]="true">
                 </sis-error>
@@ -210,6 +215,12 @@
                                          [nameField]="'name'">
                     </sis-combo-box-items>
                 </sis-combo-box>
+
+                <div *ngIf="isShowOtherRank()">
+                    <input #teacherRankOther maxlength="25"
+                           [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('teacherRankName_ENG').value"
+                           class="sis-input sis-small-width"/>
+                </div>
             </div>
         </div>
 
@@ -225,7 +236,7 @@
             </div>-->
             <label *ngIf="!getIsTVETSchoolType()" class="sis-label">13 Year Appointed to Rank</label>
             <label *ngIf="getIsTVETSchoolType()" class="sis-label">12 Year Appointed to Rank</label>
-            <input #rankAppointedYear type="number"
+            <input #rankAppointedYear type="number" inputMaxLength="4"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('rankAppointedYear').value"
                    class="sis-input sis-small-width"/>
         </div>
@@ -356,6 +367,12 @@
                                          [nameField]="'name'">
                     </sis-combo-box-items>
                 </sis-combo-box>
+
+                <div *ngIf="isShowOtherProfessionalQualification()">
+                    <input #teacherRankOther maxlength="25"
+                           [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationName_ENG').value"
+                           class="sis-input sis-small-width"/>
+                </div>
             </div>
         </div>
 
@@ -371,7 +388,7 @@
             </div>-->
             <label *ngIf="!getIsTVETSchoolType()" class="sis-label">19 Teaching Qualification - Year Completed</label>
             <label *ngIf="getIsTVETSchoolType()" class="sis-label">17 Teaching Qualification - Year Completed</label>
-            <input #yearCompleted type="number"
+            <input #yearCompleted type="number" inputMaxLength="4"
                    [(ngModel)]="subEntity.getProperty('teacherId').value.getProperty('yearCompleted').value"
                    class="sis-input sis-small-width"/>
         </div>
