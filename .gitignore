@@ -8,7 +8,6 @@ idm-home/elasticSearch
 
 
 # NPM generated
-node_modules/**/*
 typings
 /**/*.log
 
