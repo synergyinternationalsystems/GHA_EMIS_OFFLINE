@@ -6,8 +6,8 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.0.53-SNAPSHOT",
-  "repository": "https://github.com/synergyinternationalsystems/GHA_EMIS_OFFLINE",
+  "version": "1.0.54",
+  "repository": "https://github.com/haykanushT/GhanaEMIS_Releases",
   "license": "ISC",
   "main": "./main.js",
   "build": {

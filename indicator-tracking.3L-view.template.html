@@ -77,7 +77,7 @@
             <ng-container   *ngIf="!hasEmbeddedVerticalClassifier">
                 <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList; let j = index" >
                     <td *ngIf="hasVerticalCodeColumn" class="mdl-data-table__cell--non-numeric">
-                        {{indicatorTrackingItem.verticalClassifier.getProperty('Code').value}}
+                        {{indicatorTrackingItem.verticalClassifier.getProperty('code').value}}
                     </td>
 
                     <td class="mdl-data-table__cell--non-numeric" style="min-width: 126px;">

@@ -46,74 +46,74 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let teacher of teachersList; let i = index">
+                <tr *ngFor="let teacher of censusSchoolTeachers; let i = index">
                     <td>{{i+1}}</td>
                     <td> {{getTeachersNoteOn(teacher)}}</td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('surname').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('surname').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('firstName').value}}</td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('staffNumber').value &&
-                        teacher.getProperty('teacherId').value.getProperty('staffNumber').value}}
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('firstName').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('sSFNumber').value &&
-                        teacher.getProperty('teacherId').value.getProperty('sSFNumber').value}}
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('sSFNumber').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('sSFNumber').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('registrationNumber').value &&
-                        teacher.getProperty('teacherId').value.getProperty('registrationNumber').value}}
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('registrationNumber').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('registrationNumber').value}}
                     </td>
                     <td *ngIf="!getIsTVETSchoolType()">{{getTeacherSchoolLevels(teacher)}}</td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('yearOfBirth').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('yearOfBirth').value}}</td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('genderId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('genderId').value.getProperty('name_ENG').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('firstAppointmentYear').value}}</td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('currentPositionYear').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('firstAppointmentYear').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('currentPositionYear').value}}</td>
                     <td>
-                        <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value">
-                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getId() !== 23">
-                                {{teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getProperty('name_ENG').value}}
+                        <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value">
+                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getId() !== 23">
+                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getProperty('name_ENG').value}}
                             </div>
-                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherRankId').value.getId() === 23">
-                                {{teacher.getProperty('teacherId').value.getProperty('teacherRankName_ENG').value}}
+                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getId() === 23">
+                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankName_ENG').value}}
                             </div>
                         </div>
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('rankAppointedYear').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('rankAppointedYear').value}}</td>
 
                     <td *ngIf="!getIsTVETSchoolType()">
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherTypeId').value &&
-                        teacher.getProperty('teacherId').value.getProperty('teacherTypeId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherTypeId').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherTypeId').value.getProperty('name_ENG').value}}
                     </td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherStatusId').value &&
-                        teacher.getProperty('teacherId').value.getProperty('teacherStatusId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherStatusId').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherStatusId').value.getProperty('name_ENG').value}}
                     </td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherFunctionId').value &&
-                        teacher.getProperty('teacherId').value.getProperty('teacherFunctionId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherFunctionId').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherFunctionId').value.getProperty('name_ENG').value}}
                     </td>
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value &&
-                        teacher.getProperty('teacherId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherAcademicQualificationId').value &&
+                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
                     </td>
                     <td>
-                        <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value">
-                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getId() !== 8">
-                                {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
+                        <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value">
+                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getId() !== 8">
+                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
                             </div>
-                            <div *ngIf="teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationId').value.getId() === 8">
-                                {{teacher.getProperty('teacherId').value.getProperty('teacherProfessionalQualificationName_ENG').value}}
+                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getId() === 8">
+                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationName_ENG').value}}
                             </div>
                         </div>
                     </td>
-                    <td>{{teacher.getProperty('teacherId').value.getProperty('yearCompleted').value}}</td>
+                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('yearCompleted').value}}</td>
 
                     <td>
-                        {{teacher.getProperty('teacherId').value.getProperty('teacherQualificationStatusId').value.getProperty('name_ENG').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherQualificationStatusId').value.getProperty('name_ENG').value}}
                     </td>
                     <td *ngIf="getIsTVETSchoolType()">
-                        {{teacher.getProperty('teacherId').value.getProperty('relevantIndustrial').value}}
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('relevantIndustrial').value}}
                     </td>
                     <td>{{getTeacherSalaryPaids(teacher)}}</td>
 

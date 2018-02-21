@@ -1,5 +1,8 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var cleanCompiledTypeScript = require('gulp-clean-compiled-typescript');
+var clean = require('gulp-clean');
+
 
 gulp.task('sass', function () {
     gulp.src('app/**/*.scss', { base: "./" })
@@ -11,11 +14,14 @@ gulp.task('sass:watch', function () {
     gulp.watch('app/**/*.scss', ['sass']);
 });
 
-var cleanCompiledTypeScript = require('gulp-clean-compiled-typescript');
-
 gulp.task('cleanCompiledJavascript', function () {
     return gulp.src('./app/**/*.ts')
         .pipe(cleanCompiledTypeScript());
+});
+
+gulp.task('clean-css', function () {
+    return gulp.src('app/**/*.css', {read: false})
+        .pipe(clean());
 });
 
 

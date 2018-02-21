@@ -2428,14 +2428,11 @@ CREATE TABLE "CensusSchoolSupportType" (
 CREATE TABLE "CensusSchoolTeacher" (
   censusSchoolTeacherId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   censusSchoolId         integer,
-  teacherId              integer,
+  teacherInstanceId              integer,
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolTeacher_DE_CensusSchool1
     FOREIGN KEY (CensusSchoolID)
-    REFERENCES CensusSchool(CensusSchoolID), 
-  CONSTRAINT FK_DE_CensusSchoolTeacher_DE_Teacher1
-    FOREIGN KEY (TeacherID)
-    REFERENCES Teacher(TeacherID)
+    REFERENCES CensusSchool(CensusSchoolID)
 );
 CREATE TABLE "CensusSchoolTeacherTraining" (
   censusSchoolTeacherTrainingId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -2452,7 +2449,7 @@ CREATE TABLE "CensusSchoolTeacherTraining" (
 CREATE TABLE "CensusSchoolTeacherWorkload" (
   censusSchoolTeacherWorkloadId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   censusSchoolId                 integer,
-  teacherId                      integer,
+  teacherInstanceId              integer,
   schoolTypeId                   integer,
   schoolLevelId                  integer,
   enrolmentSubjectId             integer,
@@ -2469,10 +2466,7 @@ CREATE TABLE "CensusSchoolTeacherWorkload" (
     REFERENCES C_SchoolType(SchoolTypeID), 
   CONSTRAINT FK_DE_CensusSchoolTeacherWorkload_DE_CensusSchool2
     FOREIGN KEY (CensusSchoolID)
-    REFERENCES CensusSchool(CensusSchoolID), 
-  CONSTRAINT FK_DE_CensusSchoolTeacherWorkload_DE_Teacher2
-    FOREIGN KEY (TeacherID)
-    REFERENCES Teacher(TeacherID)
+    REFERENCES CensusSchool(CensusSchoolID)
 );
 CREATE TABLE "CensusSchoolTeachingGuide" (
   censusSchoolTeachingGuideId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -2941,7 +2935,7 @@ CREATE TABLE "CensusSchoolSummary" (
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
-CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
+CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , teacherInstanceId         integer, "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "location2Id" INTEGER, "location3Id" INTEGER, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
 CREATE TABLE "TeacherSalaryPaid" (
   teacherSalaryPaidId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
