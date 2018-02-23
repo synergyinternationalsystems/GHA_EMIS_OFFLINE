@@ -2937,6 +2937,36 @@ CREATE TABLE "CensusSchoolSummary" (
 );
 CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , teacherInstanceId         integer, "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "location2Id" INTEGER, "location3Id" INTEGER, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
+CREATE TABLE "TeacherDocument" (
+  teacherDocumentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  teacherId          integer,
+  documentId             integer,
+  /* Foreign keys */
+  CONSTRAINT FK_TeacherDocument_Teacher
+    FOREIGN KEY (teacherId)
+    REFERENCES Teacher(teacherId), 
+  CONSTRAINT FK_TeacherDocument_Document
+    FOREIGN KEY (documentId)
+    REFERENCES Document(DocumentID)
+);
+CREATE TABLE "TeacherDocumentNote" (
+  teacherDocumentNoteId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  teacherId      integer,
+  noteTypeId          integer,
+  note_ENG            text,
+  userId              integer,
+  dateCreated         datetime,
+  /* Foreign keys */
+  CONSTRAINT FK_TeacherDocumentNote_C_NoteType
+    FOREIGN KEY (NoteTypeID)
+    REFERENCES C_NoteType(NoteTypeID), 
+  CONSTRAINT FK_TeacherDocumentNote_C_User
+    FOREIGN KEY ( userId )
+    REFERENCES C_User(id), 
+  CONSTRAINT FK_TeacherDocumentNote_Teacher
+    FOREIGN KEY (teacherId)
+    REFERENCES Teacher(teacherId)
+);
 CREATE TABLE "TeacherSalaryPaid" (
   teacherSalaryPaidId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   teacherId           integer,
@@ -3154,6 +3184,12 @@ delete from TeacherSalaryPaid
 where   teacherId       =OLD. teacherId ;
 
 delete from TeacherSchoolLevel
+where   teacherId       =OLD. teacherId ;
+
+delete from TeacherDocument
+where   teacherId       =OLD. teacherId ;
+
+delete from TeacherDocumentNote
 where   teacherId       =OLD. teacherId ;
 
 END

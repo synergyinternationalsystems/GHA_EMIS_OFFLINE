@@ -5,44 +5,16 @@
             <table class="mdl-data-table mdl-js-data-table">
                 <thead>
                 <tr>
-                    <th rowspan="2">No</th>
-                    <th rowspan="2">Note on Teacher</th>
-                    <th rowspan="2" style="min-width: 120px;">Surname / Family Name</th>
-                    <th rowspan="2" style="min-width: 130px;">First Name and Initials</th>
-                    <th rowspan="2" style="min-width: 120px;" class="sis-align-right">Staff Number (IPPD)</th>
-                    <th rowspan="2" class="sis-align-right">SSF Number</th>
-                    <th rowspan="2" class="sis-align-right">Registration Number</th>
-                    <th rowspan="2" *ngIf="!getIsTVETSchoolType()">Level</th>
-                    <th rowspan="2" style="min-width: 86px;" class="mdl-data-table__cell--centered">Year of Birth
-                    </th>
-                    <th rowspan="2">Sex</th>
-                    <th colspan="2" class="mdl-data-table__cell--centered">Service</th>
-                    <th colspan="2" class="mdl-data-table__cell--centered">Rank</th>
-                    <th rowspan="2" *ngIf="!getIsTVETSchoolType()">Type of Teacher</th>
-                    <th rowspan="2">Status</th>
-                    <th rowspan="2">Function</th>
-                    <th rowspan="2">Academic Qualification</th>
-                    <th rowspan="2">Professional Qualification</th>
-                    <th colspan="2" class="mdl-data-table__cell--centered">Professional Teaching Qualification</th>
-                    <th rowspan="2" style="min-width: 112px;" *ngIf="getIsTVETSchoolType()"> Relevant Industrial
-                        experience
-                    </th>
-                    <th rowspan="2" style="min-width: 112px;">Who pays the salary?</th>
-                </tr>
-                <tr>
-                    <th style="min-width: 180px;" class="mdl-data-table__cell--centered">Year of 1st Appointment
-                    </th>
-                    <th *ngIf="!getIsTVETSchoolType()" style="min-width: 216px;" class="mdl-data-table__cell--centered">
-                        Year Posted to Present
-                        Station
-                    </th>
-                    <th *ngIf="getIsTVETSchoolType()" style="min-width: 216px;" class="mdl-data-table__cell--centered">
-                        Experience in TVET
-                    </th>
-                    <th style="min-width: 116px;">Current Rank</th>
-                    <th style="min-width: 176px;" class="mdl-data-table__cell--centered">Year Appointed to Rank</th>
-                    <th style="min-width: 154px;" class="mdl-data-table__cell--centered">Year Completed</th>
-                    <th style="min-width: 152px;">Qualification Status</th>
+                    <th>No</th>
+                    <th>Note on Teacher</th>
+                    <th style="min-width: 120px;">Surname / Family Name</th>
+                    <th style="min-width: 130px;">First Name and Initials</th>
+                    <th style="min-width: 120px;" class="sis-align-right">Staff Number (IPPD)</th>
+                    <th class="sis-align-right">SSF Number</th>
+                    <th class="sis-align-right">Registration Number</th>
+                    <th>Level</th>
+                    <th style="min-width: 86px;" class="mdl-data-table__cell--centered">Year of Birth</th>
+                    <th>Sex</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,56 +39,6 @@
                     <td>
                         {{teacher.getProperty('teacherInstanceId').value.getProperty('genderId').value.getProperty('name_ENG').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('firstAppointmentYear').value}}</td>
-                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('currentPositionYear').value}}</td>
-                    <td>
-                        <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value">
-                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getId() !== 23">
-                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getProperty('name_ENG').value}}
-                            </div>
-                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankId').value.getId() === 23">
-                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherRankName_ENG').value}}
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('rankAppointedYear').value}}</td>
-
-                    <td *ngIf="!getIsTVETSchoolType()">
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherTypeId').value &&
-                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherTypeId').value.getProperty('name_ENG').value}}
-                    </td>
-                    <td>
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherStatusId').value &&
-                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherStatusId').value.getProperty('name_ENG').value}}
-                    </td>
-                    <td>
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherFunctionId').value &&
-                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherFunctionId').value.getProperty('name_ENG').value}}
-                    </td>
-                    <td>
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherAcademicQualificationId').value &&
-                        teacher.getProperty('teacherInstanceId').value.getProperty('teacherAcademicQualificationId').value.getProperty('name_ENG').value}}
-                    </td>
-                    <td>
-                        <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value">
-                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getId() !== 8">
-                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getProperty('name_ENG').value}}
-                            </div>
-                            <div *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationId').value.getId() === 8">
-                                {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherProfessionalQualificationName_ENG').value}}
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('yearCompleted').value}}</td>
-
-                    <td>
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('teacherQualificationStatusId').value.getProperty('name_ENG').value}}
-                    </td>
-                    <td *ngIf="getIsTVETSchoolType()">
-                        {{teacher.getProperty('teacherInstanceId').value.getProperty('relevantIndustrial').value}}
-                    </td>
-                    <td>{{getTeacherSalaryPaids(teacher)}}</td>
-
                 </tr>
                 </tbody>
             </table>
