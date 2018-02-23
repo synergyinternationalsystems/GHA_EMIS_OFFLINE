@@ -7,7 +7,7 @@
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
   "version": "1.0.55",
-  "repository": "https://github.com/haykanushT/GhanaEMIS_Releases",
+  "repository": "https://github.com/synergyinternationalsystems/GHA_EMIS_OFFLINE",
   "license": "ISC",
   "main": "./main.js",
   "build": {
