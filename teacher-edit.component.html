@@ -1,0 +1,64 @@
+<div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="sis-header sis-gha-header mdl-layout__header portfolio-header">
+            <div class="sis-header--width sis-header--top" id="sis-header--top">
+                <div class="sis-header--top-wrapper" id="sis-header--top-wrapper">
+                    <div class="sis-header__subheader">
+                        <div class="sis-header__subheader--left" style="margin-left: 30px;">
+                            <h1 class="sis-header__title mdl-layout__title">test</h1>
+                            <div class="sis-last-modified">Last modified by</div>
+                        </div>
+                        <div class="sis-actions" style="margin-right: 20px;">
+                            <button id="teacherCancelButton"
+                                    class="mdl-button mdl-js-button sis-btn--sec mdl-button--raised  mdl-js-ripple-effect"
+                                    (click)="onCancel()"> Cancel
+                            </button>
+                            <button id="teacherSaveButton"
+                                    class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect"
+                                    (click)="onSave(false)"> Save
+                            </button>
+                            <button id="teacherSaveAndCloseButton"
+                                    class="mdl-button mdl-js-button sis-btn--primary mdl-button--raised mdl-js-ripple-effect"
+                                    (click)="onSave(true)"> Save & Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="sis-layout__content mdl-layout__content" id="sis-layout__content">
+            <div class="mdl-grid sis-layout">
+                <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid  sis-layout__section">
+                    <div class="sis-full-width">
+
+                        <sis-tabs [selectedTabId]="selectedTabId"
+                                  (selectedTabIdChange)="chooseMenuItem($event)">
+                            <sis-tab id="0" title="{{tabNumbersMap.get(0)}}">
+                                <teachers-general-information-edit [classifierList]="classifierList" [teacher]="teacher"
+                                                                   [tabIndex]="1"
+                                                                   [teachersValidationHelper]="teachersValidationHelper"
+                                                                   *ngIf="selectedTabId === 0">
+                                    Loading ...
+                                </teachers-general-information-edit>
+                            </sis-tab>
+                            <sis-tab id="1" title="{{tabNumbersMap.get(1)}}">
+                                <sis-teacher-notes-and-attachments-edit *ngIf="selectedTabId === 1" [teacher]="teacher"
+                                                                        [classifierList]="classifierList"
+                                                                        [tabIndex]="2">
+                                    Loading ...
+                                </sis-teacher-notes-and-attachments-edit>
+                            </sis-tab>
+                        </sis-tabs>
+
+                    </div>
+                </div>
+            </div>
+            <footer class="mdl-mega-footer"><a href="#"
+                                               class="mdl-typography--font-light back-to-top mdl-button mdl-js-button mdl-js-ripple-effect"
+                                               id="back-to-top"><i class="material-icons">arrow_upward</i> </a></footer>
+
+        </main>
+
+    </div>
+</div>

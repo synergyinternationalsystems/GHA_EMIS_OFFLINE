@@ -1,0 +1,392 @@
+<div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherNoteOnValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherNoteOnValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherNoteOn"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.1 Note on Teacher</label>
+            </div>
+            <div #teacherNoteOn class="sis-radio-checkbox-align">
+                <span *ngFor="let teacherNoteClassifier of classifierList.get('TeacherNote')">
+                        <input type="checkbox"
+                               [checked]="isTeacherNoteOnCheckedItem(teacherNoteClassifier.getId())"
+                               (change)="onTeacherNoteOnCheckBoxChanged(teacherNoteClassifier.getId())"
+                               class="sis-radio-checkbox"
+                               name="teacherTrainingItems{{teacherNoteClassifier.getId()}}Id"/>
+                        <label class="sis-radio-checkbox-label">{{teacherNoteClassifier.getName()}}</label>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'surnameValidation'"
+                           [errorMessage]="teachersValidationHelper.surNameValidation()"
+                           [class]="'sis-float-left'" [forControl]="surname"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.2 Surname / Family Name</label>
+            </div>
+            <input #surname type="text"
+                   [(ngModel)]="teacher.getProperty('surname').value"
+                   class="sis-input sis-large-width"/>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'firstNmeValidation'"
+                           [errorMessage]="teachersValidationHelper.firstNameValidation()"
+                           [class]="'sis-float-left'" [forControl]="firstName"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.3 First Name / Initials</label>
+            </div>
+            <input #firstName type="text"
+                   [(ngModel)]="teacher.getProperty('firstName').value"
+                   class="sis-input sis-large-width"/>
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.4 Staff Number (IPPD) (for government employee)</label>
+            <input #staffNumber type="text" maxlength="13"
+                   [(ngModel)]="teacher.getProperty('staffNumber').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.5 SSF Number</label>
+            <input #sSFNumber type="text" maxlength="13"
+                   [(ngModel)]="teacher.getProperty('sSFNumber').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.6 Registration Number</label>
+            <input #registrationNumber type="text" maxlength="13"
+                   [(ngModel)]="teacher.getProperty('registrationNumber').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+
+        <div>
+            <label class="sis-label sis-element-required">{{tabIndex}}.7 Location of Teacher</label>
+            <div>
+                <div class="sis-control-validation">
+                    <sis-error [id]="'teacherRegionValidation'"
+                               [errorMessage]="teachersValidationHelper.teacherRegionValidation()"
+                               [class]="'sis-float-left'" [forControl]="teacherRegionCombo"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label">Region</label>
+                </div>
+                <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                     #teacherRegionCombo>
+                    <sis-combo-box [id]="'teacherRegionId'" [placeHolder]="'-- Select Region --'"
+                                   [value]="teacher.getProperty('location2Id').value?.id"
+                                   (valueChange)="teacherRegionComboValueChange($event)"
+                                   class="sis-large-width">
+                        <sis-combo-box-items [data]="classifierList.get('Location2')"
+                                             [valueField]="'id'"
+                                             [nameField]="'name'">
+                        </sis-combo-box-items>
+                    </sis-combo-box>
+
+                </div>
+            </div>
+
+            <div>
+                <div class="sis-control-validation">
+                    <sis-error [id]="'teacherDistrictValidation'"
+                               [errorMessage]="teachersValidationHelper.teacherDistrictValidation()"
+                               [class]="'sis-float-left'" [forControl]="teacherDistrictCombo"
+                               [isInput]="true">
+                    </sis-error>
+                    <label class="sis-label">District</label>
+                </div>
+                <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherDistrictCombo>
+                    <sis-combo-box [id]="'teacherDistrictId'" [placeHolder]="'-- Select District --'"
+                                   [value]="teacher.getProperty('location3Id').value?.id"
+                                   (valueChange)="teacherDistrictComboValueChange($event)"
+                                   class="sis-large-width">
+                        <sis-combo-box-items [data]="districtList"
+                                             [valueField]="'id'"
+                                             [nameField]="'name'">
+                        </sis-combo-box-items>
+                    </sis-combo-box>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherSchoolLevelValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherSchoolLevelValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherSchoolLevel"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.8 Level</label>
+            </div>
+            <div #teacherSchoolLevel>
+                <span *ngFor="let teacherSchoolLevelClassifier of classifierList.get('SchoolLevelGroup')"
+                      class="sis-radio-checkbox-in-block">
+                    <input type="checkbox"
+                           [checked]="isTeacherSchoolLevelCheckedItem(teacherSchoolLevelClassifier.getId())"
+                           (change)="onTeacherSchoolLevelCheckBoxChanged(teacherSchoolLevelClassifier.getId())"
+                           class="sis-radio-checkbox"
+                           name="teacherTrainingItems{{teacherSchoolLevelClassifier.getId()}}Id"/>
+                    <label class="sis-radio-checkbox-label">{{teacherSchoolLevelClassifier.getName()}}</label>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.9 Year of Birth</label>
+            <input #yearOfBirth type="number" inputMaxLength="4"
+                   [(ngModel)]="teacher.getProperty('yearOfBirth').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'genderValidation'"
+                           [errorMessage]="teachersValidationHelper.genderValidation()"
+                           [class]="'sis-float-left'" [forControl]="genderRadioButton"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.10 Sex</label>
+            </div>
+            <table #genderRadioButton>
+                <tbody>
+                <td *ngFor="let genderClassifier of classifierList.get('Gender')">
+                    <input type="radio"
+                           [checked]="isCheckedItem(questionSubEntityFields.GENDER_ID, genderClassifier.getId(), teacher)"
+                           (change)="onRadioChanged(questionSubEntityFields.GENDER_ID, genderClassifier.getId(), teacher)"
+                           class="sis-radio-checkbox"
+                           name="genderId"/>
+                    <label class="sis-radio-checkbox-label">{{genderClassifier.getName()}}</label>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.11 Year of First Appointment</label>
+            <input #firstAppointmentYear type="number" inputMaxLength="4"
+                   [(ngModel)]="teacher.getProperty('firstAppointmentYear').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.12 Year Posted to Present Station</label>
+            <input #currentPositionYear type="number" inputMaxLength="4"
+                   [(ngModel)]="teacher.getProperty('currentPositionYear').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherRankValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherRankValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherRankCombo"
+                           [isInput]="true">
+                </sis-error>
+                <sis-error [id]="'teacherRankOtherValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherRankOtherValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherRankCombo"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.13 Current Rank</label>
+            </div>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherRankCombo>
+                <sis-combo-box [id]="'teacherRankId'" [placeHolder]="'-- Select Current Rank --'"
+                               [value]="teacherRank.id"
+                               (valueChange)="teacherRankComboValueChange($event)"
+                               class="sis-large-width">
+                    <sis-combo-box-items [data]="classifierList.get('TeacherCurrentRank')"
+                                         [valueField]="'id'"
+                                         [nameField]="'name'">
+                    </sis-combo-box-items>
+                </sis-combo-box>
+
+                <div *ngIf="isShowOtherRank()">
+                    <input #teacherRankOther maxlength="25"
+                           [(ngModel)]="teacher.getProperty('teacherRankName_ENG').value"
+                           class="sis-input sis-small-width"/>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.14 Year Appointed to Rank</label>
+            <input #rankAppointedYear type="number" inputMaxLength="4"
+                   [(ngModel)]="teacher.getProperty('rankAppointedYear').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.15 Officer's Schedule</label>
+            <input #officerSchedule type="text" maxlength="40"
+                   [(ngModel)]="teacher.getProperty('officerSchedule').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.16 Type of Teacher</label>
+            <table #teacherTypeRadioButton>
+                <tbody>
+                <tr>
+                    <td *ngFor="let teacherTypeClassifier of classifierList.get('TeacherType')">
+                        <input type="radio"
+                               [checked]="isCheckedItem(questionSubEntityFields.TEACHER_TYPE_ID, teacherTypeClassifier.getId(), teacher)"
+                               (change)="onRadioChanged(questionSubEntityFields.TEACHER_TYPE_ID, teacherTypeClassifier.getId(), teacher)"
+                               class="sis-radio-checkbox"
+                               name="teacherTypeId"/>
+                        <label class="sis-radio-checkbox-label">{{teacherTypeClassifier.getName()}}</label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.17 Status</label>
+            <div #teacherStatusRadioButton class="mdl-cell--9-col">
+                 <span *ngFor="let teacherStatusClassifier of classifierList.get('TeacherStatus')"
+                       class="sis-radio-checkbox-in-block" style="width:135px;">
+                     <input type="radio"
+                            [checked]="isCheckedItem(questionSubEntityFields.TEACHER_STATUS_ID, teacherStatusClassifier.getId(), teacher)"
+                            (change)="onRadioChanged(questionSubEntityFields.TEACHER_STATUS_ID, teacherStatusClassifier.getId(), teacher)"
+                            class="sis-radio-checkbox"
+                            name="teacherStatusId"/>
+                     <label class="sis-radio-checkbox-label">{{teacherStatusClassifier.getName()}}</label>
+                 </span>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.18 Function</label>
+            <table #teacherFunctionRadioButton>
+                <tbody>
+                <td *ngFor="let teacherFunctionClassifier of classifierList.get('TeacherFunction')">
+                    <input type="radio"
+                           [checked]="isCheckedItem(questionSubEntityFields.TEACHER_FUNCTION_ID, teacherFunctionClassifier.getId(), teacher)"
+                           (change)="onRadioChanged(questionSubEntityFields.TEACHER_FUNCTION_ID, teacherFunctionClassifier.getId(), teacher)"
+                           class="sis-radio-checkbox"
+                           name="teacherFunctionId"/>
+                    <label class="sis-radio-checkbox-label">{{teacherFunctionClassifier.getName()}}</label>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.19 Academic Qualification</label>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                 #teacherAcademicQualificationCombo>
+                <sis-combo-box [id]="'teacherAcademicQualificationId'"
+                               [placeHolder]="'-- Select Academic Qualification --'"
+                               [value]="teacherAcademicQualification.id"
+                               (valueChange)="teacherAcademicQualificationComboValueChange($event)"
+                               class="sis-large-width">
+                    <sis-combo-box-items [data]="classifierList.get('TeacherAcademicQualification')"
+                                         [valueField]="'id'"
+                                         [nameField]="'name'">
+                    </sis-combo-box-items>
+                </sis-combo-box>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.20 Professional Qualification</label>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                 #teacherProfessionalQualificationCombo>
+                <sis-combo-box [id]="'teacherProfessionalQualificationId'"
+                               [placeHolder]="'-- Select Professional Qualification --'"
+                               [value]="teacherProfessionalQualification.id"
+                               (valueChange)="teacherProfessionalQualificationComboValueChange($event)"
+                               class="sis-large-width">
+                    <sis-combo-box-items [data]="classifierList.get('TeacherProfessionalQualification')"
+                                         [valueField]="'id'"
+                                         [nameField]="'name'">
+                    </sis-combo-box-items>
+                </sis-combo-box>
+
+                <div *ngIf="isShowOtherProfessionalQualification()">
+                    <input #teacherRankOther maxlength="25"
+                           [(ngModel)]="teacher.getProperty('teacherProfessionalQualificationName_ENG').value"
+                           class="sis-input sis-small-width"/>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.21 Teaching Qualification - Year Completed</label>
+            <input #yearCompleted type="number" inputMaxLength="4"
+                   [(ngModel)]="teacher.getProperty('yearCompleted').value"
+                   class="sis-input sis-small-width"/>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherQualificationStatusValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherQualificationStatusValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherQualificationStatusRadioButton"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.22 Qualification
+                    Status</label>
+            </div>
+            <div #teacherQualificationStatusRadioButton
+                 class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                 <span *ngFor="let teacherQualificationStatusClassifier of classifierList.get('TeacherQualificationStatus')"
+                       class="sis-radio-checkbox-in-block">
+                     <input type="radio"
+                            [checked]="isCheckedItem(questionSubEntityFields.TEACHER_QUALIFICATION_STATUS_ID, teacherQualificationStatusClassifier.getId(), teacher)"
+                            (change)="onRadioChanged(questionSubEntityFields.TEACHER_QUALIFICATION_STATUS_ID, teacherQualificationStatusClassifier.getId(), teacher)"
+                            class="sis-radio-checkbox"
+                            name="teacherQualificationStatusId"/>
+                     <label class="sis-radio-checkbox-label">{{teacherQualificationStatusClassifier.getName()}}</label>
+                 </span>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'relevantIndustrialValidation'"
+                           [errorMessage]="teachersValidationHelper.relevantIndustrialValidation()"
+                           [class]="'sis-float-left'" [forControl]="relevantIndustrial"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.23 Relevant Industrial experience</label>
+            </div>
+            <input #relevantIndustrial type="text"
+                   [(ngModel)]="teacher.getProperty('relevantIndustrial').value"
+                   class="sis-input sis-mid-width"/>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherSalaryPaidValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherSalaryPaidValidation()"
+                           [class]="'sis-float-left'" [forControl]="teacherSalaryPaid"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label sis-element-required">{{tabIndex}}.24 Who pays the
+                    salary?</label>
+            </div>
+            <div #teacherSalaryPaid class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                 <span *ngFor="let teacherSalaryPaidClassifier of classifierList.get('TeacherSalaryPaid')"
+                       class="sis-radio-checkbox-in-block">
+                     <input type="checkbox"
+                            [checked]="isTeacherSalaryPaidCheckedItem(teacherSalaryPaidClassifier.getId())"
+                            (change)="onTeacherSalaryPaidCheckBoxChanged(teacherSalaryPaidClassifier.getId())"
+                            class="sis-radio-checkbox"
+                            name="teacherTrainingItems{{teacherSalaryPaidClassifier.getId()}}Id"/>
+                     <label class="sis-radio-checkbox-label">{{teacherSalaryPaidClassifier.getName()}}</label>
+                 </span>
+            </div>
+        </div>
+
+    </div>
+</div>
