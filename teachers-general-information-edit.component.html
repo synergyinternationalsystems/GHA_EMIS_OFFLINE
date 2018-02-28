@@ -93,6 +93,10 @@
                 </div>
             </div>
 
+            <div class="sis-output-text">
+                <output>Code: {{teacher.getProperty('location2Id').value?.getProperty('codes').value}}</output>
+            </div>
+
             <div>
                 <div class="sis-control-validation">
                     <sis-error [id]="'teacherDistrictValidation'"
@@ -114,6 +118,10 @@
                     </sis-combo-box>
 
                 </div>
+            </div>
+
+            <div class="sis-output-text">
+                <output>Code: {{teacher.getProperty('location3Id').value?.getProperty('codes').value}}</output>
             </div>
         </div>
 

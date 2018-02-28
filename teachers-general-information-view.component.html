@@ -1,3 +1,240 @@
-<div>
-    UNDER CONSTRUCTION
+<div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.1 Note on Teacher</label>
+            </div>
+            <div #teacherNoteOn class="sis-radio-checkbox-align">
+                <span *ngFor="let teacherNoteClassifier of classifierList.get('TeacherNote')">
+                     <span *ngIf="isTeacherNoteOnCheckedItem(teacherNoteClassifier.getId())" >{{teacherNoteClassifier.getName()}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.2 Surname / Family Name</label>
+            </div>
+
+            {{teacher.getProperty('surname').value}}
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+
+                <label class="sis-label sis-element-required">{{tabIndex}}.3 First Name / Initials</label>
+            </div>
+            {{teacher.getProperty('firstName').value}}
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.4 Staff Number (IPPD) (for government employee)</label>
+            {{teacher.getProperty('staffNumber').value}}
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.5 SSF Number</label>
+            {{teacher.getProperty('sSFNumber').value}}
+        </div>
+        <div>
+            <label class="sis-label">{{tabIndex}}.6 Registration Number</label>
+            {{teacher.getProperty('registrationNumber').value}}
+        </div>
+
+        <div>
+            <label class="sis-label sis-element-required">{{tabIndex}}.7 Location of Teacher</label>
+            <div>
+                <div class="sis-control-validation">
+                    <label class="sis-label">Region</label>
+                </div>
+                <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                     #teacherRegionCombo>
+
+                    <span>{{teacher.getProperty('location2Id').value.getName()}}</span>
+
+                </div>
+            </div>
+
+            <div class="sis-output-text">
+                <output>Code: {{teacher.getProperty('location2Id').value?.getProperty('codes').value}}</output>
+            </div>
+
+            <div>
+                <div class="sis-control-validation">
+                    <label class="sis-label">District</label>
+                </div>
+                <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherDistrictCombo>
+                    <span>{{teacher.getProperty('location3Id').value.getName()}}</span>
+
+                </div>
+            </div>
+
+            <div class="sis-output-text">
+                <output>Code: {{teacher.getProperty('location3Id').value?.getProperty('codes').value}}</output>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.8 Level</label>
+            </div>
+            <div #teacherSchoolLevel>
+                <span *ngFor="let teacherSchoolLevelClassifier of classifierList.get('SchoolLevelGroup')"
+                      class="sis-radio-checkbox-in-block">
+
+                    <span *ngIf="isTeacherSchoolLevelCheckedItem(teacherSchoolLevelClassifier.getId())" >{{teacherSchoolLevelClassifier.getName()}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.9 Year of Birth</label>
+            {{teacher.getProperty('yearOfBirth').value}}
+        </div>
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.10 Sex</label>
+            </div>
+            <table #genderRadioButton>
+                <tbody>
+                <td *ngFor="let genderClassifier of classifierList.get('Gender')">
+                    <span *ngIf="isCheckedItem(questionSubEntityFields.GENDER_ID, genderClassifier.getId(), teacher)" >{{genderClassifier.getName()}}</span>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.11 Year of First Appointment</label>
+            {{teacher.getProperty('firstAppointmentYear').value}}
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.12 Year Posted to Present Station</label>
+            {{teacher.getProperty('currentPositionYear').value}}
+        </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.13 Current Rank</label>
+            </div>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherRankCombo>
+                <span>{{teacherRank.getName()}}</span>
+
+                <div *ngIf="isShowOtherRank()">
+                    {{teacher.getProperty('teacherRankName_ENG').value}}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.14 Year Appointed to Rank</label>
+            {{teacher.getProperty('rankAppointedYear').value}}
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.15 Officer's Schedule</label>
+            {{teacher.getProperty('officerSchedule').value}}
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.16 Type of Teacher</label>
+            <table #teacherTypeRadioButton>
+                <tbody>
+                <tr>
+                    <td *ngFor="let teacherTypeClassifier of classifierList.get('TeacherType')">
+
+                        <span *ngIf="isCheckedItem(questionSubEntityFields.TEACHER_TYPE_ID, teacherTypeClassifier.getId(), teacher)" >{{teacherTypeClassifier.getName()}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.17 Status</label>
+            <div #teacherStatusRadioButton class="mdl-cell--9-col">
+                 <span *ngFor="let teacherStatusClassifier of classifierList.get('TeacherStatus')"
+                       class="sis-radio-checkbox-in-block" style="width:135px;">
+              <span *ngIf="isCheckedItem(questionSubEntityFields.TEACHER_STATUS_ID, teacherStatusClassifier.getId(), teacher)" >{{teacherStatusClassifier.getName()}}</span>
+
+                 </span>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.18 Function</label>
+            <table #teacherFunctionRadioButton>
+                <tbody>
+                <td *ngFor="let teacherFunctionClassifier of classifierList.get('TeacherFunction')">
+                    <span *ngIf="isCheckedItem(questionSubEntityFields.TEACHER_FUNCTION_ID, teacherFunctionClassifier.getId(), teacher)" >{{teacherFunctionClassifier.getName()}}</span>
+                </td>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.19 Academic Qualification</label>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                 #teacherAcademicQualificationCombo>
+
+                <span>{{teacherAcademicQualification.getName()}}</span>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.20 Professional Qualification</label>
+            <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
+                 #teacherProfessionalQualificationCombo>
+
+                <span>{{teacherProfessionalQualification.getName()}}</span>
+
+                <div *ngIf="isShowOtherProfessionalQualification()">
+                    {{teacher.getProperty('teacherProfessionalQualificationName_ENG').value}}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="sis-label">{{tabIndex}}.21 Teaching Qualification - Year Completed</label>
+
+            {{teacher.getProperty('yearCompleted').value}}
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.22 Qualification
+                    Status</label>
+            </div>
+            <div #teacherQualificationStatusRadioButton
+                 class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                 <span *ngFor="let teacherQualificationStatusClassifier of classifierList.get('TeacherQualificationStatus')"
+                      class="sis-radio-checkbox-in-block">
+                <span *ngIf="isCheckedItem(questionSubEntityFields.TEACHER_QUALIFICATION_STATUS_ID, teacherQualificationStatusClassifier.getId(), teacher)" >{{teacherQualificationStatusClassifier.getName()}}</span>
+                 </span>
+            </div>
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.23 Relevant Industrial experience</label>
+            </div>
+            {{teacher.getProperty('relevantIndustrial').value}}
+        </div>
+
+        <div>
+            <div class="sis-control-validation">
+                <label class="sis-label sis-element-required">{{tabIndex}}.24 Who pays the
+                    salary?</label>
+            </div>
+            <div #teacherSalaryPaid class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+                 <span *ngFor="let teacherSalaryPaidClassifier of classifierList.get('TeacherSalaryPaid')"
+                       class="sis-radio-checkbox-in-block">
+
+                     <span *ngIf="isTeacherSalaryPaidCheckedItem(teacherSalaryPaidClassifier.getId())" >{{teacherSalaryPaidClassifier.getName()}}</span>
+                 </span>
+            </div>
+        </div>
+
+    </div>
 </div>

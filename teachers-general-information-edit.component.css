@@ -579,3 +579,6 @@ a:hover {
 @media (min-width: 0) and (max-width: 839px) {
   .mdl-grid.mdl-grid--no-spacing > .mdl-cell--4-col-phone.sis-no-label--nested:not(:first-child), .mdl-grid.mdl-grid--no-spacing > .mdl-cell--8-col-tablet.sis-no-label--nested:not(:first-child), .mdl-grid.mdl-grid--no-spacing > .mdl-cell--12-col.sis-no-label--nested:not(:first-child) {
     margin-top: 16px !important; } }
+
+.sis-output-text {
+  margin-top: 10px; }

@@ -1,4 +1,4 @@
-<div mdl class="mdl-grid mdl-grid--no-spacing" title="">
+<div mdl class="mdl-grid mdl-grid--no-spacing" title=""  [style.display]="isAddEditTeacherFormVisible.value? 'none' : 'block'">
     <div class="mdl-cell mdl-cell--12-col">
         <label class="sis-label">12.1 Teachers</label>
         <div class="sis-table-scroll sis-controls--top-margin">
@@ -24,7 +24,10 @@
                     <td>
                         {{teacher.getProperty('teacherInstanceId').value.getProperty('surname').value}}
                     </td>
-                    <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('firstName').value}}</td>
+                    <td> <a (click)="editTeachers(teacher.getProperty('teacherInstanceId').value,false)">
+                        {{teacher.getProperty('teacherInstanceId').value.getProperty('firstName').value}}
+                        </a>
+                    </td>
                     <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value &&
                         teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value}}
                     </td>
@@ -46,3 +49,12 @@
 
     </div>
 </div>
+
+<sis-teacher-view *ngIf="isAddEditTeacherFormVisible.value"
+                  [isEditedFromSearchPopup]="_isEditedFromSearchPopup"
+                  [classifierList]="classifierList"
+                  [teacher]="_teacher"
+                  [isPressedSaveCloseButton]="_isPressedSaveCloseButton"
+                  (isPressedSaveCloseButtonChange)="_isPressedSaveCloseButton=$event"
+                  (cancel)="setIsAddEditTeacherFormVisible($event)">
+</sis-teacher-view>

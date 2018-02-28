@@ -5,8 +5,8 @@
                 <div class="sis-header--top-wrapper" id="sis-header--top-wrapper">
                     <div class="sis-header__subheader">
                         <div class="sis-header__subheader--left" style="margin-left: 30px;">
-                            <h1 class="sis-header__title mdl-layout__title">test</h1>
-                            <div class="sis-last-modified">Last modified by</div>
+                            <h1 class="sis-header__title mdl-layout__title">{{teacher.getProperty('teacherName_ENG').value}}</h1>
+                            <div *ngIf="teacher.getProperty('teacherId').value" class="sis-last-modified">Last modified by {{teacher.getProperty('UpdatedUserId').value.getProperty("name").value}} on {{teacher.getProperty('DateUpdated').value | date : "dd-MMM-yyyy HH:mm"}}</div>
                         </div>
                         <div class="sis-actions" style="margin-right: 20px;">
                             <button id="teacherCancelButton"
@@ -60,5 +60,14 @@
 
         </main>
 
+    </div>
+</div>
+
+<div *ngIf="isViewDisabledSave">
+    <div class="k-loading-mask sis-loader-icon__container-census">
+        <span class="k-loading-text">
+            Loading...
+        </span>
+        <img src="app/resources/images/loader.gif" class="sis-loader-icon__container-census--item"/>
     </div>
 </div>
