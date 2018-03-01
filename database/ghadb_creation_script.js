@@ -490,12 +490,6 @@ CREATE TABLE "C_FacilitySchoolType" (
 
 );
 
-CREATE TABLE "C_FacilityForReport" (
-  facilityForReportId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  name_ENG             nvarchar(255),
-  DeletedOn            datetime,
-  DeletedBy            integer
-);
 CREATE TABLE "C_FinanceActivityExpenditure" (
   financeActivityExpenditureId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG                      nvarchar(200),
@@ -1959,10 +1953,7 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
     REFERENCES C_HygieneEducation(HygieneEducationID), 
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_ICTTraining
     FOREIGN KEY (ICTTrainingID)
-    REFERENCES C_ICTTraining(ICTTrainingID), 
-  CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_IndicatorEquipment
-    FOREIGN KEY (IndicatorEquipmentID)
-    REFERENCES C_IndicatorEquipment(IndicatorEquipmentID), 
+    REFERENCES C_ICTTraining(ICTTrainingID),
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_IndicatorManagement
     FOREIGN KEY (IndicatorManagementID)
     REFERENCES  C_IndicatorManagement(IndicatorManagementID), 
@@ -2745,10 +2736,7 @@ CREATE TABLE "Indicator" (
   DeletedOn                   datetime,
   DeletedBy                   integer,
   indicatorContextTypeId      integer,
-  /* Foreign keys */
-  CONSTRAINT FK_Indicator_C_IndicatorStatus1
-    FOREIGN KEY (IndicatorStatusID)
-    REFERENCES C_IndicatorStatus(IndicatorStatusID), 
+  /* Foreign keys */ 
   CONSTRAINT FK_Indicator_C_User1
     FOREIGN KEY (CreatedBy)
     REFERENCES C_User(id), 
