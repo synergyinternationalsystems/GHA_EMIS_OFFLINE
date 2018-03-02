@@ -51,9 +51,10 @@
                             <td class="mdl-data-table__cell--non-numeric"> {{getTeachersNoteOn(searchTeacherItem.teacher)}}</td>
 
                             <td class="mdl-data-table__cell--non-numeric">
-                                <a (click)="edit(searchTeacherItem.teacher)">
+                                <a (click)="edit(searchTeacherItem.teacher)"  *ngIf="searchTeacherItem.teacher.getProperty('teacherId').value<0">
                                     {{searchTeacherItem.teacher.getProperty('firstName').value}}
                                 </a>
+                               <span *ngIf="searchTeacherItem.teacher.getProperty('teacherId').value>0"> {{searchTeacherItem.teacher.getProperty('firstName').value}} </span>
 
                             </td>
                             <td>
