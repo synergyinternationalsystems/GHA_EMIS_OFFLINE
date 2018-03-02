@@ -3,21 +3,21 @@
         <!-- section 2.1 or 2.2 -->
         <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'titleValidation'"
+                <sis-err [id]="'titleValidation'"
                            [errorMessage]="organisationValidationHelper.censusSchoolSummaryRequiredValidation()"
                            [class]="'sis-float-left'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [forControl]="schoolSummaryGroup"
                            [isInput]="true">
-                </sis-error>
-                <sis-error [id]="'titleValidation'"
+                </sis-err>
+                <sis-err [id]="'titleValidation'"
                            *ngIf="getIsBasicSchoolType()"
                            [errorMessage]="organisationValidationHelper.censusSchoolSummaryCountValidator()"
                            [class]="'sis-float-left'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [forControl]="schoolSummaryGroup"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label"> 2.1 Summary Count</label>
             </div>
             <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
@@ -65,13 +65,13 @@
         <!--section  2.2 -->
         <div *ngIf="getIsBasicSchoolType()" #schoolLevelGroupClassifierCheckBoxes>
             <div class="sis-control-validation">
-                <sis-error [id]="'titleValidation'"
+                <sis-err [id]="'titleValidation'"
                            [errorMessage]="organisationValidationHelper.censusSchoolLevelSystemsValidation()"
                            [class]="'sis-float-left'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [forControl]="schoolLevelGroupClassifierCheckBox"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">2.3 Which of these levels run shift system in your
                     school?</label>
             </div>
@@ -92,11 +92,11 @@
         <!--section 2.3-->
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'coHostingYesNoRadioButtonValidation'"
+                <sis-err [id]="'coHostingYesNoRadioButtonValidation'"
                            [errorMessage]="organisationValidationHelper.coHostingYesNoValidation()"
                            [class]="'sis-float-left'" [forControl]="coHostingYesNoRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">2.4 Is your school one of two DIFFERENT schools making
                     use of the same building? (Co-hosting)</label>
             </div>
@@ -115,11 +115,11 @@
             </table>
             <div *ngIf="isSelectedRadioItem(coHostingYesNo, questionSubEntityFields.CO_HOSTING_YES_NO_ID, organisationRadioButtonIds.ORGANISATION_SELECT_YES_ID)">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'titleValidation'"
+                    <sis-err [id]="'titleValidation'"
                                [errorMessage]="organisationValidationHelper.otherSchoolNameValidation()"
                                [class]="'sis-float-left'" [forControl]="otherSchoolName"
                                [isInput]="true">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">If YES, what is the name
                         of the other school you are sharing with?</label>
                 </div>
@@ -136,11 +136,11 @@
         <!--section 2.1 or 2.4 -->
         <div *ngIf="getIsSecondarySchoolType() || getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'coHostingYesNoRadioButtonValidation'"
+                <sis-err [id]="'coHostingYesNoRadioButtonValidation'"
                            [errorMessage]="organisationValidationHelper.educationTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="educationTypeYesNoRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="getIsSecondarySchoolType()">2.2 Select your school
                     type</label>
                 <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.5 Select your school
@@ -161,11 +161,11 @@
         </div>
         <div *ngIf="getIsTVETSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'schoolCategoryRadioButtonValidation'"
+                <sis-err [id]="'schoolCategoryRadioButtonValidation'"
                            [errorMessage]="organisationValidationHelper.genderInstitutionTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="genderInstitutionRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">2.1 Select your institution type</label>
             </div>
             <table #genderInstitutionRadioButton>
@@ -185,11 +185,11 @@
         <!--section 2.2 -->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'schoolCategoryRadioButtonValidation'"
+                <sis-err [id]="'schoolCategoryRadioButtonValidation'"
                            [errorMessage]="organisationValidationHelper.schoolCategoryValidation()"
                            [class]="'sis-float-left'" [forControl]="schoolCategoryRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required"
                        *ngIf="getIsBasicSchoolType()">2.6 Category of School</label>
                 <label class="sis-label sis-element-required"
@@ -226,11 +226,11 @@
         <!-- section 2.6 basic school-->
         <div *ngIf="getIsBasicSchoolType()" class="sis-controls--top-margin">
             <div class="sis-control-validation">
-                <sis-error [id]="'specialPupilsCountValidation'"
+                <sis-err [id]="'specialPupilsCountValidation'"
                            [errorMessage]="organisationValidationHelper.censusSchoolSpecialPupilsCountValidator()"
                            [class]="'sis-float-left'" [forControl]="specialPupilsCount"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <div #specialPupilsCount class="sis-table-scroll sis-controls--top-margin">
                 <sis-census-indicator-tracking-3L [census]="census"
@@ -255,11 +255,11 @@
         <!--section 2.3 -->
         <div *ngIf="getIsTVETSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'schoolCategoryRadioButtonValidation'"
+                <sis-err [id]="'schoolCategoryRadioButtonValidation'"
                            [errorMessage]="organisationValidationHelper.specialEducationYesNoValidation()"
                            [class]="'sis-float-left'" [forControl]="specialEducationYesNoRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">2.3 Is your Institution a Special Education
                     Institution?</label>
             </div>
@@ -293,11 +293,11 @@
         <!--section 2.7 -->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'supportTypeCheckBoxValidation'"
+                <sis-err [id]="'supportTypeCheckBoxValidation'"
                            [errorMessage]="organisationValidationHelper.rampYesNoValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoRampRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.8 Does your school have
                     Ramps for physically challenged pupils?
                 </label>
@@ -325,11 +325,11 @@
         <!--section 2.8 -->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'supportTypeCheckBoxValidation'"
+                <sis-err [id]="'supportTypeCheckBoxValidation'"
                            [errorMessage]="organisationValidationHelper.railsYesNoValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoRailsRadioButton"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="getIsBasicSchoolType()">2.9 Does your school have
                     Rails for visually impaired pupils?
                 </label>
@@ -359,11 +359,11 @@
         <!--section 2.5 -->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'supportTypeCheckBoxValidation'"
+                <sis-err [id]="'supportTypeCheckBoxValidation'"
                            [errorMessage]="organisationValidationHelper.censusSchoolSupportTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="supportTypeCheckBox"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.8
                     What type of Government Support do you need for your Physically disabled students?
                 </label>
@@ -392,11 +392,11 @@
         <!--section  2.10 -->
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'teachLanguageCheckBoxValidation'"
+                <sis-err [id]="'teachLanguageCheckBoxValidation'"
                            [errorMessage]="organisationValidationHelper.censusSchoolLanguageValidation()"
                            [class]="'sis-float-left'" [forControl]="teachLanguageCheckBox"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     2.11 What Ghanaian language(s) are taught in your school?
                 </label>
@@ -416,12 +416,12 @@
         <!-- section  2.11-->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'awayFromKmaValidation'"
+                <sis-err [id]="'awayFromKmaValidation'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="organisationValidationHelper.censusSchoolAwayFromValidation()"
                            [class]="'sis-float-left'" [forControl]="awayFromKms"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">
                     2.9 How far away from the school is ...?
                 </label>
@@ -482,12 +482,12 @@
         <!-- section  2.12-->
         <div *ngIf="getIsTVETSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'censusSchoolIndicatorTrackingsStudentsDayMeansValidation'"
+                <sis-err [id]="'censusSchoolIndicatorTrackingsStudentsDayMeansValidation'"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="organisationValidationHelper.studentsDayMeansValidation()"
                            [class]="'sis-float-left'" [forControl]="meansForStudent"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     2.10 Indicate the number of DAY STUDENTS who come to school by the following means.
                 </label>

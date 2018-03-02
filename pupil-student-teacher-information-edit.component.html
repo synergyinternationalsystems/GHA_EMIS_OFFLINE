@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div *ngIf="isBasicSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'pupilsDeadBasicValidation'"
+                <sis-err [id]="'pupilsDeadBasicValidation'"
                            [forControl]="pupilsDeadBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilsDiedPrevYearCountValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     14.1 How many pupils died in the previous year?
                 </label>
@@ -33,12 +33,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'pupilsDiseasedParentsBasicValidation'"
+                <sis-err [id]="'pupilsDiseasedParentsBasicValidation'"
                            [forControl]="pupilsDiseasedParentsBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.pupilsDiseasedParentsValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilsDeceasedParentCountValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     14.2 How many pupils have deceased parent(s)?
                 </label>
@@ -64,12 +64,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'teacherDeadBasicValidation'"
+                <sis-err [id]="'teacherDeadBasicValidation'"
                            [forControl]="teacherDeadBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolTeachersDiedPrevYearCountValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     14.3 How many teachers died in the previous year?
                 </label>
@@ -95,12 +95,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'ictTrainingBasicValidation'"
+                <sis-err [id]="'ictTrainingBasicValidation'"
                            [forControl]="ictTrainingBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingBasicValidation() || pupilTeacherInformationValidationHelper.censusSchoolPupilTeacherInfoICTTrainingsValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     14.4 ICT Trainings
                 </label>
@@ -124,12 +124,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'hivAidsTrainedTeachersBasicValidation'"
+                <sis-err [id]="'hivAidsTrainedTeachersBasicValidation'"
                            [forControl]="hivAidsTrainedTeachersBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.hivAidsTrainedTeachersValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">14.5 Number of teachers who have been trained in HIV/AIDS
                     based education (Refer to the application)?</label>
             </div>
@@ -147,12 +147,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'hivAidsTeachingTeachersBasicValidation'"
+                <sis-err [id]="'hivAidsTeachingTeachersBasicValidation'"
                            [forControl]="hivAidsTeachingTeachersBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.hivAidsTeachingTeachersValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">14.6 Number of teachers teaching HIV/AIDS based education
                     this year</label>
             </div>
@@ -170,12 +170,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'teachersReceivingInsetBasicValidation'"
+                <sis-err [id]="'teachersReceivingInsetBasicValidation'"
                            [forControl]="teachersReceivingInsetBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.teachersReceivingInsetValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">14.7 Of those teaching this subject, how many received
                     INSET in this subject?</label>
             </div>
@@ -194,12 +194,12 @@
 
         <div *ngIf="isSecondSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'studentsDeadSecondaryValidation'"
+                <sis-err [id]="'studentsDeadSecondaryValidation'"
                            [forControl]="studentsDeadSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeadSecondaryValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     12.1 How many students died in the previous year?
                 </label>
@@ -225,12 +225,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'studentsDeceasedSecondaryValidation'"
+                <sis-err [id]="'studentsDeceasedSecondaryValidation'"
                            [forControl]="studentsDeceasedSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeceasedValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     12.2 How many students have deceased parent(s)?
                 </label>
@@ -249,12 +249,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'teacherDeadSecondaryValidation'"
+                <sis-err [id]="'teacherDeadSecondaryValidation'"
                            [forControl]="teacherDeadSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     12.3 How many teachers died in the previous year?
                 </label>
@@ -280,12 +280,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'ictTrainingSecondaryValidation'"
+                <sis-err [id]="'ictTrainingSecondaryValidation'"
                            [forControl]="ictTrainingSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.ictTrainingSecondaryValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     12.4 ICT Trainings
                 </label>
@@ -306,12 +306,12 @@
 
         <div *ngIf="isTVET()">
             <div class="sis-control-validation">
-                <sis-error [id]="'studentsDeadTVETValidation'"
+                <sis-err [id]="'studentsDeadTVETValidation'"
                            [forControl]="studentsDeadTVETName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeadTVETValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
 
                 <label class="sis-label sis-element-required">
                     10.1 How many students died in the previous year?
@@ -338,12 +338,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'studentsDeceasedTvetValidation'"
+                <sis-err [id]="'studentsDeceasedTvetValidation'"
                            [forControl]="studentsDeceasedTvetName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.studentsDeceasedValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     10.2 How many students have deceased parent(s)?
                 </label>
@@ -361,12 +361,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'teacherDeadTVETValidation'"
+                <sis-err [id]="'teacherDeadTVETValidation'"
                            [forControl]="teacherDeadTVETName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     10.3 How many teachers died in the previous year?
                 </label>

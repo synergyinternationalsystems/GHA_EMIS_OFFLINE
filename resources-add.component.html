@@ -2,12 +2,12 @@
     <div mdl class="mdl-grid mdl-grid--no-spacing">
         <div #resourceSource class="mdl-cell mdl-cell--4-col">
             <div class="sis-control-validation">
-                <sis-error [id]="'sourceValidation'" *ngIf="isErrorMessageVisible"
+                <sis-err [id]="'sourceValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="resourceSource" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="resourceValidationHelper.sourceRequiredValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">Source</label>
             </div>
             <input type="text" [(ngModel)]="subEntity.getProperty('source').value" class="sis-input sis-mid-width"/>

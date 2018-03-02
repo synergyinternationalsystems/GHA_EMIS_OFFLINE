@@ -1,10 +1,16 @@
 <!--<div>-->
     <div class="sis-popup-container__inner">
         <div class="sis-control-validation">
+            <sis-error [id]="'fullNameValidation'" *ngIf="isErrorMessageVisible"
+                       [forControl]="name" [isInput]="true"
+                       [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
+                       [errorMessage]="fullNameErrorMessage"
+                       [class]="'sis-float-left'">
+            </sis-error>
             <label class="sis-label sis-element-required">Full Name</label>
         </div>
         <div class="mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
+            <div  #name class="mdl-cell mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
                 <input type="text" input-text maxlength="50" [(ngModel)]="fullName"
                        class="sis-input sis-large-width">
             </div>
@@ -31,15 +37,15 @@
                         <thead>
                         <tr>
                             <th class="mdl-data-table__cell--non-numeric"></th>
-                            <th  class="mdl-data-table__cell--non-numeric"><span>Note on Teacher</span></th>
-                            <th  class="mdl-data-table__cell--non-numeric"><span>First Name</span></th>
-                            <th  class="mdl-data-table__cell--non-numeric" style="min-width: 128px;"><span>Surname</span></th>
+                            <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>Note on Teacher</span></th>
+                            <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>First Name</span></th>
+                            <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>Surname</span></th>
                             <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Staff Number (IPPD)</span></th>
                             <th  class="mdl-data-table__cell--non-numeric" style="min-width: 146px;"><span>SSF Number</span></th>
                             <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Registration Number</span></th>
                             <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Level</span></th>
                             <th  class="mdl-data-table__cell--non-numeric" style="min-width: 130px;"><span>Year of Birth</span></th>
-                            <th  class="mdl-data-table__cell--non-numeric"><span>Sex</span></th>
+                            <th  class="mdl-data-table__cell--non-numeric" style="min-width: 100px;"><span>Sex</span></th>
                         </tr>
                         </thead>
                         <tbody>

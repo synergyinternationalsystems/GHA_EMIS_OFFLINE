@@ -1,5 +1,12 @@
-<div class="sis-dialog-text" [innerHTML]="text"></div>
-<button (click)="close()"
-        class="mdl-button mdl-js-button sis-btn--primary mdl-js-ripple-effect mdl-button--raised sis--full-width-mobile sis-float-right sis-margin-bottom--20">
-    OK
-</button>
+<div class="sis-popup-container__inner">
+
+    <div class="sis-controls--top-margin sis-note" [innerHTML]="text">
+        <i class="material-icons sis-note__icon">note</i>
+    </div>
+</div>
+<div class="sis-popup-container__buttons sis-align-right">
+    <button (click)="close()"
+            class="mdl-button mdl-js-button sis-btn--primary mdl-js-ripple-effect mdl-button--raised sis--full-width-mobile sis-float-right sis-margin-bottom--20">
+        OK
+    </button>
+</div>

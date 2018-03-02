@@ -3017,7 +3017,7 @@ SELECT DISTINCT C_Location2.Location2ID,
 	   FROM CycleManagement cross join CensusSchool  INNER JOIN School ON CensusSchool .SchoolInstanceID = School .SchoolInstanceID 
 	   INNER JOIN C_Location3 ON School.Location3ID = C_Location3.Location3ID 
 	   INNER JOIN C_Location2 ON C_Location3.Location2ID = C_Location2.Location2ID 
-	   INNER JOIN C_User ON CensusSchool.UpdatedUserId = C_User.id 
+	   LEFT JOIN C_User ON CensusSchool.UpdatedUserId = C_User.id 
 	   INNER JOIN C_WFStates ON C_WFStates.WFStateID = CensusSchool.WFStateID 
 	   INNER JOIN C_SchoolType ON C_SchoolType.SchoolTypeID = School.SchoolTypeID
            INNER JOIN UserCheckedOutCensuses ON CensusSchool.censusSchoolId = UserCheckedOutCensuses.censusSchoolId

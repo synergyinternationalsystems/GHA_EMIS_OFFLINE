@@ -1,8 +1,8 @@
 <div mdl class="mdl-layout__container">
     <div class="sis-shell mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <sis-confirm-dialog #confirmDialog (onClose)="confirmDialogClose()" [text]="'Are you sure?'"></sis-confirm-dialog>
-        <sis-notification-dialog #notificationDialog [text]="notificationMessage"></sis-notification-dialog>
-        <sis-notification-dialog #connectionNotificationDialog [text]="connectionNotificationMessage" (onclose)="switchToOffline()"></sis-notification-dialog>
+        <sis-confirm-dialog class="sis-popup-container" #confirmDialog (onClose)="confirmDialogClose()" [text]="'Are you sure?'"></sis-confirm-dialog>
+        <sis-notification-dialog class="sis-popup-container" #notificationDialog [text]="notificationMessage"></sis-notification-dialog>
+        <sis-notification-dialog class="sis-popup-container" #connectionNotificationDialog [text]="connectionNotificationMessage" (onclose)="switchToOffline()"></sis-notification-dialog>
         <sis-confirm-dialog #confirmDiscardDialog (onClose)="confirmDialogClose()" [text]="'Are you sure you want to discard the changes made to these items?'"></sis-confirm-dialog>
         <sis-confirm-dialog #confirmAppVersionUpdate (onClose)="confirmDialogClose()" [text]="'Your version is out of date. To be able to Checkout, Update Classifiers or Submit you should update your application to the latest version.\n\n Do you want to download and install the latest version of GHA EMIS?'"></sis-confirm-dialog>
 

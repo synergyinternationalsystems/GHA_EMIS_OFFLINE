@@ -39,7 +39,7 @@ app.on('ready', function() {
     configFilePath = app.getPath("userData");
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 
     createConfigFile();
     global.sharedObject.userDocuments = app.getPath("downloads");
@@ -74,7 +74,7 @@ function createConfigFile() {
     let settingsFilePath = `${configFilePath}\\gha-settings.xml`;
     return fsp.exists(settingsFilePath).then(exists => {
         if(!exists) {
-            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://dad.synisys.com/gha-emis2_de/api/"}`);
+            return fsp.writeFile(settingsFilePath,`{"onlineURL": "http://41.242.139.73/gha-emisde/api/"}`);
         }
     }).then(err => {
         if(err){

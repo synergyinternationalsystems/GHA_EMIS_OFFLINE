@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div *ngIf="isBasicSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'basicNumberClassroomEqualValidation'"
+                <sis-err [id]="'basicNumberClassroomEqualValidation'"
                            [forControl]="basicNumberClassroomEqualName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="buildingValidationHelper.censusSchoolNumberClassroomFieldValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label">5.1 Specify the GENERAL construction of the institution buildings by indicating
                     the NUMBER of permanent classrooms with the appropriate description</label>
             </div>
@@ -32,12 +32,12 @@
 
 
         <div class="sis-control-validation">
-            <sis-error [id]="'notBasicNumberClassroomEqualValidation'" *ngIf="!isBasicSchool()"
+            <sis-err [id]="'notBasicNumberClassroomEqualValidation'" *ngIf="!isBasicSchool()"
                        [forControl]="notBasicNumberClassroomEqualName" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="buildingValidationHelper.notBasicNumberClassroomEqualValidation()"
                        [class]="'sis-float-left'">
-            </sis-error>
+            </sis-err>
             <label class="sis-label" *ngIf="isSecondSchool()">5.1 Specify the GENERAL construction of the institutions
                 buildings by indicating the NUMBER of permanent classrooms with the appropriate description</label>
             <label class="sis-label" *ngIf="isTVET()">5.1 Specify the GENERAL construction of the institutions buildings
@@ -105,12 +105,12 @@
 
         <div *ngIf="isBasicSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'buildingRoomsValidation'"
+                <sis-err [id]="'buildingRoomsValidation'"
                            [forControl]="buildingRoomsName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="buildingValidationHelper.buildingBasicRoomsValidation() || buildingValidationHelper.censusSchoolNumberRoomsTotalValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label">5.2 How many rooms in each level does the school have?</label>
             </div>
             <div #buildingRoomsName>
@@ -133,12 +133,12 @@
 
         <div *ngIf="isBasicSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'buildingRoomsToBeRepairedValidation'"
+                <sis-err [id]="'buildingRoomsToBeRepairedValidation'"
                            [forControl]="buildingRoomsToBeRepairedName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="buildingValidationHelper.buildingBasicRoomsToBeRepairedValidation() || buildingValidationHelper.censusSchoolPermanentRepairClassroomsNumberValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label">5.3 How many of your permanent rooms need REPAIR?</label>
             </div>
             <div #buildingRoomsToBeRepairedName>
@@ -161,12 +161,12 @@
         <!-- START Out of those needing major repairs, how many have:-->
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'buildingNeedingRepairedValidation'"
+                <sis-err [id]="'buildingNeedingRepairedValidation'"
                            [forControl]="buildingNeedingRepairedName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="buildingValidationHelper.censusSchoolNeedingRepairClassroomsNumberValidator() || buildingValidationHelper.censusSchoolSummaryNumberNeedingMajorRepairsValidator()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label">5.4 Out of those needing major repairs, how many have:</label>
             </div>
             <div #buildingNeedingRepairedName>
@@ -256,12 +256,12 @@
 
         <div class="sis-controls--top-margin" *ngIf="isSecondSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'buildingSecondaryVehiclesValidation'"
+                <sis-err [id]="'buildingSecondaryVehiclesValidation'"
                            [forControl]="buildingSecondaryVehiclesName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="buildingValidationHelper.buildingSecondaryVehiclesValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label">5.7 What is the NUMBER and condition of vehicles at your institution?</label>
             </div>
             <div #buildingSecondaryVehiclesName>

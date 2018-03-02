@@ -2,13 +2,13 @@
     <div class="mdl-cell mdl-cell--12-col">
 
         <div class="sis-control-validation">
-            <sis-error [id]="'numberofequipmentValidation'"
+            <sis-err [id]="'numberofequipmentValidation'"
                        [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation() || materialsEquipmentValidationHelper.censusSchoolFurnitureNumberValidator()"
                        *ngIf="getIsBasicSchoolType()"
                        Indicate the number of equipment at your school.
                        [class]="'sis-float-left'" [forControl]="numberOfEquipment"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
             <label class="sis-label">7.1 Indicate the number of equipment at your school.</label>
         </div>
         <div #numberOfEquipment>
@@ -48,12 +48,12 @@
 
 
         <div class="sis-control-validation">
-<!--            <sis-error [id]="'recordBooksValidation'"
+<!--            <sis-err [id]="'recordBooksValidation'"
                        [errorClass]="'sis-validation-wrapper&#45;&#45;grouped-inline'"
                        [errorMessage]="materialsEquipmentValidationHelper.recordBooksValidation() || materialsEquipmentValidationHelper.censusSchoolRecordBooksValidation()"
                        [class]="'sis-float-left'" [forControl]="recordBooks"
                        [isInput]="true">
-            </sis-error>-->
+            </sis-err>-->
             <label class="sis-label sis-element-required"> 7.2 How many of the following record books does your School
                 have?</label>
         </div>
@@ -131,13 +131,13 @@
 
             <div class="sis-table-scroll" *ngIf="getIsSecondarySchoolType()">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'syllabiValidation'"
+                    <sis-err [id]="'syllabiValidation'"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="materialsEquipmentValidationHelper.syllabiRequiredValidation()"
                                *ngIf="getIsSecondarySchoolType()"
                                [class]="'sis-float-left'" [forControl]="syllabi"
                                [isInput]="true">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">7.5 How many textbooks, syllabi and Teacher Handbooks
                         does your school have ?</label>
                 </div>

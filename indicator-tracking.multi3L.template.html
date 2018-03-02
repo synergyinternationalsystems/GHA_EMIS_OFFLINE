@@ -1,12 +1,12 @@
 <div>
     <div *ngFor="let topLevelClassifier of classifierList.get(topLevelClassifierName)">
         <div class="sis-control-validation">
-            <sis-error [id]="'requiredValidation'" *ngIf="isRequired"
+            <sis-err [id]="'requiredValidation'" *ngIf="isRequired"
                        [forControl]="multi3LRequiredName" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="validateRequired(topLevelClassifier)"
                        [class]="'sis-float-left'">
-            </sis-error>
+            </sis-err>
             <label class="sis-layout__section__title sis-controls--top-margin">{{label}}</label>
         </div>
         <div class="sis-table-scroll" #multi3LRequiredName>

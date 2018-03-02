@@ -3,12 +3,12 @@
         <label class="sis-layout__section__title sis-controls--top-margin">6.1 WATER FACILITIES</label>
 
         <div class="sis-control-validation">
-            <sis-error [id]="'waterFacilityYesNoValidation'"
+            <sis-err [id]="'waterFacilityYesNoValidation'"
                        [forControl]="waterFacilityYesNoName" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--grouped-inline'"
                        [errorMessage]="waterAndSanitationValidationHelper.waterFacilityYesNoForSaveValidation()"
                        [class]="'sis-float-left'">
-            </sis-error>
+            </sis-err>
             <label class="sis-label sis-element-required">6.1.1 Does your school own a safe water facility?</label>
         </div>
         <div #waterFacilityYesNoName>
@@ -24,18 +24,18 @@
 
         <div *ngIf="isSelectedNoOwnSafeWaterFacility()">
             <div class="sis-control-validation">
-                <sis-error [id]="'waterFacilityNoValidation'"
+                <sis-err [id]="'waterFacilityNoValidation'"
                            [forControl]="waterFacilityNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterFacilityNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <sis-error [id]="'waterSourceOtherValidation'"
+                </sis-err>
+                <sis-err [id]="'waterSourceOtherValidation'"
                            [forControl]="waterFacilityNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterSourceOtherValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.1.2 If there is no safe water source at/near the school
                     compound, what is the source of drinking water?</label>
             </div>
@@ -67,12 +67,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'locateNearValidation'"
+                <sis-err [id]="'locateNearValidation'"
                            [forControl]="locateNearName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.locateNearValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.1.2 How far is it located from school compound?</label>
             </div>
             <div #locateNearName>
@@ -90,12 +90,12 @@
 
             <div>
                 <div class="sis-control-validation">
-                    <sis-error [id]="'safeWaterTypeWrapperValidation'"
+                    <sis-err [id]="'safeWaterTypeWrapperValidation'"
                                [forControl]="safeWaterTypeWrapperName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.safeWaterTypeWrapperValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">6.1.3 What type of safe water facility is
                         available?</label>
                 </div>
@@ -112,12 +112,12 @@
                 <div *ngIf="isCensusSchoolFacilitiesNotEmpty()">
                     <div #facilityFunctioningAtTheTimeName>
                         <div class="sis-control-validation">
-                            <sis-error [id]="'facilityFunctioningAtTheTimeValidation'"
+                            <sis-err [id]="'facilityFunctioningAtTheTimeValidation'"
                                        [forControl]="facilityFunctioningAtTheTimeName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                        [errorMessage]="waterAndSanitationValidationHelper.facilityFunctioningAtTheTimeValidation()"
                                        [class]="'sis-float-left'">
-                            </sis-error>
+                            </sis-err>
                             <label class="sis-label sis-element-required">6.1.4 Is the facility functioning at the time
                                 of the census?</label>
                         </div>
@@ -150,12 +150,12 @@
 
                     <div class="sis-controls--top-margin" #sanitationTotalDaysName>
                         <div class="sis-control-validation">
-                            <sis-error [id]="'sanitationTotalDaysValidation'"
+                            <sis-err [id]="'sanitationTotalDaysValidation'"
                                        [forControl]="sanitationTotalDaysName" [isInput]="true"
                                        [errorClass]="'sis-validation-wrapper--grouped'"
                                        [errorMessage]="waterAndSanitationValidationHelper.sanitationTotalDaysValidation()"
                                        [class]="'sis-float-left'">
-                            </sis-error>
+                            </sis-err>
                             <label class="sis-label sis-element-required">6.1.5 How many days in total over the past
                                 year has it been out of use?</label>
                         </div>
@@ -176,12 +176,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'waterFlowValidation'"
+                <sis-err [id]="'waterFlowValidation'"
                            [forControl]="waterFlowName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterFlowValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.1.{{isCensusSchoolFacilitiesNotEmpty() ? 6 : 4}} How often does water flow from the water source
                     in a
@@ -202,18 +202,18 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'waterStorageValidation'"
+                <sis-err [id]="'waterStorageValidation'"
                            [forControl]="waterStorageName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterStorageValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <sis-error [id]="'waterStorageOtherValidation'"
+                </sis-err>
+                <sis-err [id]="'waterStorageOtherValidation'"
                            [forControl]="waterStorageName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterStorageOtherValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.1.{{isCensusSchoolFacilitiesNotEmpty() ? 7 : 5}} What is the MAIN water storage facility available
                     in
@@ -240,12 +240,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'waterVesselsTypeValidation'"
+                <sis-err [id]="'waterVesselsTypeValidation'"
                            [forControl]="waterVesselsTypeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterVesselsTypeValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.1.{{isCensusSchoolFacilitiesNotEmpty() ? 8 : 6}} What type of vessels (cup, water bottle etc) do
                     children normally use to drink?
@@ -265,12 +265,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'goodBadValidation'"
+                <sis-err [id]="'goodBadValidation'"
                            [forControl]="goodBadName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="waterAndSanitationValidationHelper.goodBadValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.1.{{isCensusSchoolFacilitiesNotEmpty() ? 9 : 7}} How do you rate the quality of the water you get
                     from
@@ -294,12 +294,12 @@
 
             <div *ngIf="isSelectedBadReason.value">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'badValidation'"
+                    <sis-err [id]="'badValidation'"
                                [forControl]="badName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="waterAndSanitationValidationHelper.badReasonValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         If Bad, assign reason(s):
                     </label>
@@ -333,12 +333,12 @@
     <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="sis-control-validation">
-                <sis-error [id]="'toiletTypeValidation'"
+                <sis-err [id]="'toiletTypeValidation'"
                            [forControl]="toiletTypeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.toiletTypeValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.2.1 What type of toilet does the school have?</label>
             </div>
             <div #toiletTypeName>
@@ -354,12 +354,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'toiletsFunctionalYesNoValidation'"
+                <sis-err [id]="'toiletsFunctionalYesNoValidation'"
                            [forControl]="toiletsFunctionalYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.toiletsFunctionalYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.2.2 Were the toilets functional at the time of the census?
                 </label>
@@ -378,12 +378,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'useToiletsYesNoValidation'"
+                <sis-err [id]="'useToiletsYesNoValidation'"
                            [forControl]="useToiletsYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.useToiletsYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.2.3 Were the toilets in use at the time of the census?
                 </label>
@@ -401,12 +401,12 @@
 
             <div *ngIf="isSelectedUseToilets()">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'individualToiletSeatsAvailableValidation'"
+                    <sis-err [id]="'individualToiletSeatsAvailableValidation'"
                                [forControl]="individualToiletSeatsAvailableName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsAvailableValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         6.2.4 {{toiletAvailabilityDisaggregationClassifierName}}?
                     </label>
@@ -426,12 +426,12 @@
                 </div>
 
                 <div class="sis-control-validation">
-                    <sis-error [id]="'individualToiletSeatsFunctionalValidation'"
+                    <sis-err [id]="'individualToiletSeatsFunctionalValidation'"
                                [forControl]="individualToiletSeatsFunctionalName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.individualToiletSeatsFunctionalValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         6.2.5 {{toiletFunctionalityDisaggregationClassifierName}}?
                     </label>
@@ -455,12 +455,12 @@
         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div *ngIf="isSelectedUseToilets()">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'cleanToiletsYesNoValidation'"
+                    <sis-err [id]="'cleanToiletsYesNoValidation'"
                                [forControl]="cleanToiletsYesNoName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.cleanToiletsYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         6.2.6 Were the toilets clean at the time of the census?
                     </label>
@@ -477,18 +477,18 @@
                 </div>
 
                 <div class="sis-control-validation">
-                    <sis-error [id]="'toiletResponsibleValidation'"
+                    <sis-err [id]="'toiletResponsibleValidation'"
                                [forControl]="toiletResponsibleName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
-                    <sis-error [id]="'toiletResponsibleOtherValidation'"
+                    </sis-err>
+                    <sis-err [id]="'toiletResponsibleOtherValidation'"
                                [forControl]="toiletResponsibleName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.toiletResponsibleOtherValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         6.2.7 Who is responsible for cleaning the toilet facilities?
                     </label>
@@ -509,12 +509,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'urinalsFunctionalYesNoValidation'"
+                <sis-err [id]="'urinalsFunctionalYesNoValidation'"
                            [forControl]="urinalsFunctionalYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.urinalsFunctionalYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.2.{{isSelectedUseToilets() ? 8 : 4}} Were the urinals functional at the time of the
                     census?</label>
             </div>
@@ -533,12 +533,12 @@
 
             <div *ngIf="isSelectedUrinalsFunctional()">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'urinalsAvailabilityValidation'"
+                    <sis-err [id]="'urinalsAvailabilityValidation'"
                                [forControl]="urinalsAvailabilityName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.urinalsAvailabilityValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">
                         6.2.{{isSelectedUseToilets() ? 9 : 5}} {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
                     </label>
@@ -561,12 +561,12 @@
 
         <div class="mdl-cell mdl-cell--12-col">
             <div class="sis-control-validation">
-                <sis-error [id]="'washingFacilitiesFollowingPlacesValidation'"
+                <sis-err [id]="'washingFacilitiesFollowingPlacesValidation'"
                            [forControl]="washingFacilitiesFollowingPlacesName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.washingFacilitiesFollowingPlacesValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 10 : (isSelectedUrinalsFunctional() ? 6 : (isSelectedUseToilets() ? 9 : 5))}} Does your school have Hand washing facilities at the following places?
                 </label>
@@ -600,12 +600,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'soapAvailableForHandWashingValidation'"
+                <sis-err [id]="'soapAvailableForHandWashingValidation'"
                            [forControl]="soapAvailableForHandWashingName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.soapAvailableForHandWashingValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 11 : (isSelectedUrinalsFunctional() ? 7 : (isSelectedUseToilets() ? 10 : 6))}} Is soap available for handwashing at these places at the time of the census?
                 </label>
@@ -639,12 +639,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-error [id]="'waterAvailableForHandWashingValidation'"
+                <sis-err [id]="'waterAvailableForHandWashingValidation'"
                            [forControl]="waterAvailableForHandWashingName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.waterAvailableForHandWashingValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 12 : (isSelectedUrinalsFunctional() ? 8 : (isSelectedUseToilets() ? 11 : 7))}} Is water available for handwashing at these places at the time of the census?
                 </label>
@@ -679,12 +679,12 @@
 
             <div #effluentDischargeName>
                 <div class="sis-control-validation">
-                    <!--<sis-error [id]="'effluentDischargeValidation'"
+                    <!--<sis-err [id]="'effluentDischargeValidation'"
                                [forControl]="effluentDischargeName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
                                [errorMessage]="waterAndSanitationValidationHelper.effluentDischargeValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>-->
+                    </sis-err>-->
                     <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 13 : (isSelectedUrinalsFunctional() ? 9 : (isSelectedUseToilets() ? 12 : 8))}} Where does the effluent from the urinal
                         discharge to?</label>
                 </div>
@@ -698,12 +698,12 @@
 
 
             <div class="sis-control-validation">
-                <!--<sis-error [id]="'solidWasteValidation'"
+                <!--<sis-err [id]="'solidWasteValidation'"
                            [forControl]="solidWasteName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
                            [errorMessage]="waterAndSanitationValidationHelper.solidWasteValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>-->
+                </sis-err>-->
                 <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 14 : (isSelectedUrinalsFunctional() ? 10 : (isSelectedUseToilets() ? 13 : 9))}} How is solid waste from the school disposed
                     off?</label>
             </div>
@@ -715,12 +715,12 @@
 
 
             <div class="sis-control-validation">
-                <!--<sis-error [id]="'spipYesNoValidation'"
+                <!--<sis-err [id]="'spipYesNoValidation'"
                            [forControl]="spipYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper&#45;&#45;grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.spipYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>-->
+                </sis-err>-->
                 <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 15 : (isSelectedUrinalsFunctional() ? 11 : (isSelectedUseToilets() ? 14 : 10))}} Does the SPIP include how you can improve / sustain
                     WASH facilities in the school?</label>
             </div>
@@ -736,12 +736,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <!--<sis-error [id]="'washYesNoValidation'"
+                <!--<sis-err [id]="'washYesNoValidation'"
                            [forControl]="washYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper&#45;&#45;grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.washYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>-->
+                </sis-err>-->
                 <label class="sis-label">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 16 : (isSelectedUrinalsFunctional() ? 12 : (isSelectedUseToilets() ? 15 : 11))}} Does the school have an operational and maintenance
                     plans for WASH facilities in the school?</label>
             </div>
@@ -764,12 +764,12 @@
     <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--12-col">
             <div class="sis-control-validation">
-                <sis-error [id]="'hygieneYesNoValidation'"
+                <sis-err [id]="'hygieneYesNoValidation'"
                            [forControl]="hygieneYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.hygieneYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.3.1 Is Hygiene taught in the school?</label>
             </div>
             <div #hygieneYesNoName>
@@ -786,12 +786,12 @@
 
             <div #hygieneTaughtName>
                 <div class="sis-control-validation">
-                    <sis-error [id]="'hygieneTaughtValidation'"
+                    <sis-err [id]="'hygieneTaughtValidation'"
                                [forControl]="hygieneTaughtName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--element'"
                                [errorMessage]="waterAndSanitationValidationHelper.hygieneTaughtValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">6.3.2 How is Hygiene taught in the school?</label>
                 </div>
                 <input type="text" value="{{getPropertyTextFromQuestionSubEntity('hygieneTaught_ENG')}}"
@@ -802,12 +802,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'changingRoomYesNoValidation'"
+                <sis-err [id]="'changingRoomYesNoValidation'"
                            [forControl]="changingRoomYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.changingRoomYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.3.3 Does the school have a changing room for girls
                     during menstruation?</label>
             </div>
@@ -824,12 +824,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'teacherHygieneEducationValidation'"
+                <sis-err [id]="'teacherHygieneEducationValidation'"
                            [forControl]="teacherHygieneEducationName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.teacherHygieneEducationValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.3.4 Teacher’s Hygiene Education</label>
             </div>
             <div #teacherHygieneEducationName>
@@ -848,12 +848,12 @@
 
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-error [id]="'schoolHealthYesNoValidation'"
+                    <sis-err [id]="'schoolHealthYesNoValidation'"
                                [forControl]="schoolHealthYesNoName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="waterAndSanitationValidationHelper.schoolHealthYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-error>
+                    </sis-err>
                     <label class="sis-label sis-element-required">6.3.5 Does the school have a functional school health
                         club?</label>
                 </div>
@@ -871,12 +871,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'sanitationActivityYesNoValidation'"
+                <sis-err [id]="'sanitationActivityYesNoValidation'"
                            [forControl]="sanitationActivityYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.sanitationActivityYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.3.6 Does the school organise outreach activities on
                     sanitation and hygiene to the communities?</label>
             </div>
@@ -893,12 +893,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-error [id]="'healthCoordinatorYesNoValidation'"
+                <sis-err [id]="'healthCoordinatorYesNoValidation'"
                            [forControl]="healthCoordinatorYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="waterAndSanitationValidationHelper.healthCoordinatorYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">6.3.7 Does the school have a School Based Health
                     Co-ordinator?</label>
             </div>

@@ -3,15 +3,15 @@
         <label class="sis-layout__section__title sis-controls--top-margin">13.1 State actual periods of teaching PER
             WEEK for each teacher</label>
         <div class="sis-control-validation">
-            <sis-error [id]="'enrolmentProgrammeValidation'" [errorMessage]="enrollmentProgrammeValidationMessage"
+            <sis-err [id]="'enrolmentProgrammeValidation'" [errorMessage]="enrollmentProgrammeValidationMessage"
                        [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
                        [isInput]="true">
-            </sis-error>
-            <sis-error [id]="'enrolmentProgrammeDuplicateValidation'"
+            </sis-err>
+            <sis-err [id]="'enrolmentProgrammeDuplicateValidation'"
                        [errorMessage]="enrollmentProgrammeDuplicateValidationMessage"
                        [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAdd"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
         </div>
         <div class="sis-float-left">
             <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Subject --'"
@@ -28,11 +28,11 @@
 
         <div *ngIf="isBasicSchool()" class="sis-table-scroll sis-controls--top-margin">
             <div class="sis-control-validation">
-                <sis-error [id]="'titleValidation'"
+                <sis-err [id]="'titleValidation'"
                            [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
                            [class]="'sis-float-left'" [forControl]="valueRequiredValidationForBasic"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <table #valueRequiredValidationForBasic class="mdl-data-table mdl-js-data-table"
                    id="basicTeacherId">
@@ -90,11 +90,11 @@
 
         <div class="sis-table-scroll sis-controls--top-margin" *ngIf="isSecondSchool()">
             <div class="sis-control-validation">
-                <sis-error [id]="'titleValidation'"
+                <sis-err [id]="'titleValidation'"
                            [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
                            [class]="'sis-float-left'" [forControl]="valueRequiredValidationForSecondSchool"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <table #valueRequiredValidationForSecondSchool class="mdl-data-table mdl-js-data-table"
                    id="secondaryTeacherId">
@@ -145,11 +145,11 @@
 
         <div class="sis-table-scroll" *ngIf="isTVET()">
             <div class="sis-control-validation">
-                <sis-error [id]="'titleValidation'"
+                <sis-err [id]="'titleValidation'"
                            [errorMessage]="profStaffWorkloadValidationHelper.profStaffWorkloadValueRequiredValidation()"
                            [class]="'sis-float-left'" [forControl]="valueRequiredValidationForTVET"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <table #valueRequiredValidationForTVET class="mdl-data-table mdl-js-data-table" id="tvetTeacherId">
                 <thead>

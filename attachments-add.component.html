@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <!--<div #documentType>-->
             <!--<div class="sis-control-validation">-->
-                <!--<sis-error [id]="'documentTypeValidation'" *ngIf="isErrorMessageVisible"-->
+                <!--<sis-err [id]="'documentTypeValidation'" *ngIf="isErrorMessageVisible"-->
                            <!--[forControl]="documentType" [isInput]="true"-->
                            <!--[errorClass]="'sis-validation-wrapper&#45;&#45;element'"-->
                            <!--[errorMessage]="attachmentValidationHelper.documentTypeRequiredValidation()"-->
                            <!--[class]="'sis-float-left'">-->
-                <!--</sis-error>-->
+                <!--</sis-err>-->
                 <!--<label class="sis-label sis-element-required">Type</label>-->
             <!--</div>-->
             <!--<div class="sis-large-width">-->
@@ -20,12 +20,12 @@
 
         <div #attachmentTitle>
             <div class="sis-control-validation">
-                <sis-error [id]="'attachmentTitleValidation'" *ngIf="isErrorMessageVisible"
+                <sis-err [id]="'attachmentTitleValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="attachmentTitle" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="attachmentValidationHelper.attachmentTitleRequiredValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">Title</label>
             </div>
             <input type="text" [(ngModel)]="document.getProperty('fileTitle_ENG').value" class="sis-input sis-full-width"/>
@@ -33,24 +33,24 @@
 
         <div #attachment *ngIf="!isDocumentUploaded">
             <div class="sis-control-validation">
-                <sis-error [id]="'attachmentValidation'" *ngIf="isErrorMessageVisible"
+                <sis-err [id]="'attachmentValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="attachment" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="attachmentValidationHelper.attachmentRequiredValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <sis-error [id]="'attachmentSizeValidation'" *ngIf="isErrorMessageVisible"
+                </sis-err>
+                <sis-err [id]="'attachmentSizeValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="attachment" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="attachmentValidationHelper.attachmentSizeValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
-                <sis-error [id]="'attachmentExecutableTypeValidation'" *ngIf="isErrorMessageVisible"
+                </sis-err>
+                <sis-err [id]="'attachmentExecutableTypeValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="attachment" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="attachmentValidationHelper.attachmentExecutableTypeValidation()"
                            [class]="'sis-float-left'">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">Attachments</label>
             </div>
             <div>

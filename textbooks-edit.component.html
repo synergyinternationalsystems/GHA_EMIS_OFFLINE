@@ -1,11 +1,11 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
         <div class="sis-control-validation">
-            <sis-error [id]="'handBooksByGradeIndicatorValidation'"
+            <sis-err [id]="'handBooksByGradeIndicatorValidation'"
                        [errorMessage]="textbooksValidationHelper.handBooksByGradeIndicatorValidation() || textbooksValidationHelper.censusSchoolTeachingGuidesHandBooksNumberValidator()"
                        [class]="'sis-float-left'" [forControl]="handBooksByGradeIndicator"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
             <label class="sis-label sis-element-required">
                 9.1 Indicate the NUMBER of Teaching Guides / HandBooks available by grade
             </label>
@@ -31,11 +31,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-error [id]="'pupilTextBooksIndicatorValidation'"
+                <sis-err [id]="'pupilTextBooksIndicatorValidation'"
                            [errorMessage]="textbooksValidationHelper.pupilTextBooksIndicatorValidation() || textbooksValidationHelper.censusSchoolPupilTextbooksAvailableCountValidator()"
                            [class]="'sis-float-left'" [forControl]="pupilTextBooksIndicator"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">
                     9.2 How MANY Pupil Textbooks for each subject and grade is available?
                 </label>

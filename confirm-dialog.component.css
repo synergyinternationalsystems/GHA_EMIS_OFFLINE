@@ -443,3 +443,16 @@ a:hover {
 
 /* =End Media Queries
 -------------------------------------------------------------- */
+.sis-popup-container__inner {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 50px);
+  padding: 8px 24px 24px 24px;
+  margin: 0 -24px;
+  flex: 0 1 auto;
+  box-sizing: border-box; }
+
+.sis-popup-container__buttons {
+  margin: 0 -24px -6px -24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 24px 0 24px; }

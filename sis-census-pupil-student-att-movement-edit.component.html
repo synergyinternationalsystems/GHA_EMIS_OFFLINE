@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'pupilsTransferredRequired'"
+                <sis-err [id]="'pupilsTransferredRequired'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.pupilsTransferredRequiredValidation() || pupilStudentAttendanceAndMovementValidationHelper.censusSchoolPupilMovementInformationValidator()"
                            *ngIf="getIsBasicSchoolType()"
                            [class]="'sis-float-left'" [forControl]="pupilsTransferred"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <div #pupilsTransferred>
                 <sis-census-indicator-tracking-3L [census]="census"
@@ -36,12 +36,12 @@
 
         <div *ngIf="getIsSecondarySchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'studentsTransferredRequired'"
+                <sis-err [id]="'studentsTransferredRequired'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.studentsTransferredRequiredValidation()"
                            *ngIf="getIsSecondarySchoolType()"
                            [class]="'sis-float-left'" [forControl]="studentsTransferred"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
 
             </div>
             <div #studentsTransferred>
@@ -72,12 +72,12 @@
 
         <div *ngIf="getIsBasicSchoolType() && isShowGirlsPregnantSection()">
             <div class="sis-control-validation">
-                <sis-error [id]="'pregnantGirlsValidator'"
+                <sis-err [id]="'pregnantGirlsValidator'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.censusSchoolPregnantGirlsValidator()"
                            [class]="'sis-float-left'"
                            [forControl]="pregnantGirls"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
             </div>
             <div #pregnantGirls class="sis-controls--top-margin">
                 <sis-census-indicator-tracking-1L-H [census]="census"
@@ -114,13 +114,13 @@
         <!-- START How many days was your school opened in the month of November? -->
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'howManyDaysSchoolWasOpenedinFeb'"
+                <sis-err [id]="'howManyDaysSchoolWasOpenedinFeb'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.howManyDaysWasSchoolopenedInFebValidation() || pupilStudentAttendanceAndMovementValidationHelper.censusSchoolFebruaryOpenedDaysValidator()"
                            *ngIf="getIsBasicSchoolType()"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [class]="'sis-float-left'" [forControl]="howManyDaysSchoolWasOpened"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required" *ngIf="isShowGirlsPregnantSection()">11.8 How many days
                     was your school opened in the month of
                     November?</label>
@@ -132,12 +132,12 @@
 
         <div *ngIf="getIsSecondarySchoolType()">
             <div class="sis-control-validation">
-                <sis-error [id]="'howManyDaysSchoolWasOpenedinJan'"
+                <sis-err [id]="'howManyDaysSchoolWasOpenedinJan'"
                            [errorMessage]="pupilStudentAttendanceAndMovementValidationHelper.howManyDaysWasSchoolopenedInJanValidation()"
                            *ngIf="getIsSecondarySchoolType()"
                            [class]="'sis-float-left'" [forControl]="howManyDaysSchoolWasOpened"
                            [isInput]="true">
-                </sis-error>
+                </sis-err>
                 <label class="sis-label sis-element-required">9.8 How many days was your school opened in the month of
                     November?</label>
             </div>

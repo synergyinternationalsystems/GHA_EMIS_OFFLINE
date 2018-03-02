@@ -2,32 +2,32 @@
      [style.display]="isAddEditTeacherFormVisible.value? 'none' : 'block'">
     <div class="mdl-cell mdl-cell--12-col">
         <div class="sis-control-validation">
-            <sis-error [id]="'teacherTableValidation'"
+            <sis-err [id]="'teacherTableValidation'"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="teachersEditValidationHelper.censusSchoolTeachersValidation()"
                        [class]="'sis-float-left'" [forControl]="teacherTable"
                        [isInput]="true">
-            </sis-error>
-            <sis-error [id]="'teacherTableValidation'" *ngIf="getIsBasicSchoolType()"
+            </sis-err>
+            <sis-err [id]="'teacherTableValidation'" *ngIf="getIsBasicSchoolType()"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="teachersEditValidationHelper.censusSchoolTeacherCountEqualValidation()"
                        [class]="'sis-float-left'" [forControl]="teacherTable"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
 
-            <sis-error [id]="'teacherTableValidation'"
+            <sis-err [id]="'teacherTableValidation'"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="teachersEditValidationHelper.censusSchoolTeacherSchoolLevelTypeValidation()"
                        [class]="'sis-float-left'" [forControl]="teacherTable"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
 
-            <sis-error [id]="'teacherTableValidation'"
+            <sis-err [id]="'teacherTableValidation'"
                        [errorClass]="'sis-validation-wrapper--grouped'"
                        [errorMessage]="teachersEditValidationHelper.censusSchoolTeacherDistrictValidation()"
                        [class]="'sis-float-left'" [forControl]="teacherTable"
                        [isInput]="true">
-            </sis-error>
+            </sis-err>
         </div>
         <label class="sis-label sis-element-required">12.1 Teachers</label>
         <div #teacherTable class="sis-table-scroll sis-controls--top-margin">
