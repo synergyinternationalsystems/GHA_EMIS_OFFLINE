@@ -200,7 +200,7 @@
                                                     <td class="mdl-data-table__cell--non-numeric">
                                                         <input type="checkbox" *ngIf="isDraft(row)"
                                                                [checked]="isCensusToBeSubmitted(row.getId())"
-                                                               (change)="onSubmitCheckBoxChanged(row.getId())"
+                                                               (change)="onSubmitCheckBoxChanged(row.getId(),row.getProperty('censusSchoolInstanceId').value)"
                                                                class="form-radio-checkbox center"/>
                                                     </td>
                                                     <td class="mdl-data-table__cell--non-numeric">
@@ -213,7 +213,7 @@
                                                         {{row.getProperty('schoolType').value}}
                                                     </td>
                                                     <td class="mdl-data-table__cell--non-numeric" style="min-width: 174px;">
-                                                        <a (click)="navigateTo('census',row, row.getId())">
+                                                        <a (click)="navigateTo('census',row, row.getProperty('censusSchoolInstanceId').value)">
                                                             {{row.getProperty('schoolName').value}}
                                                         </a>
                                                     </td>

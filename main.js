@@ -39,7 +39,7 @@ app.on('ready', function() {
     configFilePath = app.getPath("userData");
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     createConfigFile();
     global.sharedObject.userDocuments = app.getPath("downloads");

@@ -2923,7 +2923,7 @@ CREATE TABLE "CensusSchoolSummary" (
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
-CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , teacherInstanceId integer, "surname" nvarchar(250), "firstName" nvarchar(250),"teacherName_ENG" nvarchar(250),  "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "location2Id" INTEGER, "location3Id" INTEGER,"UpdatedUserId" INTEGER,
+CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , TeacherInstanceId integer, "surname" nvarchar(250), "firstName" nvarchar(250),"teacherName_ENG" nvarchar(250),  "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "location2Id" INTEGER, "location3Id" INTEGER,"UpdatedUserId" INTEGER,
   "DateUpdated" DATETIME, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
 CREATE TABLE "TeacherDocument" (
@@ -3002,6 +3002,7 @@ SELECT DISTINCT C_Location2.Location2ID,
 	   C_Location3.Name_ENG AS DistrictName,
 	   CensusSchool.CensusSchoolID,
 	   CensusSchool.SchoolInstanceID ,
+	   CensusSchool.CensusSchoolInstanceID ,
 	   School.SchoolCode AS SchoolCode,
 	   School.SchoolName_ENG AS SchoolName,
 	   C_SchoolType.SchoolTypeID,
