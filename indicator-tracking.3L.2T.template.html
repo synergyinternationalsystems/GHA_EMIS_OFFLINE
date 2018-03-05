@@ -5,19 +5,19 @@
             <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Programme --'" [value]="selectEnrolmentProgrammeValue" (valueChange)="onEnrolmentProgrammeChanged($event)">
                 <sis-combo-box-items [data]="classifierList.get('EnrolmentProgrammeAdd')" [valueField]="" [nameField]="'name'" #enrolmentProgrammeAddTVETName></sis-combo-box-items>
             </sis-combo-box>
-            <sis-err [id]="'programmeTVETValidation'" [errorMessage]="enrollmentProgrammeValidation()"
+            <sis-error [id]="'programmeTVETValidation'" [errorMessage]="enrollmentProgrammeValidation()"
                        [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAddTVETName"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
         </div>
         <div class="mdl-cell mdl-cell--2-col mdl-cell--3-col-tablet mdl-cell--3-col-phone">
             <sis-combo-box [id]="'enrolmentSubjectId'" [placeHolder]="'-- Select Subject --'" [isEnabled]="selectEnrolmentProgrammeValue" [value]="selectEnrolmentSubjectValue" (valueChange)="onEnrolmentSubjectChanged($event)">
                 <sis-combo-box-items [data]="getEnrolmentSubjects()" [valueField]="" [nameField]="'name'" #enrolmentSubjectTVETName></sis-combo-box-items>
             </sis-combo-box>
-            <sis-err [id]="'subjectTVETValidation'" [errorMessage]="enrollmentSubjectValidation()"
+            <sis-error [id]="'subjectTVETValidation'" [errorMessage]="enrollmentSubjectValidation()"
                        [class]="'sis-float-left'" [forControl]="enrolmentSubjectTVETName"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
         </div>
         <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--12-col-phone">
             <input type="button" value="Add"
@@ -34,18 +34,18 @@
             </thead>
             <tbody>
                 <td>
-                    <sis-err [id]="'subjectCodeTVETValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
+                    <sis-error [id]="'subjectCodeTVETValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
                                [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectCodeTVET"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectCode" class="sis-input sis-small-width sis-align-right"
                            name="enrolmentInProgrammeSubjectCodeId" #enrolmentProgrammeSubjectCodeTVET/>
                 </td>
                 <td>
-                    <sis-err [id]="'subjectNameTVETValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
+                    <sis-error [id]="'subjectNameTVETValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
                                [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectNameTVET"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectName" class="sis-input sis-small-width sis-align-right"
                            name="enrolmentInProgrammeSubjectNameId" #enrolmentProgrammeSubjectNameTVET/>
                 </td>
@@ -59,10 +59,10 @@
             </div>
         </div>
     </div>
-    <sis-err [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
+    <sis-error [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
                [class]="'sis-float-left'" [forControl]="subjectCodeNameDuplicateTVET"
                [isInput]="true">
-    </sis-err>
+    </sis-error>
 </div>
 
 <div class="sis-table-scroll">

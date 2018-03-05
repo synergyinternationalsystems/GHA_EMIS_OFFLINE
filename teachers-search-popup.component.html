@@ -49,7 +49,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let searchTeacherItem of searchedTeacherItems; let j = index">
+                        <tr *ngFor="let searchTeacherItem of pagingTeacherItems; let j = index">
                             <td class="mdl-data-table__cell--non-numeric">
                                 <input type="checkbox" class="sis-radio-checkbox" id="isMainActivityCheckId"
                                        [(ngModel)]="searchTeacherItem.isSelected"/>
@@ -89,6 +89,11 @@
                         </tr>
                         </tbody>
                     </table>
+
+                    <sis-paging [page]="currentPage" (pageChange)="changeCurrentPage($event)"
+                                [pageSize]="pageSize"
+                                [itemsCount]="totalItemsCount" [totalPageCount]="getTotalPageCount()">
+                    </sis-paging>
                 </div>
 
 

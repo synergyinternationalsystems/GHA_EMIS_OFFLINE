@@ -4,20 +4,20 @@
             <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Programme --'" [value]="selectEnrolmentProgrammeValue" (valueChange)="onEnrolmentProgrammeChanged($event)">
                 <sis-combo-box-items [data]="classifierList.get('EnrolmentProgrammeAdd')" [valueField]="" [nameField]="'name'" #enrolmentProgrammeAddName></sis-combo-box-items>
             </sis-combo-box>
-            <sis-err [id]="'programmeValidation'" [errorMessage]="enrollmentProgrammeValidation()"
+            <sis-error [id]="'programmeValidation'" [errorMessage]="enrollmentProgrammeValidation()"
                        [class]="'sis-float-left'" [forControl]="enrolmentProgrammeAddName"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
         </div>
 
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
             <sis-combo-box [id]="'enrolmentSubjectId'" [placeHolder]="'-- Select Subject --'" [isEnabled]="selectEnrolmentProgrammeValue" [value]="selectEnrolmentSubjectValue" (valueChange)="onEnrolmentSubjectChanged($event)">
                 <sis-combo-box-items [data]="getEnrolmentSubjects()" [valueField]="" [nameField]="'name'" #enrolmentSubjectName></sis-combo-box-items>
             </sis-combo-box>
-            <sis-err [id]="'subjectValidation'" [errorMessage]="enrollmentSubjectValidation()"
+            <sis-error [id]="'subjectValidation'" [errorMessage]="enrollmentSubjectValidation()"
                        [class]="'sis-float-left'" [forControl]="enrolmentSubjectName"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
         </div>
 
         <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--12-col-phone">
@@ -30,10 +30,10 @@
     <div class="mdl-grid mdl-grid--no-spacing" #subjectCodeNameDuplicateTVET>
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
             <div class="sis-controls--top-margin">
-                <sis-err [id]="'subjectCodeValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
+                <sis-error [id]="'subjectCodeValidation'" [errorMessage]="enrollmentSubjectCodeValidation()"
                            [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectCode"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label">Subject Code</label>
             </div>
             <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectCode" class="sis-input sis-small-width sis-align-right"
@@ -42,10 +42,10 @@
 
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
             <div class="sis-controls--top-margin">
-                <sis-err [id]="'subjectNameValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
+                <sis-error [id]="'subjectNameValidation'" [errorMessage]="enrollmentSubjectNameValidation()"
                            [class]="'sis-float-left'" [forControl]="enrolmentProgrammeSubjectName"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label">Subject Name</label>
             </div>
             <input type="text" [(ngModel)]="enrolmentInProgrammeSubjectName" class="sis-input sis-small-width sis-align-right"
@@ -60,10 +60,10 @@
             </div>
         </div>
     </div>
-    <sis-err [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
+    <sis-error [id]="'subjectCodeNameDuplicateTVETValidation'" [errorMessage]="enrolmentSubjectCodeNameDuplicateTVETValidation()"
                [class]="'sis-float-left'" [forControl]="subjectCodeNameDuplicateTVET"
                [isInput]="true">
-    </sis-err>
+    </sis-error>
 
 
     <div class="sis-controls--top-margin">

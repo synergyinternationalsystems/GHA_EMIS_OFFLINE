@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div #noteType>
             <div class="sis-control-validation">
-                <sis-err [id]="'noteTypeValidation'" *ngIf="isErrorMessageVisible"
+                <sis-error [id]="'noteTypeValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="noteType" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="noteValidationHelper.noteTypeRequiredValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">Note Type</label>
             </div>
             <sis-combo-box [id]="'noteTypeId'" [placeHolder]="'-- Select Note Type --'" [isEnabled]="true" [value]="subEntity.getProperty('noteTypeId').value"
@@ -18,12 +18,12 @@
 
         <div #noteDetails>
             <div class="sis-control-validation">
-                <sis-err [id]="'noteDetailsValidation'" *ngIf="isErrorMessageVisible"
+                <sis-error [id]="'noteDetailsValidation'" *ngIf="isErrorMessageVisible"
                            [forControl]="noteDetails" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="noteValidationHelper.noteDetailsRequiredValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">Note Details</label>
             </div>
             <div class="mdl-cell--12-col">

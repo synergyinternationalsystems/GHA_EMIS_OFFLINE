@@ -2,11 +2,11 @@
     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'teacherNoteOnValidation'"
+                <sis-error [id]="'teacherNoteOnValidation'"
                            [errorMessage]="teachersValidationHelper.teacherNoteOnValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherNoteOn"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.1 Note on Teacher</label>
             </div>
             <div #teacherNoteOn class="sis-radio-checkbox-align">
@@ -23,11 +23,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'surnameValidation'"
+                <sis-error [id]="'surnameValidation'"
                            [errorMessage]="teachersValidationHelper.surNameValidation()"
                            [class]="'sis-float-left'" [forControl]="surname"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.2 Surname / Family Name</label>
             </div>
             <input #surname type="text"
@@ -37,11 +37,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'firstNmeValidation'"
+                <sis-error [id]="'firstNmeValidation'"
                            [errorMessage]="teachersValidationHelper.firstNameValidation()"
                            [class]="'sis-float-left'" [forControl]="firstName"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.3 First Name / Initials</label>
             </div>
             <input #firstName type="text"
@@ -71,11 +71,11 @@
             <label class="sis-label sis-element-required">{{tabIndex}}.7 Location of Teacher</label>
             <div>
                 <div class="sis-control-validation">
-                    <sis-err [id]="'teacherRegionValidation'"
+                    <sis-error [id]="'teacherRegionValidation'"
                                [errorMessage]="teachersValidationHelper.teacherRegionValidation()"
                                [class]="'sis-float-left'" [forControl]="teacherRegionCombo"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">Region</label>
                 </div>
                 <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone"
@@ -99,11 +99,11 @@
 
             <div>
                 <div class="sis-control-validation">
-                    <sis-err [id]="'teacherDistrictValidation'"
+                    <sis-error [id]="'teacherDistrictValidation'"
                                [errorMessage]="teachersValidationHelper.teacherDistrictValidation()"
                                [class]="'sis-float-left'" [forControl]="teacherDistrictCombo"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">District</label>
                 </div>
                 <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherDistrictCombo>
@@ -127,11 +127,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'teacherSchoolLevelValidation'"
+                <sis-error [id]="'teacherSchoolLevelValidation'"
                            [errorMessage]="teachersValidationHelper.teacherSchoolLevelValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherSchoolLevel"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.8 Level</label>
             </div>
             <div #teacherSchoolLevel>
@@ -155,11 +155,11 @@
         </div>
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'genderValidation'"
+                <sis-error [id]="'genderValidation'"
                            [errorMessage]="teachersValidationHelper.genderValidation()"
                            [class]="'sis-float-left'" [forControl]="genderRadioButton"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.10 Sex</label>
             </div>
             <table #genderRadioButton>
@@ -194,16 +194,16 @@
     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'teacherRankValidation'"
+                <sis-error [id]="'teacherRankValidation'"
                            [errorMessage]="teachersValidationHelper.teacherRankValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherRankCombo"
                            [isInput]="true">
-                </sis-err>
-                <sis-err [id]="'teacherRankOtherValidation'"
+                </sis-error>
+                <sis-error [id]="'teacherRankOtherValidation'"
                            [errorMessage]="teachersValidationHelper.teacherRankOtherValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherRankCombo"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.13 Current Rank</label>
             </div>
             <div class="mdl-cell--10-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" #teacherRankCombo>
@@ -337,11 +337,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'teacherQualificationStatusValidation'"
+                <sis-error [id]="'teacherQualificationStatusValidation'"
                            [errorMessage]="teachersValidationHelper.teacherQualificationStatusValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherQualificationStatusRadioButton"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.22 Qualification
                     Status</label>
             </div>
@@ -361,11 +361,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'relevantIndustrialValidation'"
+                <sis-error [id]="'relevantIndustrialValidation'"
                            [errorMessage]="teachersValidationHelper.relevantIndustrialValidation()"
                            [class]="'sis-float-left'" [forControl]="relevantIndustrial"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.23 Relevant Industrial experience</label>
             </div>
             <input #relevantIndustrial type="text"
@@ -375,11 +375,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'teacherSalaryPaidValidation'"
+                <sis-error [id]="'teacherSalaryPaidValidation'"
                            [errorMessage]="teachersValidationHelper.teacherSalaryPaidValidation()"
                            [class]="'sis-float-left'" [forControl]="teacherSalaryPaid"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">{{tabIndex}}.24 Who pays the
                     salary?</label>
             </div>

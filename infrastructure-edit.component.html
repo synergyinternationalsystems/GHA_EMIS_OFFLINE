@@ -2,11 +2,11 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'vehicleAccessValidation'"
+                <sis-error [id]="'vehicleAccessValidation'"
                            [errorMessage]="infrastructureValidationHelper.vehicleAccessValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoRoad"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.1 Can a vehicle access your school?</label>
             </div>
             <table #yesNoRoad>
@@ -27,11 +27,11 @@
 
             <div *ngIf="subEntityRoadIsYes()">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'roadTypeValidation'"
+                    <sis-error [id]="'roadTypeValidation'"
                                [errorMessage]="infrastructureValidationHelper.roadTypeValidation()"
                                [class]="'sis-float-left'" [forControl]="roadType"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">3.1.1 If YES, what is the road made of?</label>
                 </div>
                 <table #roadType>
@@ -57,12 +57,12 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'electricityWiredValidation'"
+                <sis-error [id]="'electricityWiredValidation'"
                            [errorMessage]="infrastructureValidationHelper.electricityWiredValidation()"
                            [class]="'sis-float-left'"
                            [forControl]="yesNoElectricity"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.2 Is your {{schoolOrInstitution}} wired for
                     electricity?</label>
             </div>
@@ -84,11 +84,11 @@
 
             <div *ngIf="subEntityElectricityIsYes()">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'electricityFunctionalValidation'"
+                    <sis-error [id]="'electricityFunctionalValidation'"
                                [errorMessage]="infrastructureValidationHelper.electricityFunctionalValidation()"
                                [class]="'sis-float-left'" [forControl]="electricityFunctional"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">3.2.1 If YES, is it functional?</label>
                 </div>
 
@@ -115,11 +115,11 @@
 
         <div>
             <div class="sis-control-validation">
-                <sis-err [id]="'electricityTypeValidation'"
+                <sis-error [id]="'electricityTypeValidation'"
                            [errorMessage]="infrastructureValidationHelper.electricityTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoElectricityType"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.3 Is your surrounding community on electricity?</label>
             </div>
             <table #yesNoElectricityType>
@@ -140,11 +140,11 @@
 
             <div *ngIf="subEntityElectricityTypeIsYes()">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'electricityTypeValidation'"
+                    <sis-error [id]="'electricityTypeValidation'"
                                [errorMessage]="infrastructureValidationHelper.electricityTypeSpecifyValidation()"
                                [class]="'sis-float-left'" [forControl]="electricityType"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">3.3.1 If YES, please specify</label>
                 </div>
                 <table #electricityType>
@@ -163,11 +163,11 @@
         </div>
 
         <div class="sis-control-validation">
-            <sis-err [id]="'environmentalProblemValidation'"
+            <sis-error [id]="'environmentalProblemValidation'"
                        [errorMessage]="infrastructureValidationHelper.environmentalProblemValidation()"
                        [class]="'sis-float-left'" [forControl]="environmentalProblem"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">3.4 Which of these environmental problems are experienced in
                 your institution?</label>
         </div>
@@ -184,11 +184,11 @@
         </div>
 
         <div class="sis-control-validation">
-            <sis-err [id]="'isDocumentedValidation'"
+            <sis-error [id]="'isDocumentedValidation'"
                        [errorMessage]="infrastructureValidationHelper.isDocumentedValidation()"
                        [class]="'sis-float-left'" [forControl]="isDocumented"
                        [isInput]="true">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">3.5 Is your {{schoolOrInstitution}}'s land properly
                 documented?</label>
         </div>
@@ -210,11 +210,11 @@
 
         <div *ngIf="getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-err [id]="'boardingFacilitiesValidation'"
+                <sis-error [id]="'boardingFacilitiesValidation'"
                            [errorMessage]="infrastructureValidationHelper.boardingFacilitiesValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoBoardingFacilities"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.6 Are there boarding facilities at the school?</label>
             </div>
             <table #yesNoBoardingFacilities>
@@ -235,11 +235,11 @@
 
             <div *ngIf="subEntityBoardingFacilityIsYes()" class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'basicBoardingValidation'"
+                    <sis-error [id]="'basicBoardingValidation'"
                                [errorMessage]="infrastructureValidationHelper.basicBoardingValidation()"
                                [class]="'sis-float-left'" [forControl]="basicBoarding"
                                [isInput]="true">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">3.6.1 If YES, how many pupils are BOARDERS?</label>
                 </div>
                 <div #basicBoarding class="mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--5-col-phone">
@@ -258,11 +258,11 @@
 
         <div *ngIf="!getIsBasicSchoolType()">
             <div class="sis-control-validation">
-                <sis-err [id]="'schoolApplyTypeValidation'"
+                <sis-error [id]="'schoolApplyTypeValidation'"
                            [errorMessage]="infrastructureValidationHelper.schoolApplyTypeValidation()"
                            [class]="'sis-float-left'" [forControl]="schoolApplyType"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.6 Which of the following apply to your school?</label>
             </div>
             <table #schoolApplyType>
@@ -285,11 +285,11 @@
 
         <div *ngIf="getIsSecondarySchoolType()">
             <div class="sis-control-validation">
-                <sis-err [id]="'secondaryBoardingValidation'"
+                <sis-error [id]="'secondaryBoardingValidation'"
                            [errorMessage]="infrastructureValidationHelper.secondaryBoardingValidation()"
                            [class]="'sis-float-left'" [forControl]="secondaryBoarding"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.7 How MANY students are? </label>
             </div>
             <div #secondaryBoarding>
@@ -308,11 +308,11 @@
 
         <div *ngIf="getIsTVETSchoolType()">
             <div class="sis-control-validation">
-                <sis-err [id]="'TVETBoardingValidation'"
+                <sis-error [id]="'TVETBoardingValidation'"
                            [errorMessage]="infrastructureValidationHelper.TVETBoardingValidation()"
                            [class]="'sis-float-left'" [forControl]="TVETBoarding"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.7 If your institution has boarding/hostel facilities,
                     how MANY students are?</label>
             </div>
@@ -330,11 +330,11 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'propertyWalledValidation'"
+                <sis-error [id]="'propertyWalledValidation'"
                            [errorMessage]="infrastructureValidationHelper.propertyWalledValidation()"
                            [class]="'sis-float-left'" [forControl]="yesNoPropertyWalled"
                            [isInput]="true">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">3.8 Is your institution's property walled or
                     fenced?</label>
             </div>

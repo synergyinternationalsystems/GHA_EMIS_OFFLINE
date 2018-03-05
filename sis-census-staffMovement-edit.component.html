@@ -2,12 +2,12 @@
 
     <div *ngIf="getIsBasicSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'typeOfLeaveBasicId'"
+            <sis-error [id]="'typeOfLeaveBasicId'"
                        [forControl]="typeOfLeaveBasic"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveValidation() || staffMovementValidationHelper.censusSchoolStaffMovementLeaveCountValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">15.1 How many staff have taken leave in the past school year
                 and what kind of leave it was?</label>
         </div>
@@ -33,12 +33,12 @@
 
     <div class="sis-controls--top-margin" *ngIf="getIsBasicSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'reasonOfLeaveBasicId'"
+            <sis-error [id]="'reasonOfLeaveBasicId'"
                        [forControl]="reasonOfLeaveBasic"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.staffHaveLeftValidation() || staffMovementValidationHelper.censusSchoolStaffMovementLeftCountValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">15.2 How Many Staff have left your school for the following
                 reasons in the past school year?</label>
         </div>
@@ -65,12 +65,12 @@
 
     <div *ngIf="getIsSecondarySchoolType()" class="sis-controls--top-margin">
         <div class="sis-control-validation">
-            <sis-err [id]="'typeOfLeaveSecId'" *ngIf="getIsSecondarySchoolType()"
+            <sis-error [id]="'typeOfLeaveSecId'" *ngIf="getIsSecondarySchoolType()"
                        [forControl]="typeOfLeaveSec"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveSecondaryValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">13.1 How many staff have taken leave in the past school year
                 and what kind of leave it was?</label>
         </div>
@@ -93,12 +93,12 @@
 
     <div *ngIf="getIsSecondarySchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'reasonOfLeaveSecId'" *ngIf="getIsSecondarySchoolType()"
+            <sis-error [id]="'reasonOfLeaveSecId'" *ngIf="getIsSecondarySchoolType()"
                        [forControl]="reasonOfLeaveSec"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.reasonOfLeaveSecondaryValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">13.2 How many Staff have left your institution for the
                 following reasons in the past academic year?</label>
         </div>
@@ -123,12 +123,12 @@
 
     <div *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'typeOfLeaveTvetId'" *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'typeOfLeaveTvetId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="typeOfLeaveTvet"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.staffHaveTakenLeaveTvetValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">11.1 How many staff have taken leave in the past school year
                 and what kind of leave it was?</label>
         </div>
@@ -152,12 +152,12 @@
 
     <div *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'reasonOfLeaveTvetId'" *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'reasonOfLeaveTvetId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="reasonOfLeaveTvet"
                        [isInput]="true"
                        [errorMessage]="staffMovementValidationHelper.reasonOfLeaveTvetValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">11.2 How many Staff have left your institution for the
                 following reasons in the past academic year?</label>
         </div>
@@ -181,12 +181,12 @@
 
     <div #movementRecieveService *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'movementRecieveServiceTVETValidationId'" *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'movementRecieveServiceTVETValidationId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="movementRecieveService" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--element'"
                        [errorMessage]="staffMovementValidationHelper.movementRecieveServiceValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">11.3 How often did your teachers receive in-service training
                 in the past year?</label>
         </div>
@@ -203,12 +203,12 @@
 
     <div #hivaidsyesno *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'hivaidsyesnoTVETValidationId'" *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'hivaidsyesnoTVETValidationId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="hivaidsyesno" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--element'"
                        [errorMessage]="staffMovementValidationHelper.hivaidsYesNoValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">11.4 Has your institution had any in-service training on
                 HIV/AIDs?</label>
         </div>
@@ -225,12 +225,12 @@
 
     <div class="sis-controls--top-margin" #hivaidsyesnoissues *ngIf="getIsTVETSchoolType()">
         <div class="sis-control-validation">
-            <sis-err [id]="'hivaidsyesnoIssuesTVETValidationId'" *ngIf="getIsTVETSchoolType()"
+            <sis-error [id]="'hivaidsyesnoIssuesTVETValidationId'" *ngIf="getIsTVETSchoolType()"
                        [forControl]="hivaidsyesnoissues" [isInput]="true"
                        [errorClass]="'sis-validation-wrapper--element'"
                        [errorMessage]="staffMovementValidationHelper.hivaidsIssuesYesNoServiceValidation()"
                        [class]="'sis-float-left'">
-            </sis-err>
+            </sis-error>
             <label class="sis-label sis-element-required">11.5 Does your institution teach HIV/AIDS issues as integrated
                 in the curriculum?</label>
         </div>

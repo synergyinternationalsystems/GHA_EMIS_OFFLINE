@@ -2,12 +2,12 @@
     <div class="mdl-cell mdl-cell--12-col">
         <div id="indicatorBasicId" *ngIf="isBasicSchool()">
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentManyPrimaryValidation'"
+                <sis-error [id]="'enrolmentManyPrimaryValidation'"
                            [forControl]="enrolmentManyPrimaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentManyPrimaryValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.1 How MANY pupils did you admit to Primary 1 this
                     academic year (do not include repeaters)?</label>
             </div>
@@ -28,18 +28,18 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentNewPrimaryValidation'"
+                <sis-error [id]="'enrolmentNewPrimaryValidation'"
                            [forControl]="enrolmentNewPrimaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentNewPrimaryValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
-                <sis-err [id]="'enrolmentExceedPrimaryValidation'"
+                </sis-error>
+                <sis-error [id]="'enrolmentExceedPrimaryValidation'"
                            [forControl]="enrolmentNewPrimaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentExceedPrimaryValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.2 Out of the NEW Pupils admitted to Primary 1, how many
                     of them are directly from KG?</label>
             </div>
@@ -61,18 +61,18 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentGradeValidation'"
+                <sis-error [id]="'enrolmentGradeValidation'"
                            [forControl]="enrolmentGradeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentGradeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
-                <sis-err [id]="'enrolmentGradePrimaryExceedValidation'"
+                </sis-error>
+                <sis-error [id]="'enrolmentGradePrimaryExceedValidation'"
                            [forControl]="enrolmentGradeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentGradePrimaryExceedValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Grade</label>
             </div>
             <div #enrolmentGradeName>
@@ -104,12 +104,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentBasicBySexAndAgeValidation'"
+                <sis-error [id]="'enrolmentBasicBySexAndAgeValidation'"
                            [forControl]="enrolmentBasicBySexAndAgeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentBasicBySexAndAgeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.5 Enrolment by sex and age</label>
             </div>
             <div #enrolmentBasicBySexAndAgeName>
@@ -136,12 +136,12 @@
 
         <div id="indicatorSecId" *ngIf="isSecondSchool()">
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentInProgrammeSecondaryValidation'"
+                <sis-error [id]="'enrolmentInProgrammeSecondaryValidation'"
                            [forControl]="enrolmentInProgrammeSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentInProgrammeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.1 Enrolment in Programme</label>
             </div>
             <div #enrolmentInProgrammeSecondaryName>
@@ -167,12 +167,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'summaryOfEnrolmentInProgrammeSecondaryValidation'"
+                <sis-error [id]="'summaryOfEnrolmentInProgrammeSecondaryValidation'"
                            [forControl]="summaryOfEnrolmentInProgrammeSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.summaryOfEnrolmentInProgrammeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.2 Summary of Enrolment by Programme</label>
             </div>
             <div #summaryOfEnrolmentInProgrammeSecondaryName>
@@ -198,12 +198,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentByAgeSecondaryValidation'"
+                <sis-error [id]="'enrolmentByAgeSecondaryValidation'"
                            [forControl]="enrolmentByAgeSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--element'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentByAgeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Age</label>
             </div>
             <div #enrolmentByAgeSecondaryName>
@@ -244,12 +244,12 @@
 
         <div id="indicatorTvetId" *ngIf="isTVET()">
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentByAgeTVETValidation'"
+                <sis-error [id]="'enrolmentByAgeTVETValidation'"
                            [forControl]="enrolmentByAgeTVETName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentByAgeTVETValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">7.1 Enrolment by Age</label>
             </div>
             <div #enrolmentByAgeTVETName>
@@ -294,12 +294,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentProgrammeFullTimeValidation'"
+                <sis-error [id]="'enrolmentProgrammeFullTimeValidation'"
                            [forControl]="enrolmentProgrammeFullTimeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentProgrammeFullTimeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">7.2 Enrolment by Programmes (Full-Time students)</label>
             </div>
             <div #enrolmentProgrammeFullTimeName>
@@ -326,12 +326,12 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'enrolmentProgrammePartTimeValidation'"
+                <sis-error [id]="'enrolmentProgrammePartTimeValidation'"
                            [forControl]="enrolmentProgrammePartTimeName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentProgrammePartTimeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">7.3 Enrolment by Programmes (Part-Time Students)</label>
             </div>
             <div #enrolmentProgrammePartTimeName>

@@ -13,12 +13,12 @@
 
 <div *ngIf="isSelectedNonTeachingStaff()">
     <div class="sis-control-validation">
-        <sis-err [id]="'nonTeachingStaffInformationValidation'"
+        <sis-error [id]="'nonTeachingStaffInformationValidation'"
                    [errorClass]="'sis-validation-wrapper--grouped-inline'"
                    [errorMessage]="nonTeachingStaffInformationValidationHelper.censusSchoolNonTeachingStaffCountValidator()"
                    [class]="'sis-float-left'" [forControl]="nonTeachingStaffInformation"
                    [isInput]="true">
-        </sis-err>
+        </sis-error>
         <label class="sis-label sis-element-required"> 10.2 How MANY non-teaching staff do you have in your
             school?</label>
     </div>

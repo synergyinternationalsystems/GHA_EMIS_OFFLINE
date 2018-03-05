@@ -3,12 +3,12 @@
         <div *ngIf="getIsBasicSchoolType()">
             <!-- START Does your school have an elected School Management Committee? -->
             <div class="sis-control-validation">
-                <sis-err [id]="'managementCommitteeBasicValidation'"
+                <sis-error [id]="'managementCommitteeBasicValidation'"
                            [forControl]="managementCommitteeBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.managementCommitteeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.1 Does your school have an elected School Management
                     Committee?</label>
             </div>
@@ -24,12 +24,12 @@
 
             <div *ngIf="isSelectedYesRadio(censusSchoolCommittee, frequency, '', yesNo, noFrequencyClassifierId)">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementCommitteeYesBasicValidation'"
+                    <sis-error [id]="'managementCommitteeYesBasicValidation'"
                                [forControl]="managementCommitteeYesBasicName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.managementCommitteeYesForSaveValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">How often does the School Management Committee meet?</label>
                 </div>
                 <div #managementCommitteeYesBasicName>
@@ -50,12 +50,12 @@
 
             <!-- START Does your school have a School Performance Improvement Plan? -->
             <div class="sis-control-validation">
-                <sis-err [id]="'improvementPlanYesNoValidation'"
+                <sis-error [id]="'improvementPlanYesNoValidation'"
                            [forControl]="improvementPlanYesNoName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.improvementPlanYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.2 Does your school have a School Performance Improvement
                     Plan?</label>
             </div>
@@ -72,12 +72,12 @@
             <!-- END Does your school have a School Performance Improvement Plan? -->
 
             <div class="sis-control-validation">
-                <sis-err [id]="'capitationGrantBasicValidation'"
+                <sis-error [id]="'capitationGrantBasicValidation'"
                            [forControl]="capitationGrantBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.capitationGrantValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.3 Did your school receive its capitation grant for the
                     previous year?</label>
             </div>
@@ -93,13 +93,13 @@
             </div>
 
             <div class="sis-control-validation">
-                <sis-err [id]="'CSReceiveServiceBasicValidation'"
+                <sis-error [id]="'CSReceiveServiceBasicValidation'"
                            [forControl]="CSReceiveServiceBasicName"
                            [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="managementValidationHelper.CSReceiveServiceValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.4 How often is your school visited by the Circuit
                     Supervisor?</label>
             </div>
@@ -119,13 +119,13 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'insetYesNoBasicValidation'"
+                <sis-error [id]="'insetYesNoBasicValidation'"
                            [forControl]="insetYesNoBasicName"
                            [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.insetYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.5 Have you attended INSET (In-ServiceTraining) for Head
                     Teachers</label>
             </div>
@@ -158,12 +158,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'hivaidsYesNoBasicValidation'"
+                <sis-error [id]="'hivaidsYesNoBasicValidation'"
                            [forControl]="hivaidsYesNoBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.hivaidsYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.7 Does your school teach HIV/AIDS issues as integrated
                     in the school curriculum?</label>
             </div>
@@ -180,13 +180,13 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'schoolMealTypeBasicValidation'"
+                <sis-error [id]="'schoolMealTypeBasicValidation'"
                            [forControl]="schoolMealTypeBasicName"
                            [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.schoolMealTypeValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.8 Indicate the type of School Free Meals scheme
                     available</label>
             </div>
@@ -203,12 +203,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'curriculumLeaderYesNoBasicValidation'"
+                <sis-error [id]="'curriculumLeaderYesNoBasicValidation'"
                            [forControl]="curriculumLeaderYesNoBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.curriculumLeaderYesNoValidation()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.9 Does your school have a trained Curriculum
                     Leader?</label>
             </div>
@@ -225,12 +225,12 @@
 
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'basedClusterValidation'"
+                    <sis-error [id]="'basedClusterValidation'"
                                [forControl]="numberBasedCluster" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.censusSchoolBasedClusterValidator()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">
                         4.10 Indicate the NUMBER of School Based INSET (SBI) and Cluster Based INSET (CBI) your school
                         organised on the following subjects this past academic year
@@ -266,12 +266,12 @@
 
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementBasicCBEGraduatesValidation'"
+                    <sis-error [id]="'managementBasicCBEGraduatesValidation'"
                                [forControl]="schoolManagementBasicCBEGraduates" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.censusSchoolBasicCBEGraduatesValidator()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">
                         4.12 How many pupils are Complementary Basic Education (CBE) graduates?
                     </label>
@@ -291,13 +291,13 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'managementNeedyPupilsStudentsBasicValidation'"
+                <sis-error [id]="'managementNeedyPupilsStudentsBasicValidation'"
                            [forControl]="managementNeedyPupilsStudentsBasicName"
                            [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation() || managementValidationHelper.censusSchoolNeedyPupilsStudentsValidator()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.13 {{needyPupilClassifier}}</label>
             </div>
             <div #managementNeedyPupilsStudentsBasicName>
@@ -316,12 +316,12 @@
 
 
             <div class="sis-control-validation">
-                <sis-err [id]="'managementBrightButNeedyPupilsStudentsBasicValidation'"
+                <sis-error [id]="'managementBrightButNeedyPupilsStudentsBasicValidation'"
                            [forControl]="managementBrightButNeedyPupilsStudentsBasicName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation() || managementValidationHelper.censusSchoolBrightPupilsStudentsValidator()"
                            [class]="'sis-float-left'">
-                </sis-err>
+                </sis-error>
                 <label class="sis-label sis-element-required">4.14 {{brightPupilClassifier}}</label>
             </div>
             <table #managementBrightButNeedyPupilsStudentsBasicName>
@@ -342,12 +342,12 @@
 
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementIncentivesFromGovernmentValidation'"
+                    <sis-error [id]="'managementIncentivesFromGovernmentValidation'"
                                [forControl]="managementIncentivesFromGovernmentCount" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.censusSchoolIncentivesFromGovernment()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">
                         4.15 How many of the following Incentives from Government have your school received to date?
                     </label>
@@ -367,12 +367,12 @@
 
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementBeneficiariesPupilCountValidation'"
+                    <sis-error [id]="'managementBeneficiariesPupilCountValidation'"
                                [forControl]="managementBeneficiariesPupilCount" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.censusSchoolBeneficiariesPupilCountValidator()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label">
                         4.16 How many of your pupils/families are beneficiaries of the following?
                     </label>
@@ -428,12 +428,12 @@
         <div class="sis-controls--top-margin">
             <div *ngIf="getIsSecondarySchoolType()">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'selectBGYesNoSecondaryValidation'"
+                    <sis-error [id]="'selectBGYesNoSecondaryValidation'"
                                [forControl]="selectBGYesNoSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.selectBGYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.1 Does your school have an selected Board of
                         Governors?</label>
                 </div>
@@ -451,13 +451,13 @@
                 <!--' nshan@ ''-i mej error e talis-->
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'sbgMeetSecondaryValidation'"
+                    <sis-error [id]="'sbgMeetSecondaryValidation'"
                                [forControl]="sbgMeetSecondaryName"
                                [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.SBGMeetValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.2 How often does the School's Board of Governors
                         meet?</label>
                 </div>
@@ -472,12 +472,12 @@
                 </div>
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'gesInspectorsSecondaryValidation'"
+                    <sis-error [id]="'gesInspectorsSecondaryValidation'"
                                [forControl]="gesInspectorsSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.GESInspectorsValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.3 How often is your school visited by the GES
                         Inspectors?</label>
                 </div>
@@ -497,12 +497,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'receiveReceiveServiceSecondaryValidation'"
+                    <sis-error [id]="'receiveReceiveServiceSecondaryValidation'"
                                [forControl]="receiveReceiveServiceSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.receiveReceiveServiceValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.4 How often did teachers in your school receive
                         in-service training this past year?</label>
                 </div>
@@ -536,13 +536,13 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'hivaidsYesNoSecondaryValidation'"
+                    <sis-error [id]="'hivaidsYesNoSecondaryValidation'"
                                [forControl]="hivaidsYesNoSecondaryName"
                                [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.hivaidsYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.6 Does your school teach HIV/AIDS issues as
                         integrated in the school curriculum?</label>
                 </div>
@@ -559,12 +559,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'sourcesLastYesNoSecondaryValidation'"
+                    <sis-error [id]="'sourcesLastYesNoSecondaryValidation'"
                                [forControl]="sourcesLastYesNoSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.sourcesLastYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.7 Was the school able to raise funds from other
                         sources last year?</label>
                 </div>
@@ -581,12 +581,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementNeedyPupilsStudentsSecondaryValidation'"
+                    <sis-error [id]="'managementNeedyPupilsStudentsSecondaryValidation'"
                                [forControl]="managementNeedyPupilsStudentsSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.8 {{needyPupilClassifier}}</label>
                 </div>
                 <div #managementNeedyPupilsStudentsSecondaryName>
@@ -609,12 +609,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementBrightButNeedyPupilsStudentsSecondaryValidation'"
+                    <sis-error [id]="'managementBrightButNeedyPupilsStudentsSecondaryValidation'"
                                [forControl]="managementBrightButNeedyPupilsStudentsSecondaryName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.9 {{brightPupilClassifier}}</label>
                 </div>
                 <div #managementBrightButNeedyPupilsStudentsSecondaryName>
@@ -705,18 +705,18 @@
             <!--1,2,3,8-->
             <div *ngIf="getIsTVETSchoolType()">
                 <div class="sis-control-validation">
-                    <sis-err [id]="'governInstitutionTVETValidation'"
+                    <sis-error [id]="'governInstitutionTVETValidation'"
                                [forControl]="governInstitutionTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.governInstitutionValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
-                    <sis-err [id]="'governInstitutionOtherTVETValidation'"
+                    </sis-error>
+                    <sis-error [id]="'governInstitutionOtherTVETValidation'"
                                [forControl]="governInstitutionTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.governInstitutionOtherValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.1 How is this institution governed?</label>
                 </div>
                 <div #governInstitutionTVETName>
@@ -736,12 +736,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'compositionCouncilTVETValidation'"
+                    <sis-error [id]="'compositionCouncilTVETValidation'"
                                [forControl]="compositionCouncilTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.compositionCouncilValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.2 Please indicate the composition of management
                         council / board of governors</label>
                 </div>
@@ -758,18 +758,18 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'fundInstitutionTVETValidation'"
+                    <sis-error [id]="'fundInstitutionTVETValidation'"
                                [forControl]="fundInstitutionTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.fundInstitutionValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
-                    <sis-err [id]="'fundInstitutionOtherTVETValidation'"
+                    </sis-error>
+                    <sis-error [id]="'fundInstitutionOtherTVETValidation'"
                                [forControl]="fundInstitutionTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.fundInstitutionOtherValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.3 How is your institution funded?</label>
                 </div>
                 <div #fundInstitutionTVETName>
@@ -789,12 +789,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'managementNeedyPupilsStudentsTVETValidation'"
+                    <sis-error [id]="'managementNeedyPupilsStudentsTVETValidation'"
                                [forControl]="managementNeedyPupilsStudentsTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.managementNeedyPupilsStudentsValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.4 {{needyPupilClassifier}}</label>
                 </div>
                 <div #managementNeedyPupilsStudentsTVETName>
@@ -818,12 +818,12 @@
 
                 <div class="sis-controls--top-margin">
                     <div class="sis-control-validation">
-                        <sis-err [id]="'managementBrightButNeedyPupilsStudentsTVETValidation'"
+                        <sis-error [id]="'managementBrightButNeedyPupilsStudentsTVETValidation'"
                                    [forControl]="managementBrightButNeedyPupilsStudentsTVETName" [isInput]="true"
                                    [errorClass]="'sis-validation-wrapper--grouped'"
                                    [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
                                    [class]="'sis-float-left'">
-                        </sis-err>
+                        </sis-error>
                         <label class="sis-label sis-element-required">4.5 {{brightPupilClassifier}}</label>
                     </div>
                     <div #managementBrightButNeedyPupilsStudentsTVETName>
@@ -862,12 +862,12 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'examiningBodyYesNoTVETValidation'"
+                    <sis-error [id]="'examiningBodyYesNoTVETValidation'"
                                [forControl]="examiningBodyYesNoTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.examiningBodyYesNoValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.7 Are ANY of your technical and vocational
                         programmes accredited by an Examining Body?</label>
                 </div>
@@ -883,18 +883,18 @@
 
                 <div *ngIf="isSelectedYesRadio(censusSchoolExamAccredits, examACredit, 'examAccredit_ENG', yesNo, noExamAccreditClassifierId)">
                     <div class="sis-control-validation">
-                        <sis-err [id]="'examAccreditTVETValidation'"
+                        <sis-error [id]="'examAccreditTVETValidation'"
                                    [forControl]="examAccreditTVETName" [isInput]="true"
                                    [errorClass]="'sis-validation-wrapper--grouped'"
                                    [errorMessage]="managementValidationHelper.examAccreditYesValidation()"
                                    [class]="'sis-float-left'">
-                        </sis-err>
-                        <sis-err [id]="'examAccreditOtherTVETValidation'"
+                        </sis-error>
+                        <sis-error [id]="'examAccreditOtherTVETValidation'"
                                    [forControl]="examAccreditTVETName" [isInput]="true"
                                    [errorClass]="'sis-validation-wrapper--grouped'"
                                    [errorMessage]="managementValidationHelper.examAccreditOtherValidation()"
                                    [class]="'sis-float-left'">
-                        </sis-err>
+                        </sis-error>
                         <label class="sis-label">If YES, which Examining Body accredits the exams?</label>
                     </div>
                     <div #examAccreditTVETName>
@@ -919,18 +919,18 @@
 
 
                 <div class="sis-control-validation">
-                    <sis-err [id]="'tvetProgrammTVETValidation'"
+                    <sis-error [id]="'tvetProgrammTVETValidation'"
                                [forControl]="tvetProgrammTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped'"
                                [errorMessage]="managementValidationHelper.tvetProgrammValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
-                    <sis-err [id]="'tvetProgrammOtherTVETValidation'"
+                    </sis-error>
+                    <sis-error [id]="'tvetProgrammOtherTVETValidation'"
                                [forControl]="tvetProgrammTVETName" [isInput]="true"
                                [errorClass]="'sis-validation-wrapper--grouped-inline'"
                                [errorMessage]="managementValidationHelper.tvetProgrammOtherValidation()"
                                [class]="'sis-float-left'">
-                    </sis-err>
+                    </sis-error>
                     <label class="sis-label sis-element-required">4.8 Which, if any, authority prepares the curricula
                         that is being followed in your TVET programmes?</label>
                 </div>
