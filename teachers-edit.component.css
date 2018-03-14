@@ -1055,11 +1055,3 @@ a:hover {
 
 /* =sorting styles
     -------------------------------------------------------------- */
-.sis-popup-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin: 24px -24px 0 -24px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0px 24px 0 24px;
-  box-sizing: border-box; }
