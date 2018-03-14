@@ -2,10 +2,10 @@
     <div class="sis-margin--top-reset">
         <div class="sis-control-validation">
             <sis-error [id]="'requiredValidation'" *ngIf="isRequired"
-                           [forControl]="questionRequiredName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--element'"
-                           [errorMessage]="validateRequired()"
-                           [class]="'sis-float-left'">
+                       [forControl]="questionRequiredName" [isInput]="true"
+                       [errorClass]="'sis-validation-wrapper--element'"
+                       [errorMessage]="validateRequired()"
+                       [class]="'sis-float-left'">
             </sis-error>
             <label class="sis-label"> {{sectionNumber ? sectionNumber + " " + filteredLabelName : filteredLabelName}} </label>
         </div>

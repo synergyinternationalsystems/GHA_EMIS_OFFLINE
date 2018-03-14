@@ -1,6 +1,8 @@
 
 <div class="sis-popup-container__inner">
-    <div class="sis-controls--top-margin" [innerHTML]="text"></div>
+    <div class="sis-notification--note ">
+        <div [innerHTML]="text"></div>
+    </div>
 </div>
 <div class="sis-popup-container__buttons sis-align-right">
     <button (click)="close()" class="mdl-button mdl-button--raised mdl-js-button sis-btn--sec mdl-js-ripple-effect">No</button>
