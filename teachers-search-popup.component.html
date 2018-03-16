@@ -99,7 +99,7 @@
                             </table>
                             <sis-paging [page]="currentPage" (pageChange)="changeCurrentPage($event)"
                                         [pageSize]="pageSize"
-                                        [itemsCount]="totalItemsCount" [totalPageCount]="getTotalPageCount()">
+                                        [itemsCount]="searchedTeacherItems.length" [totalPageCount]="getTotalPageCount()">
                             </sis-paging>
                         </div>
 
