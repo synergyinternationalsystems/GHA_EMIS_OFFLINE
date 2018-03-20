@@ -205,7 +205,7 @@
                                            [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio-view>
             </div>
-
+            <div *ngIf="!isSelectedNoToiletFacility()">
             <div #toiletsFunctionalYesNoName>
                 <label class="sis-label sis-element-required">
                     6.2.2 Were the toilets functional at the time of the census?
@@ -232,6 +232,7 @@
                                            [classifierNameFromInput]="'YesNoId'"
                                            [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio-view>
+            </div>
             </div>
 
             <div #individualToiletSeatsAvailableName>
@@ -303,7 +304,7 @@
             </div>
 
             <div #urinalsFunctionalYesNoName>
-                <label class="sis-label">6.2.{{isSelectedUseToilets() ? 8 : 4}} Were the urinals functional at the time of the census?</label>
+                <label class="sis-label">6.2.{{isSelectedNoToiletFacility() ? 2 :(isSelectedUseToilets() ? 8 : 4)}} Were the urinals functional at the time of the census?</label>
                 <sis-select-one-radio-view [census]="census"
                                            [classifierList]="classifierList"
                                            [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
@@ -318,7 +319,7 @@
 
             <div *ngIf="isSelectedUrinalsFunctional()" #urinalsAvailabilityName>
                 <label class="sis-label sis-element-required">
-                    6.2.{{isSelectedUseToilets() ? 9 : 5}} {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
+                    6.2.{{isSelectedNoToiletFacility() ? 3 :(isSelectedUseToilets() ? 9 : 5)}} {{toiletAvailabilityFunctionalityDisaggregationClassifierName}}?
                 </label>
                 <sis-census-indicator-tracking-1L-HView [census]="census"
                                                         [school]="school"
@@ -337,7 +338,7 @@
         <div class="mdl-cell mdl-cell--12-col">
             <div #washingFacilitiesFollowingPlacesName>
                 <label class="sis-label sis-element-required">
-                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 10 : (isSelectedUrinalsFunctional() ? 6 : (isSelectedUseToilets() ? 9 : 5))}} Does your school have Hand washing facilities at the following places?
+                    6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 4 : isSelectedNoToiletFacility()? 3 :((isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 10 : (isSelectedUrinalsFunctional() ? 6 : (isSelectedUseToilets() ? 9 : 5)))}} Does your school have Hand washing facilities at the following places?
                 </label>
                 <div class="sis-table-scroll">
                     <table class="mdl-data-table mdl-js-data-table">
@@ -364,7 +365,7 @@
 
             <div #soapAvailableForHandWashingName>
                 <label class="sis-label sis-element-required">
-                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 11 : (isSelectedUrinalsFunctional() ? 7 : (isSelectedUseToilets() ? 10 : 6))}} Is soap available for handwashing at these places at the time of the census?
+                    6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 5: isSelectedNoToiletFacility()? 4:(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 11 : (isSelectedUrinalsFunctional() ? 7 : (isSelectedUseToilets() ? 10 : 6)))}} Is soap available for handwashing at these places at the time of the census?
                 </label>
                 <table class="mdl-data-table mdl-js-data-table">
                     <thead>
@@ -387,7 +388,7 @@
 
             <div #waterAvailableForHandWashingName>
                 <label class="sis-label sis-element-required">
-                    6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 12 : (isSelectedUrinalsFunctional() ? 8 : (isSelectedUseToilets() ? 11 : 7))}} Is water available for handwashing at these places at the time of the census?
+                    6.2.{{isSelectedNoToiletFacility()&& isSelectedUrinalsFunctional() ? 6 : isSelectedNoToiletFacility()? 5:(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 12 : (isSelectedUrinalsFunctional() ? 8 : (isSelectedUseToilets() ? 11 : 7)))}} Is water available for handwashing at these places at the time of the census?
                 </label>
                 <table class="mdl-data-table mdl-js-data-table">
                     <thead>
@@ -408,7 +409,7 @@
             </div>
 
             <div #effluentDischargeName>
-                <label class="sis-label sis-element-required">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 13 : (isSelectedUrinalsFunctional() ? 9 : (isSelectedUseToilets() ? 12 : 8))}} Where does the effluent from the urinal discharge
+                <label class="sis-label sis-element-required">6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 7: isSelectedNoToiletFacility()? 6 :(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 13 : (isSelectedUrinalsFunctional() ? 9 : (isSelectedUseToilets() ? 12 : 8)))}} Where does the effluent from the urinal discharge
                     to?</label>
                 <div>
                     <span>{{getEffluentDischarge().getProperty('effluentDischarge_ENG').value}}</span>
@@ -416,14 +417,14 @@
             </div>
 
             <div #solidWasteName>
-                <label class="sis-label sis-element-required">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 14 : (isSelectedUrinalsFunctional() ? 10 : (isSelectedUseToilets() ? 13 : 9))}} How is solid waste from the school disposed
+                <label class="sis-label sis-element-required">6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 8: isSelectedNoToiletFacility()? 7 :(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 14 : (isSelectedUrinalsFunctional() ? 10 : (isSelectedUseToilets() ? 13 : 9)))}} How is solid waste from the school disposed
                     off?</label>
                 <div>
                     <span>{{getSolidWaste().getProperty('solidWaste_ENG').value}}</span>
                 </div>
             </div>
             <div #spipYesNoName>
-                <label class="sis-label sis-element-required">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 15 : (isSelectedUrinalsFunctional() ? 11 : (isSelectedUseToilets() ? 14 : 10))}} Does the SPIP include how you can improve / sustain
+                <label class="sis-label sis-element-required">6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 9: isSelectedNoToiletFacility()? 8 :(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 15 : (isSelectedUrinalsFunctional() ? 11 : (isSelectedUseToilets() ? 14 : 10)))}} Does the SPIP include how you can improve / sustain
                     WASH facilities in the school?</label>
 
                 <sis-select-one-radio-view [census]="census"
@@ -437,7 +438,7 @@
             </div>
 
             <div #washYesNoName>
-                <label class="sis-label sis-element-required">6.2.{{(isSelectedUseToilets() && isSelectedUrinalsFunctional()) ? 16 : (isSelectedUrinalsFunctional() ? 12 : (isSelectedUseToilets() ? 15 : 11))}} Does the school have an operational and maintenance
+                <label class="sis-label sis-element-required">6.2.{{isSelectedNoToiletFacility() && isSelectedUrinalsFunctional() ? 10: isSelectedNoToiletFacility()? 9 :(isSelectedUseToilets() && isSelectedUrinalsFunctional() ? 16 : (isSelectedUrinalsFunctional() ? 12 : (isSelectedUseToilets() ? 15 : 11)))}} Does the school have an operational and maintenance
                     plans for WASH facilities in the school?</label>
 
                 <sis-select-one-radio-view [census]="census"
@@ -457,32 +458,9 @@
     <label class="sis-layout__section__title">6.3 HEALTH AND HYGIENE EDUCATION</label>
     <div class="mdl-grid mdl-grid--no-spacing">
         <div class="mdl-cell mdl-cell--12-col">
-            <div #hygieneYesNoName>
-                <label class="sis-label sis-element-required">6.3.1 Is Hygiene taught in the school?</label>
-                <sis-select-one-radio-view [census]="census"
-                                           [classifierList]="classifierList"
-                                           [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
-                                           [censusSubEntityName]="'censusSchoolQuestions'"
-                                           [classifierId]="'HYGIENE_YES_NO_ID'"
-                                           [classifierNameFromInput]="'YesNoId'"
-                                           [subEntityFields]="questionSubEntityFields">
-                </sis-select-one-radio-view>
-            </div>
-
-
-            <div #hygieneTaughtName>
-                <label class="sis-label sis-element-required">6.3.2 How is Hygiene taught in the school?</label>
-
-                <!--<input type="text" value="{{hygieneTaught.getProperty('hygieneTaught_ENG').value}}"
-                       #hygieneTaughtSectionText
-                       (change)="onTextChanged(hygieneTaught, 'hygieneTaught_ENG', hygieneTaughtSectionText.value)"
-                       name="hygieneTaughtSectionId" class="sis-input sis-large-width"/>-->
-                <span> {{getHygieneTaught().getProperty('hygieneTaught_ENG').value}}</span>
-            </div>
-
 
             <div #changingRoomYesNoName>
-                <label class="sis-label sis-element-required">6.3.3 Does the school have a changing room for girls
+                <label class="sis-label sis-element-required">6.3.1 Does the school have a changing room for girls
                     during menstruation?</label>
 
                 <sis-select-one-radio-view [census]="census"
@@ -493,6 +471,24 @@
                                            [classifierId]="'CHANGING_ROOM_YES_NO_ID'"
                                            [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio-view>
+            </div>
+
+            <div #hygieneYesNoName>
+                <label class="sis-label sis-element-required">6.3.2 Is Hygiene taught in the school?</label>
+                <sis-select-one-radio-view [census]="census"
+                                           [classifierList]="classifierList"
+                                           [censusSubEntityCategoryName]="'CensusSchoolQuestion'"
+                                           [censusSubEntityName]="'censusSchoolQuestions'"
+                                           [classifierId]="'HYGIENE_YES_NO_ID'"
+                                           [classifierNameFromInput]="'YesNoId'"
+                                           [subEntityFields]="questionSubEntityFields">
+                </sis-select-one-radio-view>
+            </div>
+
+            <div *ngIf="isSelectedHygieneYesNo()">
+            <div #hygieneTaughtName>
+                <label class="sis-label sis-element-required">6.3.3 How is Hygiene taught in the school?</label>
+                <span> {{getHygieneTaught().getProperty('hygieneTaught_ENG').value}}</span>
             </div>
 
 
@@ -511,10 +507,10 @@
                 </sis-census-indicator-tracking-2L-view>
             </div>
 
-
+            </div>
             <div class="sis-controls--top-margin">
                 <div #schoolHealthYesNoName>
-                    <label class="sis-label sis-element-required">6.3.5 Does the school have a functional school health
+                    <label class="sis-label sis-element-required">6.3.{{isSelectedHygieneYesNo() ? 5 :3}} Does the school have a functional school health
                         club?</label>
 
                     <sis-select-one-radio-view [census]="census"
@@ -530,7 +526,7 @@
 
 
             <div #sanitationActivityYesNoName>
-                <label class="sis-label">6.3.6 Does the school organise outreach activities on sanitation and hygiene to
+                <label class="sis-label">6.3.{{isSelectedHygieneYesNo() ? 6 :4}} Does the school organise outreach activities on sanitation and hygiene to
                     the communities?</label>
 
                 <sis-select-one-radio-view [census]="census"
@@ -544,7 +540,7 @@
             </div>
 
             <div #healthCoordinatorYesNoName>
-                <label class="sis-label">6.3.7 Does the school have a School Based Health Co-ordinator?</label>
+                <label class="sis-label">6.3.{{isSelectedHygieneYesNo() ? 7 :5}} Does the school have a School Based Health Co-ordinator?</label>
 
                 <sis-select-one-radio-view [census]="census"
                                            [classifierList]="classifierList"

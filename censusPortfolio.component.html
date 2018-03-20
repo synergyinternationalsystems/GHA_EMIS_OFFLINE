@@ -227,6 +227,10 @@
                                                                             {{row.getProperty("lastUpdatedOn").value | date
                                                                             : "dd-MMM-yyyy"}}
                                                     </td>
+
+                                                    <td class="mdl-data-table__cell--non-numeric">
+                                                        {{row.getProperty('WFState').value}}
+                                                    </td>
                                                    <!-- <td class="mdl-data-table__cell&#45;&#45;non-numeric">
                                                         <ng-container
                                                                 *ngIf="isGreenAlert(row.getProperty('alert').value, row.getProperty('alertDaysCount').value)">
