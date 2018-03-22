@@ -107,8 +107,17 @@
 
             </tbody>
             <tfoot>
-                <tr *ngIf="hasTotalRow">
+                <tr *ngIf="hasColumnTotalRow">
                     <td class="mdl-data-table__cell--non-numeric">Total:</td>
+                <ng-container *ngFor="let horizontalFirstLevellClassifier of filteredHorizontalFirstLevelClassifierList()">
+                        <td *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelByFirstLevelClassifierList(horizontalFirstLevellClassifier.getId())">
+                           {{getColumnTotal(horizontalFirstLevellClassifier.getName(),horizontalSecondLevelClassifier.getName())}}
+                        </td>
+                </ng-container>
+                </tr>
+
+                <tr *ngIf="hasTotalRow">
+                    <td class="mdl-data-table__cell--non-numeric">Grand Total:</td>
                     <td colspan="24" class="mdl-data-table__cell--right">{{totalValue}}</td>
                 </tr>
             </tfoot>

@@ -3,10 +3,15 @@
 
         <div class="sis-control-validation">
             <sis-error [id]="'numberofequipmentValidation'"
-                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation() || materialsEquipmentValidationHelper.censusSchoolFurnitureNumberValidator()"
+                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation() || materialsEquipmentValidationHelper.censusSchoolFurnitureNumberValidator() || materialsEquipmentValidationHelper.teacherFurnitureCountValidationForBasic()"
                        *ngIf="getIsBasicSchoolType()"
-                       Indicate the number of equipment at your school.
                        [class]="'sis-float-left'" [forControl]="numberOfEquipment"
+                       [isInput]="true">
+            </sis-error>
+            <sis-error [id]="'numberofequipmentValidation'"
+                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentSecondaryValidation() || materialsEquipmentValidationHelper.teacherFurnitureCountValidationForSecondary()"
+                       *ngIf="getIsSecondarySchoolType()"
+                       [class]="'sis-float-left'" [forControl]="numberOfEquipmentSec"
                        [isInput]="true">
             </sis-error>
             <label class="sis-label">7.1 Indicate the number of equipment at your school.</label>

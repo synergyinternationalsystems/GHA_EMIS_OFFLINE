@@ -67,12 +67,6 @@
                            [errorMessage]="enrollmentValidationHelper.enrolmentGradeValidation()"
                            [class]="'sis-float-left'">
                 </sis-error>
-                <sis-error [id]="'enrolmentGradePrimaryExceedValidation'"
-                           [forControl]="enrolmentGradeName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="enrollmentValidationHelper.enrolmentGradePrimaryExceedValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
                 <label class="sis-label sis-element-required">8.3 Enrolment by Grade</label>
             </div>
             <div #enrolmentGradeName>
@@ -129,6 +123,7 @@
                                                   [visibilityFilter]="'EnrolmentAgeSchoolLevel'"
                                                   [visibilityFilterPropertyName]="'isChecked'"
                                                   [hasTotalRow]="true"
+                                                  [hasColumnTotalRow]="true"
                                                   [indicatorType]="enrolmentBasicBySexAndAge">
                 </sis-census-indicator-tracking-3L>
             </div>
