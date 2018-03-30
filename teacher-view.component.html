@@ -30,6 +30,8 @@
                             <sis-tab id="0" title="{{tabNumbersMap.get(0)}}">
                                 <teachers-general-information-view [classifierList]="classifierList" [teacher]="teacher"
                                                                    [tabIndex]="1"
+                                                                   [isSelectedTvetSchoolLevel]="_isSelectedTvetSchoolLevel"
+                                                                   (isSelectedTvetSchoolLevelChange)="_isSelectedTvetSchoolLevel=$event"
                                                                    [teachersValidationHelper]="teachersValidationHelper"
                                                                    *ngIf="selectedTabId === 0">
                                     Loading ...

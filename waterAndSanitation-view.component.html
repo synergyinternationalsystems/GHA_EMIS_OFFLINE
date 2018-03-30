@@ -234,7 +234,7 @@
                 </sis-select-one-radio-view>
             </div>
             </div>
-
+            <div *ngIf="isSelectedUseToilets()">
             <div #individualToiletSeatsAvailableName>
                 <label class="sis-label sis-element-required">
                     6.2.4 {{toiletAvailabilityDisaggregationClassifierName}}?
@@ -269,8 +269,10 @@
                 </sis-census-indicator-tracking-1L-HView>
             </div>
         </div>
+        </div>
 
         <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div *ngIf="isSelectedUseToilets()">
             <div #cleanToiletsYesNoName>
                 <label class="sis-label">
                     6.2.6 Were the toilets clean at the time of the census?
@@ -301,6 +303,7 @@
                                            [subEntityOtherFieldName]="'toiletResponsible_ENG'"
                                            [subEntityFields]="questionSubEntityFields">
                 </sis-select-one-radio-view>
+            </div>
             </div>
 
             <div #urinalsFunctionalYesNoName>

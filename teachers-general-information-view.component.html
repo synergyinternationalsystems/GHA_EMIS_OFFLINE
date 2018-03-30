@@ -203,7 +203,7 @@
 
         <div>
             <div class="sis-control-validation">
-                <label class="sis-label sis-element-required">{{tabIndex}}.22 Qualification
+                <label class="sis-label sis-element-required">{{tabIndex}}.22 Professional
                     Status</label>
             </div>
             <div #teacherQualificationStatusRadioButton
@@ -215,7 +215,7 @@
             </div>
         </div>
 
-        <div>
+        <div *ngIf="isSelectedTvetSchoolLevel.value">
             <div class="sis-control-validation">
                 <label class="sis-label sis-element-required">{{tabIndex}}.23 Relevant Industrial experience</label>
             </div>
@@ -224,7 +224,7 @@
 
         <div>
             <div class="sis-control-validation">
-                <label class="sis-label sis-element-required">{{tabIndex}}.24 Who pays the
+                <label class="sis-label sis-element-required">{{tabIndex}}.{{isSelectedTvetSchoolLevel.value ? 24 :23}} Who pays the
                     salary?</label>
             </div>
             <div #teacherSalaryPaid class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">

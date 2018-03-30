@@ -148,7 +148,14 @@
         </div>
 
         <div>
-            <label class="sis-label">{{tabIndex}}.9 Year of Birth</label>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherYearOfBirthValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherYearOfBirthValidation()"
+                           [class]="'sis-float-left'" [forControl]="yearOfBirth"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">{{tabIndex}}.9 Year of Birth</label>
+            </div>
             <input #yearOfBirth type="number" inputMaxLength="4"
                    [(ngModel)]="teacher.getProperty('yearOfBirth').value"
                    class="sis-input sis-small-width"/>
@@ -177,14 +184,29 @@
         </div>
 
         <div>
-            <label class="sis-label">{{tabIndex}}.11 Year of First Appointment</label>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherFirstAppointmentYearValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherFirstAppointmentYearValidation()"
+                           [class]="'sis-float-left'" [forControl]="firstAppointmentYear"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">{{tabIndex}}.11 Year of First Appointment</label>
+            </div>
             <input #firstAppointmentYear type="number" inputMaxLength="4"
                    [(ngModel)]="teacher.getProperty('firstAppointmentYear').value"
                    class="sis-input sis-small-width"/>
         </div>
 
         <div>
-            <label class="sis-label">{{tabIndex}}.12 Year Posted to Present Station</label>
+
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherCurrentPositionYearValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherCurrentPositionYearValidation()"
+                           [class]="'sis-float-left'" [forControl]="currentPositionYear"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">{{tabIndex}}.12 Year Posted to Present Station</label>
+            </div>
             <input #currentPositionYear type="number" inputMaxLength="4"
                    [(ngModel)]="teacher.getProperty('currentPositionYear').value"
                    class="sis-input sis-small-width"/>
@@ -226,7 +248,14 @@
         </div>
 
         <div>
-            <label class="sis-label">{{tabIndex}}.14 Year Appointed to Rank</label>
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherRankAppointedYearValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherRankAppointedYearValidation()"
+                           [class]="'sis-float-left'" [forControl]="rankAppointedYear"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">{{tabIndex}}.14 Year Appointed to Rank</label>
+            </div>
             <input #rankAppointedYear type="number" inputMaxLength="4"
                    [(ngModel)]="teacher.getProperty('rankAppointedYear').value"
                    class="sis-input sis-small-width"/>
@@ -329,7 +358,15 @@
         </div>
 
         <div>
-            <label class="sis-label">{{tabIndex}}.21 Teaching Qualification - Year Completed</label>
+
+            <div class="sis-control-validation">
+                <sis-error [id]="'teacherYearCompletedValidation'"
+                           [errorMessage]="teachersValidationHelper.teacherYearCompletedValidation()"
+                           [class]="'sis-float-left'" [forControl]="yearCompleted"
+                           [isInput]="true">
+                </sis-error>
+                <label class="sis-label">{{tabIndex}}.21 Teaching Qualification - Year Completed</label>
+            </div>
             <input #yearCompleted type="number" inputMaxLength="4"
                    [(ngModel)]="teacher.getProperty('yearCompleted').value"
                    class="sis-input sis-small-width"/>
@@ -342,7 +379,7 @@
                            [class]="'sis-float-left'" [forControl]="teacherQualificationStatusRadioButton"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">{{tabIndex}}.22 Qualification
+                <label class="sis-label sis-element-required">{{tabIndex}}.22 Professional
                     Status</label>
             </div>
             <div #teacherQualificationStatusRadioButton
@@ -359,6 +396,7 @@
             </div>
         </div>
 
+        <div *ngIf="isSelectedTvetSchoolLevel.value">
         <div>
             <div class="sis-control-validation">
                 <sis-error [id]="'relevantIndustrialValidation'"
@@ -372,6 +410,7 @@
                    [(ngModel)]="teacher.getProperty('relevantIndustrial').value"
                    class="sis-input sis-mid-width"/>
         </div>
+        </div>
 
         <div>
             <div class="sis-control-validation">
@@ -380,7 +419,7 @@
                            [class]="'sis-float-left'" [forControl]="teacherSalaryPaid"
                            [isInput]="true">
                 </sis-error>
-                <label class="sis-label sis-element-required">{{tabIndex}}.24 Who pays the
+                <label class="sis-label sis-element-required">{{tabIndex}}.{{isSelectedTvetSchoolLevel.value ? 24 :23}} Who pays the
                     salary?</label>
             </div>
             <div #teacherSalaryPaid class="mdl-cell--11-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">

@@ -517,6 +517,28 @@ a:hover {
   display: block;
   height: 100%; }
 
+/***********  Table with Fixed Header START   **************/
+.sis-table-fixed-header tbody {
+  display: block;
+  height: 300px;
+  overflow: auto; }
+
+.sis-table-fixed-header thead,
+.sis-table-fixed-header tbody tr,
+.sis-table-fixed-header tfoot,
+.sis-table-fixed-header tfoot tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  /* even columns width , fix width of table too*/ }
+
+.sis-table-fixed-header thead {
+  width: calc( 100% - 17px); }
+
+.sis-table-fixed-header tfoot {
+  width: calc( 100% - 17px); }
+
+/***********  Table with Fixed Header End   **************/
 /* =End Tables
 -------------------------------------------------------------- */
 /* =Notifications

@@ -2786,7 +2786,7 @@ id integer
 );
 CREATE TABLE "School" (
   schoolId                 integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  schoolInstanceId         integer,
+  SchoolInstanceId         integer,
   majorVersion             integer,
   minorVersion             integer,
   schoolCode               nvarchar(255),

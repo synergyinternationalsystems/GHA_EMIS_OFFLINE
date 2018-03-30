@@ -24,10 +24,14 @@
                     <td>
                         {{teacher.getProperty('teacherInstanceId').value.getProperty('surname').value}}
                     </td>
-                    <td> <a (click)="editTeachers(teacher.getProperty('teacherInstanceId').value,false)">
+                    <td>
+                        <a (click)="editTeachers(teacher.getProperty('teacherInstanceId').value,false)"
+                           *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherId').value<0">
                         {{teacher.getProperty('teacherInstanceId').value.getProperty('firstName').value}}
                         </a>
+                        <span *ngIf="teacher.getProperty('teacherInstanceId').value.getProperty('teacherId').value>0"> {{teacher.getProperty('teacherInstanceId').value.getProperty('firstName').value}} </span>
                     </td>
+
                     <td>{{teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value &&
                         teacher.getProperty('teacherInstanceId').value.getProperty('staffNumber').value}}
                     </td>

@@ -351,7 +351,7 @@
                                [class]="'sis-float-left'">
                     </sis-error>
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(15)}} How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                 </div>
                 <div #managementIncentivesFromGovernmentCount>
@@ -376,7 +376,7 @@
                                [class]="'sis-float-left'">
                     </sis-error>
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(16)}} How many of your pupils/families are beneficiaries of the following?
+                        4.{{getSubSectionNumber("beneficiaryType")}} How many of your pupils/families are beneficiaries of the following?
                     </label>
                 </div>
                 <div #managementBeneficiariesPupilCount>
@@ -395,7 +395,7 @@
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.{{getSubSectionNumber(17)}} Indicate any group(s) active in supporting your school in the following areas in the past year.
+                    4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate any group(s) active in supporting your school in the following areas in the past year.
                 </label>
                 <div class="sis-table-scroll">
                     <table class="mdl-data-table mdl-js-data-table" id="basicActiveGroupSupportAreaSectionId">
@@ -643,7 +643,7 @@
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(10)}} How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-H [census]="census"
                                                         [school]="school"
@@ -660,7 +660,7 @@
                     <sis-census-indicator-tracking-2L [census]="census"
                                                       [school]="school"
                                                       [classifierList]="classifierList"
-                                                      [label]="'4.' + getSubSectionNumber(11) + ' How many of your students/families are beneficiaries of the following?'"
+                                                      [label]="'4.' + getSubSectionNumber('beneficiaryType') + ' How many of your students/families are beneficiaries of the following?'"
                                                       [tableId]="'beneficiaryTypeTableId'"
                                                       [indicatorInstanceId]="managementBeneficiaries"
                                                       [horizontalClassifierName]="'Pupil'"
@@ -672,7 +672,7 @@
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(12)}} Indicate with a tick any group(s) active in supporting your school in the following
+                        4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate with a tick any group(s) active in supporting your school in the following
                     </label>
                     <div class="sis-table-scroll">
                         <table id="secondaryActiveGroupSupportAreaSectionId" class="mdl-data-table mdl-js-data-table">
@@ -856,7 +856,7 @@
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(6)}} How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-H [census]="census"
                                                         [school]="school"
@@ -877,7 +877,7 @@
                                [errorMessage]="managementValidationHelper.examiningBodyYesNoValidation()"
                                [class]="'sis-float-left'">
                     </sis-error>
-                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber(7)}} Are ANY of your technical and vocational
+                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber("examiningBody")}} Are ANY of your technical and vocational
                         programmes accredited by an Examining Body?</label>
                 </div>
                 <div #examiningBodyYesNoTVETName>
@@ -940,7 +940,7 @@
                                [errorMessage]="managementValidationHelper.tvetProgrammOtherValidation()"
                                [class]="'sis-float-left'">
                     </sis-error>
-                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber(8)}} Which, if any, authority prepares the curricula
+                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber("tvetProgramm")}} Which, if any, authority prepares the curricula
                         that is being followed in your TVET programmes?</label>
                 </div>
                 <div #tvetProgrammTVETName>
@@ -963,7 +963,7 @@
                     <sis-census-indicator-tracking-2L [census]="census"
                                                       [school]="school"
                                                       [classifierList]="classifierList"
-                                                      [label]="'4.' + getSubSectionNumber(9) + ' How many of your students are beneficiaries of the following?'"
+                                                      [label]="'4.' + getSubSectionNumber('beneficiaryType') + ' How many of your students are beneficiaries of the following?'"
                                                       [tableId]="'beneficiaryTypeTableId'"
                                                       [indicatorInstanceId]="managementBeneficiaries"
                                                       [horizontalClassifierName]="'Pupil'"
@@ -975,7 +975,7 @@
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.{{getSubSectionNumber(10)}} Indicate with a tick any group(s) active in supporting your school in the following.
+                        4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate with a tick any group(s) active in supporting your school in the following.
                     </label>
                     <div class="sis-table-scroll">
                         <table class="mdl-data-table mdl-js-data-table" id="tvetActiveGroupSupportAreaSectionId">
