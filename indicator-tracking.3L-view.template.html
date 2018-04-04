@@ -29,11 +29,14 @@
                 </tr>
             </thead>
             <tbody>
-            <tr *ngIf="hasEmbeddedVerticalClassifier" >
-                <td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length+2"  *ngIf="hasVerticalTotalColumn">
 
-                    <table *ngFor="let indicatorTrackingItem of indicatorTrackingList">
-                        <tbody>
+
+            <ng-container *ngIf="hasEmbeddedVerticalClassifier">
+            <!--<tr>-->
+                <!--<td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length+2"  *ngIf="hasVerticalTotalColumn">-->
+                <ng-container *ngIf="hasVerticalTotalColumn">
+                    <ng-container *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+                        <!--<tbody>-->
                             <tr>
                                 <td [attr.colspan]="indicatorTrackingItem.classifierValues.length">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
                             </tr>
@@ -47,14 +50,15 @@
                                     </td>
                                 </ng-container>
                             </tr>
-                        </tbody>
-                    </table>
-                </td>
+                        <!--</tbody>-->
+                    </ng-container>
+                </ng-container>
+                <!--</td>-->
 
-                <td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length"  *ngIf="!hasVerticalTotalColumn">
-
-                    <table *ngFor="let indicatorTrackingItem of indicatorTrackingList">
-                        <tbody>
+                <!--<td [attr.colspan]="filteredHorizontalSecondLevelByFirstLevelAllClassifierList().length"  *ngIf="!hasVerticalTotalColumn">-->
+                <ng-container *ngIf="!hasVerticalTotalColumn">
+                    <ng-container *ngFor="let indicatorTrackingItem of indicatorTrackingList">
+                        <!--<tbody>-->
                             <tr>
                                 <td [attr.colspan]="indicatorTrackingItem.classifierValues.length">{{indicatorTrackingItem.verticalClassifier.getName()}}</td>
                             </tr>
@@ -69,10 +73,13 @@
                                     </td>
                                 </ng-container>
                             </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
+                        <!--</tbody>-->
+                    </ng-container>
+                </ng-container>
+                <!--</td>-->
+            <!--</tr>-->
+
+            </ng-container>
 
             <ng-container   *ngIf="!hasEmbeddedVerticalClassifier">
                 <tr *ngFor="let indicatorTrackingItem of indicatorTrackingList; let j = index" >
