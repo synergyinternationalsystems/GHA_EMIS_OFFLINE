@@ -81,8 +81,8 @@
                 <ng-container *ngIf="isSubEntityEmptyAndIsNotBasic()">
                     <tr *ngFor="let teacher of tempTeacherList(); let j = index">
                         <td>{{j+1}}</td>
-                        <td>{{indicatorTrackingItem.verticalClassifier.getProperty('firstName').value + " " +
-                            indicatorTrackingItem.verticalClassifier.getProperty('surname').value}}
+                        <td>{{teacher.getProperty('firstName').value + " " +
+                            teacher.getProperty('surname').value}}
                         </td>
                     </tr>
                 </ng-container>
