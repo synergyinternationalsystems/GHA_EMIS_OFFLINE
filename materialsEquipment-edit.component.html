@@ -3,10 +3,15 @@
 
         <div class="sis-control-validation">
             <sis-error [id]="'numberofequipmentValidation'"
-                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation() || materialsEquipmentValidationHelper.censusSchoolFurnitureNumberValidator()"
+                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentValidation()"
                        *ngIf="getIsBasicSchoolType()"
-                       Indicate the number of equipment at your school.
                        [class]="'sis-float-left'" [forControl]="numberOfEquipment"
+                       [isInput]="true">
+            </sis-error>
+            <sis-error [id]="'numberofequipmentValidation'"
+                       [errorMessage]="materialsEquipmentValidationHelper.numberOfEquipmentSecondaryValidation()"
+                       *ngIf="getIsSecondarySchoolType()"
+                       [class]="'sis-float-left'" [forControl]="numberOfEquipmentSec"
                        [isInput]="true">
             </sis-error>
             <label class="sis-label">7.1 Indicate the number of equipment at your school.</label>
@@ -90,17 +95,17 @@
         <div>
             <label class="sis-label">
                 7.4 Do you have the following equipment in your school?</label>
-            <sis-census-indicator-tracking-1L-V
+            <sis-census-indicator-tracking-1L-V-checkbox
                     [census]="census"
                     [classifierList]="classifierList"
                     [tableId]="'equipmentCompositionId'"
                     [topLeftCellLabel]="'Equipment'"
-                    [topRightCellLabel]="'Number Of Units'"
+                    [topRightCellLabel]="'Equipment Available'"
                     [indicatorInstanceId]="182"
                     [columnCount]="0"
                     [verticalClassifierName]="'Equipment'"
                     [verticalClassifierFieldName]="'equipmentId'">
-            </sis-census-indicator-tracking-1L-V>
+            </sis-census-indicator-tracking-1L-V-checkbox>
 
             <div *ngIf="getIsBasicSchoolType()">
                 <label class="sis-label">

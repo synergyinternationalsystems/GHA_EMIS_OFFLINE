@@ -1,5 +1,10 @@
-<div class="sis-dialog-text" [innerHTML]="text"></div>
-<div class="sis-actions sis-float-right sis-controls--top-margin">
+
+<div class="sis-popup-container__inner">
+    <div class="sis-notification--note ">
+        <div [innerHTML]="text"></div>
+    </div>
+</div>
+<div class="sis-popup-container__buttons sis-align-right">
     <button (click)="close()" class="mdl-button mdl-button--raised mdl-js-button sis-btn--sec mdl-js-ripple-effect">No</button>
     <button (click)="confirmed()" class="mdl-button mdl-button--raised mdl-js-button sis-btn--primary mdl-js-ripple-effect ">Yes</button>
 </div>

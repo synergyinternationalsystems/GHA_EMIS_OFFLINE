@@ -47,7 +47,7 @@
                                                         [horizontalClassifierName]="'SchoolLevel'"
                                                         [horizontalClassifierFieldName]="'schoolLevelId'"
                                                         [topLeftCellLabel]="'Grade'"
-                                                        [verticalRowName]="'Number of classes held in open air'">
+                                                        [verticalRowName]="'Number of Streams per grade'">
                 </sis-census-indicator-tracking-1L-HView>
             </div>
 
@@ -83,6 +83,8 @@
                                                        [visibilityFilter]="'EnrolmentAgeSchoolLevel'"
                                                        [visibilityFilterPropertyName]="'isChecked'"
                                                        [hasTotalRow]="true"
+                                                       [hasColumnTotalRow]="true"
+                                                       [istableHeaderFixed]="true"
                                                        [indicatorType]="enrolmentBasicBySexAndAge">
                 </sis-census-indicator-tracking-3L-view>
             </div>
@@ -94,7 +96,7 @@
                 <sis-census-indicator-tracking-3L-2H-2T-view [census]="census"
                                                              [classifierList]="classifierList"
                                                              [tableId]="enrolmentInProgrammeTableId"
-                                                             [topLeftCellCodeLabel]="'Code'"
+                                                             [topLeftCellCodeLabel]="'code'"
                                                              [topLeftCellSubjectLabel]="'Subjects'"
                                                              [verticalClassifierName]="'EnrolmentSubjects'"
                                                              [verticalClassifierFieldName]="'enrolmentSubjectId'"
@@ -169,6 +171,8 @@
                                                        [verticalClassifierFilterPropertyValue]="constants.AGE_SEC_ENROLMENT_BY_AGE_CLASSIFIER_ID"
                                                        [hasTotalRow]="true"
                                                        [hasVerticalTotalColumn]="true"
+                                                       [hasColumnTotalRow]="true"
+                                                       [hasMaleFemaleColumnTotalRow]="true"
                                                        [indicatorType]="enrolmentByAgeSec">
                 </sis-census-indicator-tracking-3L-view>
             </div>
@@ -194,6 +198,8 @@
                                                        [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
                                                        [hasTotalRow]="true"
                                                        [hasVerticalTotalColumn]="true"
+                                                       [hasMaleFemaleColumnTotalRow]="true"
+                                                       [hasVerticalTotalColumn]="true"
                                                        [indicatorType]="enrolmentByAgeTvet">
                 </sis-census-indicator-tracking-3L-view>
 
@@ -214,6 +220,8 @@
                                                        [horizontalFirstLevelClassifierRangeFilterValue]="constants.INTERMEDIATE_YEAR_1_CLASSIFIER_ID"
                                                        [hasTotalRow]="true"
                                                        [hasVerticalTotalColumn]="true"
+                                                       [hasMaleFemaleColumnTotalRow]="true"
+                                                       [hasVerticalTotalColumn]="true"
                                                        [indicatorType]="enrolmentByAgeTvet">
                 </sis-census-indicator-tracking-3L-view>
             </div>
@@ -223,7 +231,7 @@
                 <sis-census-indicator-tracking-3L-2T-view [census]="census"
                                                           [classifierList]="classifierList"
                                                           [tableId]="enrolmentByProgrammesFullTimeTableId"
-                                                          [topLeftCellCodeLabel]="'Code'"
+                                                          [topLeftCellCodeLabel]="'code'"
                                                           [topLeftCellProgrammeLabel]="'Programmes'"
                                                           [verticalClassifierName]="'EnrolmentSubjects'"
                                                           [verticalClassifierFieldName]="'enrolmentSubjectId'"
@@ -247,7 +255,7 @@
                 <sis-census-indicator-tracking-3L-2T-view [census]="census"
                                                           [classifierList]="classifierList"
                                                           [tableId]="enrolmentByProgrammesPartTimeTableId"
-                                                          [topLeftCellCodeLabel]="'Code'"
+                                                          [topLeftCellCodeLabel]="'code'"
                                                           [topLeftCellProgrammeLabel]="'Programmes'"
                                                           [verticalClassifierName]="'EnrolmentSubjects'"
                                                           [verticalClassifierFieldName]="'enrolmentSubjectId'"

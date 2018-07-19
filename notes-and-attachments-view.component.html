@@ -49,9 +49,6 @@
                             <th class="mdl-data-table__cell--centered" style="min-width: 102px;">
                                 Created by / Created on
                             </th>
-                            <th class="mdl-data-table__cell--non-numeric" style="min-width: 140px;">
-                                Document Type
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,9 +59,6 @@
                             <td class="mdl-data-table__cell--centered">
                                 {{row.getProperty('documentId').value.getProperty('userId').value.getProperty('name').value + ' / '}}
                                 {{row.getProperty('documentId').value.getProperty('uploadDate').value | date : "dd-MMM-yyyy hh:mm"}}
-                            </td>
-                            <td class="mdl-data-table__cell--non-numeric">
-                                {{row.getProperty('documentId').value.getProperty('documentTypeId').value.getProperty('typeName_Eng').value}}
                             </td>
                         </tr>
                     </tbody>

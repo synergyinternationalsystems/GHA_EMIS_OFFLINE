@@ -1,20 +1,16 @@
 .sis-notification-position {
   position: relative;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
 .sis-layout {
   margin: 4px auto;
   min-width: 266px;
   margin: 0 auto;
-  padding: 8px 0;
-}
+  padding: 8px 0; }
 
 @media (min-width: 1200px) {
   .sis-layout {
-    max-width: 1170px;
-  }
-}
+    max-width: 1170px; } }
 
 .sis-notification-failure-fl:before, .sis-notification-success-fl:before, .sis-notification-nomodification-fl:before {
   font-family: 'Material Icons';
@@ -39,16 +35,13 @@
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga';
-
   vertical-align: middle;
   font-size: 24px !important;
   margin-right: 12px;
-  margin-top: -2px;
-}
+  margin-top: -2px; }
 
 .sis-notification-failure-fl:first-child, .sis-notification-success-fl:first-child {
-  margin-top: 0;
-}
+  margin-top: 0; }
 
 .sis-notification-failure-fl, .sis-notification-success-fl, .sis-notification-nomodification-fl {
   display: inline-flex;
@@ -61,7 +54,6 @@
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background-clip: padding-box;
-
   position: absolute;
   right: 15px;
   margin-top: 0;
@@ -70,35 +62,28 @@
   z-index: 1000;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .sis-notification-failure-fl {
   background: #f9dddd;
-  color: rgba(0, 0, 0, 0.87);
-}
+  color: rgba(0, 0, 0, 0.87); }
 
 .sis-notification-failure-fl:before {
   content: 'report_problem' !important;
-  color: #a11c1c;
-}
+  color: #a11c1c; }
 
 .sis-notification-success-fl {
   background: #e8f9e4;
-  color: #15380d;
-}
+  color: #15380d; }
 
 .sis-notification-success-fl:before {
   content: 'check' !important;
-  color: #3ca124;
-}
+  color: #3ca124; }
 
 .sis-notification-nomodification-fl {
   background: #fdfad7;
-  color: #393503;
-}
+  color: #393503; }
 
 .sis-notification-nomodification-fl:before {
   content: 'note' !important;
-  color: #fbc12e;
-}
+  color: #fbc12e; }

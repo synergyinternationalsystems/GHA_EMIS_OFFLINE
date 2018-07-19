@@ -490,12 +490,6 @@ CREATE TABLE "C_FacilitySchoolType" (
 
 );
 
-CREATE TABLE "C_FacilityForReport" (
-  facilityForReportId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  name_ENG             nvarchar(255),
-  DeletedOn            datetime,
-  DeletedBy            integer
-);
 CREATE TABLE "C_FinanceActivityExpenditure" (
   financeActivityExpenditureId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   name_ENG                      nvarchar(200),
@@ -1959,10 +1953,7 @@ CREATE TABLE "CensusSchoolIndicatorTracking" (
     REFERENCES C_HygieneEducation(HygieneEducationID), 
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_ICTTraining
     FOREIGN KEY (ICTTrainingID)
-    REFERENCES C_ICTTraining(ICTTrainingID), 
-  CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_IndicatorEquipment
-    FOREIGN KEY (IndicatorEquipmentID)
-    REFERENCES C_IndicatorEquipment(IndicatorEquipmentID), 
+    REFERENCES C_ICTTraining(ICTTrainingID),
   CONSTRAINT FK_DE_CensusSchoolIndicatorTracking_C_IndicatorManagement
     FOREIGN KEY (IndicatorManagementID)
     REFERENCES  C_IndicatorManagement(IndicatorManagementID), 
@@ -2428,14 +2419,11 @@ CREATE TABLE "CensusSchoolSupportType" (
 CREATE TABLE "CensusSchoolTeacher" (
   censusSchoolTeacherId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   censusSchoolId         integer,
-  teacherId              integer,
+  teacherInstanceId              integer,
   /* Foreign keys */
   CONSTRAINT FK_DE_CensusSchoolTeacher_DE_CensusSchool1
     FOREIGN KEY (CensusSchoolID)
-    REFERENCES CensusSchool(CensusSchoolID), 
-  CONSTRAINT FK_DE_CensusSchoolTeacher_DE_Teacher1
-    FOREIGN KEY (TeacherID)
-    REFERENCES Teacher(TeacherID)
+    REFERENCES CensusSchool(CensusSchoolID)
 );
 CREATE TABLE "CensusSchoolTeacherTraining" (
   censusSchoolTeacherTrainingId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -2452,7 +2440,7 @@ CREATE TABLE "CensusSchoolTeacherTraining" (
 CREATE TABLE "CensusSchoolTeacherWorkload" (
   censusSchoolTeacherWorkloadId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   censusSchoolId                 integer,
-  teacherId                      integer,
+  teacherInstanceId              integer,
   schoolTypeId                   integer,
   schoolLevelId                  integer,
   enrolmentSubjectId             integer,
@@ -2469,10 +2457,7 @@ CREATE TABLE "CensusSchoolTeacherWorkload" (
     REFERENCES C_SchoolType(SchoolTypeID), 
   CONSTRAINT FK_DE_CensusSchoolTeacherWorkload_DE_CensusSchool2
     FOREIGN KEY (CensusSchoolID)
-    REFERENCES CensusSchool(CensusSchoolID), 
-  CONSTRAINT FK_DE_CensusSchoolTeacherWorkload_DE_Teacher2
-    FOREIGN KEY (TeacherID)
-    REFERENCES Teacher(TeacherID)
+    REFERENCES CensusSchool(CensusSchoolID)
 );
 CREATE TABLE "CensusSchoolTeachingGuide" (
   censusSchoolTeachingGuideId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -2751,10 +2736,7 @@ CREATE TABLE "Indicator" (
   DeletedOn                   datetime,
   DeletedBy                   integer,
   indicatorContextTypeId      integer,
-  /* Foreign keys */
-  CONSTRAINT FK_Indicator_C_IndicatorStatus1
-    FOREIGN KEY (IndicatorStatusID)
-    REFERENCES C_IndicatorStatus(IndicatorStatusID), 
+  /* Foreign keys */ 
   CONSTRAINT FK_Indicator_C_User1
     FOREIGN KEY (CreatedBy)
     REFERENCES C_User(id), 
@@ -2804,7 +2786,7 @@ id integer
 );
 CREATE TABLE "School" (
   schoolId                 integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-  schoolInstanceId         integer,
+  SchoolInstanceId         integer,
   majorVersion             integer,
   minorVersion             integer,
   schoolCode               nvarchar(255),
@@ -2941,8 +2923,39 @@ CREATE TABLE "CensusSchoolSummary" (
     FOREIGN KEY (CensusSchoolID)
     REFERENCES CensusSchool(CensusSchoolID)
 );
-CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "surname" nvarchar(250), "firstName" nvarchar(250), "staffNumber" INTEGER, "sSFNumber" INTEGER, "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" INTEGER, "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
+CREATE TABLE "Teacher" ("teacherId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , TeacherInstanceId integer, "surname" nvarchar(250), "firstName" nvarchar(250),"teacherName_ENG" nvarchar(250),  "staffNumber" nvarchar(250), "sSFNumber" nvarchar(250), "yearOfBirth" INTEGER, "genderId" INTEGER, "firstAppointmentYear" INTEGER, "currentPositionYear" INTEGER, "rankAppointedYear" INTEGER, "teacherTypeId" INTEGER, "teacherStatusId" INTEGER, "teacherFunctionId" INTEGER, "teacherQualificationStatusId" INTEGER, "officerSchedule" nvarchar(250), "registrationNumber" nvarchar(250), "yearCompleted" INTEGER, "relevantIndustrial" nvarchar(50), "isDeleted" INTEGER, "deletedOn" DATETIME, "deletedBy" INTEGER, "teacherAcademicQualificationId" INTEGER, "teacherProfessionalQualificationId" INTEGER, "teacherRankId" INTEGER, "location2Id" INTEGER, "location3Id" INTEGER,"UpdatedUserId" INTEGER,
+  "DateUpdated" DATETIME, "teacherRankName_ENG" nvarchar(250), "teacherProfessionalQualificationName_ENG" nvarchar(250));
 CREATE TABLE "TeacherNoteOn" ("teacherNoteOnId" INTEGER PRIMARY KEY  NOT NULL  UNIQUE , "teacherId" INTEGER, "teacherNoteId" INTEGER);
+CREATE TABLE "TeacherDocument" (
+  teacherDocumentId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  teacherId          integer,
+  documentId             integer,
+  /* Foreign keys */
+  CONSTRAINT FK_TeacherDocument_Teacher
+    FOREIGN KEY (teacherId)
+    REFERENCES Teacher(teacherId), 
+  CONSTRAINT FK_TeacherDocument_Document
+    FOREIGN KEY (documentId)
+    REFERENCES Document(DocumentID)
+);
+CREATE TABLE "TeacherDocumentNote" (
+  teacherDocumentNoteId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+  teacherId      integer,
+  noteTypeId          integer,
+  note_ENG            text,
+  userId              integer,
+  dateCreated         datetime,
+  /* Foreign keys */
+  CONSTRAINT FK_TeacherDocumentNote_C_NoteType
+    FOREIGN KEY (NoteTypeID)
+    REFERENCES C_NoteType(NoteTypeID), 
+  CONSTRAINT FK_TeacherDocumentNote_C_User
+    FOREIGN KEY ( userId )
+    REFERENCES C_User(id), 
+  CONSTRAINT FK_TeacherDocumentNote_Teacher
+    FOREIGN KEY (teacherId)
+    REFERENCES Teacher(teacherId)
+);
 CREATE TABLE "TeacherSalaryPaid" (
   teacherSalaryPaidId  integer NOT NULL PRIMARY KEY AUTOINCREMENT,
   teacherId           integer,
@@ -2972,7 +2985,7 @@ CREATE TABLE UserData (
 );
 
 CREATE TABLE "UserCheckedOutCensuses" (
-"censusSchoolId" integer NOT NULL  DEFAULT (null) ,
+"CensusSchoolInstanceId" integer NOT NULL  DEFAULT (null) ,
 "checkedOutUserId" integer NOT NULL );
 
 CREATE TABLE "OnlineDeVersion" (
@@ -2989,6 +3002,7 @@ SELECT DISTINCT C_Location2.Location2ID,
 	   C_Location3.Name_ENG AS DistrictName,
 	   CensusSchool.CensusSchoolID,
 	   CensusSchool.SchoolInstanceID ,
+	   CensusSchool.CensusSchoolInstanceID ,
 	   School.SchoolCode AS SchoolCode,
 	   School.SchoolName_ENG AS SchoolName,
 	   C_SchoolType.SchoolTypeID,
@@ -3003,10 +3017,10 @@ SELECT DISTINCT C_Location2.Location2ID,
 	   FROM CycleManagement cross join CensusSchool  INNER JOIN School ON CensusSchool .SchoolInstanceID = School .SchoolInstanceID 
 	   INNER JOIN C_Location3 ON School.Location3ID = C_Location3.Location3ID 
 	   INNER JOIN C_Location2 ON C_Location3.Location2ID = C_Location2.Location2ID 
-	   INNER JOIN C_User ON CensusSchool.UpdatedUserId = C_User.id 
+	   LEFT JOIN C_User ON CensusSchool.UpdatedUserId = C_User.id 
 	   INNER JOIN C_WFStates ON C_WFStates.WFStateID = CensusSchool.WFStateID 
 	   INNER JOIN C_SchoolType ON C_SchoolType.SchoolTypeID = School.SchoolTypeID
-           INNER JOIN UserCheckedOutCensuses ON CensusSchool.censusSchoolId = UserCheckedOutCensuses.censusSchoolId
+           INNER JOIN UserCheckedOutCensuses ON CensusSchool.CensusSchoolInstanceId = UserCheckedOutCensuses.CensusSchoolInstanceId
            INNER JOIN UserData ON UserCheckedOutCensuses.checkedOutUserId = UserData.id;
 
 
@@ -3160,6 +3174,12 @@ delete from TeacherSalaryPaid
 where   teacherId       =OLD. teacherId ;
 
 delete from TeacherSchoolLevel
+where   teacherId       =OLD. teacherId ;
+
+delete from TeacherDocument
+where   teacherId       =OLD. teacherId ;
+
+delete from TeacherDocumentNote
 where   teacherId       =OLD. teacherId ;
 
 END

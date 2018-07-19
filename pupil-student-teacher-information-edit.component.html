@@ -110,7 +110,7 @@
                                                   [school]="school"
                                                   [classifierList]="classifierList"
                                                   [tableId]="ictTrainingsCompositionId"
-                                                  [verticalClassifierName]="'IctTraining'"
+                                                  [verticalClassifierName]="'ICTTraining'"
                                                   [verticalClassifierFieldName]="'ictTrainingId'"
                                                   [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
                                                   [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
@@ -252,7 +252,7 @@
                 <sis-error [id]="'teacherDeadSecondaryValidation'"
                            [forControl]="teacherDeadSecondaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                           [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolTeachersDiedPrevYearCountValidator()"
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">
@@ -297,7 +297,7 @@
                                                   [tableId]="'beneficiaryTypeTableId'"
                                                   [horizontalClassifierName]="'Gender'"
                                                   [horizontalClassifierFieldName]="'genderId'"
-                                                  [verticalClassifierName]="'IctTraining'"
+                                                  [verticalClassifierName]="'ICTTraining'"
                                                   [verticalClassifierFieldName]="'ictTrainingId'"
                                                   [indicatorInstanceId]="pupilTeacherInfoSecondarySchoolIctTraining">
                 </sis-census-indicator-tracking-2L>
@@ -364,7 +364,7 @@
                 <sis-error [id]="'teacherDeadTVETValidation'"
                            [forControl]="teacherDeadTVETName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation()"
+                           [errorMessage]="pupilTeacherInformationValidationHelper.teacherDeadValidation() || pupilTeacherInformationValidationHelper.censusSchoolTeachersDiedPrevYearCountValidator()"
                            [class]="'sis-float-left'">
                 </sis-error>
                 <label class="sis-label sis-element-required">

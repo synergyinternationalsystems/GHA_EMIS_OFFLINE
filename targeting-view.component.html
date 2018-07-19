@@ -12,8 +12,8 @@
                                                        [verticalClassifierFilterArray]="notEscapedTargetingIds"
                                                        [horizontalFirstLevelClassifierName]="'SchoolLevelGroup'"
                                                        [horizontalFirstLevelClassifierFieldName]="'schoolLevelGroupId'"
-                                                       [horizontalSecondLevelClassifierName]="'Pupil'"
-                                                       [horizontalSecondLevelClassifierFieldName]="'pupilId'"
+                                                       [horizontalSecondLevelClassifierName]="schoolTypeId == secondarySchoolTypeId ? 'Pupil' :'Gender'"
+                                                       [horizontalSecondLevelClassifierFieldName]="schoolTypeId == secondarySchoolTypeId ? 'pupilId' :'genderId'"
                                                        [horizontalFirstLevelClassifierFilterPropertyName]="'schoolTypeId'"
                                                        [horizontalFirstLevelClassifierFilterPropertyValue]="schoolTypeId"
                                                        [indicatorType]="getSchoolTypeStatistics()">

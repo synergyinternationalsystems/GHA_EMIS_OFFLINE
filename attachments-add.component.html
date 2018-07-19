@@ -1,22 +1,22 @@
 <div mdl class="mdl-grid mdl-grid--no-spacing">
     <div class="mdl-cell mdl-cell--12-col">
-        <div #documentType>
-            <div class="sis-control-validation">
-                <sis-error [id]="'documentTypeValidation'" *ngIf="isErrorMessageVisible"
-                           [forControl]="documentType" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--element'"
-                           [errorMessage]="attachmentValidationHelper.documentTypeRequiredValidation()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">Type</label>
-            </div>
-            <div class="sis-large-width">
-                <sis-combo-box [id]="'attachmentTypeId'" [placeHolder]="'-- Select Type --'" [isEnabled]="true" [value]="document.getProperty('documentTypeId').value"
-                               (valueChange)="documentTypeComboValueChange($event)">
-                    <sis-combo-box-items [data]="documentTypes" [valueField]="" [nameField]="'name'"></sis-combo-box-items>
-                </sis-combo-box>
-            </div>
-        </div>
+        <!--<div #documentType>-->
+            <!--<div class="sis-control-validation">-->
+                <!--<sis-error [id]="'documentTypeValidation'" *ngIf="isErrorMessageVisible"-->
+                           <!--[forControl]="documentType" [isInput]="true"-->
+                           <!--[errorClass]="'sis-validation-wrapper&#45;&#45;element'"-->
+                           <!--[errorMessage]="attachmentValidationHelper.documentTypeRequiredValidation()"-->
+                           <!--[class]="'sis-float-left'">-->
+                <!--</sis-error>-->
+                <!--<label class="sis-label sis-element-required">Type</label>-->
+            <!--</div>-->
+            <!--<div class="sis-large-width">-->
+                <!--<sis-combo-box [id]="'attachmentTypeId'" [placeHolder]="'&#45;&#45; Select Type &#45;&#45;'" [isEnabled]="true" [value]="document.getProperty('documentTypeId').value"-->
+                               <!--(valueChange)="documentTypeComboValueChange($event)">-->
+                    <!--<sis-combo-box-items [data]="documentTypes" [valueField]="" [nameField]="'name'"></sis-combo-box-items>-->
+                <!--</sis-combo-box>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div #attachmentTitle>
             <div class="sis-control-validation">

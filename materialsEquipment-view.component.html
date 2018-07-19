@@ -64,17 +64,17 @@
         <label class="sis-label">
             7.4 Do you have the following equipment in your school?</label>
 
-        <sis-census-indicator-tracking-1L-V-view
+        <sis-census-indicator-tracking-1L-V-view-checkbox
                 [census]="census"
                 [classifierList]="classifierList"
                 [tableId]="'equipmentCompositionId'"
                 [topLeftCellLabel]="'Equipment'"
-                [topRightCellLabel]="'Number Of Units'"
+                [topRightCellLabel]="'Equipment Available'"
                 [indicatorInstanceId]="182"
                 [columnCount]="0"
                 [verticalClassifierName]="'Equipment'"
                 [verticalClassifierFieldName]="'equipmentId'">
-        </sis-census-indicator-tracking-1L-V-view>
+        </sis-census-indicator-tracking-1L-V-view-checkbox>
 
         <div *ngIf="getIsBasicSchoolType()">
             <label class="sis-label" style="font-weight: bold;">

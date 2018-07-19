@@ -1,7 +1,7 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
         <!-- section 2.1 or 2.2 -->
-        <div *ngIf="getIsBasicSchoolType() || getIsSecondarySchoolType()">
+        <div *ngIf="getIsBasicSchoolType()">
             <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.1 Summary Count</label>
             <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
                 <table class="mdl-data-table mdl-js-data-table sis-full-width">
@@ -20,6 +20,32 @@
 
                         <td *ngFor="let schoolLevelGroup of schoolLevelGroups" class="mdl-data-table__cell--centered">
                             {{getSchoolSummaryEntity(summaryType, schoolLevelGroup).getProperty('count').value}}
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div *ngIf="!getIsBasicSchoolType() ">
+            <label *ngIf="getIsBasicSchoolType()" class="sis-label"> 2.1 Summary Count</label>
+            <div #schoolSummaryGroup class="sis-table-scroll mdl-cell--7-col">
+                <table class="mdl-data-table mdl-js-data-table sis-full-width">
+                    <tr>
+                        <th></th>
+                        <th  class="mdl-data-table__cell--centered">
+                            <span class="ui-column-title">
+                                SHS
+                            </span>
+                        </th>
+                    </tr>
+                    <tr *ngFor="let summaryType of classifierList.get('SummaryType')">
+                        <td class="mdl-data-table__cell--non-numeric" style="min-width: 172px;">
+                            {{summaryType.getName()}}
+                        </td>
+
+                        <td class="mdl-data-table__cell--centered">
+                            {{getSchoolSummaryEntity(summaryType, null).getProperty('count').value}}
                         </td>
 
                     </tr>
@@ -61,7 +87,7 @@
             <span>{{educationalType.getProperty('educationalTypeId').value?.getName()}}</span>
         </div>
         <div *ngIf="getIsTVETSchoolType()">
-            <label class="sis-label sis-element-required">2.1 Select your institution type</label>
+            <label class="sis-label sis-element-required">2.2 Select your institution type</label>
             <div>
                 <span>{{genderInstitutionType.getProperty('genderInstitutionTypeId').value?.getName()}}</span>
             </div>
@@ -73,7 +99,7 @@
                    *ngIf="getIsBasicSchoolType()">2.6 Category of School</label>
             <label class="sis-label sis-element-required"
                    *ngIf="getIsSecondarySchoolType()">2.3 Category of School</label>
-            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.2 Category of
+            <label class="sis-label sis-element-required" *ngIf="getIsTVETSchoolType()">2.3 Category of
                 Institution</label>
             <span>{{schoolCategory.getProperty('schoolCategoryId').value?.getName()}}</span>
         </div>
@@ -112,7 +138,7 @@
 
         <!--section 2.3 -->
         <div *ngIf="getIsTVETSchoolType()">
-            <label class="sis-label sis-element-required">2.3 Is your Institution a Special Education
+            <label class="sis-label sis-element-required">2.4 Is your Institution a Special Education
                 Institution?</label>
             <span>{{specialEducationYesNo.getProperty('specialEducationYesNoId').value?.getName()}}</span>
         </div>
@@ -121,7 +147,7 @@
         <div *ngIf="getIsTVETSchoolType()">
             <sis-census-indicator-tracking-2LH-view [census]="census"
                                                     [classifierList]="classifierList"
-                                                    [label]="'2.4 If ANY at all, indicate the NUMBER of special students in your institution.'"
+                                                    [label]="'2.5 If ANY at all, indicate the NUMBER of special students in your institution.'"
                                                     [tableId]="table2LHId"
                                                     [horizontalFirstLevelClassifierName]="'Disability'"
                                                     [horizontalFirstLevelClassifierFieldName]="'disabilityId'"

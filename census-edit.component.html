@@ -1,13 +1,13 @@
 <div mdl class="mdl-layout__container">
     <div *ngIf="getCensus()" class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
-        <header id="sis-header" class="sis-header sis-gha-header mdl-layout__header portfolio-header">
+        <header id="sis-header" class="sis-header sis-gha-header mdl-layout__header portfolio-header" [style.display]="isAddEditTeacherFormVisible.value? 'none' : 'block'">
             <div class="sis-header--width sis-header--top" id="sis-header--top">
                 <div class="sis-header--top-wrapper" id="sis-header--top-wrapper">
                     <div class="sis-header__subheader">
                         <div class="sis-header__subheader--left">
                             <h1 class="sis-header__title mdl-layout__title">School Census:
                                 {{census.getProperty('name').value}}</h1>
-                            <div class="sis-last-modified">Last modified by {{census.getProperty('UpdatedUserId').value.getProperty("name").value}} on {{census.getProperty('DateUpdated').value | date : "dd-MMM-yyyy HH:mm"}} </div>
+                            <div class="sis-last-modified">Last modified by {{census.getProperty('UpdatedUserId').value?.getProperty("name").value}} on {{census.getProperty('DateUpdated').value | date : "dd-MMM-yyyy HH:mm"}} </div>
                         </div>
                         <div class="sis-actions">
                             <button id="censusCancelButton" class="mdl-button mdl-js-button sis-btn--sec mdl-button--raised  mdl-js-ripple-effect" (click)="onBack()"> Cancel </button>
@@ -150,6 +150,8 @@
                             </sis-tab>
                             <sis-tab id="9" title="{{tabNumbersMap.get(9)}}">
                                 <sis-census-teachers-edit *ngIf="selectedTabId === 9" [census]="census"
+                                                          [_isAddEditTeacherFormVisible] = "_isAddEditTeacherFormVisible"
+                                                          (isAddEditTeacherFormVisibleChange)="_isAddEditTeacherFormVisible=$event"
                                                           [teachersEditValidationHelper]="teachersEditValidationHelper"
                                                           [schoolTypeId]="schoolTypeId"
                                                           [classifierList]="classifierItems">Loading ...

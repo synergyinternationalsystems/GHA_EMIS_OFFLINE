@@ -5,6 +5,7 @@
             <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
                 <thead>
                     <tr>
+                        <th></th>
                         <th class="mdl-data-table__cell--centered">
                             Date
                         </th>
@@ -17,11 +18,14 @@
                         <th class="mdl-data-table__cell--non-numeric" style="min-width: 185px;">
                             User
                         </th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let row of notesList; let j = index">
+                        <td class="mdl-data-table__cell--centered">
+                            <i class="material-icons mdl-data-table--action-icon" (click)="editNote(true,row)" aria-hidden="true">mode_edit</i>
+                            <i class="material-icons mdl-data-table--action-icon" (click)="deleteNote(row)" aria-hidden="true" title="Remove">clear</i>
+                        </td>
                         <td class="mdl-data-table__cell--centered">
                             {{row.getProperty('dateCreated').value | date : "dd-MMM-yyyy hh:mm"}}
                         </td>
@@ -33,10 +37,6 @@
                         </td>
                         <td class="mdl-data-table__cell--non-numeric">
                             {{row.getProperty('userId').value.getProperty('name').value}}
-                        </td>
-                        <td class="mdl-data-table__cell--centered">
-                           <i class="material-icons mdl-data-table--action-icon" (click)="editNote(true,row)" aria-hidden="true">mode_edit</i>
-                           <i class="material-icons mdl-data-table--action-icon" (click)="deleteNote(row)" aria-hidden="true" title="Remove">clear</i>
                         </td>
                 </tr>
                 </tbody>
@@ -65,33 +65,27 @@
                 <table class="sis-table mdl-data-table mdl-data-table-responsive sis-full-width">
                     <thead>
                         <tr>
+                            <th class="mdl-data-table__cell--centered"></th>
                             <th class="mdl-data-table__cell--non-numeric" style="min-width: 225px;">
                                 Title
                             </th>
                             <th class="mdl-data-table__cell--centered" style="min-width: 102px;">
                                 Created by / Created on
                             </th>
-                            <th class="mdl-data-table__cell--non-numeric" style="min-width: 140px;">
-                                Document Type
-                            </th>
-                            <th class="mdl-data-table__cell--centered"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let row of documentsList; let j = index">
+                            <td class="mdl-data-table__cell--centered">
+                                <i class="material-icons mdl-data-table--action-icon" (click)="editDocument(true,row)" aria-hidden="true">mode_edit</i>
+                                <i class="material-icons mdl-data-table--action-icon" (click)="deleteDocument(row)" aria-hidden="true" title="Remove">clear</i>
+                            </td>
                             <td class="mdl-data-table__cell--non-numeric">
                                 <a [href]="" (click)="getDocument(row)">{{row.getProperty('documentId').value.getProperty('fileTitle_ENG').value}}</a>
                             </td>
                             <td class="mdl-data-table__cell--centered">
                                 {{row.getProperty('documentId').value.getProperty('userId').value.getProperty('name').value + ' / '}}
                                 {{row.getProperty('documentId').value.getProperty('uploadDate').value | date : "dd-MMM-yyyy hh:mm"}}
-                            </td>
-                            <td class="mdl-data-table__cell--non-numeric">
-                                {{row.getProperty('documentId').value.getProperty('documentTypeId').value.getProperty('typeName_Eng').value}}
-                            </td>
-                            <td class="mdl-data-table__cell--centered">
-                               <i class="material-icons mdl-data-table--action-icon" (click)="editDocument(true,row)" aria-hidden="true">mode_edit</i>
-                               <i class="material-icons mdl-data-table--action-icon" (click)="deleteDocument(row)" aria-hidden="true" title="Remove">clear</i>
                             </td>
                         </tr>
                     </tbody>

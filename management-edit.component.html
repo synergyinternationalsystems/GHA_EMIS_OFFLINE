@@ -310,36 +310,38 @@
                                                     [horizontalClassifierFieldName]="'pupilId'"
                                                     [subEntityFilterPropertyName]="'indicatorManagement'"
                                                     [noTopLeftCellLabel]="true"
-                                                    [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                                                    [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue"
+                                                    (onChange)="needyStudentsChanged()">
                 </sis-census-indicator-tracking-1L-H>
             </div>
 
 
-            <div class="sis-control-validation">
-                <sis-error [id]="'managementBrightButNeedyPupilsStudentsBasicValidation'"
-                           [forControl]="managementBrightButNeedyPupilsStudentsBasicName" [isInput]="true"
-                           [errorClass]="'sis-validation-wrapper--grouped'"
-                           [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation() || managementValidationHelper.censusSchoolBrightPupilsStudentsValidator()"
-                           [class]="'sis-float-left'">
-                </sis-error>
-                <label class="sis-label sis-element-required">4.14 {{brightPupilClassifier}}</label>
+            <div *ngIf="isBrightAndNeedyShown">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'managementBrightButNeedyPupilsStudentsBasicValidation'"
+                               [forControl]="managementBrightButNeedyPupilsStudentsBasicName" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped'"
+                               [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation() || managementValidationHelper.brightPupilsStudentsCountValidation()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label sis-element-required">4.14 {{brightPupilClassifier}}</label>
+                </div>
+                <table #managementBrightButNeedyPupilsStudentsBasicName>
+                    <tbody>
+                    <sis-census-indicator-tracking-1L-H [census]="census"
+                                                        [school]="school"
+                                                        [classifierList]="classifierList"
+                                                        [tableId]="'needyPupilsSectionId'"
+                                                        [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                        [horizontalClassifierName]="'Pupil'"
+                                                        [horizontalClassifierFieldName]="'pupilId'"
+                                                        [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                        [noTopLeftCellLabel]="true"
+                                                        [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                    </sis-census-indicator-tracking-1L-H>
+                    </tbody>
+                </table>
             </div>
-            <table #managementBrightButNeedyPupilsStudentsBasicName>
-                <tbody>
-                <sis-census-indicator-tracking-1L-H [census]="census"
-                                                    [school]="school"
-                                                    [classifierList]="classifierList"
-                                                    [tableId]="'needyPupilsSectionId'"
-                                                    [indicatorInstanceId]="managementNeedyPupilsStudents"
-                                                    [horizontalClassifierName]="'Pupil'"
-                                                    [horizontalClassifierFieldName]="'pupilId'"
-                                                    [subEntityFilterPropertyName]="'indicatorManagement'"
-                                                    [noTopLeftCellLabel]="true"
-                                                    [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
-                </sis-census-indicator-tracking-1L-H>
-                </tbody>
-            </table>
-
             <div class="sis-controls--top-margin">
                 <div class="sis-control-validation">
                     <sis-error [id]="'managementIncentivesFromGovernmentValidation'"
@@ -349,7 +351,7 @@
                                [class]="'sis-float-left'">
                     </sis-error>
                     <label class="sis-label">
-                        4.15 How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                 </div>
                 <div #managementIncentivesFromGovernmentCount>
@@ -374,7 +376,7 @@
                                [class]="'sis-float-left'">
                     </sis-error>
                     <label class="sis-label">
-                        4.16 How many of your pupils/families are beneficiaries of the following?
+                        4.{{getSubSectionNumber("beneficiaryType")}} How many of your pupils/families are beneficiaries of the following?
                     </label>
                 </div>
                 <div #managementBeneficiariesPupilCount>
@@ -393,7 +395,7 @@
 
             <div class="sis-controls--top-margin">
                 <label class="sis-label">
-                    4.17 Indicate any group(s) active in supporting your school in the following areas in the past year.
+                    4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate any group(s) active in supporting your school in the following areas in the past year.
                 </label>
                 <div class="sis-table-scroll">
                     <table class="mdl-data-table mdl-js-data-table" id="basicActiveGroupSupportAreaSectionId">
@@ -601,43 +603,47 @@
                                                             [horizontalClassifierFieldName]="'pupilId'"
                                                             [subEntityFilterPropertyName]="'indicatorManagement'"
                                                             [noTopLeftCellLabel]="true"
-                                                            [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                                                            [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue"
+                                                            (onChange)="needyStudentsChanged()">
                         </sis-census-indicator-tracking-1L-H>
                         </tbody>
                     </table>
                 </div>
 
 
-                <div class="sis-control-validation">
-                    <sis-error [id]="'managementBrightButNeedyPupilsStudentsSecondaryValidation'"
-                               [forControl]="managementBrightButNeedyPupilsStudentsSecondaryName" [isInput]="true"
-                               [errorClass]="'sis-validation-wrapper--grouped'"
-                               [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
-                               [class]="'sis-float-left'">
-                    </sis-error>
-                    <label class="sis-label sis-element-required">4.9 {{brightPupilClassifier}}</label>
+                <div *ngIf="isBrightAndNeedyShown">
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'managementBrightButNeedyPupilsStudentsSecondaryValidation'"
+                                   [forControl]="managementBrightButNeedyPupilsStudentsSecondaryName" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped'"
+                                   [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation() || managementValidationHelper.brightPupilsStudentsCountValidation()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label sis-element-required">4.9 {{brightPupilClassifier}}</label>
+                    </div>
+                    <div #managementBrightButNeedyPupilsStudentsSecondaryName>
+                        <table>
+                            <tbody>
+                            <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                [school]="school"
+                                                                [classifierList]="classifierList"
+                                                                [tableId]="'needyPupilsSectionId'"
+                                                                [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                [horizontalClassifierName]="'Pupil'"
+                                                                [horizontalClassifierFieldName]="'pupilId'"
+                                                                [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                [noTopLeftCellLabel]="true"
+                                                                [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                            </sis-census-indicator-tracking-1L-H>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div #managementBrightButNeedyPupilsStudentsSecondaryName>
-                    <table>
-                        <tbody>
-                        <sis-census-indicator-tracking-1L-H [census]="census"
-                                                            [school]="school"
-                                                            [classifierList]="classifierList"
-                                                            [tableId]="'needyPupilsSectionId'"
-                                                            [indicatorInstanceId]="managementNeedyPupilsStudents"
-                                                            [horizontalClassifierName]="'Pupil'"
-                                                            [horizontalClassifierFieldName]="'pupilId'"
-                                                            [subEntityFilterPropertyName]="'indicatorManagement'"
-                                                            [noTopLeftCellLabel]="true"
-                                                            [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
-                        </sis-census-indicator-tracking-1L-H>
-                        </tbody>
-                    </table>
-                </div>
+
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.10 How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-H [census]="census"
                                                         [school]="school"
@@ -649,12 +655,22 @@
                                                         [horizontalClassifierFieldName]="'governmentId'">
                     </sis-census-indicator-tracking-1L-H>
                 </div>
-
-                <div class="sis-controls--top-margin">
+               <div class="sis-controls--top-margin">
+                <div class="sis-control-validation">
+                    <sis-error [id]="'managementBeneficiariesPupilCountValidation'"
+                               [forControl]="managementBeneficiariesPupilCount" [isInput]="true"
+                               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                               [errorMessage]="managementValidationHelper.censusSchoolBeneficiariesPupilCountValidator()"
+                               [class]="'sis-float-left'">
+                    </sis-error>
+                    <label class="sis-label">
+                        4.{{getSubSectionNumber("beneficiaryType")}} How many of your students/families are beneficiaries of the following?
+                    </label>
+                </div>
+                <div #managementBeneficiariesPupilCount>
                     <sis-census-indicator-tracking-2L [census]="census"
                                                       [school]="school"
                                                       [classifierList]="classifierList"
-                                                      [label]="'4.11 How many of your students/families are beneficiaries of the following?'"
                                                       [tableId]="'beneficiaryTypeTableId'"
                                                       [indicatorInstanceId]="managementBeneficiaries"
                                                       [horizontalClassifierName]="'Pupil'"
@@ -663,10 +679,11 @@
                                                       [verticalClassifierFieldName]="'beneficiaryTypeId'">
                     </sis-census-indicator-tracking-2L>
                 </div>
+            </div>
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.12 Indicate with a tick any group(s) active in supporting your school in the following
+                        4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate with a tick any group(s) active in supporting your school in the following
                     </label>
                     <div class="sis-table-scroll">
                         <table id="secondaryActiveGroupSupportAreaSectionId" class="mdl-data-table mdl-js-data-table">
@@ -809,45 +826,48 @@
                                                             [horizontalClassifierFieldName]="'pupilId'"
                                                             [subEntityFilterPropertyName]="'indicatorManagement'"
                                                             [noTopLeftCellLabel]="true"
-                                                            [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue">
+                                                            [subEntityFilterPropertyValue]="managementNeedyPupilsStudentsSubEntityFilterPropertyValue"
+                                                            (onChange)="needyStudentsChanged()">
                         </sis-census-indicator-tracking-1L-H>
                         </tbody>
                     </table>
                 </div>
 
 
-                <div class="sis-controls--top-margin">
-                    <div class="sis-control-validation">
-                        <sis-error [id]="'managementBrightButNeedyPupilsStudentsTVETValidation'"
-                                   [forControl]="managementBrightButNeedyPupilsStudentsTVETName" [isInput]="true"
-                                   [errorClass]="'sis-validation-wrapper--grouped'"
-                                   [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation()"
-                                   [class]="'sis-float-left'">
-                        </sis-error>
-                        <label class="sis-label sis-element-required">4.5 {{brightPupilClassifier}}</label>
-                    </div>
-                    <div #managementBrightButNeedyPupilsStudentsTVETName>
-                        <table>
-                            <tbody>
-                            <sis-census-indicator-tracking-1L-H [census]="census"
-                                                                [school]="school"
-                                                                [classifierList]="classifierList"
-                                                                [tableId]="'needyPupilsSectionId'"
-                                                                [indicatorInstanceId]="managementNeedyPupilsStudents"
-                                                                [horizontalClassifierName]="'Pupil'"
-                                                                [horizontalClassifierFieldName]="'pupilId'"
-                                                                [subEntityFilterPropertyName]="'indicatorManagement'"
-                                                                [noTopLeftCellLabel]="true"
-                                                                [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
-                            </sis-census-indicator-tracking-1L-H>
-                            </tbody>
-                        </table>
+                <div *ngIf="isBrightAndNeedyShown">
+                    <div class="sis-controls--top-margin">
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'managementBrightButNeedyPupilsStudentsTVETValidation'"
+                                       [forControl]="managementBrightButNeedyPupilsStudentsTVETName" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper--grouped'"
+                                       [errorMessage]="managementValidationHelper.managementBrightButNeedyPupilsStudentsValidation() || managementValidationHelper.brightPupilsStudentsCountValidation()"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">4.5 {{brightPupilClassifier}}</label>
+                        </div>
+                        <div #managementBrightButNeedyPupilsStudentsTVETName>
+                            <table>
+                                <tbody>
+                                <sis-census-indicator-tracking-1L-H [census]="census"
+                                                                    [school]="school"
+                                                                    [classifierList]="classifierList"
+                                                                    [tableId]="'needyPupilsSectionId'"
+                                                                    [indicatorInstanceId]="managementNeedyPupilsStudents"
+                                                                    [horizontalClassifierName]="'Pupil'"
+                                                                    [horizontalClassifierFieldName]="'pupilId'"
+                                                                    [subEntityFilterPropertyName]="'indicatorManagement'"
+                                                                    [noTopLeftCellLabel]="true"
+                                                                    [subEntityFilterPropertyValue]="managementBrightPupilsStudentsSubEntityFilterPropertyValue">
+                                </sis-census-indicator-tracking-1L-H>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.6 How many of the following Incentives from Government have your school received to date?
+                        4.{{getSubSectionNumber("incentivesFromGovernment")}} How many of the following Incentives from Government have your school received to date?
                     </label>
                     <sis-census-indicator-tracking-1L-H [census]="census"
                                                         [school]="school"
@@ -868,7 +888,7 @@
                                [errorMessage]="managementValidationHelper.examiningBodyYesNoValidation()"
                                [class]="'sis-float-left'">
                     </sis-error>
-                    <label class="sis-label sis-element-required">4.7 Are ANY of your technical and vocational
+                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber("examiningBody")}} Are ANY of your technical and vocational
                         programmes accredited by an Examining Body?</label>
                 </div>
                 <div #examiningBodyYesNoTVETName>
@@ -931,7 +951,7 @@
                                [errorMessage]="managementValidationHelper.tvetProgrammOtherValidation()"
                                [class]="'sis-float-left'">
                     </sis-error>
-                    <label class="sis-label sis-element-required">4.8 Which, if any, authority prepares the curricula
+                    <label class="sis-label sis-element-required">4.{{getSubSectionNumber("tvetProgramm")}} Which, if any, authority prepares the curricula
                         that is being followed in your TVET programmes?</label>
                 </div>
                 <div #tvetProgrammTVETName>
@@ -951,10 +971,21 @@
 
 
                 <div class="sis-controls--top-margin">
+                    <div class="sis-control-validation">
+                        <sis-error [id]="'managementBeneficiariesPupilCountValidation'"
+                                   [forControl]="managementBeneficiariesPupilCount" [isInput]="true"
+                                   [errorClass]="'sis-validation-wrapper--grouped-inline'"
+                                   [errorMessage]="managementValidationHelper.censusSchoolBeneficiariesPupilCountValidator()"
+                                   [class]="'sis-float-left'">
+                        </sis-error>
+                        <label class="sis-label">
+                            4.{{getSubSectionNumber("beneficiaryType")}} How many of your students are beneficiaries of the following?
+                        </label>
+                    </div>
+                    <div #managementBeneficiariesPupilCount>
                     <sis-census-indicator-tracking-2L [census]="census"
                                                       [school]="school"
                                                       [classifierList]="classifierList"
-                                                      [label]="'4.9 How many of your students are beneficiaries of the following?'"
                                                       [tableId]="'beneficiaryTypeTableId'"
                                                       [indicatorInstanceId]="managementBeneficiaries"
                                                       [horizontalClassifierName]="'Pupil'"
@@ -963,10 +994,11 @@
                                                       [verticalClassifierFieldName]="'beneficiaryTypeId'">
                     </sis-census-indicator-tracking-2L>
                 </div>
+                </div>
 
                 <div class="sis-controls--top-margin">
                     <label class="sis-label">
-                        4.10 Indicate with a tick any group(s) active in supporting your school in the following.
+                        4.{{getSubSectionNumber("activeGroupSupportArea")}} Indicate with a tick any group(s) active in supporting your school in the following.
                     </label>
                     <div class="sis-table-scroll">
                         <table class="mdl-data-table mdl-js-data-table" id="tvetActiveGroupSupportAreaSectionId">

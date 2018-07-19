@@ -15,8 +15,8 @@
         </div>
         <div class="sis-float-left">
             <sis-combo-box [id]="'enrolmentProgrammeAddId'" [placeHolder]="'-- Select Subject --'"
-                           [(value)]="selectEnrolmentSubjectValue">
-                <sis-combo-box-items [data]="enrolmentSubjectList" #enrolmentProgrammeAdd [valueField]="id"
+                           [value]="selectEnrolmentSubjectValue" (valueChange)="onEnrolmentSubjectChanged($event)">
+                <sis-combo-box-items [data]="enrolmentSubjectList" #enrolmentProgrammeAdd [valueField]=""
                                      [nameField]="'name'"></sis-combo-box-items>
             </sis-combo-box>
         </div>

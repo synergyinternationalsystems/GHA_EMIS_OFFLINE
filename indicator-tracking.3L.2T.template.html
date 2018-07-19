@@ -67,12 +67,12 @@
 
 <div class="sis-table-scroll">
     <label class="sis-label">{{question}}</label>
-    <table class="mdl-data-table mdl-js-data-table"
+    <table class="sis-table-total mdl-data-table mdl-js-data-table sis-table-total sis-nested-table--no-pdd"
            id="{{tableId}}1">
         <thead>
             <tr>
-                <th rowspan="2" *ngIf="hasVerticalCode" class="sis-vertical-center">{{topLeftCellCodeLabel}}</th>
-                <th rowspan="2">{{topLeftCellProgrammeLabel}}</th>
+                <th rowspan="2" *ngIf="hasVerticalCode" class="sis-vertical-center">{{topLeftCellCodeLabel}} </th>
+                <th rowspan="2" class="sis-vertical-center">{{topLeftCellProgrammeLabel}} </th>
                 <th *ngFor="let horizontalFirstLevelClassifier of filteredFirstTableHorizontalFirstLevelClassifierList()"
                     colspan="2" class="mdl-data-table__cell--centered">
                     <span>{{horizontalFirstLevelClassifier.getName()}}</span>
@@ -83,11 +83,11 @@
             </tr>
             <tr>
                 <th *ngFor="let horizontalSecondLevelClassifier of filteredFirstTableHorizontalSecondLevelByFirstLevelClassifierList()">
-                    <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                    <span>{{horizontalSecondLevelClassifier.getName()}} </span>
                 </th>
                 <ng-container *ngIf="hasVerticalTotalColumn">
                     <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelClassifierList()">
-                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
+                        <span>{{horizontalSecondLevelClassifier.getName()}} </span>
                     </th>
                 </ng-container>
             </tr>
@@ -107,37 +107,38 @@
                     </td>
                 </ng-container>
             </tr>
-            <tr *ngIf="hasTotalRow">
-                <td>Total:</td>
-                <td>{{firstTableTotalValue}}</td>
-            </tr>
+
         </tbody>
+        <tfoot>
+        <tr *ngIf="hasTotalRow">
+            <td class="mdl-data-table__cell--non-numeric">Total:</td>
+            <td  colspan="18" class="mdl-data-table__cell--right">{{firstTableTotalValue}}</td>
+        </tr>
+        </tfoot>
     </table>
 </div>
 
 <div class="sis-table-scroll">
     <label class="sis-label">{{question}}</label>
-    <table class="mdl-data-table mdl-js-data-table"
+    <table class="sis-table-total mdl-data-table mdl-js-data-table sis-table-total sis-nested-table--no-pdd"
            id="{{tableId}}2">
         <thead>
             <tr>
-                <td rowspan="2" *ngIf="hasVerticalCode" >{{topLeftCellCodeLabel}}</td>
-                <td rowspan="2">{{topLeftCellProgrammeLabel}}</td>
-                <td *ngFor="let horizontalFirstLevelClassifier of filteredSecondTableHorizontalFirstLevelClassifierList()"
+                <th rowspan="2" *ngIf="hasVerticalCode"  class="sis-vertical-center">{{topLeftCellCodeLabel}}</th>
+                <th rowspan="2"  class="sis-vertical-center">{{topLeftCellProgrammeLabel}} </th>
+                <th *ngFor="let horizontalFirstLevelClassifier of filteredSecondTableHorizontalFirstLevelClassifierList()"
                     colspan="2" class="mdl-data-table__cell--centered">
                     <span>{{horizontalFirstLevelClassifier.getName()}}</span>
-                </td>
+                </th>
                 <th *ngIf="hasVerticalTotalColumn" colspan="2" rowspan="1" class="mdl-data-table__cell--centered">Total</th>
             </tr>
         <tr>
-            <td *ngFor="let horizontalSecondLevelClassifier of filteredSecondTableHorizontalSecondLevelByFirstLevelClassifierList()">
+            <th *ngFor="let horizontalSecondLevelClassifier of filteredSecondTableHorizontalSecondLevelByFirstLevelClassifierList()">
                 <span>{{horizontalSecondLevelClassifier.getName()}}</span>
-            </td>
+            </th>
             <ng-container *ngIf="hasVerticalTotalColumn">
                 <th *ngFor="let horizontalSecondLevelClassifier of filteredHorizontalSecondLevelClassifierList()">
-                    <span class="ui-column-title">
-                        <span>{{horizontalSecondLevelClassifier.getName()}}</span>
-                    </span>
+                    <span>{{horizontalSecondLevelClassifier.getName()}}</span>
                 </th>
             </ng-container>
         </tr>
@@ -157,10 +158,13 @@
                     </td>
                 </ng-container>
             </tr>
-            <tr *ngIf="hasTotalRow">
-                <td>Total:</td>
-                <td>{{secondTableTotalValue}}</td>
-            </tr>
+
         </tbody>
+        <tfoot>
+            <tr *ngIf="hasTotalRow">
+                <td class="mdl-data-table__cell--non-numeric">Total:</td>
+                <td colspan="20" class="mdl-data-table__cell--right">{{secondTableTotalValue}}</td>
+            </tr>
+        </tfoot>
     </table>
 </div>

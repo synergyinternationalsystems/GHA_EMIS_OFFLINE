@@ -6,7 +6,7 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.0.54-SNAPSHOT",
+  "version": "1.1.5",
   "repository": "https://github.com/synergyinternationalsystems/GHA_EMIS_OFFLINE",
   "license": "ISC",
   "main": "./main.js",
@@ -28,7 +28,7 @@
     }
   },
   "scripts": {
-    "start": "electron .",
+    "start": "tsc && electron .",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
@@ -41,7 +41,11 @@
     "not_used_setupElectronInstaller": "electron-installer-windows --debug --src ../ghana-emis-packaged6/GhanaEMIS-win32-x64/ --dest ../ghana-emis-packaged5_el_win_installer/ --config config.json",
     "not_used_finalElectronInstaller": "npm run cleanElectronPackage && npm run buildElectronPackage && npm run setupElectronInstaller",
     "not_used_build_for_minify": "browserify -s main app/main.js > ../gha-emis-offline-minified/appMinified/app.js && npm run minify",
-    "not_used_minify": "uglifyjs ../gha-emis-offline-minified/appMinified/app.js --screw-ie8 --compress --mangle --output ../gha-emis-offline-minified/appMinified/app.min.js"
+    "not_used_minify": "uglifyjs ../gha-emis-offline-minified/appMinified/app.js --screw-ie8 --compress --mangle --output ../gha-emis-offline-minified/appMinified/app.min.js",
+    "dev:tsc": "tsc",
+    "dev:gulp": "gulp sass",
+    "ci:build": "npm install && npm run-script dev:gulp && npm run-script dev:tsc",
+    "ci:test": "tsc && karma start ci/karma.conf.js --single-run"
   },
   "dependencies": {
     "@angular/common": "2.4.1",
