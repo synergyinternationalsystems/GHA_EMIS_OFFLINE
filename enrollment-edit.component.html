@@ -1,8 +1,8 @@
 <div class="mdl-grid mdl-grid--no-spacing" title="">
     <div class="mdl-cell mdl-cell--12-col">
-        <div id="indicatorBasicId" *ngIf="isBasicSchool()">
+        <div id="indicatorBasicId" *ngIf="isBasicSchool()"> 
             <div class="sis-control-validation">
-                <sis-error [id]="'enrolmentManyPrimaryValidation'"
+                <sis-error [id]="'enrolmentManyPrimaryValidation'" 
                            [forControl]="enrolmentManyPrimaryName" [isInput]="true"
                            [errorClass]="'sis-validation-wrapper--grouped-inline'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentManyPrimaryValidation()"
@@ -103,6 +103,13 @@
                            [errorClass]="'sis-validation-wrapper--grouped'"
                            [errorMessage]="enrollmentValidationHelper.enrolmentBasicBySexAndAgeValidation()"
                            [class]="'sis-float-left'">
+                </sis-error>
+
+                <sis-error [id]="'enrolmentBasicBySexAndAgeTotalValidation'"
+                           [errorClass]="'sis-validation-wrapper--grouped'"
+                           [errorMessage]="enrollmentValidationHelper.enrolmentBasicBySexAndAgeTotalOrgPupilsEqualValidator()"
+                           [class]="'sis-float-left'" [forControl]="enrolmentBasicBySexAndAgeName"
+                           [isInput]="true">
                 </sis-error>
                 <label class="sis-label sis-element-required">8.5 Enrolment by sex and age</label>
             </div>

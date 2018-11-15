@@ -1,6 +1,15 @@
-<div>
-    <label class="sis-label">10.1 Do you have non teaching staff in your school?</label>
+<div class="sis-control-validation">
+    <sis-error [id]="'nonTeachingStaffYesNoRequiredValidation'"
+               [forControl]="nonTeachingStaffYesNo" [isInput]="true"
+               [errorClass]="'sis-validation-wrapper--grouped-inline'"
+               [errorMessage]="nonTeachingStaffInformationValidationHelper.nonTeachingStaffYesNoValidation()"
+               [class]="'sis-float-left'">
+    </sis-error>
+    <label class="sis-label sis-element-required">
+        10.1 Do you have non teaching staff in your school?
+    </label>
 </div>
+<div #nonTeachingStaffYesNo>
 <sis-select-one-radio
         [census]="census"
         [classifierList]="classifierList"
@@ -10,7 +19,7 @@
         [classifierNameFromInput]="'YesNoId'"
         [subEntityFields]="questionSubEntityFields">
 </sis-select-one-radio>
-
+</div>
 <div *ngIf="isSelectedNonTeachingStaff()">
     <div class="sis-control-validation">
         <sis-error [id]="'nonTeachingStaffInformationValidation'"

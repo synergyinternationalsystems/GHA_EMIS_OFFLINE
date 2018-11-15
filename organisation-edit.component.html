@@ -60,7 +60,7 @@
                     <tr>
                         <th></th>
                         <th >
-                            SHS
+                            {{getIsSecondarySchoolType() ? 'SHS' :'TVET'}}
                         </th>
                     </tr>
                     <tr *ngFor="let summaryType of classifierList.get('SummaryType')">
