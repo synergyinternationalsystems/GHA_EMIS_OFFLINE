@@ -1,0 +1,123 @@
+<!--<div>-->
+    <div class="sis-popup-container__inner ">
+        <div class="sis-popup-content-top-margin">
+
+
+                <div class="mdl-grid mdl-grid--no-spacing">
+                    <div  class="mdl-cell mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-phone ">
+
+
+                        <div class="sis-control-validation">
+                            <sis-error [id]="'fullNameValidation'" *ngIf="isErrorMessageVisible"
+                                       [forControl]="name" [isInput]="true"
+                                       [errorClass]="'sis-validation-wrapper&#45;&#45;element'"
+                                       [errorMessage]="fullNameErrorMessage"
+                                       [class]="'sis-float-left'">
+                            </sis-error>
+                            <label class="sis-label sis-element-required">Full Name</label>
+                        </div>
+
+
+
+                        <input type="text" #name  input-text maxlength="50" [(ngModel)]="fullName"
+                               class="sis-input sis-large-width">
+                    </div>
+
+                    <div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone">
+                        <button id="ressetButton"
+                                class="mdl-button mdl-js-button sis-btn--sec sis-inline-button-top-margin mdl-button--raised  mdl-js-ripple-effect" (click)="reset()"> Reset
+                        </button>
+                        <button id="searchButton"
+                                class="mdl-button mdl-js-button sis-btn--primary sis-inline-button-top-margin mdl-button--raised mdl-js-ripple-effect"
+                                (click)="search(fullName)"> Search
+                        </button>
+                        <button id="createNewButton"
+                                class="mdl-button mdl-js-button sis-btn--primary sis-inline-button-top-margin mdl-button--raised mdl-js-ripple-effect"
+                                (click)="addTeachers(true)">Create New Teacher
+                        </button>
+                    </div>
+                </div>
+
+                <div *ngIf="searchedTeacherItems.length>0">
+
+                        <div class="sis-table-scroll sis-controls--top-margin">
+                            <table class="sis-table sis-table-layout-fixed sis-full-width sis-controls--margin-top mdl-data-table mdl-data-table-responsive">
+                                <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric"></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>Note on Teacher</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>First Name</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 180px;"><span>Surname</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Staff Number (IPPD)</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 146px;"><span>SSF Number</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Registration Number</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 196px;"><span>Level</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 130px;"><span>Year of Birth</span></th>
+                                    <th  class="mdl-data-table__cell--non-numeric" style="min-width: 100px;"><span>Sex</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let searchTeacherItem of pagingTeacherItems; let j = index">
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <input type="checkbox" class="sis-radio-checkbox" id="isMainActivityCheckId"
+                                               [(ngModel)]="searchTeacherItem.isSelected"/>
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric"> {{getTeachersNoteOn(searchTeacherItem.teacher)}}</td>
+
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <a (click)="edit(searchTeacherItem.teacher)"  *ngIf="searchTeacherItem.teacher.getProperty('teacherId').value<0">
+                                            {{searchTeacherItem.teacher.getProperty('firstName').value}}
+                                        </a>
+                                       <span *ngIf="searchTeacherItem.teacher.getProperty('teacherId').value>0"> {{searchTeacherItem.teacher.getProperty('firstName').value}} </span>
+
+                                    </td>
+                                    <td>
+                                        {{searchTeacherItem.teacher.getProperty('surname').value}}
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        {{searchTeacherItem.teacher.getProperty('staffNumber').value}}
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        {{searchTeacherItem.teacher.getProperty('sSFNumber').value}}
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        {{searchTeacherItem.teacher.getProperty('registrationNumber').value}}
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        {{getTeacherSchoolLevels(searchTeacherItem.teacher)}}
+                                    </td>
+
+                                    <td class="mdl-data-table__cell--centered">
+                                        {{searchTeacherItem.teacher.getProperty('yearOfBirth').value}}
+                                    </td>
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        {{searchTeacherItem.teacher.getProperty('genderId').value.getProperty('name_ENG').value}}
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                            <sis-paging [page]="currentPage" (pageChange)="changeCurrentPage($event)"
+                                        [pageSize]="pageSize"
+                                        [itemsCount]="searchedTeacherItems.length" [totalPageCount]="getTotalPageCount()">
+                            </sis-paging>
+                        </div>
+
+
+
+                </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="sis-popup-container__buttons sis-align-right">
+        <button class="mdl-js-button sis-btn--primary mdl-js-ripple-effect sis--full-width-mobile mdl-button mdl-button--raised"
+                (click)="add()"> Ok
+        </button>
+        <button class="mdl-button mdl-button&#45;&#45;raised mdl-js-button  sis-btn&#45;&#45;sec mdl-js-ripple-effect"
+                (click)="onCancelClicked()"> Cancel
+        </button>
+    </div>
+<!--</div>-->
