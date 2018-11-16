@@ -6,7 +6,7 @@
   "homepage": "http://synisys.com",
   "description": "GhanaEMIS",
   "productName": "GhanaEMIS",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "repository": "https://github.com/synergyinternationalsystems/GHA_EMIS_OFFLINE",
   "license": "ISC",
   "main": "./main.js",
@@ -45,7 +45,8 @@
     "dev:tsc": "tsc",
     "dev:gulp": "gulp sass",
     "ci:build": "npm install && npm run-script dev:gulp && npm run-script dev:tsc",
-    "ci:test": "tsc && karma start ci/karma.conf.js --single-run"
+    "ci:test": "tsc && karma start ci/karma.conf.js --single-run",
+    "generate_build": "tsc && gulp generate-build"
   },
   "dependencies": {
     "@angular/common": "2.4.1",
