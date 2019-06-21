@@ -752,3 +752,10 @@ input.mdl-button, input.sis-btn--primary, input.sis-btn--sec, input.sis-btn--blu
 
 .sis-radio-checkbox-in-block {
   display: inline-block; }
+
+.sis-gha-header.sis-header {
+  background: url("app/resources/images/header-bg.png") no-repeat #4c953b;
+  overflow: visible !important; }
+  @media screen and (min-width: 1024px) {
+    .sis-gha-header.sis-header {
+      background-size: 100% 100%; } }
